@@ -42,8 +42,8 @@
             <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon navbar-light"></span>
             </button>
-            <li class="nav-item ml-auto mr-auto" style="list-style: none;">
-                <a class="navbar-brand" href="#">
+            <li class="nav-item mx-auto" style="list-style: none;">
+                <a class="navbar-brand" href="./index.php">
                     <img src="./img/logo-dry-laranja.png" alt="Logo">
                 </a>
             </li>
@@ -82,16 +82,16 @@
     </button>
 
     <div class="container">
-        <div class="modal fade" id="modalContato" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
+        <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
+                        <h2 class="mx-auto">Alguma dúvida?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body ml-auto mr-auto">
+                    <div class="modal-body mx-auto">
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
@@ -103,7 +103,7 @@
         <div class="container-pesquisa">
             <h4 class="mb-5">Resultados da sua pesquisa "<?=$pesquisa?>"</h4>
             <?php while($result = mysqli_fetch_array($select)){ ?>
-                <div class="card-resultado ml-auto mr-auto my-4">
+                <div class="card-resultado mx-auto my-4">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="post-img" style="background-image: url('./upload/arquivos/<?=$result['foto']?>'); padding: 32%;"></div>
@@ -131,7 +131,7 @@
         <div class="container">
             <div class="row">
                 
-                <div class="col-md-4 align-center-vertical ml-auto mr-auto" style="margin-top: 70px;">
+                <div class="col-md-4 align-center-vertical mx-auto" style="margin-top: 70px;">
                     <div class="footer-logo">
                         <img src="./img/logo-dry-laranja-footer.png" alt="Logo">
                     </div>

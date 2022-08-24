@@ -61,7 +61,7 @@
                     <label for="txtSenha" class="form-label">Senha:&nbsp;</label>
                     <input type="password" class="input-sunk-white" id="txtSenha" name="txtSenha" required>
                 </div>
-                <button type="submit" class="btn-padrao" name="btnEntrar" style="margin-left: auto; margin-right: auto;">Entrar</button>
+                <button type="submit" class="btn-padrao mx-auto" name="btnEntrar">Entrar</button>
             </form>
         </div>
     </div> 

@@ -70,7 +70,7 @@
     </button>
 
     <div class="container">
-        <div class="modal fade" id="modalContato" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
+        <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -1,18 +1,3 @@
-/*const form = document.getElementById('loginUsuario');
-const nome = document.getElementById('txtNomeUsuario');
-const email = document.getElementById('txtEmailUsuario');
-const senha = document.getElementById('txtSenhaUsuario');
-const formComentarios = document.getElementById('frmComentarios');
-const comentario = document.getElementById('txtComentario');
-
-function validarCampos(){
-    const comentario = document.getElementById('txtComentario').value;
-
-    if(!comentario){
-
-    }
-}*/
-
 function nameFileUser() {
     var div = document.getElementsByClassName("desc-file-foto")[0];
     var div2 = document.getElementsByClassName("desc-file-foto")[1];
