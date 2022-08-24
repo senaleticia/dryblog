@@ -1,0 +1,21 @@
+.post-full-text a{
+    color: #FE5000;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.post-full-text a:hover{
+    color: #777;
+}
+
+.post-full-text li{
+    margin-left: 36px;
+}
+
+.post-full-text ol, .post-full-text ul{
+    line-height: 16px;
+}
+
+.post-full-text p{
+    line-height: 24px;
+}

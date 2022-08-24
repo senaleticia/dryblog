@@ -1,0 +1,264 @@
+@media only screen and (max-width: 768px) {
+    *{
+        font-size: 14px;
+    }
+
+    h1, .titulo-padrao > h1, .conexao{
+        font-size: 22px !important;
+    }
+
+    h2{
+        font-size: 25px;
+    }
+
+    strong{
+        font-weight: 600;
+    }
+
+    .btn-padrao{
+        padding: 8px 16px;
+        font-size: 10px;
+    }
+
+    .btn-center{
+        margin-top: 50px !important;
+    }
+
+    .materia-title{
+        font-size: 16px;
+    }
+
+    .container-chip{
+        width: 100%;
+        height: auto;
+        margin: 0;
+        margin-bottom: 45px;
+    }
+
+    .margem-btn{
+        margin: 5%;
+    }
+
+    .foto-usuario, .foto-usuario > img{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    #caixa-comentar{
+        gap: 7px;
+    }
+
+    #caixa-comentar .foto-usuario{
+        margin-top: 12px;
+    }
+
+    .input-sunk-white{
+        min-width: 300px;
+        width: 100%;
+    }
+
+    .post-comentarios{
+        flex-wrap: wrap;
+    }
+
+    .comentario-conteudo{
+        padding-top: 20px;
+    }
+
+    #caixa-comentarios{
+        display: flex;
+    }
+
+    #section-slide, #section-cobertura, #bg-celular{
+        background-image: none !important;
+    }
+
+    #cobertura{
+        padding-bottom: 220px;
+    }
+
+    .slick-dotted.slick-slider{
+        margin-bottom: 100px !important;
+    }
+
+    .text-aplicativo{
+        max-width: 100% !important;
+    }
+
+    .container-relacionados{
+        justify-content: flex-start;
+        overflow-x: scroll !important;
+        overflow-y: hidden !important;
+        gap: 32px;
+        box-sizing: border-box;
+        width: max-content !important;
+    }
+
+    .card-materia-lateral{
+        width: 300px;
+    }
+
+    #section-futebol, #section-empresas, #section-entretenimento{
+        overflow-x: scroll;
+        overflow-y: hidden;
+        max-width: 100vw !important;
+        justify-content: flex-start;
+    }
+
+    #section-futebol > .card-chip, #section-empresas > .card-chip, #section-entretenimento > .card-chip{
+        flex-wrap: nowrap !important;
+        width: auto !important;
+        max-width: none !important;
+    }
+
+    .caixa-1{
+        background-image: url('./img/bg-laricel-mobile.png');
+    }
+
+    .bg-futebol{
+        background-image: url('./img/bg-futebol-mobile.png') !important;
+    }
+
+    .bg-entretenimento{
+        background-image: url('./img/bg-samba-mobile.png') !important;
+    }
+
+    .container-cards{
+        display: flex;
+        flex-direction: row;
+        padding: 15px;
+    }
+
+    .container-relacionados::-webkit-scrollbar, #section-futebol::-webkit-scrollbar, #section-empresas::-webkit-scrollbar, #section-entretenimento::-webkit-scrollbar{
+        display: none;
+    }
+
+    .caixa-2, .caixa-3, .caixa-5, .caixa-background{
+        height: 60vh !important;
+    }
+
+    .caixa-4, .caixa-6{
+        height: auto !important;
+        padding: 90px 10px;
+    }
+
+    .bg-mobile{
+        background-image: url('./svg/background-mobile.svg') !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 750px;
+    }
+
+    .btn-actions{
+        width: 100px !important;
+    }
+
+    #caixa-comentarios > .foto-usuario > img{
+        margin-left: 0 !important;
+    }
+
+    .footer-menu{
+        font-size: 12px;
+    }
+
+    .footer-title{
+        font-size: 20px;
+    }
+
+    .card-jumped-white-ext{
+        width: 80% !important;
+    }
+
+    .titulo-pesquisa{
+        margin-top: 15px;
+    }
+
+    .container-acessados{
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        gap: 20px;
+        width: max-content;
+        padding: 12px 0;
+    }
+
+    .tags{
+        gap: 22px;
+    }
+
+    #row-posts{
+        gap: 64px;
+    }
+
+    .banner, .banner img{
+        width: 100%;
+    }
+
+    .politica-privacidade h1{
+        font-size: 1.6rem !important;
+    }
+
+    #coluna-mais-acessados{
+        order: 1;
+    }
+    
+    #posts-principais{
+        order: 2;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    #section-slide, #cobertura, #bg-celular{
+        background-image: none !important;
+    }
+
+    #img-footer > img{
+        display: none;
+    }
+
+    #bg-celular, #img-footer{
+        padding: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    #aplicativo{
+        grid-template-columns: 1fr !important;
+        justify-items: center;
+        gap: 64px;
+    }
+
+    .content-aplicativo{
+        flex-wrap: wrap;
+        position: relative !important;
+        top: 0 !important;
+    }
+
+    .w-space, .space-slide{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .slick-dotted.slick-slider{
+        margin-bottom: 300px !important;
+        width: 100% !important;
+    }
+
+    .container-relacionados{
+        width: auto;
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (max-width: 1387px){
+    .content-aplicativo{
+        background-image: none !important;
+    }
+}
