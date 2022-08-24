@@ -138,7 +138,7 @@
 
     <footer>
         <div class="container">
-            <div class="row" style="margin-top: 30%;">
+            <div class="row">
                 
                 <div class="col-md-4 align-center-vertical mx-auto" style="margin-top: 70px;">
                     <div class="footer-logo">

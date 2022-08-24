@@ -252,7 +252,7 @@
     </div>
     <footer>
         <div class="container">
-            <div class="row" style="margin-top: 10rem;">
+            <div class="row">
                 <div class="col-md-4 align-center-vertical ml-auto mr-auto">
                     <div class="footer-logo">
                         <img src="./img/logo-dry-laranja-footer.png" alt="Logo"><br>

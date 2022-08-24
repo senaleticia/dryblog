@@ -29,8 +29,12 @@ p{
     color: black;
 }
 
+footer{
+    margin-top: 30%;
+}
+
 #footer-index{
-    margin-top: 50%;
+    margin-top: 70% !important;
 }
 
 #header-gerenciadores{
