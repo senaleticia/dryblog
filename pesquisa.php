@@ -101,6 +101,13 @@
         </div>
 
         <div class="container-pesquisa">
+        <?php
+            $row_count = mysqli_num_rows($select);
+
+            if($row_count == 0){
+        ?>
+            <h5 class="mb-5 text-center">Nenhum resultado foi encontrado para a sua pesquisa "<?=$pesquisa?>"</h5>
+        <?php }else if($row_count >= 1){ ?>
             <h4 class="mb-5">Resultados da sua pesquisa "<?=$pesquisa?>"</h4>
             <?php while($result = mysqli_fetch_array($select)){ ?>
                 <div class="card-resultado mx-auto my-4">
@@ -123,13 +130,15 @@
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+            <?php } 
+                }
+            ?>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top: 30%;">
                 
                 <div class="col-md-4 align-center-vertical mx-auto" style="margin-top: 70px;">
                     <div class="footer-logo">

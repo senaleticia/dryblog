@@ -259,7 +259,7 @@
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <span class="material-symbols-outlined icon-tag">
-                                    person
+                                        person
                                     </span>
                                     <p class="btn-tag">
                                         <?=$nome_autor?>
@@ -450,7 +450,7 @@
         
     <footer>
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-top: 30%;">
                 <div class="col-md-4 align-center-vertical ml-auto mr-auto" style="margin-top: 70px;">
                     <div class="footer-logo">
                         <img src="./img/logo-dry-laranja-footer.png" alt="Logo">
