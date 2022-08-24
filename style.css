@@ -474,8 +474,8 @@ ul, li{
 
 .icon-search{
     position: absolute;
-    top: 76%;
-    right: 10%;
+    top: 78%;
+    right: 8%;
     border: none;
 }
 
@@ -1097,4 +1097,3 @@ ul, li{
 .adesao:hover{
     text-decoration: underline;
 }
-

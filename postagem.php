@@ -15,9 +15,6 @@
     $titulo = (string) "";
     $video = (string) "";
 
-    //Definindo como o botão de 'like' vai começar
-    $img_like = 'like-bew.png';
-
     //Verificando se a variável 'modo' existe na URL
     if(isset($_GET['modo'])){
         //Verificando se o resultado da variável 'modo' é 'visualizar'
@@ -45,6 +42,8 @@
                 $foto3 = $result['terceira_foto'];
                 $foto4 = $result['quarta_foto'];
                 $video = $result['video'];
+                $data_post = $result['data_post'];
+                $hora_post = $result['hora_post'];
 
                 $conteudo = $result['conteudo'];
                 $str = $conteudo;
@@ -240,30 +239,49 @@
                 <div class="view-post-table mt-5">
                     <div class="titulo-padrao text-uppercase mt-5">
                         <h1><?=$titulo?></h1>
-                        <div class="tags mt-2 d-flex align-items-center justify-content-center">
-                            <div class="d-flex align-items-center">
-                                <span class="material-symbols-outlined icon-tag">
-                                    folder_copy
-                                </span>
-                                <p class="btn-tag">
-                                    <?=$tags?>
-                                </p>
+                        <div class="d-flex justify-content-around">
+                            <div class="tags mt-2 d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">
+                                        folder_copy
+                                    </span>
+                                    <p class="btn-tag">
+                                        <?=$tags?>
+                                    </p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">
+                                        hourglass_empty
+                                    </span>
+                                    <p class="btn-tag">
+                                        <?=$tempo_leitura?> min
+                                    </p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">
+                                    person
+                                    </span>
+                                    <p class="btn-tag">
+                                        <?=$nome_autor?>
+                                    </p>
+                                </div>
+                                
                             </div>
-                            <div class="d-flex align-items-center">
-                                <span class="material-symbols-outlined icon-tag">
-                                    hourglass_empty
-                                </span>
-                                <p class="btn-tag">
-                                    <?=$tempo_leitura?> min
-                                </p>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span class="material-symbols-outlined icon-tag">
-                                person
-                                </span>
-                                <p class="btn-tag">
-                                    <?=$nome_autor?>
-                                </p>
+                            <div class="tags mt-2 d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">
+                                        date_range
+                                    </span>
+                                    <p class="btn-tag">
+                                        <?=$data_post?>
+                                    </p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">
+                                        schedule
+                                    </span>
+                                    <p class="btn-tag"><?=$hora_post?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
