@@ -26,6 +26,44 @@
                 printf("Error: %s\n", mysqli_error($conexao));
                 exit();
             }
+
+            if($result = mysqli_fetch_array($select)){
+                $titulo = $result['titulo'];
+                $tags = $result['tags'];
+                $tempo_leitura = $result['tempo_leitura'];
+                $nome_autor = $result['nome_autor'];
+                $foto = $result['foto'];
+                $foto2 = $result['segunda_foto'];
+                $foto3 = $result['terceira_foto'];
+                $foto4 = $result['quarta_foto'];
+                $video = $result['video'];
+                $data_post = $result['data_post'];
+                $hora_post = $result['hora_post'];
+
+                $conteudo_post = $result['conteudo'];
+                $str     = $conteudo_post;
+                $order   = array("\r\n", "\n", "\r");
+                $replace = '<br>';
+                $conteudo_quebrado = str_replace($order, $replace, $str);
+
+                $segundo_conteudo_post = $result['segundo_conteudo'];
+                $str     = $segundo_conteudo_post;
+                $order   = array("\r\n", "\n", "\r");
+                $replace = '<br>'; 
+                $segundo_conteudo_quebrado = str_replace($order, $replace, $str);
+
+                $terceiro_conteudo_post = $result['terceiro_conteudo'];
+                $str     = $terceiro_conteudo_post;
+                $order   = array("\r\n", "\n", "\r");
+                $replace = '<br>'; 
+                $terceiro_conteudo_quebrado = str_replace($order, $replace, $str);
+
+                $quarto_conteudo_post = $result['quarto_conteudo'];
+                $str     = $quarto_conteudo_post;
+                $order   = array("\r\n", "\n", "\r");
+                $replace = '<br>'; 
+                $quarto_conteudo_quebrado = str_replace($order, $replace, $str);
+            }
         }
     }
 ?>
@@ -44,94 +82,73 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../responsive.css">
     <link rel="stylesheet" href="../guideline-social.css">
-    <title>Visualizar postagem - DryBlog</title>
+    <title><?=$titulo?> - DryBlog</title>
 </head>
 <body>
     <div class="container">
         <div class="view-post-table">
-        <?php
-            while($result = mysqli_fetch_array($select)){  
-                $conteudo_post = $result['conteudo'];
-
-                $str     = $conteudo_post;
-                $order   = array("\r\n", "\n", "\r");
-                $replace = '<br />';
-                $conteudo_quebrado = str_replace($order, $replace, $str);
-
-                $segundo_conteudo_post = $result['segundo_conteudo'];
-
-                $str     = $segundo_conteudo_post;
-                $order   = array("\r\n", "\n", "\r");
-                $replace = '<br />'; 
-                $segundo_conteudo_quebrado = str_replace($order, $replace, $str);
-
-                $terceiro_conteudo_post = $result['terceiro_conteudo'];
-
-                $str     = $terceiro_conteudo_post;
-                $order   = array("\r\n", "\n", "\r");
-                $replace = '<br />'; 
-                $terceiro_conteudo_quebrado = str_replace($order, $replace, $str);
-
-                $quarto_conteudo_post = $result['quarto_conteudo'];
-
-                $str     = $quarto_conteudo_post;
-                $order   = array("\r\n", "\n", "\r");
-                $replace = '<br />'; 
-                $quarto_conteudo_quebrado = str_replace($order, $replace, $str);
-        ?>
             <div class="space-postagem mt-5 text-center">
-                <h1><?=$result['titulo']?></h1>
+                <h1><?=$titulo?></h1>
             </div>
             <div class="py-4 text-center">
                 <span>
-                    <strong>Publicado em: </strong><?=$result['data_post']?>, às <?=$result['hora_post']?> | 
-                    <strong>Autor(a): </strong><?=$result['nome_autor']?> |
-                    <strong>Tempo de leitura: </strong><?=$result['tempo_leitura']?> min
+                    <strong>Publicado em: </strong><?=$data_post?>, às <?=$hora_post?> | 
+                    <strong>Autor(a): </strong><?=$nome_autor?> |
+                    <strong>Tempo de leitura: </strong><?=$tempo_leitura?> min
                 </span>
             </div>
 
-        <?php if($result['foto'] > 0){ ?>
+        <?php if($foto != ""){ ?>
             <div class="post-img ml-auto mr-auto">
-                <img src="../upload/arquivos/<?=$result['foto']?>" alt="Imagem do post">
+                <img src="../upload/arquivos/<?=$foto?>" alt="Imagem do post">
             </div>
         <?php } ?>
 
+        <?php if($conteudo_post != ""){ ?>
             <div class="post-full-text">
                 <?=$conteudo_quebrado?>
             </div>
+        <?php } ?>
 
-        <?php if($result['segunda_foto'] > 0){ ?>
+        <?php if($foto2 != ""){ ?>
             <div class="post-img ml-auto mr-auto">
-                <img src="../upload/arquivos/<?=$result['segunda_foto']?>" alt="Imagem do post">
+                <img src="../upload/arquivos/<?=$foto2?>" alt="Imagem do post">
             </div>
         <?php } ?>
 
+        <?php if($segundo_conteudo_post != ""){ ?>
             <div class="post-full-text">
                 <?=$segundo_conteudo_quebrado?>
             </div>
+        <?php } ?>
 
-        <?php if($result['terceira_foto'] > 0){ ?>
+        <?php if($foto3 != ""){ ?>
             <div class="post-img ml-auto mr-auto">
-                <img src="../upload/arquivos/<?=$result['terceira_foto']?>" alt="Imagem do post">
+                <img src="../upload/arquivos/<?=$foto3?>" alt="Imagem do post">
             </div>
         <?php } ?>
 
+        <?php if($terceiro_conteudo_post != ""){ ?>
             <div class="post-full-text">
                 <?=$terceiro_conteudo_quebrado?>
-            </div> 
+            </div>
+        <?php } ?> 
 
-        <?php if($result['quarta_foto'] > 0){ ?>
+        <?php if($foto4 != ""){ ?>
             <div class="post-img ml-auto mr-auto">
-                <img src="../upload/arquivos/<?=$result['quarta_foto']?>" alt="Imagem do post">
+                <img src="../upload/arquivos/<?=$foto4?>" alt="Imagem do post">
             </div>
         <?php } ?>
+
+        <?php if($quarto_conteudo_post != ""){ ?>
             <div class="post-full-text">
                 <?=$quarto_conteudo_quebrado?>
             </div>
+        <?php } ?>
             
-        <?php if($result['video'] > 0){ ?>   
+        <?php if($video != ""){ ?>   
             <div class="view-post-video mb-5">
-                <iframe width="100%" height="570" src="https://www.youtube.com/embed/<?=$result['video']?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="570" src="https://www.youtube.com/embed/<?=$video?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         <?php } ?>
             <div class="d-flex justify-content-around mb-5">
@@ -154,8 +171,7 @@
                         </span>
                     </button>
                 </a>               
-            </div>
-        <?php } ?>   
+            </div>  
         </div>
     </div>
 </body>
