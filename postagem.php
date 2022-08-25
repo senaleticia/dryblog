@@ -379,9 +379,7 @@
     
     <div id="comentarios">
         <div class="container">
-        <?php
-            if($usuario_autenticado == false){
-        ?>
+        <?php if($usuario_autenticado == false){ ?>
             <div id="caixa-comentar">
                 <div class="foto-usuario" style="background-image: url('./img/icon-profile.png');"></div>
                 <div class="input-comentario">
@@ -389,9 +387,7 @@
                     <input type="button" class="btn-padrao ml-auto borda-botao" value="Postar" data-toggle="modal" data-target="#staticBackdrop">
                 </div>
             </div>
-        <?php
-            }else if($usuario_autenticado == true){
-        ?>
+        <?php }else if($usuario_autenticado == true){ ?>
             <form action="#" name="frmComentario" id="frmComentario" method="POST">
                 <div id="caixa-comentar">    
                 <?php
@@ -444,7 +440,7 @@
                         </div>
                     </div>
                 </div>
-            <?php }?>     
+            <?php } ?>     
         </div>
     </div>
         
