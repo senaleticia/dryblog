@@ -380,17 +380,17 @@
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./index.php#clientes">Clientes<br></a>
-                        <a href="./index.php#cobertura">Cobertura<br></a>
-                        <a href="./blog.php">Blog<br></a>
+                        <a href="./index.php#clientes">Clientes</a> <br>
+                        <a href="./index.php#cobertura">Cobertura</a> <br>
+                        <a href="./blog.php">Blog</a> <br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade<br></a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies<br></a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD<br></a>
+                        <a href="./politica-de-privacidade.php">Política de Privacidade</a> <br>
+                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a> <br>
+                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a> <br>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -398,12 +398,12 @@
                     <div id="redes-sociais" class="d-flex justify-content-center">
                         <div class="redes-sociais-pic mr-3">
                             <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
-                                <img src="./img/icon-instagram.png" alt="Instagram">
+                                <img src="./svg/icon-instagram.svg" alt="Instagram">
                             </a>                           
                         </div>
                         <div class="redes-sociais-pic">
                             <a href="https://www.linkedin.com/company/drycompanybrasil/" target="_blank">
-                                <img src="./img/icon-linkedin.png" alt="LinkedIn">
+                                <img src="./svg/icon-linkedin.svg" alt="LinkedIn">
                             </a>                           
                         </div>
                     </div>

@@ -284,12 +284,12 @@
                     <div id="redes-sociais" class="d-flex justify-content-center">
                         <div class="redes-sociais-pic mr-3">
                             <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
-                                <img src="./img/icon-instagram.png" alt="Instagram">
+                                <img src="./svg/icon-instagram.svg" alt="Instagram">
                             </a>                           
                         </div>
                         <div class="redes-sociais-pic">
                             <a href="https://www.linkedin.com/company/drycompanybrasil/" target="_blank">
-                                <img src="./img/icon-linkedin.png" alt="LinkedIn">
+                            <img src="./svg/icon-linkedin.svg" alt="LinkedIn">
                             </a>                           
                         </div>
                     </div>

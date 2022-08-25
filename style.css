@@ -680,6 +680,17 @@ ul, li{
     margin-bottom: 8%;
 }
 
+.redes-sociais-pic{
+    filter: none;
+    transition: 0.3s;
+}
+
+.redes-sociais-pic:hover{
+    filter: brightness(0);
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
 .footer-credits{
     font-size: 12px;
     margin-top: 80px;
