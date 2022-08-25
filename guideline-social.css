@@ -8,12 +8,12 @@
     color: #777;
 }
 
-.post-full-text li{
+.post-full-text li, .post-text li{
     margin-left: 36px;
 }
 
-.post-full-text ol, .post-full-text ul{
-    line-height: 16px;
+.post-full-text ol, .post-full-text ul, .post-text ol, .post-text ul{
+    line-height: 18px;
 }
 
 .post-full-text p{

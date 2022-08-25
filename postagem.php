@@ -361,7 +361,7 @@
         <div class="scroll-container">
             <div class="container-relacionados">
             <?php
-                $sql_relacionados = "SELECT * FROM post LIMIT 4";
+                $sql_relacionados = "SELECT * FROM post WHERE tags = '".$tags."' AND id_post <> ".$id." LIMIT 4";
                 $select_relacionados = mysqli_query($conexao, $sql_relacionados);
 
                 while($rs_relacionados = mysqli_fetch_array($select_relacionados)){
