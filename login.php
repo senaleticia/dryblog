@@ -42,6 +42,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
+	<link rel="stylesheet" href="./guideline-social.css">
     <title>Login</title>
 </head>
 <body>

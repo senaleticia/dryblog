@@ -1,32 +1,33 @@
 <?php
-    session_start();
+session_start();
 
-    require_once("./bd/conexao.php");
-    $conexao = conexaoMySql();
+require_once("./bd/conexao.php");
+$conexao = conexaoMySql();
 
-    $usuario_autenticado = $_SESSION['usuarioAutenticado'];
+$usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
-    if(isset($_GET['modo'])){
-        $modo = $_GET['modo'];
+if (isset($_GET['modo'])) {
+    $modo = $_GET['modo'];
 
-        if($modo == 'logout'){
-            session_destroy();
-            header('location: ./login.php');
-        }
+    if ($modo == 'logout') {
+        session_destroy();
+        header('location: ./login.php');
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon"/>
+    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
     <link rel="stylesheet" href="./beneficios.css">
@@ -34,6 +35,7 @@
     <link rel="stylesheet" href="./responsive.css">
     <title>DryBlog</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
         <div class="container">
@@ -46,7 +48,7 @@
                 </a>
             </li>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav ml-5 mr-auto">         
+                <ul class="navbar-nav ml-5 mr-auto">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
@@ -62,17 +64,17 @@
                 </ul>
             </div>
             <div class="login-box">
-            <?php if($usuario_autenticado == true){ ?>
-                <a class="logout" href="./index.php?modo=logout">
-                    <button class="btn-padrao">SAIR</button> 
-                </a>
-            <?php }else if($usuario_autenticado == false){ ?> 
-                <a class="logout" href="./login.php">
-                    <button class="btn-padrao">LOGIN</button> 
-                </a> 
-            <?php } ?>  
+                <?php if ($usuario_autenticado == true) { ?>
+                    <a class="logout" href="./index.php?modo=logout">
+                        <button class="btn-padrao">SAIR</button>
+                    </a>
+                <?php } else if ($usuario_autenticado == false) { ?>
+                    <a class="logout" href="./login.php">
+                        <button class="btn-padrao">LOGIN</button>
+                    </a>
+                <?php } ?>
             </div>
-        </div>       
+        </div>
     </nav>
 
     <div class="container">
@@ -94,7 +96,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container">
         <div style="margin-top: 150px; margin-bottom: 100px;" class="text-center">
             <div class="titulo-padrao">
@@ -119,7 +121,7 @@
                     <div class="description-beneficio">
                         <p><strong>Atendimento 24 horas</strong></p>
                         <p>Fale em nosso chat online e humanizado, ou ligue para nossa Central de atendimento pelos números *288 e
-                        10543.</p>
+                            10543.</p>
                     </div>
                 </div>
                 <div id="bonus">
@@ -149,7 +151,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="clientes">
         <div class="text-center pt-5">
             <h2>Conheça nossos clientes</h2>
@@ -175,105 +177,105 @@
                     <a href="https://falatimao.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/falatimaochip.jpg" alt="Fala Timão Chip"/>
+                                <img src="./img/falatimaochip.jpg" alt="Fala Timão Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://tricolorchip.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/spfcchip.jpg" alt="Tricolor Chip"/>
+                                <img src="./img/spfcchip.jpg" alt="Tricolor Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://aloverdao.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/aloverdaochip.jpg" alt="Alô Verdão Chip"/>
+                                <img src="./img/aloverdaochip.jpg" alt="Alô Verdão Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://chipeixao.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/santoschip.jpg" alt="Santos Chip"/>
+                                <img src="./img/santoschip.jpg" alt="Santos Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://lusafone.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/lusafonechip.jpg" alt="Lusa Fone Chip"/>
+                                <img src="./img/lusafonechip.jpg" alt="Lusa Fone Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://botafogocelular.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/botafogochip.jpg" alt="Botafogo Chip"/>
+                                <img src="./img/botafogochip.jpg" alt="Botafogo Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://chipdovascao.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/vascochip.jpg" alt="Vasco Chip"/>
+                                <img src="./img/vascochip.jpg" alt="Vasco Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://cruzeirocelular.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/cruzeirochip.jpg" alt="Cruzeiro Chip"/>
+                                <img src="./img/cruzeirochip.jpg" alt="Cruzeiro Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="#">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/galochip.jpg" alt="Atlético Mineiro Chip"/>
+                                <img src="./img/galochip.jpg" alt="Atlético Mineiro Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://aloleao.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/aloleaochip.jpg" alt="Alô Leão Chip"/>
+                                <img src="./img/aloleaochip.jpg" alt="Alô Leão Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://vozaophone.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/vozaochip.jpg" alt="Ceará Chip"/>
+                                <img src="./img/vozaochip.jpg" alt="Ceará Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://home.chipgigante.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/gigantechip.jpg" alt="Internacional Chip"/>
+                                <img src="./img/gigantechip.jpg" alt="Internacional Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://esquadraocelular.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/esquadraochip.jpg" alt="Bahia Chip"/>
+                                <img src="./img/esquadraochip.jpg" alt="Bahia Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://gremiocell.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/gremiochip.jpg" alt="Grêmio Cell"/>
+                                <img src="./img/gremiochip.jpg" alt="Grêmio Cell" />
                             </div>
                         </div>
                     </a>
                     <a href="https://flumobile.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/flumobilechip.jpg" alt="Flu Mobile Chip"/>
+                                <img src="./img/flumobilechip.jpg" alt="Flu Mobile Chip" />
                             </div>
                         </div>
                     </a>
@@ -289,28 +291,28 @@
                     <a href="#">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/chipalobeijaflor.jpg" alt="Chip Alô Beija-Flor"/>
+                                <img src="./img/chipalobeijaflor.jpg" alt="Chip Alô Beija-Flor" />
                             </div>
                         </div>
                     </a>
                     <a href="https://falamangueira.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/falamangueira.jpg" alt="Fala Mangueira Chip"/>
+                                <img src="./img/falamangueira.jpg" alt="Fala Mangueira Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="#">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/chipportela.png" alt="Portela Chip"/>
+                                <img src="./img/chipportela.png" alt="Portela Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="#">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/chipimperio.png" alt="Chip Império"/>
+                                <img src="./img/chipimperio.png" alt="Chip Império" />
                             </div>
                         </div>
                     </a>
@@ -326,42 +328,42 @@
                     <a href="https://barbosachip.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/barbosachip.jpg" alt="Barbosa Chip"/>
+                                <img src="./img/barbosachip.jpg" alt="Barbosa Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://citymaiscelular.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/citychip.jpg" alt="City Mais Chip"/>
+                                <img src="./img/citychip.jpg" alt="City Mais Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://enterpmobile.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/enterpchip.jpg" alt="Enterp Mobile Chip"/>
+                                <img src="./img/enterpchip.jpg" alt="Enterp Mobile Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://gaconecta.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/gaconectachip.png" alt="G.A. Conecta Chip"/>
+                                <img src="./img/gaconectachip.png" alt="G.A. Conecta Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://alosocialcelular.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/alosocialchip.jpg" alt="Alô Social Chip"/>
+                                <img src="./img/alosocialchip.jpg" alt="Alô Social Chip" />
                             </div>
                         </div>
                     </a>
                     <a href="https://paraisopoliscelular.com.br/" target="_blank" rel="noopener noreferrer">
                         <div class="btn-sunk-chip">
                             <div class="img-chip">
-                                <img src="./img/paraisopolischip.jpg" alt="Paraisópolis Celular Chip"/>
+                                <img src="./img/paraisopolischip.jpg" alt="Paraisópolis Celular Chip" />
                             </div>
                         </div>
                     </a>
@@ -369,12 +371,12 @@
             </section>
         </div>
     </section>
-    
+
     <div class="titulo-padrao text-center mb-5">
         <h1>Uma operadora para chamar de sua</h1>
         <h4 class="mb-5">Quem virou Dry, virou o jogo e correu pro abraço</h4>
     </div>
-    
+
     <section id="section-slide">
         <div class="container-fluid">
             <div class="row">
@@ -390,15 +392,15 @@
                                 <div class="border-slide">
                                     <div class="slide-img">
                                         <img src="./img/62d9662218102.jpg" alt="Imagem">
-                                    </div>                               
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4> 
+                                    </div>
+                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
                                     <p class="px-4 py-4">
                                         Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p> 
+                                    </p>
                                     <div class="logo-operadora">
                                         <img src="./img/laricel.png" alt="LariCel">
-                                    </div> 
-                                </div>                               
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="caixa-slide px-5 pt-5">
@@ -406,15 +408,15 @@
                                 <div class="border-slide">
                                     <div class="slide-img">
                                         <img src="./img/baymax-profile.jpg" alt="Imagem">
-                                    </div>                               
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4> 
+                                    </div>
+                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
                                     <p class="px-4 py-4">
                                         Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p> 
+                                    </p>
                                     <div class="logo-operadora">
                                         <img src="./img/laricel.png" alt="LariCel">
-                                    </div> 
-                                </div>                               
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="caixa-slide px-5 pt-5">
@@ -422,15 +424,15 @@
                                 <div class="border-slide">
                                     <div class="slide-img">
                                         <img src="./img/62d9662218102.jpg" alt="Imagem">
-                                    </div>                               
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4> 
+                                    </div>
+                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
                                     <p class="px-4 py-4">
                                         Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p> 
+                                    </p>
                                     <div class="logo-operadora">
                                         <img src="./img/laricel.png" alt="LariCel">
-                                    </div> 
-                                </div>                               
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="caixa-slide px-5 pt-5">
@@ -438,15 +440,15 @@
                                 <div class="border-slide">
                                     <div class="slide-img">
                                         <img src="./img/baymax-profile.jpg" alt="Imagem">
-                                    </div>                               
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4> 
+                                    </div>
+                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
                                     <p class="px-4 py-4">
                                         Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p> 
+                                    </p>
                                     <div class="logo-operadora">
                                         <img src="./img/laricel.png" alt="LariCel">
-                                    </div> 
-                                </div>                                
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="caixa-slide px-5 pt-5">
@@ -454,15 +456,15 @@
                                 <div class="border-slide">
                                     <div class="slide-img">
                                         <img src="./img/62d9662218102.jpg" alt="Imagem">
-                                    </div>                               
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4> 
+                                    </div>
+                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
                                     <p class="px-4 py-4">
                                         Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p> 
+                                    </p>
                                     <div class="logo-operadora">
                                         <img src="./img/laricel.png" alt="LariCel">
-                                    </div> 
-                                </div>                                 
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="caixa-slide px-5 pt-5">
@@ -470,15 +472,15 @@
                                 <div class="border-slide">
                                     <div class="slide-img">
                                         <img src="./img/baymax-profile.jpg" alt="Imagem">
-                                    </div>                               
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4> 
+                                    </div>
+                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
                                     <p class="px-4 py-4">
                                         Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p> 
+                                    </p>
                                     <div class="logo-operadora">
                                         <img src="./img/laricel.png" alt="LariCel">
-                                    </div> 
-                                </div>                                 
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -614,7 +616,7 @@
                 <a href="https://tim.img.com.br/mapa-cobertura/" target="_blank" rel="noopener noreferrer">
                     <button class="btn-padrao">VER COBERTURA</button>
                 </a>
-            </div>           
+            </div>
         </div>
     </section>
 
@@ -641,17 +643,17 @@
                 </div>
             </div>
             <div id="bg-celular" class="col-md-6">
-                
+
             </div>
         </div>
     </section>
 
     <footer id="footer-index">
         <div id="img-footer">
-           <img src="./svg/img-footer.svg" alt="Footer">     
+            <img src="./svg/img-footer.svg" alt="Footer">
         </div>
         <div class="container">
-            
+
             <div class="row pt-5">
                 <div class="col-md-4 align-center-vertical ml-auto mr-auto">
                     <div class="footer-logo">
@@ -685,12 +687,12 @@
                         <div class="redes-sociais-pic mr-3">
                             <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
-                            </a>                           
+                            </a>
                         </div>
                         <div class="redes-sociais-pic">
                             <a href="https://www.linkedin.com/company/drycompanybrasil/" target="_blank">
                                 <img src="./svg/icon-linkedin.svg" alt="LinkedIn">
-                            </a>                           
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -700,7 +702,7 @@
                     2022. Dry Telecom. Todos os direitos reservados. CNPJ: 15.564.295/0001-04 RAZÃO SOCIAL: DRY COMPANY DO BRASIL TECNOLOGIA LTDA AV ANÁPOLIS, N° 510 - VILA NILVA - BARUERI/SP - CEP 06404-250
                 </div>
             </div>
-        </div>       
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
@@ -711,25 +713,23 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
     <script>
-        $(document).ready(function (){
+        $(document).ready(function() {
 
             $('.slider').slick({
                 dots: true,
                 arrows: true,
                 autoplay: true,
-                responsive: [
-                    {
-                        breakpoint: 764,
-                        settings: {
-                            arrows: false
-                        }
+                responsive: [{
+                    breakpoint: 764,
+                    settings: {
+                        arrows: false
                     }
-                ]
+                }]
             });
 
         });
 
-        $(document).ready(function (){
+        $(document).ready(function() {
 
             $('.slider-midia').slick({
                 infinite: true,
@@ -737,8 +737,7 @@
                 slidesToScroll: 2,
                 dots: true,
                 arrows: true,
-                responsive: [
-                    {
+                responsive: [{
                         breakpoint: 764,
                         settings: {
                             arrows: false,
@@ -758,9 +757,10 @@
 
         });
 
-        $('#staticBackdrop').on('shown.bs.modal', function () {
+        $('#staticBackdrop').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
     </script>
 </body>
+
 </html>
