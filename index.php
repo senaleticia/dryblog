@@ -22,6 +22,32 @@ if (isset($_GET['modo'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões! Venha conferir nossos planos!">
+    <meta name="author" content="Dry Telecom">
+    <meta name="keywords" content="Telefonia Móvel Digital; MVNO; Operadora Virtual; MobileTech; Operadora Digital" />
+    <link rel="alternate" href="" hreflang="pt-br" />
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:url" content="drytelecom.com.br" />
+    <meta property="og:title" content="Dry Telecom: a operadora de telefonia móvel digital que conecta você às suas paixões!" />
+    <meta property="og:image" content="./svg/dry.svg" />
+    <meta property="og:description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões!" />
+    <meta name="theme-color" content="#fe5000">
+    <meta property="business:contact_data:country_name" content="Brasil" />
+    <meta property="business:contact_data:website" content="drytelecom.com.br" />
+    <meta property="business:contact_data:region" content="SP" />
+
+    <meta name="twitter:description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões!" />
+    <meta name="twitter:title" content="Dry Telecom: a operadora de telefonia móvel digital que conecta você às suas paixões!" />
+    <meta name="twitter:image" content="./svg/dry.svg" />
+    <meta name="geo.placename" content="SÃO PAULO" />
+    <meta name="geo.region" content="BR" />
+    <meta name="description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões!" />
+    <link rel="canonical" href="drytelecom.com.br" />
+    <meta property="og:type" content="telefonia móvel; blog operadora de celular; telecom; MVNO; Mobiletech" />
+    <meta property="og:locale" content="pt_BR" />
+    <!-- SEO -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">

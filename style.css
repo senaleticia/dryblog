@@ -1159,3 +1159,7 @@ li {
 .d-flex {
     width: 100% !important;
 }
+
+text {
+    margin: 8px 0;
+}

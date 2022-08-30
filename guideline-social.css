@@ -20,6 +20,7 @@
     line-height: 18px;
 }
 
-.post-full-text p {
-    line-height: 31px;
+.post-full-text p,
+.post-text p {
+    line-height: 31px !important;
 }

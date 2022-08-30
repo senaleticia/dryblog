@@ -143,6 +143,9 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível publicar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
+                } else if (substr($video, 0, 24) == "https://www.youtube.com/") {
+                    echo ("<script>Não é possível colar o link todo! Cole somente a parte em destaque:
+                    www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b></script>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
                     $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "')";
@@ -190,6 +193,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível publicar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
+                } else if (substr($video, 0, 24) == "https://www.youtube.com/") {
+                    echo ("<script>Não é possível colar o link todo! Cole somente a parte em destaque:
+                    www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b></script>");
+                    //echo ("<script>history.back()</script>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
                     $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "')";
@@ -299,7 +306,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             <div class="mb-3">
                 <label for="txtVideo" class="form-label mr-5" style="background: transparent !important;">Link do vídeo:</label>
                 <input type="text" class="form-control" id="txtVideo" name="txtVideo" value="<?= $video ?>">
-                <div class="instrucao" style="color: #0DCAF0">
+                <div class="instrucao" style="color: #FE5000">
                     Obs: cole somente a parte em destaque do link: www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>
                 </div>
             </div>
