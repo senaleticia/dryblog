@@ -240,7 +240,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
 <body>
     <div class="container">
 
-        <h1>Criar Postagem</h1>
+        <h1 class="my-4">Criar Postagem</h1>
 
         <form action="#" method="POST" enctype="multipart/form-data" name="formAddPost">
             <div class="mb-3">
@@ -249,7 +249,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             </div>
             <div class="mb-3 align-2">
                 <label class="input-group-text" for="fileFoto">
-                    Foto 1:
+                    Foto 1 (Foto do Banner):
                     <span class="material-symbols-outlined">file_upload</span>
                 </label>
                 <p class="desc-file-foto"></p>
@@ -306,8 +306,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             <div class="mb-3">
                 <label for="txtVideo" class="form-label mr-5" style="background: transparent !important;">Link do vídeo:</label>
                 <input type="text" class="form-control" id="txtVideo" name="txtVideo" value="<?= $video ?>">
-                <div class="instrucao" style="color: #FE5000">
-                    Obs: cole somente a parte em destaque do link: www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>
+                <div class="instrucao mt-3" style="color: #FE5000">
+                    <u>
+                        Obs: cole somente a parte em destaque do link: www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>
+                    </u>
                 </div>
             </div>
             <div class="mb-5">

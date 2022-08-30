@@ -102,7 +102,7 @@
 .container-experiencia {
     width: 100%;
     min-width: 300px;
-    min-height: 300px;
+    min-height: 750px;
     height: auto;
     background-color: #E4E6E6;
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 10%);
@@ -141,13 +141,6 @@
 
 .desciption-experiencia p {
     font-size: 1.2rem;
-}
-
-.container-experiencia:hover .desciption-experiencia {
-    height: 100%;
-    color: #fe5000;
-    background: rgba(0, 0, 0, 0.8) 60%;
-    transition: 0.3s;
 }
 
 @media only screen and (max-width: 1200px) {

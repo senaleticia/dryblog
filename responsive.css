@@ -232,10 +232,20 @@
 
     .caixa-tags {
         flex-wrap: wrap !important;
+        padding: 12px 48px;
     }
 
     .d-flex {
         justify-content: center !important;
+    }
+
+    .container-experiencia {
+        min-height: 350px;
+    }
+
+    .materia-index-img {
+        min-height: 300px;
+        background-position: center bottom;
     }
 }
 

@@ -11,10 +11,6 @@ $id_user = $_SESSION['id_usuario'];
 require_once("./bd/conexao.php");
 $conexao = conexaoMySql();
 
-//Definindo variáveis
-$titulo = (string) "";
-$video = (string) "";
-
 //Verificando se a variável 'modo' existe na URL
 if (isset($_GET['modo'])) {
     //Verificando se o resultado da variável 'modo' é 'visualizar'
@@ -378,11 +374,12 @@ if (isset($_POST['btnComentar'])) {
                                 <h4 class="materia-title"><?= $rs_relacionados['titulo'] ?></h4>
                             </a>
                         </div>
+                    <?php } ?>
                 </div>
             </div>
-    <?php           }
-                }
-    ?>
+        <?php
+        }
+        ?>
     </div>
 
     <div id="comentarios">
@@ -434,12 +431,15 @@ if (isset($_POST['btnComentar'])) {
                         <p class="comentario-conteudo"><?= $result['conteudo_comentario'] ?>
                         </p>
                         <div class="opcoes-comentario">
+                            <small>
+                                <?= $result['data_comentario'] ?>
+                            </small>
                             <?php
                             if ($usuario_autenticado == true) {
                                 if ($id_user == $result['id_usuario']) {
                             ?>
                                     <a onclick="return confirm('Tem certeza que deseja excluir esse comentário?')" href="./bd/excluir-comentario.php?modo=excluir&id_comment=<?= $result['id_comentario'] ?>">
-                                        <small>Excluir</small>
+                                        <small class="float-right">Excluir</small>
                                     </a>
                             <?php
                                 }

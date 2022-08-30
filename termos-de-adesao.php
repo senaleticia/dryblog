@@ -1,28 +1,30 @@
 <?php
-    session_start();
+session_start();
 
-    require './bd/conexao.php';
-    $conexao = conexaoMySql();
+require './bd/conexao.php';
+$conexao = conexaoMySql();
 
-    $usuario_autenticado = $_SESSION['usuarioAutenticado'];
+$usuario_autenticado = $_SESSION['usuarioAutenticado'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon"/>
+    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
     <title>Termos de Adesão - DryBlog</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner">
         <div class="container">
@@ -35,7 +37,7 @@
                 </a>
             </li>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav ml-5 mr-auto">         
+                <ul class="navbar-nav ml-5 mr-auto">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
@@ -51,20 +53,20 @@
                 </ul>
             </div>
             <div class="login-box">
-            <?php if($usuario_autenticado == true){ ?>
-                <a class="logout" href="./index.php?modo=logout">
-                    <button class="btn-padrao">SAIR</button> 
-                </a>
-            <?php }else if($usuario_autenticado == false){ ?> 
-                <a class="logout" href="./login.php">
-                    <button class="btn-padrao">LOGIN</button> 
-                </a> 
-            <?php } ?>  
+                <?php if ($usuario_autenticado == true) { ?>
+                    <a class="logout" href="./index.php?modo=logout">
+                        <button class="btn-padrao">SAIR</button>
+                    </a>
+                <?php } else if ($usuario_autenticado == false) { ?>
+                    <a class="logout" href="./login.php">
+                        <button class="btn-padrao">LOGIN</button>
+                    </a>
+                <?php } ?>
             </div>
-        </div>       
+        </div>
     </nav>
 
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+    <button class="btn-padrao margem-btn font-weight-bold" onclick="window.history.back()">
         <img src="./img/back-icon.png" alt="Voltar">
         VOLTAR
     </button>
@@ -161,7 +163,7 @@
         <div class="privacidade-text">
             <p>
                 <strong>4.1.4 - WhatsApp Grátis:</strong> <br>
-                O uso do WhatsApp para mensagens de texto, fotos e chamadas de voz não será descontado da franquia de dados, durante o período de validade do plano, independentemente de haver saldo ou não na franquia de dados. Para baixar ou enviar vídeos via WhatsApp, haverá consumo de dados da sua franquia. 
+                O uso do WhatsApp para mensagens de texto, fotos e chamadas de voz não será descontado da franquia de dados, durante o período de validade do plano, independentemente de haver saldo ou não na franquia de dados. Para baixar ou enviar vídeos via WhatsApp, haverá consumo de dados da sua franquia.
             </p>
         </div>
         <div class="privacidade-text">
@@ -181,7 +183,7 @@
         </div>
         <div class="privacidade-text">
             <p>
-                4.2.1 - O plano família consiste da aquisição em bloco de créditos promocionais para utilização conjunta em 04 (quatro) CHIPS vinculados ao CPF do responsável financeiro, com franquias mensais individuais e intransferíveis para os serviços de voz, dados, SMS e benefícios. 
+                4.2.1 - O plano família consiste da aquisição em bloco de créditos promocionais para utilização conjunta em 04 (quatro) CHIPS vinculados ao CPF do responsável financeiro, com franquias mensais individuais e intransferíveis para os serviços de voz, dados, SMS e benefícios.
             </p>
         </div>
         <div class="privacidade-text">
@@ -191,17 +193,17 @@
         </div>
         <div class="privacidade-text">
             <p>
-                4.2.3 - O plano família tem prazo de vigência de 12 (doze) meses, período durante o qual o CLIENTE obriga-se a adquirir créditos pré-determinados a cada 30 (trinta) dias. 
+                4.2.3 - O plano família tem prazo de vigência de 12 (doze) meses, período durante o qual o CLIENTE obriga-se a adquirir créditos pré-determinados a cada 30 (trinta) dias.
             </p>
         </div>
         <div class="privacidade-text">
             <p>
-                4.2.4 - O CLIENTE deverá efetuar recargas mensais de R$ 150,00 (cento e cinquenta reais) durante 12 meses. A renovação do plano família não se dará automaticamente. Ao término do plano, a renovação e os respectivos valores de um novo plano, se houver, serão estabelecidos por critérios da Empresa. 
+                4.2.4 - O CLIENTE deverá efetuar recargas mensais de R$ 150,00 (cento e cinquenta reais) durante 12 meses. A renovação do plano família não se dará automaticamente. Ao término do plano, a renovação e os respectivos valores de um novo plano, se houver, serão estabelecidos por critérios da Empresa.
             </p>
         </div>
         <div class="privacidade-text">
             <p>
-                4.2.5 - As recargas do plano família conferem ao CLIENTE o direito de utilização dos seguintes serviços e benefícios: 
+                4.2.5 - As recargas do plano família conferem ao CLIENTE o direito de utilização dos seguintes serviços e benefícios:
             </p>
         </div>
         <div class="privacidade-text">
@@ -216,7 +218,7 @@
         </div>
         <div class="privacidade-text">
             <p>
-                4.2.5.3 - No plano família, os dados e benefícios não utilizados no período de validade da recarga não se acumulam e não podem ser transferidos ou utilizados pelos demais chips integrantes do plano. 
+                4.2.5.3 - No plano família, os dados e benefícios não utilizados no período de validade da recarga não se acumulam e não podem ser transferidos ou utilizados pelos demais chips integrantes do plano.
             </p>
         </div>
         <div class="privacidade-text">
@@ -391,12 +393,12 @@
             <p>
                 11.1 - A MVNO poderá extinguir, ou mesmo alterar qualquer plano total ou parcialmente, a qualquer momento devendo para tanto efetuar a comunicação ao CLIENTE, com antecedência de 30 (trinta) dias, para que este possa optar por outro plano de serviços, sendo que, caso não ocorra a manifestação do CLIENTE, a MVNO está autorizada a efetuar a transferência deste para outro plano alternativo de serviço similar, de acordo com a regulamentação da Anatel, então vigente. <br>
                 Para informações sobre:
-                <ul class="ml-3">
-                    <li>Para ATIVAR o chip, acesse a página Ativar Chip;</li>
-                    <li>O número do seu celular, digite *221#;</li>
-                    <li>Saldo dos benefícios de Internet e voz / sms, digite *225#;</li>
-                    <li>Outras informações, digite *288, ou acesse o site da operação.</li>
-                </ul>
+            <ul class="ml-3">
+                <li>Para ATIVAR o chip, acesse a página Ativar Chip;</li>
+                <li>O número do seu celular, digite *221#;</li>
+                <li>Saldo dos benefícios de Internet e voz / sms, digite *225#;</li>
+                <li>Outras informações, digite *288, ou acesse o site da operação.</li>
+            </ul>
             </p>
         </div>
         <div class="privacidade-text">
@@ -458,7 +460,7 @@
                     </div>
                     <div class="botao-contato align-self-center">
                         <button class="btn-padrao borda-botao contato-btn" style="min-width: 140px;" data-toggle="modal" data-target="#modalContato">CONTATO</button>
-                    </div>        
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -484,12 +486,12 @@
                         <div class="redes-sociais-pic mr-3">
                             <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
-                            </a>                           
+                            </a>
                         </div>
                         <div class="redes-sociais-pic">
                             <a href="https://www.linkedin.com/company/drycompanybrasil/" target="_blank">
                                 <img src="./svg/icon-linkedin.svg" alt="LinkedIn">
-                            </a>                           
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -499,7 +501,7 @@
                     2022. Dry Telecom. Todos os direitos reservados. CNPJ: 15.564.295/0001-04 RAZÃO SOCIAL: DRY COMPANY DO BRASIL TECNOLOGIA LTDA AV ANÁPOLIS, N° 510 - VILA NILVA - BARUERI/SP - CEP 06404-250
                 </div>
             </div>
-        </div>       
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
@@ -508,13 +510,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
     <script>
-        $('#staticBackdrop').on('shown.bs.modal', function () {
+        $('#staticBackdrop').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
 
-        $('#modalContato').on('shown.bs.modal', function () {
+        $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
     </script>
 </body>
+
 </html>

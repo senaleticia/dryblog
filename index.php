@@ -22,32 +22,6 @@ if (isset($_GET['modo'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO -->
-    <meta name="description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões! Venha conferir nossos planos!">
-    <meta name="author" content="Dry Telecom">
-    <meta name="keywords" content="Telefonia Móvel Digital; MVNO; Operadora Virtual; MobileTech; Operadora Digital" />
-    <link rel="alternate" href="" hreflang="pt-br" />
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:url" content="drytelecom.com.br" />
-    <meta property="og:title" content="Dry Telecom: a operadora de telefonia móvel digital que conecta você às suas paixões!" />
-    <meta property="og:image" content="./svg/dry.svg" />
-    <meta property="og:description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões!" />
-    <meta name="theme-color" content="#fe5000">
-    <meta property="business:contact_data:country_name" content="Brasil" />
-    <meta property="business:contact_data:website" content="drytelecom.com.br" />
-    <meta property="business:contact_data:region" content="SP" />
-
-    <meta name="twitter:description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões!" />
-    <meta name="twitter:title" content="Dry Telecom: a operadora de telefonia móvel digital que conecta você às suas paixões!" />
-    <meta name="twitter:image" content="./svg/dry.svg" />
-    <meta name="geo.placename" content="SÃO PAULO" />
-    <meta name="geo.region" content="BR" />
-    <meta name="description" content="A Dry Telecom é uma Mobiletech que oferece serviços de telefonia móvel digital. Somos mais que telefonia, conectamos você às suas paixões!" />
-    <link rel="canonical" href="drytelecom.com.br" />
-    <meta property="og:type" content="telefonia móvel; blog operadora de celular; telecom; MVNO; Mobiletech" />
-    <meta property="og:locale" content="pt_BR" />
-    <!-- SEO -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,8 +42,8 @@ if (isset($_GET['modo'])) {
             <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon navbar-light"></span>
             </button>
-            <li class="nav-item ml-auto mr-auto" style="list-style: none;">
-                <a class="navbar-brand" href="#">
+            <li class="nav-item mx-auto" style="list-style: none;">
+                <a class="navbar-brand" href="./index.php">
                     <img src="./img/logo-dry-laranja.png" alt="Logo">
                 </a>
             </li>
@@ -82,7 +56,7 @@ if (isset($_GET['modo'])) {
                         <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu modal-contato" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
@@ -104,16 +78,16 @@ if (isset($_GET['modo'])) {
     </nav>
 
     <div class="container">
-        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
+                        <h2 class="mx-auto">Alguma dúvida?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
-                    <div class="modal-body ml-auto mr-auto">
+                    <div class="modal-body mx-auto">
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
@@ -170,9 +144,7 @@ if (isset($_GET['modo'])) {
                 <div class="container-experiencia">
                     <h4 class="materia-title">EXPERIÊNCIAS EXCLUSIVAS</h4>
                     <p class="materia-desc pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet fermentum interdum vivamus donec ornare habitasse odio id. Sit amet.</p>
-                    <div class="materia-index-img">
-                        <img src="./img/62d07c3f12c8e.jpg" alt="Imagem da Matéria">
-                    </div>
+                    <div class="materia-index-img" style="background-image: url('./img/experiencia.jpg');"></div>
                 </div>
             </div>
         </div>
@@ -398,116 +370,105 @@ if (isset($_GET['modo'])) {
         </div>
     </section>
 
-    <div class="titulo-padrao text-center mb-5">
+    <div class="titulo-padrao text-center">
         <h1>Uma operadora para chamar de sua</h1>
         <h4 class="mb-5">Quem virou Dry, virou o jogo e correu pro abraço</h4>
     </div>
 
     <section id="section-slide">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 d-flex align-items-center">
-                    <div class="banner">
-                        <img src="./img/mulhercelular.png" alt="Mulher Celular">
+        <div class="slider">
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/62d9662218102.jpg" alt="Imagem">
+                        </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <p class="px-4 py-4">
+                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/laricel.png" alt="LariCel">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="slider">
-                        <div class="caixa-slide px-5 pt-5">
-                            <div class="card-materia-lateral ml-auto mr-auto px-3 py-3">
-                                <div class="border-slide">
-                                    <div class="slide-img">
-                                        <img src="./img/62d9662218102.jpg" alt="Imagem">
-                                    </div>
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                                    <p class="px-4 py-4">
-                                        Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p>
-                                    <div class="logo-operadora">
-                                        <img src="./img/laricel.png" alt="LariCel">
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/baymax-profile.jpg" alt="Imagem">
                         </div>
-                        <div class="caixa-slide px-5 pt-5">
-                            <div class="card-materia-lateral ml-auto mr-auto px-3 py-3">
-                                <div class="border-slide">
-                                    <div class="slide-img">
-                                        <img src="./img/baymax-profile.jpg" alt="Imagem">
-                                    </div>
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                                    <p class="px-4 py-4">
-                                        Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p>
-                                    <div class="logo-operadora">
-                                        <img src="./img/laricel.png" alt="LariCel">
-                                    </div>
-                                </div>
-                            </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <p class="px-4 py-4">
+                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/laricel.png" alt="LariCel">
                         </div>
-                        <div class="caixa-slide px-5 pt-5">
-                            <div class="card-materia-lateral ml-auto mr-auto px-3 py-3">
-                                <div class="border-slide">
-                                    <div class="slide-img">
-                                        <img src="./img/62d9662218102.jpg" alt="Imagem">
-                                    </div>
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                                    <p class="px-4 py-4">
-                                        Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p>
-                                    <div class="logo-operadora">
-                                        <img src="./img/laricel.png" alt="LariCel">
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/62d9662218102.jpg" alt="Imagem">
                         </div>
-                        <div class="caixa-slide px-5 pt-5">
-                            <div class="card-materia-lateral ml-auto mr-auto px-3 py-3">
-                                <div class="border-slide">
-                                    <div class="slide-img">
-                                        <img src="./img/baymax-profile.jpg" alt="Imagem">
-                                    </div>
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                                    <p class="px-4 py-4">
-                                        Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p>
-                                    <div class="logo-operadora">
-                                        <img src="./img/laricel.png" alt="LariCel">
-                                    </div>
-                                </div>
-                            </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <p class="px-4 py-4">
+                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/laricel.png" alt="LariCel">
                         </div>
-                        <div class="caixa-slide px-5 pt-5">
-                            <div class="card-materia-lateral ml-auto mr-auto px-3 py-3">
-                                <div class="border-slide">
-                                    <div class="slide-img">
-                                        <img src="./img/62d9662218102.jpg" alt="Imagem">
-                                    </div>
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                                    <p class="px-4 py-4">
-                                        Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p>
-                                    <div class="logo-operadora">
-                                        <img src="./img/laricel.png" alt="LariCel">
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/baymax-profile.jpg" alt="Imagem">
                         </div>
-                        <div class="caixa-slide px-5 pt-5">
-                            <div class="card-materia-lateral ml-auto mr-auto px-3 py-3">
-                                <div class="border-slide">
-                                    <div class="slide-img">
-                                        <img src="./img/baymax-profile.jpg" alt="Imagem">
-                                    </div>
-                                    <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                                    <p class="px-4 py-4">
-                                        Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                                    </p>
-                                    <div class="logo-operadora">
-                                        <img src="./img/laricel.png" alt="LariCel">
-                                    </div>
-                                </div>
-                            </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <p class="px-4 py-4">
+                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/laricel.png" alt="LariCel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/62d9662218102.jpg" alt="Imagem">
+                        </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <p class="px-4 py-4">
+                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/laricel.png" alt="LariCel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/baymax-profile.jpg" alt="Imagem">
+                        </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <p class="px-4 py-4">
+                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/laricel.png" alt="LariCel">
                         </div>
                     </div>
                 </div>
@@ -522,7 +483,20 @@ if (isset($_GET['modo'])) {
             </div>
             <div class="slider-midia">
                 <div class="caixa-slide px-2">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
+                        <div class="card-sunk-white">
+                            <div class="protection-card">
+                                <div class="img-title-slide mt-3">
+                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                </div>
+                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais. Texto extra pra resolver seu problema</p>
+                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="caixa-slide px-1">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -535,7 +509,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
                 <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -548,7 +522,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
                 <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -561,7 +535,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
                 <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -574,7 +548,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
                 <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -587,7 +561,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
                 <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -600,20 +574,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
                 <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
-                        <div class="card-sunk-white">
-                            <div class="protection-card">
-                                <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
-                                </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext ml-auto mr-auto">
+                    <div class="card-jumped-white-ext mx-auto">
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
@@ -655,7 +616,7 @@ if (isset($_GET['modo'])) {
                     </div>
                     <p class="text-center">Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
 
-                    <div class="caixa-aplicativo ml-auto mr-auto">
+                    <div class="caixa-aplicativo mx-auto">
                         <h5 class="text-center mb-4">Baixe agora:</h5>
                         <div class="img-app d-flex justify-content-around">
                             <a href="https://apps.apple.com/br/app/dry-conecta-whitelabel/id1562358701" target="_blank" rel="noopener noreferrer">
@@ -681,12 +642,12 @@ if (isset($_GET['modo'])) {
         <div class="container">
 
             <div class="row pt-5">
-                <div class="col-md-4 align-center-vertical ml-auto mr-auto">
+                <div class="col-md-4 align-center-vertical mx-auto">
                     <div class="footer-logo">
                         <img src="./img/logo-dry-laranja-footer.png" alt="Logo"><br>
                     </div>
                     <div class="align-self-center">
-                        <button class="btn-padrao borda-botao btn-menor" data-toggle="modal" data-target="#staticBackdrop" style="min-width: 140px;">CONTATO</button>
+                        <button class="btn-padrao borda-botao btn-menor" style="min-width: 140px;" data-toggle="modal" data-target="#staticBackdrop">CONTATO</button>
                     </div>
                 </div>
             </div>
@@ -694,17 +655,17 @@ if (isset($_GET['modo'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./index.php#clientes">Clientes<br></a>
-                        <a href="./index.php#cobertura">Cobertura<br></a>
-                        <a href="./blog.php">Blog<br></a>
+                        <a href="./index.php#clientes">Clientes</a> <br>
+                        <a href="./index.php#cobertura">Cobertura</a> <br>
+                        <a href="./blog.php">Blog</a> <br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        Política de Privacidade<br>
-                        Política de Cookies<br>
-                        LGPD<br>
+                        <a href="./politica-de-privacidade.php">Política de Privacidade</a> <br>
+                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a> <br>
+                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a> <br>
                     </div>
                 </div>
                 <div class="col-md-4">
