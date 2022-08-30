@@ -133,7 +133,7 @@ if (isset($_FILES['fileFoto']) != "") {
 
 <body>
     <div class="container">
-        <h2>Criar conta</h2>
+        <h2 class="my-4">Criar conta</h2>
 
         <form action="#" method="POST" name="cadastroUsuario" id="cadastroUsuario" enctype="multipart/form-data">
             <div class="mb-3 row">
