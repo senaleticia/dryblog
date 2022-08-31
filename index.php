@@ -88,7 +88,7 @@ if (isset($_GET['modo'])) {
                         </button>
                     </div>
                     <div class="modal-body mx-auto">
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
                     </div>
@@ -143,7 +143,7 @@ if (isset($_GET['modo'])) {
             <div class="top-beneficio">
                 <div class="container-experiencia">
                     <h4 class="materia-title">EXPERIÊNCIAS EXCLUSIVAS</h4>
-                    <p class="materia-desc pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet fermentum interdum vivamus donec ornare habitasse odio id. Sit amet.</p>
+                    <p class="materia-desc pt-4">Pensar fora da caixa e fazer tudo diferente está no nosso DNA. Aqui, você encontra um universo de possibilidades para se conectar e desfrutar de experiências exclusivas!</p>
                     <div class="materia-index-img" style="background-image: url('./img/experiencia.jpg');"></div>
                 </div>
             </div>
@@ -372,7 +372,7 @@ if (isset($_GET['modo'])) {
 
     <div class="titulo-padrao text-center">
         <h1>Uma operadora para chamar de sua</h1>
-        <h4 class="mb-5">Quem virou Dry, virou o jogo e correu pro abraço</h4>
+        <h4 class="mb-5">Quem virou Dry, virou o jogo e correu para o abraço!</h4>
     </div>
 
     <section id="section-slide">
@@ -381,9 +381,41 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/62d9662218102.jpg" alt="Imagem">
+                            <img src="./img/male-avatar.png" alt="Imagem">
                         </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Bruno Carrara</h4>
+                        <p class="px-4 py-4">
+                            Moro no interior e trabalho em São Paulo. O chip funciona PERFEITAMENTE, internet rápida e sempre com sinal. Vale muito a pena!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/fala-timao.png" alt="Fala Timão">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/male-avatar.png" alt="Imagem">
+                        </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Calebe Lima</h4>
+                        <p class="px-4 py-4">
+                            Minha experiência com a Tricolor Chip está sendo maravilhosa. No atendimento, qualidade, nas promoções e em tudo rs! Parabéns e continuem assim!!
+                        </p>
+                        <div class="logo-operadora">
+                            <img src="./img/tricolor-chip.png" alt="Tricolor Chip">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-slide px-5 pt-5">
+                <div class="card-materia-lateral mx-auto px-3 py-3">
+                    <div class="border-slide">
+                        <div class="slide-img">
+                            <img src="./img/female-avatar.png" alt="Imagem">
+                        </div>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Nicole</h4>
                         <p class="px-4 py-4">
                             Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
                         </p>
@@ -397,78 +429,14 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/baymax-profile.jpg" alt="Imagem">
+                            <img src="./img/male-avatar.png" alt="Imagem">
                         </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Lucas Ribeiro</h4>
                         <p class="px-4 py-4">
-                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
+                            O preço de vocês e o atendimento é sensacional comparado às outras operadoras. Foi o que me conquistou.
                         </p>
                         <div class="logo-operadora">
-                            <img src="./img/laricel.png" alt="LariCel">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="caixa-slide px-5 pt-5">
-                <div class="card-materia-lateral mx-auto px-3 py-3">
-                    <div class="border-slide">
-                        <div class="slide-img">
-                            <img src="./img/62d9662218102.jpg" alt="Imagem">
-                        </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                        <p class="px-4 py-4">
-                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                        </p>
-                        <div class="logo-operadora">
-                            <img src="./img/laricel.png" alt="LariCel">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="caixa-slide px-5 pt-5">
-                <div class="card-materia-lateral mx-auto px-3 py-3">
-                    <div class="border-slide">
-                        <div class="slide-img">
-                            <img src="./img/baymax-profile.jpg" alt="Imagem">
-                        </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                        <p class="px-4 py-4">
-                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                        </p>
-                        <div class="logo-operadora">
-                            <img src="./img/laricel.png" alt="LariCel">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="caixa-slide px-5 pt-5">
-                <div class="card-materia-lateral mx-auto px-3 py-3">
-                    <div class="border-slide">
-                        <div class="slide-img">
-                            <img src="./img/62d9662218102.jpg" alt="Imagem">
-                        </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                        <p class="px-4 py-4">
-                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                        </p>
-                        <div class="logo-operadora">
-                            <img src="./img/laricel.png" alt="LariCel">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="caixa-slide px-5 pt-5">
-                <div class="card-materia-lateral mx-auto px-3 py-3">
-                    <div class="border-slide">
-                        <div class="slide-img">
-                            <img src="./img/baymax-profile.jpg" alt="Imagem">
-                        </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Nome do usuário</h4>
-                        <p class="px-4 py-4">
-                            Gosto muito do atendimento de vocês, o sinal é sempre perfeito e os planos acessíveis. Tenho muito carinho e respeito pelos adms da conta no insta da LariCel, sempre fofos e atenciosos!
-                        </p>
-                        <div class="logo-operadora">
-                            <img src="./img/laricel.png" alt="LariCel">
+                            <img src="./img/flu-mobile.png" alt="Flu Mobile">
                         </div>
                     </div>
                 </div>
@@ -487,10 +455,12 @@ if (isset($_GET['modo'])) {
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                    <img src="./img/logovaloreconomico.png" alt="Valor Economico">
                                 </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais. Texto extra pra resolver seu problema</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
+                                <a href="https://valor.globo.com/empresas/noticia/2020/02/13/clubes-de-futebol-entram-no-mercado-de-celular-com-operadoras-virtuais.ghtml" target="_blank" class="btn-padrao font-weight-bold">
+                                    VER MATÉRIA
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -500,10 +470,12 @@ if (isset($_GET['modo'])) {
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                    <img src="./svg/logo-estadao.svg" alt="Estadão">
                                 </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                                <p class="text-center">Larissa Manoela lança operadora virtual de celular e vende 2,5 mil chips em 6 dias</p>
+                                <a href="https://economia.estadao.com.br/noticias/geral,larissa-manoela-lanca-operadora-virtual-de-celular-e-vende-2-5-mil-chips-em-6-dias,70003743094" target="_blank" class="btn-padrao font-weight-bold">
+                                    VER MATÉRIA
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -513,10 +485,12 @@ if (isset($_GET['modo'])) {
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                    <img src="./svg/logo-meio-e-mensagem.svg" alt="Meio & Mensagem">
                                 </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                                <p class="text-center">Corinthians lança operadora móvel com campanha</p>
+                                <a href="https://www.meioemensagem.com.br/home/marketing/2021/06/15/corinthians-lanca-operadora-movel-com-campanha.html" target="_blank" class="btn-padrao font-weight-bold">
+                                    VER MATÉRIA
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -526,10 +500,12 @@ if (isset($_GET['modo'])) {
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                    <img src="./img/logo-extra.png" alt="Extra Globo">
                                 </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                                <p class="text-center">FLUmobile: Fred sorteará camisa para sócios do Fluminense em comemoração de aniversário</p>
+                                <a href="https://extra.globo.com/esporte/fluminense/flumobile-fred-sorteara-camisa-para-socios-do-fluminense-em-comemoracao-de-aniversario-25255986.html" target="_blank" class="btn-padrao font-weight-bold">
+                                    VER MATÉRIA
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -539,10 +515,12 @@ if (isset($_GET['modo'])) {
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                    <img src="./svg/gazeta-logo.svg" alt="Gazeta Esportiva">
                                 </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                                <p class="text-center">São Paulo lança chip de celular com desconto para sócio torcedor</p>
+                                <a href="https://www.gazetaesportiva.com/todas-as-noticias/sao-paulo-lanca-chip-de-celular-com-desconto-para-socio-torcedor/" target="_blank" class="btn-padrao font-weight-bold">
+                                    VER MATÉRIA
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -552,36 +530,12 @@ if (isset($_GET['modo'])) {
                         <div class="card-sunk-white">
                             <div class="protection-card">
                                 <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
+                                    <img src="./img/logo-veja.gif" alt="Veja">
                                 </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext mx-auto">
-                        <div class="card-sunk-white">
-                            <div class="protection-card">
-                                <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
-                                </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="caixa-slide px-1">
-                    <div class="card-jumped-white-ext mx-auto">
-                        <div class="card-sunk-white">
-                            <div class="protection-card">
-                                <div class="img-title-slide mt-3">
-                                    <img class="px-2 py-2" src="./img/valor-economico.png" alt="Valor Economico">
-                                </div>
-                                <p class="text-center">Clubes de futebol entram no mercado de celular com operadoras virtuais</p>
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                                <p class="text-center">Empresa de telefonia social nasce com foco no acesso à internet em favelas</p>
+                                <a href="https://veja.abril.com.br/coluna/radar/empresa-de-telefonia-social-nasce-com-foco-no-acesso-a-internet-em-favelas/" target="_blank" class="btn-padrao font-weight-bold">
+                                    VER MATÉRIA
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -147,7 +147,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <div class="titulo-padrao text-uppercase">
                             <h1><?= $result['titulo'] ?></h1>
                         </div>
-                        <div class="post-text">
+                        <div class="post-text my-4">
                             <p><?= $result['conteudo'] ?></p>
                         </div>
                         <?php

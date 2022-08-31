@@ -538,8 +538,12 @@ li {
 }
 
 .caixa-slide .card-materia-lateral {
-    margin-bottom: 0;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+    flex-direction: column;
 }
 
 .materia-img {
@@ -918,8 +922,15 @@ li {
 }
 
 .logo-operadora {
-    margin-left: 35%;
+    height: 85px !important;
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-operadora>img {
+    height: inherit;
 }
 
 .container-beneficios {
@@ -978,6 +989,12 @@ li {
     border-radius: 30px;
     margin-bottom: 10px;
     height: auto !important;
+    width: 105px;
+}
+
+.img-title-slide>img {
+    width: inherit;
+    padding: 8px;
 }
 
 #section-midia {
@@ -1125,7 +1142,7 @@ li {
 }
 
 .tags {
-    gap: 30px;
+    gap: 20px;
 }
 
 .banner {
@@ -1158,7 +1175,7 @@ li {
 .caixa-tags {
     display: flex;
     justify-content: space-around;
-    padding: 12px 65px;
+    padding: 12px 24px;
 }
 
 .d-flex {

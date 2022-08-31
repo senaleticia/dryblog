@@ -65,6 +65,8 @@ if (isset($_GET['modo'])) {
             $quarto_conteudo_quebrado = str_replace($order, $replace, $str);
         }
     }
+} else {
+    header('location: index.php');
 }
 ?>
 <!DOCTYPE html>

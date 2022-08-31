@@ -100,6 +100,8 @@ if (isset($_GET['modo'])) {
             }
         }
     }
+} else {
+    header('location: blog.php');
 }
 
 //Verificando se o botão "Comentar" foi acionado
@@ -196,7 +198,7 @@ if (isset($_POST['btnComentar'])) {
                     <div class="modal-header">
                         <h2>Ação Inválida</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -220,7 +222,7 @@ if (isset($_POST['btnComentar'])) {
                     <div class="modal-header">
                         <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                     <div class="modal-body ml-auto mr-auto">
@@ -238,7 +240,7 @@ if (isset($_POST['btnComentar'])) {
                     <div class="titulo-padrao text-uppercase mt-5">
                         <h1><?= $titulo ?></h1>
                         <div class="caixa-tags">
-                            <div class="tags mt-2 d-flex align-items-center justify-content-center">
+                            <div class="tags mt-2 d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                     <span class="material-symbols-outlined icon-tag">
                                         folder_copy
@@ -248,7 +250,7 @@ if (isset($_POST['btnComentar'])) {
                                     </p>
                                 </div>
                             </div>
-                            <div class="tags mt-2 d-flex align-items-center justify-content-center">
+                            <div class="tags mt-2 d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                     <span class="material-symbols-outlined icon-tag">
                                         person
@@ -258,13 +260,13 @@ if (isset($_POST['btnComentar'])) {
                                     </p>
                                 </div>
                             </div>
-                            <div class="tags mt-2 d-flex align-items-center justify-content-center">
+                            <div class="tags mt-2 d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                     <span class="material-symbols-outlined icon-tag">
                                         hourglass_empty
                                     </span>
                                     <p class="btn-tag">
-                                        <?= $tempo_leitura ?> min
+                                        <?= $tempo_leitura ?> min. de leitura
                                     </p>
                                 </div>
                                 <div class="d-flex align-items-center">
