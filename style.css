@@ -37,8 +37,12 @@ footer {
     margin-top: 30%;
 }
 
+section {
+    padding: 168px 0;
+}
+
 #footer-index {
-    margin-top: 70% !important;
+    margin-top: 50% !important;
 }
 
 #header-gerenciadores {
@@ -232,10 +236,6 @@ li {
 }
 
 .titulo-padrao {
-    margin-top: 40px;
-}
-
-.titulo-padrao>h1 {
     text-align: center;
     color: #FE5000;
 }
@@ -293,6 +293,10 @@ li {
 
 .bg-entretenimento {
     background-image: url('./img/bg-samba.png') !important;
+}
+
+.bg-empresa {
+    background-image: url('./img/empresa.png') !important;
 }
 
 .caixa-4 {
@@ -637,12 +641,6 @@ li {
     justify-content: center;
 }
 
-.post-full-text {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-}
-
 #relacionados {
     margin-bottom: 60px;
     padding: 0 5%;
@@ -884,13 +882,16 @@ li {
 
 #section-slide {
     width: 100%;
-    background-image: url('./img/img-lateral-index.png');
+    min-height: 45vw;
+    background-image: url('./img/banner-depoimento.png');
     background-repeat: no-repeat;
-    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    background-position: center;
+    padding: 0 !important;
 }
 
 #section-slide .slick-track {
@@ -997,10 +998,10 @@ li {
     padding: 8px;
 }
 
-#section-midia {
+/* #section-midia {
     margin-top: 200px;
     margin-bottom: 300px;
-}
+} */
 
 #section-midia .titulo-padrao {
     margin: 0;
@@ -1051,12 +1052,6 @@ li {
     position: relative;
 }
 
-.text-aplicativo {
-    max-width: 500px;
-    height: auto;
-    padding: 10px;
-}
-
 .w-space {
     padding-left: 150px;
     padding-top: 340px;
@@ -1101,7 +1096,7 @@ li {
     display: flex;
     justify-content: space-around;
     position: absolute;
-    top: -190px;
+    top: -220px;
 }
 
 .conexao {
@@ -1116,11 +1111,10 @@ li {
     margin-right: auto;
     margin-bottom: 70px;
     padding-left: 8%;
-}
-
-#img-footer>img {
-    width: inherit;
-    height: inherit;
+    background-image: url('./svg/img-footer.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
 }
 
 .bg-mobile {
@@ -1184,4 +1178,41 @@ li {
 
 text {
     margin: 8px 0;
+}
+
+.titulo-mapa {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    color: #FE5000;
+    text-align: center;
+}
+
+.text-cobertura {
+    max-width: 60%;
+}
+
+.login-box {
+    order: 5;
+}
+
+.bg-modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 4;
+}
+
+#navbar-mobile {
+    display: none;
+}
+
+.navbar-nav {
+    flex-direction: row !important;
+    gap: 20px;
 }

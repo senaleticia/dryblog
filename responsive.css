@@ -1,3 +1,35 @@
+@media only screen and (max-width: 460px) {
+
+    .caixa-2,
+    .caixa-3,
+    .caixa-5,
+    .caixa-background {
+        height: 50vh !important;
+    }
+
+    #cobertura {
+        padding-top: 128px;
+        padding-bottom: 128px;
+    }
+
+    .bg-mobile {
+        height: 450px;
+    }
+
+    #footer-index,
+    footer {
+        margin: 0 !important;
+    }
+
+    section {
+        padding: 72px 0;
+    }
+
+    .bg-mobile {
+        height: 350px !important;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     * {
         font-size: 14px;
@@ -6,7 +38,7 @@
     h1,
     .titulo-padrao>h1,
     .conexao {
-        font-size: 22px !important;
+        font-size: 28px !important;
     }
 
     h2 {
@@ -15,6 +47,33 @@
 
     strong {
         font-weight: 600;
+    }
+
+
+    .menu-desk {
+        display: none;
+    }
+
+    .navbar-nav {
+        flex-direction: column !important;
+    }
+
+    #navbar-mobile {
+        display: block;
+        cursor: pointer;
+    }
+
+    .colapse-nav-mobile {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 5;
+        background-color: #EBEBEB;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px 0;
     }
 
     .btn-padrao {
@@ -83,11 +142,8 @@
     }
 
     #cobertura {
-        padding-bottom: 220px;
-    }
-
-    .slick-dotted.slick-slider {
-        margin-bottom: 100px !important;
+        padding-top: 128px;
+        padding-bottom: 128px;
     }
 
     .text-aplicativo {
@@ -136,6 +192,10 @@
         background-image: url('./img/bg-samba-mobile.png') !important;
     }
 
+    .bg-empresa {
+        background-image: url('./img/empresa-mobile.png') !important;
+    }
+
     .container-cards {
         display: flex;
         flex-direction: row;
@@ -159,16 +219,7 @@
     .caixa-4,
     .caixa-6 {
         height: auto !important;
-        padding: 90px 10px;
-    }
 
-    .bg-mobile {
-        background-image: url('./svg/background-mobile.svg') !important;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        width: 100%;
-        height: 750px;
     }
 
     .btn-actions {
@@ -247,9 +298,17 @@
         min-height: 300px;
         background-position: center bottom;
     }
+
+    .login-box {
+        order: 0;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
+
+
+
+
 
     #section-slide,
     #cobertura,
@@ -287,7 +346,6 @@
     }
 
     .slick-dotted.slick-slider {
-        margin-bottom: 300px !important;
         width: 100% !important;
     }
 
@@ -295,10 +353,60 @@
         width: auto;
         justify-content: flex-start;
     }
+
+    .bg-mobile {
+        background-image: url('./svg/background-mobile.svg') !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 60%;
+        height: 450px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .titulo-mapa {
+        width: auto;
+    }
+
+    .text-aplicativo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .text-cobertura {
+        max-width: none;
+    }
 }
 
 @media only screen and (max-width: 1387px) {
-    .content-aplicativo {
+    #bg-celular {
+        max-width: none;
+        width: 0 !important;
+        padding: 0 !important;
+    }
+
+    #img-footer,
+    #bg-celular {
         background-image: none !important;
+    }
+
+    .content-aplicativo {
+        flex-direction: column;
+    }
+
+    .w-space {
+        max-width: none !important;
+        flex: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .text-aplicativo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #section-slide {
+        background-size: contain;
     }
 }

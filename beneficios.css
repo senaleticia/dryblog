@@ -201,15 +201,17 @@
     }
 
     .content-beneficios div {
-        display: block !important;
         grid-auto-columns: 1fr !important;
         grid-auto-flow: row !important;
         justify-items: center !important;
     }
 
     .content-beneficios>div {
-        display: block !important;
         height: auto !important;
+    }
+
+    .content-beneficios>div p {
+        margin: 0;
     }
 
     .description-beneficio {

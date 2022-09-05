@@ -110,7 +110,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($conteudo_post != "") { ?>
                 <div class="post-full-text">
-                    <?= $conteudo_quebrado ?>
+                    <p><?= $conteudo_quebrado ?></p>
                 </div>
             <?php } ?>
 
@@ -122,7 +122,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($segundo_conteudo_post != "") { ?>
                 <div class="post-full-text">
-                    <?= $segundo_conteudo_quebrado ?>
+                    <p><?= $segundo_conteudo_quebrado ?></p>
                 </div>
             <?php } ?>
 
@@ -134,7 +134,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($terceiro_conteudo_post != "") { ?>
                 <div class="post-full-text">
-                    <?= $terceiro_conteudo_quebrado ?>
+                    <p><?= $terceiro_conteudo_quebrado ?></p>
                 </div>
             <?php } ?>
 
@@ -146,7 +146,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($quarto_conteudo_post != "") { ?>
                 <div class="post-full-text">
-                    <?= $quarto_conteudo_quebrado ?>
+                    <p><?= $quarto_conteudo_quebrado ?></p>
                 </div>
             <?php } ?>
 

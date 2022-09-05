@@ -22,7 +22,7 @@ if (isset($_GET['modo'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,16 +39,32 @@ if (isset($_GET['modo'])) {
 <body>
     <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
         <div class="container">
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon navbar-light"></span>
-            </button>
-            <li class="nav-item mx-auto" style="list-style: none;">
+
+            <div id="navbar-mobile">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+
+            <li class="nav-item" style="list-style: none;">
                 <a class="navbar-brand" href="./index.php">
-                    <img src="./img/logo-dry-laranja.png" alt="Logo">
+                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav ml-5 mr-auto">
+            <div class="login-box">
+                <?php if ($usuario_autenticado == true) { ?>
+                    <a class="logout" href="./index.php?modo=logout">
+                        <button class="btn-padrao">SAIR</button>
+                    </a>
+                <?php } else if ($usuario_autenticado == false) { ?>
+                    <a class="logout" href="./login.php">
+                        <button class="btn-padrao">LOGIN</button>
+                    </a>
+                <?php } ?>
+            </div>
+
+            <div class="menu-desk">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
@@ -63,17 +79,29 @@ if (isset($_GET['modo'])) {
                     </li>
                 </ul>
             </div>
-            <div class="login-box">
-                <?php if ($usuario_autenticado == true) { ?>
-                    <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao">SAIR</button>
-                    </a>
-                <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
-                        <button class="btn-padrao">LOGIN</button>
-                    </a>
-                <?php } ?>
+        </div>
+
+        <div class="bg-modal">
+            <div class="colapse-nav-mobile">
+                <span id="close-modal" class="material-symbols-outlined">
+                    close
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                    </li>
+                </ul>
             </div>
+        </div>
         </div>
     </nav>
 
@@ -97,16 +125,16 @@ if (isset($_GET['modo'])) {
         </div>
     </div>
 
-    <div class="container">
-        <div style="margin-top: 150px; margin-bottom: 100px;" class="text-center">
-            <div class="titulo-padrao">
-                <h1>Uma operadora como você nunca viu</h1>
+    <section id="section-beneficio">
+        <div class="container mb-5">
+            <div class="titulo-padrao text-center">
+                <h1 class="font-weight-bold">Uma operadora como você nunca viu</h1>
             </div>
-            <div class="subtitulo">Saia do passado! Moderna, prática e sem burocracia, a Dry é uma operadora digital criada para conectar você com o futuro da telefonia!</div>
+            <div class="subtitulo">
+                Saia do passado! Moderna, prática e sem burocracia, a Dry é uma operadora digital criada para conectar você com o futuro da telefonia!
+            </div>
         </div>
-    </div>
 
-    <section id="section-beneficio" style="margin-bottom: 150px;">
         <div id="beneficios">
             <div class="content-beneficios">
                 <div id="gigas">
@@ -151,8 +179,8 @@ if (isset($_GET['modo'])) {
     </section>
 
     <section id="clientes">
-        <div class="text-center pt-5">
-            <h2>Conheça nossos clientes</h2>
+        <div class="text-center titulo-padrao">
+            <h1 class="font-weight-bold">Conheça nossos clientes</h1>
         </div>
 
         <div class="caixa-1"></div>
@@ -318,7 +346,7 @@ if (isset($_GET['modo'])) {
             </section>
         </div>
 
-        <div class="caixa-background"></div>
+        <div class="caixa-background bg-empresa"></div>
 
         <div class="caixa-6">
             <section id="section-empresas">
@@ -370,12 +398,12 @@ if (isset($_GET['modo'])) {
         </div>
     </section>
 
-    <div class="titulo-padrao text-center">
-        <h1>Uma operadora para chamar de sua</h1>
-        <h4 class="mb-5">Quem virou Dry, virou o jogo e correu para o abraço!</h4>
-    </div>
-
     <section id="section-slide">
+        <div class="titulo-padrao text-center">
+            <h1 class="font-weight-bold">Uma operadora para chamar de sua</h1>
+            <div class="subtitulo mb-5" style="color: black;">Quem virou Dry, virou o jogo e correu para o abraço!</div>
+        </div>
+
         <div class="slider">
             <div class="caixa-slide px-5 pt-5">
                 <div class="card-materia-lateral mx-auto px-3 py-3">
@@ -544,14 +572,17 @@ if (isset($_GET['modo'])) {
         </div>
     </section>
 
-    <div class="bg-mobile"></div>
-
     <section id="cobertura">
         <div class="container">
-            <div class="titulo-padrao">
-                <h1 class="font-weight-bold mt-5">Cobertura do<br> tamanho do Brasil</h1>
+            <div class="titulo-mapa">
+                <h1 class="font-weight-bold mt-5">Cobertura do tamanho do Brasil</h1>
             </div>
-            <p class="text-center">Ficou sem sinal? Aqui na Dry isso não existe! Por meio de nossas antenas parceiras, <br>entregamos sinal de alta qualidade em todo o território nacional</p>
+
+            <div class="align-center-vertical">
+                <div class="bg-mobile"></div>
+            </div>
+
+            <div class="text-cobertura mx-auto">Ficou sem sinal? Aqui na Dry isso não existe! Por meio de nossas antenas parceiras, entregamos sinal de alta qualidade em todo o território nacional</div>
 
             <div class="btn-center">
                 <a href="https://tim.img.com.br/mapa-cobertura/" target="_blank" rel="noopener noreferrer">
@@ -568,11 +599,11 @@ if (isset($_GET['modo'])) {
                     <div class="titulo-padrao">
                         <h1 class="font-weight-bold">Transforme sua paixão em <span class="conexao">conexão</span></h1>
                     </div>
-                    <p class="text-center">Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
+                    <p>Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
 
                     <div class="caixa-aplicativo mx-auto">
                         <h5 class="text-center mb-4">Baixe agora:</h5>
-                        <div class="img-app d-flex justify-content-around">
+                        <div class="img-app d-flex justify-content-center">
                             <a href="https://apps.apple.com/br/app/dry-conecta-whitelabel/id1562358701" target="_blank" rel="noopener noreferrer">
                                 <img src="./svg/apple-store.svg" alt="Apple Store">
                             </a>
@@ -590,15 +621,13 @@ if (isset($_GET['modo'])) {
     </section>
 
     <footer id="footer-index">
-        <div id="img-footer">
-            <img src="./svg/img-footer.svg" alt="Footer">
-        </div>
+        <div id="img-footer"></div>
         <div class="container">
 
             <div class="row pt-5">
                 <div class="col-md-4 align-center-vertical mx-auto">
                     <div class="footer-logo">
-                        <img src="./img/logo-dry-laranja-footer.png" alt="Logo"><br>
+                        <img src="./svg/logo-drytelecom.svg" alt="Logo">
                     </div>
                     <div class="align-self-center">
                         <button class="btn-padrao borda-botao btn-menor" style="min-width: 140px;" data-toggle="modal" data-target="#staticBackdrop">CONTATO</button>
@@ -645,11 +674,9 @@ if (isset($_GET['modo'])) {
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
@@ -659,7 +686,7 @@ if (isset($_GET['modo'])) {
             $('.slider').slick({
                 dots: true,
                 arrows: true,
-                autoplay: true,
+                //autoplay: true,
                 responsive: [{
                     breakpoint: 764,
                     settings: {
@@ -679,11 +706,26 @@ if (isset($_GET['modo'])) {
                 dots: true,
                 arrows: true,
                 responsive: [{
-                        breakpoint: 764,
+                        breakpoint: 780,
                         settings: {
                             arrows: false,
                             slidesToShow: 1,
                             slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 850,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            arrows: false,
+                        }
+                    },
+                    {
+                        breakpoint: 1000,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 2,
                         }
                     },
                     {
@@ -692,10 +734,15 @@ if (isset($_GET['modo'])) {
                             slidesToShow: 3,
                             slidesToScroll: 1
                         }
+                    },
+                    {
+                        breakpoint: 1040,
+                        settings: {
+                            arrows: false
+                        }
                     }
                 ]
             });
-
         });
 
         $('#staticBackdrop').on('shown.bs.modal', function() {
