@@ -1,41 +1,58 @@
 <?php
-    session_start();
+session_start();
 
-    require './bd/conexao.php';
-    $conexao = conexaoMySql();
+require './bd/conexao.php';
+$conexao = conexaoMySql();
 
-    $usuario_autenticado = $_SESSION['usuarioAutenticado'];
+$usuario_autenticado = $_SESSION['usuarioAutenticado'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
     <title>Política de Privacidade - DryBlog</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-inner">
+    <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
         <div class="container">
-            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon navbar-light"></span>
-            </button>
-            <li class="nav-item ml-auto mr-auto" style="list-style: none;">
-                <a class="navbar-brand" href="#">
-                    <img src="./img/logo-dry-laranja.png" alt="Logo">
+            <div id="navbar-mobile">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+
+            <li class="nav-item" style="list-style: none;">
+                <a class="navbar-brand" href="./index.php">
+                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav ml-5 mr-auto">         
+            <div class="login-box">
+                <?php if ($usuario_autenticado == true) { ?>
+                    <a class="logout" href="./index.php?modo=logout">
+                        <button class="btn-padrao">SAIR</button>
+                    </a>
+                <?php } else if ($usuario_autenticado == false) { ?>
+                    <a class="logout" href="./login.php">
+                        <button class="btn-padrao">LOGIN</button>
+                    </a>
+                <?php } ?>
+            </div>
+
+            <div class="menu-desk">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
@@ -43,25 +60,36 @@
                         <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu modal-contato" data-toggle="modal" data-target="#modalContato">CONTATO</a>
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
-            <div class="login-box">
-            <?php if($usuario_autenticado == true){ ?>
-                <a class="logout" href="./index.php?modo=logout">
-                    <button class="btn-padrao">SAIR</button> 
-                </a>
-            <?php }else if($usuario_autenticado == false){ ?> 
-                <a class="logout" href="./login.php">
-                    <button class="btn-padrao">LOGIN</button> 
-                </a> 
-            <?php } ?>  
+        </div>
+
+        <div class="bg-modal">
+            <div class="colapse-nav-mobile">
+                <span id="close-modal" class="material-symbols-outlined">
+                    close
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                    </li>
+                </ul>
             </div>
-        </div>       
+        </div>
     </nav>
 
     <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
@@ -112,10 +140,10 @@
             <h3 class="font-weight-bold pt-6">2 - TRATAMENTO DE DADOS</h3>
 
             <div class="privacidade-text">
-                <p>&emsp; Os dados pessoais de usuário e visitantes serão coletados, classificados, utilizados, processados e arquivados como condição indispensável para a execução de contratos relativos à contratação dos produtos e serviços da MVNO, mediante a consentimento expresso manifestado no Termo de Adesão aos Serviços, disponível em: <a class="adesao font-weight-bold" href="./termos-de-adesao.php">Termos de Adesão</a>, e por intermédio das nossas Políticas de Privacidade.</p> 
+                <p>&emsp; Os dados pessoais de usuário e visitantes serão coletados, classificados, utilizados, processados e arquivados como condição indispensável para a execução de contratos relativos à contratação dos produtos e serviços da MVNO, mediante a consentimento expresso manifestado no Termo de Adesão aos Serviços, disponível em: <a class="adesao font-weight-bold" href="./termos-de-adesao.php">Termos de Adesão</a>, e por intermédio das nossas Políticas de Privacidade.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; No âmbito do consentimento para tratamento de dados pessoais, estão incluídos:</p> 
+                <p>&emsp; No âmbito do consentimento para tratamento de dados pessoais, estão incluídos:</p>
             </div>
             <ul class="ml-5">
                 <li>Autenticação e autorização para acesso aos produtos e serviços;</li>
@@ -311,55 +339,55 @@
             <h3 class="font-weight-bold pt-6">3 - COOKIES OU DADOS DE NAVEGAÇÃO</h3>
 
             <div class="privacidade-text">
-                <p>&emsp; Informações relativas à navegação no site www.drytelecom.com , como local e horário de acesso, serão enviados pela plataforma ao dispositivo do usuário e/ou visitante - e nele ficarão armazenados - por meio de cookies.</p> 
+                <p>&emsp; Informações relativas à navegação no site www.drytelecom.com , como local e horário de acesso, serão enviados pela plataforma ao dispositivo do usuário e/ou visitante - e nele ficarão armazenados - por meio de cookies.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; O usuário e/ou visitante do site www.drytelecom.com manifesta conhecer e aceitar a coleta de dados de navegação realizada mediante a utilização de cookies.</p> 
+                <p>&emsp; O usuário e/ou visitante do site www.drytelecom.com manifesta conhecer e aceitar a coleta de dados de navegação realizada mediante a utilização de cookies.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; Os cookies persistentes permanecerão no disco rígido do usuário e/ou visitante mesmo após o encerramento do navegador e será usado pela própria plataforma de navegação em visitas subsequentes ao mesmo site. Os cookies persistentes também poderão ser removidos seguindo as instruções do seu navegador. Por sua vez, os cookies de sessão são temporários e desaparecem após o encerramento da navegação.</p> 
+                <p>&emsp; Os cookies persistentes permanecerão no disco rígido do usuário e/ou visitante mesmo após o encerramento do navegador e será usado pela própria plataforma de navegação em visitas subsequentes ao mesmo site. Os cookies persistentes também poderão ser removidos seguindo as instruções do seu navegador. Por sua vez, os cookies de sessão são temporários e desaparecem após o encerramento da navegação.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; É possível redefinir seu navegador da web para recusar todos os cookies, porém alguns recursos da plataforma poderão não funcionar corretamente caso a funcionalidade de aceitar cookies estiver desabilitada.</p> 
+                <p>&emsp; É possível redefinir seu navegador da web para recusar todos os cookies, porém alguns recursos da plataforma poderão não funcionar corretamente caso a funcionalidade de aceitar cookies estiver desabilitada.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; Ao acessar sua conta de usuário no site www.drytelecom.com , os seguintes cookies serão criados e/ou utilizar para melhorar e facilitar a experiência de navegação:</p> 
+                <p>&emsp; Ao acessar sua conta de usuário no site www.drytelecom.com , os seguintes cookies serão criados e/ou utilizar para melhorar e facilitar a experiência de navegação:</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; A MVNO se reserva ao direito de modificar a política de cookies a qualquer momento, informando ao titular por intermédio de banner no site a respeito das alterações e da necessidade de consentimento como condição para a preservação das funcionalidades e navegabilidade do site.</p> 
+                <p>&emsp; A MVNO se reserva ao direito de modificar a política de cookies a qualquer momento, informando ao titular por intermédio de banner no site a respeito das alterações e da necessidade de consentimento como condição para a preservação das funcionalidades e navegabilidade do site.</p>
             </div>
 
             <h3 class="font-weight-bold pt-6">4 - CONSENTIMENTO</h3>
 
             <div class="privacidade-text">
-                <p>&emsp; Ao utilizar e/ou contratar os serviços oferecidos pela MVNO e fornecer suas informações pessoais na plataforma, o usuário e/ou visitante estará consentindo com os termos descritos na presente Política de Privacidade.</p> 
+                <p>&emsp; Ao utilizar e/ou contratar os serviços oferecidos pela MVNO e fornecer suas informações pessoais na plataforma, o usuário e/ou visitante estará consentindo com os termos descritos na presente Política de Privacidade.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; O usuário, ao cadastrar-se, manifesta conhecê-lo e pode exercitar seus direitos de realizar o cancelamento, acessar e atualizar seus dados pessoais. Nos mesmos termos, o usuário e/ou visitante reconhece e aceita voluntariamente que o serviço será utilizado, em qualquer caso, sob sua única e exclusiva responsabilidade, assumindo o compromisso de fornecer informações cadastrais verdadeiras e atualizadas.</p> 
+                <p>&emsp; O usuário, ao cadastrar-se, manifesta conhecê-lo e pode exercitar seus direitos de realizar o cancelamento, acessar e atualizar seus dados pessoais. Nos mesmos termos, o usuário e/ou visitante reconhece e aceita voluntariamente que o serviço será utilizado, em qualquer caso, sob sua única e exclusiva responsabilidade, assumindo o compromisso de fornecer informações cadastrais verdadeiras e atualizadas.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; O usuário, por fim, tem o pleno direito retirar o seu consentimento a qualquer tempo, para tanto deve entrar em contato através do e-mail contato@drytelecom.com.br ou por correio enviado ao seguinte endereço: AV ANÁPOLIS, N° 510 - VILA NILVA - BARUERI/SP - CEP 06404-250</p> 
+                <p>&emsp; O usuário, por fim, tem o pleno direito retirar o seu consentimento a qualquer tempo, para tanto deve entrar em contato através do e-mail contato@drytelecom.com.br ou por correio enviado ao seguinte endereço: AV ANÁPOLIS, N° 510 - VILA NILVA - BARUERI/SP - CEP 06404-250</p>
             </div>
 
             <h3 class="font-weight-bold pt-6">5 - ALTERAÇÕES</h3>
 
             <div class="privacidade-text">
-                <p>&emsp; Com o intuito de respeitar, em absoluto, a transparência, a integridade das informações que aqui estão apresentadas e eventuais alterações - seja em decorrência de mudanças no site da MVNO, nos sites a ele associados, utilização de novas tecnologias, cumprimento da legislação aplicável ou sempre que a MVNO julgar necessário - reservamos o direito de modificar nossa Política de Privacidade a qualquer momento. Assim, recomendamos aos usuários e visitantes que busquem revisitar este documento regularmente, para acompanhar possíveis alterações em seu texto original.</p> 
+                <p>&emsp; Com o intuito de respeitar, em absoluto, a transparência, a integridade das informações que aqui estão apresentadas e eventuais alterações - seja em decorrência de mudanças no site da MVNO, nos sites a ele associados, utilização de novas tecnologias, cumprimento da legislação aplicável ou sempre que a MVNO julgar necessário - reservamos o direito de modificar nossa Política de Privacidade a qualquer momento. Assim, recomendamos aos usuários e visitantes que busquem revisitar este documento regularmente, para acompanhar possíveis alterações em seu texto original.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; Ademais, alterações e possíveis esclarecimentos surtirão efeito imediatamente após sua publicação no site da MVNO. Deste modo, todos os usuários serão notificados em caso de alteração. Ao utilizar nossos serviços ou fornecer informações pessoais em período posterior às eventuais modificações, os usuários e visitantes atestam concordar com as novas normas.</p> 
+                <p>&emsp; Ademais, alterações e possíveis esclarecimentos surtirão efeito imediatamente após sua publicação no site da MVNO. Deste modo, todos os usuários serão notificados em caso de alteração. Ao utilizar nossos serviços ou fornecer informações pessoais em período posterior às eventuais modificações, os usuários e visitantes atestam concordar com as novas normas.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; Diante da fusão ou venda da plataforma à outra empresa, os dados dos usuários poderão ser transferidos para os novos proprietários, garantindo que a permanência dos serviços oferecidos seja plenamente assegurada.</p> 
+                <p>&emsp; Diante da fusão ou venda da plataforma à outra empresa, os dados dos usuários poderão ser transferidos para os novos proprietários, garantindo que a permanência dos serviços oferecidos seja plenamente assegurada.</p>
             </div>
 
             <h3 class="font-weight-bold pt-6">6 - JURISDIÇÃO PARA RESOLUÇÃO DE CONFLITOS</h3>
 
             <div class="privacidade-text">
-                <p>&emsp; Para resolução efetiva de eventuais desacordos ou controvérsias decorrentes da presente Política de Privacidade, será aplicado integralmente o Direito Brasileiro.</p> 
+                <p>&emsp; Para resolução efetiva de eventuais desacordos ou controvérsias decorrentes da presente Política de Privacidade, será aplicado integralmente o Direito Brasileiro.</p>
             </div>
             <div class="privacidade-text">
-                <p>&emsp; Eventuais litígios deverão ser apresentados no foro da comarca em que encontra-se sediada a empresa responsável por este instrumento.</p> 
+                <p>&emsp; Eventuais litígios deverão ser apresentados no foro da comarca em que encontra-se sediada a empresa responsável por este instrumento.</p>
             </div>
         </div>
     </section>
@@ -369,11 +397,11 @@
             <div class="row pt-5">
                 <div class="col-md-4 align-center-vertical ml-auto mr-auto">
                     <div class="footer-logo">
-                        <img src="./img/logo-dry-laranja-footer.png" alt="Logo"><br>
+                        <img src="./svg/logo-drytelecom.svg" alt="Logo">
                     </div>
                     <div class="botao-contato align-self-center">
                         <button class="btn-padrao borda-botao contato-btn" style="min-width: 140px;" data-toggle="modal" data-target="#modalContato">CONTATO</button>
-                    </div>        
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -399,12 +427,12 @@
                         <div class="redes-sociais-pic mr-3">
                             <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
-                            </a>                           
+                            </a>
                         </div>
                         <div class="redes-sociais-pic">
                             <a href="https://www.linkedin.com/company/drycompanybrasil/" target="_blank">
                                 <img src="./svg/icon-linkedin.svg" alt="LinkedIn">
-                            </a>                           
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -414,22 +442,25 @@
                     2022. Dry Telecom. Todos os direitos reservados. CNPJ: 15.564.295/0001-04 RAZÃO SOCIAL: DRY COMPANY DO BRASIL TECNOLOGIA LTDA AV ANÁPOLIS, N° 510 - VILA NILVA - BARUERI/SP - CEP 06404-250
                 </div>
             </div>
-        </div>       
+        </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
 
     <script>
-        $('#staticBackdrop').on('shown.bs.modal', function () {
+        $('#staticBackdrop').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
 
-        $('#modalContato').on('shown.bs.modal', function () {
+        $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
     </script>
 </body>
+
 </html>

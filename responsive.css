@@ -302,13 +302,13 @@
     .login-box {
         order: 0;
     }
+
+    #banner-index {
+        background-image: url('./img/banner-index-mobile.png');
+    }
 }
 
 @media only screen and (max-width: 1024px) {
-
-
-
-
 
     #section-slide,
     #cobertura,

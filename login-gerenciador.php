@@ -1,44 +1,45 @@
 <?php
-    // Conexão com o banco de dados
-    require "./bd/conexao.php";
-    $conexao = conexaoMySql();
+// Conexão com o banco de dados
+require "./bd/conexao.php";
+$conexao = conexaoMySql();
 
-    // Inicia sessões
-    session_start();
+// Inicia sessões
+session_start();
 
-    //Definindo variáveis
-    $email = (string) "";
-    $senha = (string) "";
+//Definindo variáveis
+$email = (string) "";
+$senha = (string) "";
 
-    //Verificando a existência do botão "Entrar"
-    if(isset($_POST["btnEntrar"])){
-        //Pegando os valores digitados nos inputs e jogando em suas respectivas variáveis
-        $email = $_POST['txtEmail'];
-        $senha = sha1(md5($_POST['txtSenha']));
+//Verificando a existência do botão "Entrar"
+if (isset($_POST["btnEntrar"])) {
+    //Pegando os valores digitados nos inputs e jogando em suas respectivas variáveis
+    $email = $_POST['txtEmail'];
+    $senha = sha1(md5($_POST['txtSenha']));
 
-        //Script SQL para buscar usuário e senha digitados no banco de dados
-        $sql = "SELECT * FROM autor WHERE login_autor = '".$email."' AND senha_autor = '".$senha."'";
-        $select = mysqli_query($conexao, $sql);
+    //Script SQL para buscar usuário e senha digitados no banco de dados
+    $sql = "SELECT * FROM autor WHERE login_autor = '" . $email . "' AND senha_autor = '" . $senha . "'";
+    $select = mysqli_query($conexao, $sql);
 
-        if($result = mysqli_fetch_array($select)){
-            $_SESSION['nome_autor'] = $result['nome_autor'];
-            $_SESSION['id_autor'] = $result['id_autor'];
-            $_SESSION['gerenciadorAutenticado'] = true;
+    if ($result = mysqli_fetch_array($select)) {
+        $_SESSION['nome_autor'] = $result['nome_autor'];
+        $_SESSION['id_autor'] = $result['id_autor'];
+        $_SESSION['gerenciadorAutenticado'] = true;
 
-            header("location: gerenciadores/index.php");
-        }else{
-            echo("<script>alert('Usuário e/ou senha inválido')</script>");
-        }
+        header("location: gerenciadores/index.php");
+    } else {
+        echo ("<script>alert('Usuário e/ou senha inválido')</script>");
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="shortcut icon" href="svg/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -46,6 +47,7 @@
     <link rel="stylesheet" href="./responsive.css">
     <title>Login Sistema Interno - DryBlog</title>
 </head>
+
 <body>
     <div class="container">
         <div class="materia-title">
@@ -64,6 +66,7 @@
                 <button type="submit" class="btn-padrao mx-auto" name="btnEntrar">Entrar</button>
             </form>
         </div>
-    </div> 
+    </div>
 </body>
+
 </html>
