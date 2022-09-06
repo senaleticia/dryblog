@@ -178,6 +178,7 @@
         flex-wrap: nowrap !important;
         width: auto !important;
         max-width: none !important;
+        padding: 15px;
     }
 
     .caixa-1 {
@@ -305,6 +306,7 @@
 
     #banner-index {
         background-image: url('./img/banner-index-mobile.png');
+        height: 70vh;
     }
 
     #img-footer {

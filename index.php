@@ -37,7 +37,7 @@ if (isset($_GET['modo'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-inner">
         <div class="container">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
@@ -47,13 +47,13 @@ if (isset($_GET['modo'])) {
 
             <li class="nav-item" style="list-style: none;">
                 <a class="navbar-brand" href="./index.php">
-                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
+                    <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
             <div class="login-box">
                 <?php if ($usuario_autenticado == true) { ?>
                     <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao">SAIR</button>
+                        <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
                     <a class="logout" href="./login.php">
@@ -103,6 +103,8 @@ if (isset($_GET['modo'])) {
         </div>
     </nav>
 
+    <div id="banner-index"></div>
+
     <div class="container">
         <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -121,8 +123,6 @@ if (isset($_GET['modo'])) {
                 </div>
             </div>
         </div>
-
-        <div id="banner-index"></div>
     </div>
 
     <section id="section-beneficio">
@@ -180,7 +180,7 @@ if (isset($_GET['modo'])) {
 
     <section id="clientes">
         <div class="text-center titulo-padrao">
-            <h1 class="font-weight-bold">Conheça nossos clientes</h1>
+            <h1 class="font-weight-bold my-5">Conheça nossos clientes</h1>
         </div>
 
         <div class="caixa-1"></div>
