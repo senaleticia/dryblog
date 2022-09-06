@@ -45,7 +45,7 @@ if (isset($_POST["btnEntrar"])) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
-    <title>Login Sistema Interno - DryBlog</title>
+    <title>Login Sistema Interno - Dry Telecom</title>
 </head>
 
 <body>

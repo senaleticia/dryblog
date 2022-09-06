@@ -128,7 +128,7 @@ if (isset($_FILES['fileFoto']) != "") {
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Cadastro de Usuário - DryBlog</title>
+    <title>Cadastro de Usuário - Dry Telecom</title>
 </head>
 
 <body>

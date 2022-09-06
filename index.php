@@ -596,20 +596,22 @@ if (isset($_GET['modo'])) {
         <div class="content-aplicativo">
             <div class="col-md-6 w-space">
                 <div class="text-aplicativo">
-                    <div class="titulo-padrao">
-                        <h1 class="font-weight-bold">Transforme sua paixão em <span class="conexao">conexão</span></h1>
-                    </div>
-                    <p>Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
+                    <div class="container">
+                        <div class="titulo-padrao">
+                            <h1 class="font-weight-bold">Transforme sua paixão em <span class="conexao">conexão</span></h1>
+                        </div>
+                        <p>Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
 
-                    <div class="caixa-aplicativo mx-auto">
-                        <h5 class="text-center mb-4">Baixe agora:</h5>
-                        <div class="img-app d-flex justify-content-center">
-                            <a href="https://apps.apple.com/br/app/dry-conecta-whitelabel/id1562358701" target="_blank" rel="noopener noreferrer">
-                                <img src="./svg/apple-store.svg" alt="Apple Store">
-                            </a>
-                            <a href="https://play.google.com/store/apps/details?id=br.com.drycompanybrasil.whitelabel" target="_blank" rel="noopener noreferrer">
-                                <img src="./svg/google-play.svg" alt="Google Play">
-                            </a>
+                        <div class="caixa-aplicativo mx-auto">
+                            <h5 class="text-center mb-4">Baixe agora:</h5>
+                            <div class="img-app d-flex justify-content-center">
+                                <a href="https://apps.apple.com/br/app/dry-conecta-whitelabel/id1562358701" target="_blank" rel="noopener noreferrer">
+                                    <img src="./svg/apple-store.svg" alt="Apple Store">
+                                </a>
+                                <a href="https://play.google.com/store/apps/details?id=br.com.drycompanybrasil.whitelabel" target="_blank" rel="noopener noreferrer">
+                                    <img src="./svg/google-play.svg" alt="Google Play">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

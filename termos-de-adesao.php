@@ -22,7 +22,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
-    <title>Termos de Adesão - DryBlog</title>
+    <title>Termos de Adesão - Dry Telecom</title>
 </head>
 
 <body>

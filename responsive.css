@@ -306,13 +306,16 @@
     #banner-index {
         background-image: url('./img/banner-index-mobile.png');
     }
+
+    #img-footer {
+        margin-bottom: 0;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
 
     #section-slide,
-    #cobertura,
-    #bg-celular {
+    #cobertura {
         background-image: none !important;
     }
 
@@ -322,8 +325,6 @@
 
     #bg-celular,
     #img-footer {
-        padding: 0 !important;
-        width: 0 !important;
         height: 0 !important;
     }
 
@@ -367,11 +368,6 @@
 
     .titulo-mapa {
         width: auto;
-    }
-
-    .text-aplicativo {
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .text-cobertura {

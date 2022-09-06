@@ -147,7 +147,7 @@ if (isset($_POST['btnComentar'])) {
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
-    <title><?= $titulo ?> - DryBlog</title>
+    <title><?= $titulo ?> - Dry Telecom</title>
 </head>
 
 <body>

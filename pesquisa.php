@@ -35,7 +35,7 @@ if (!$select) {
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
-    <title>Pesquisa - DryBlog</title>
+    <title>Pesquisa - Dry Telecom</title>
 </head>
 
 <body>

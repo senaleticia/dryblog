@@ -1,53 +1,55 @@
 <?php
-    // Conexão com o banco de dados
-    require "./bd/conexao.php";
-    $conexao = conexaoMySql();
+// Conexão com o banco de dados
+require "./bd/conexao.php";
+$conexao = conexaoMySql();
 
-    // Inicia sessões
-    session_start();
+// Inicia sessões
+session_start();
 
-    //Definindo variáveis
-    $email = (string) "";
-    $senha = (string) "";
+//Definindo variáveis
+$email = (string) "";
+$senha = (string) "";
 
-    if(isset($_POST['btnLogin'])){
-        $email = $_POST['txtEmailUsuario'];
-        $senha = sha1(md5($_POST['txtSenhaUsuario']));
+if (isset($_POST['btnLogin'])) {
+    $email = $_POST['txtEmailUsuario'];
+    $senha = sha1(md5($_POST['txtSenhaUsuario']));
 
-        $sql = "SELECT * FROM usuario WHERE login_usuario = '".$email."' AND senha_usuario = '".$senha."'";
-        $select = mysqli_query($conexao, $sql);
+    $sql = "SELECT * FROM usuario WHERE login_usuario = '" . $email . "' AND senha_usuario = '" . $senha . "'";
+    $select = mysqli_query($conexao, $sql);
 
-        if($result = mysqli_fetch_array($select)){
-            $_SESSION['id_usuario'] = $result['id_usuario'];
-            $_SESSION['nome_usuario'] = $result['nome_usuario'];
-            $_SESSION['foto_usuario'] = $result['foto_usuario'];
-            $_SESSION['usuarioAutenticado'] = true;
+    if ($result = mysqli_fetch_array($select)) {
+        $_SESSION['id_usuario'] = $result['id_usuario'];
+        $_SESSION['nome_usuario'] = $result['nome_usuario'];
+        $_SESSION['foto_usuario'] = $result['foto_usuario'];
+        $_SESSION['usuarioAutenticado'] = true;
 
-            header("location: index.php");
-        }else{
-            echo("<script>alert('Usuário e/ou senha inválido')</script>");
-        }
+        header("location: index.php");
+    } else {
+        echo ("<script>alert('Usuário e/ou senha inválido')</script>");
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon"/>
+    <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
-	<link rel="stylesheet" href="./guideline-social.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="./guideline-social.css">
+    <title>Login - Dry Telecom</title>
 </head>
+
 <body>
     <div class="materia-title">
-        <h2 class="py-4">Login - DryBlog</h2>
+        <h2 class="py-4">Login - Dry Telecom</h2>
     </div>
     <div class="container-login">
         <span id="msg-error"></span>
@@ -72,7 +74,8 @@
             <a href="./cadastrar-usuario.php">
                 <button class="btn-padrao ml-auto mr-auto">Criar Conta</button>
             </a>
-        </div>       
+        </div>
     </div>
 </body>
+
 </html>
