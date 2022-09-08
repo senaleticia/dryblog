@@ -194,7 +194,7 @@
     }
 
     .bg-empresa {
-        background-image: url('./img/empresa-mobile.png') !important;
+        background-image: url('./img/bg-empresa-mobile.png') !important;
     }
 
     .container-cards {
@@ -311,6 +311,10 @@
 
     #img-footer {
         margin-bottom: 0;
+    }
+
+    .btn-padrao span {
+        font-size: 18px;
     }
 }
 

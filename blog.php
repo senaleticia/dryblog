@@ -36,17 +36,17 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
             <li class="nav-item" style="list-style: none;">
                 <a class="navbar-brand" href="./index.php">
-                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
+                    <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
             <div class="login-box">
                 <?php if ($usuario_autenticado == true) { ?>
                     <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao">SAIR</button>
+                        <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
                     <a class="logout" href="./login.php">
-                        <button class="btn-padrao">LOGIN</button>
+                        <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
             </div>
@@ -92,7 +92,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </div>
     </nav>
     <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <img src="./img/back-icon.png" alt="Voltar">
+        <span class="material-symbols-outlined">arrow_back</span>
         VOLTAR
     </button>
 
@@ -230,14 +230,15 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                                     <span class="number-actions"><?= $comentarios_count ?></span>
                                 </button>
                             </a>
-                            <button class="btn-actions pt-2" style="display: flex; justify-content: center; gap: 5px;">
+                            <button class="btn-actions pt-2 btn-share" style="display: flex; justify-content: center; gap: 5px;" onclick="copyToClipBoard2()">
                                 <span class="material-symbols-outlined" style="color: #FE5000;">
                                     share
                                 </span>
+                                <textarea style="font-size: 0; z-index: -1; position: absolute;" id="textArea2">localhost/dryblog/postagem.php?modo=visualizar&id=<?= $result['id_post'] ?></textarea>
                             </button>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
+                            <a class="link-materia" href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
                                 <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
                             </a>
                         </div>
@@ -273,6 +274,9 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                                 </div>
                             <?php } ?>
                         </div>
+                    </div>
+                    <div class="anuncios">
+                        <img src="./img/anuncio-pic.png" alt="Anúncio">
                     </div>
                 </div>
             </div>

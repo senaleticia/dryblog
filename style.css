@@ -196,6 +196,7 @@ li {
 .btn-menu {
     color: white !important;
     box-shadow: -4px -4px 14px rgb(255 255 255 / 20%), 4px 4px 14px rgb(0 0 0 / 10%);
+    border: solid 1px white;
 }
 
 .btn-menor {
@@ -336,16 +337,12 @@ li {
 }
 
 .bg-empresa {
-    background-image: url('./img/empresa.png') !important;
+    background-image: url('./img/bg-empresa.png') !important;
 }
 
 .caixa-4 {
     padding: 50px;
 }
-
-/* .caixa-5{
-    background-image: url();
-} */
 
 .caixa-6 {
     display: flex;
@@ -419,7 +416,8 @@ li {
     margin-top: 80px;
 }
 
-.post-text>p {
+.post-text,
+.resultado-text {
     text-align: center;
     font-size: 16px;
     overflow: hidden;
@@ -435,17 +433,8 @@ li {
 }
 
 .resultado-text {
-    text-align: justify;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-height: 16px;
-    /* fallback */
-    max-height: 70px;
-    /* fallback */
-    -webkit-line-clamp: 3;
-    /* number of lines to show */
-    -webkit-box-orient: vertical;
+    text-align: justify !important;
+    -webkit-line-clamp: 3 !important;
 }
 
 .post-img,
@@ -556,7 +545,7 @@ li {
 
 .icon-search {
     position: absolute;
-    top: 78%;
+    top: 76%;
     right: 8%;
     border: none;
 }
@@ -1301,4 +1290,12 @@ text {
 
 .navbar {
     background-color: #FE5000 !important;
+}
+
+.anuncios {
+    /* border: solid 1px black; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
 }

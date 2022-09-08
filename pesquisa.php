@@ -49,17 +49,17 @@ if (!$select) {
 
             <li class="nav-item" style="list-style: none;">
                 <a class="navbar-brand" href="./index.php">
-                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
+                    <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
             <div class="login-box">
                 <?php if ($usuario_autenticado == true) { ?>
                     <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao">SAIR</button>
+                        <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
                     <a class="logout" href="./login.php">
-                        <button class="btn-padrao">LOGIN</button>
+                        <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
             </div>
@@ -105,7 +105,7 @@ if (!$select) {
         </div>
     </nav>
     <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <img src="./img/back-icon.png" alt="Voltar">
+        <span class="material-symbols-outlined">arrow_back</span>
         VOLTAR
     </button>
 

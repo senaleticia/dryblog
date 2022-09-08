@@ -93,7 +93,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     </nav>
 
     <button class="btn-padrao margem-btn font-weight-bold" onclick="window.history.back()">
-        <img src="./img/back-icon.png" alt="Voltar">
+        <span class="material-symbols-outlined">arrow_back</span>
         VOLTAR
     </button>
 

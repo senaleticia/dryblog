@@ -167,11 +167,11 @@ if (isset($_POST['btnComentar'])) {
             <div class="login-box">
                 <?php if ($usuario_autenticado == true) { ?>
                     <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao">SAIR</button>
+                        <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
                     <a class="logout" href="./login.php">
-                        <button class="btn-padrao">LOGIN</button>
+                        <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
             </div>
@@ -371,7 +371,7 @@ if (isset($_POST['btnComentar'])) {
                                 arrow_back_ios_new
                             </span>
                         </button>
-                        <button class="btn-padrao font-weight-bold">
+                        <button class="btn-padrao font-weight-bold" onclick="copyToClipBoard()">
                             <span class="material-symbols-outlined">
                                 share
                             </span>

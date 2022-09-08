@@ -57,7 +57,7 @@ if (isset($_GET['modo'])) {
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
                     <a class="logout" href="./login.php">
-                        <button class="btn-padrao">LOGIN</button>
+                        <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
             </div>
