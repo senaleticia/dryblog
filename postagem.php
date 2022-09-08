@@ -64,6 +64,8 @@ if (isset($_GET['modo'])) {
             $order = array("\r\n", "\n", "\r");
             $replace = "<br>";
             $quarto_conteudo_final = str_replace($order, $replace, $str);
+        } else {
+            header('location: pagina-inexistente.php');
         }
 
         //Script para trazer as curtidas do post

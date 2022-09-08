@@ -41,6 +41,10 @@ section {
     padding: 168px 0;
 }
 
+button:focus {
+    outline: none;
+}
+
 #footer-index {
     margin-top: 50% !important;
 }
@@ -196,7 +200,7 @@ li {
 .btn-menu {
     color: white !important;
     box-shadow: -4px -4px 14px rgb(255 255 255 / 20%), 4px 4px 14px rgb(0 0 0 / 10%);
-    border: solid 1px white;
+    border: solid 2px white;
 }
 
 .btn-menor {
@@ -237,6 +241,8 @@ li {
 }
 
 .container-chip {
+    display: flex;
+    flex-direction: column;
     width: 659px;
     height: auto;
     margin-top: 95px;

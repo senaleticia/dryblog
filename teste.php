@@ -29,11 +29,11 @@ $conexao = conexaoMySql();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="./index.php">
-                <img src="./svg/logo-drytelecom.svg" alt="Logo">
+                <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
             </a>
             <div class="login-box">
                 <a class="logout" href="./login.php">
-                    <button class="btn-padrao">LOGIN</button>
+                    <button class="btn-padrao btn-menu">LOGIN</button>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -56,7 +56,8 @@ $conexao = conexaoMySql();
     </nav>
 
     <div class="container mt-5">
-
+        <h1 class="text-center">Página não encontrada!</h1>
+        <p class="text-center">Desculpe, essa página foi removida</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
