@@ -1,22 +1,25 @@
 <?php
 session_start();
 
-require_once "./bd/conexao.php";
+require './bd/conexao.php';
 $conexao = conexaoMySql();
 
 $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
-if (!isset($_GET['caixaPesquisa'])) {
-    header('location: ./blog.php');
-}
+if (isset($_POST['btnCadastro'])) {
+    $nome_cadastro = $_POST['txtNomeCadastro'];
+    $email_cadastro = $_POST['txtEmailCadastro'];
+    $telefone_cadastro = $_POST['txtTelefoneCadastro'];
+    $profissao_cadastro = $_POST['txtProfissaoCadastro'];
 
-$pesquisa = ($_GET['caixaPesquisa']);
-$sql = "SELECT * FROM post WHERE (titulo LIKE '%" . $pesquisa . "%') OR (conteudo LIKE '%" . $pesquisa . "%') ORDER BY id_post DESC";
-$select = mysqli_query($conexao, $sql);
+    $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "')";
 
-if (!$select) {
-    printf("Error: %s\n", mysqli_error($conexao));
-    exit();
+    if ($select = mysqli_query($conexao, $sql)) {
+        echo ("<script>alert('Cadastro feito com sucesso')</script>");
+    } else {
+        echo ("<script>alert('Erro ao fazer o cadastro')</script>");
+        echo ($sql);
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -32,10 +35,12 @@ if (!$select) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
-    <title>Pesquisa - Dry Telecom</title>
+    <title>Cadastro Anúncio - Dry Telecom</title>
 </head>
 
 <body>
@@ -73,7 +78,7 @@ if (!$select) {
                         <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
@@ -95,7 +100,7 @@ if (!$select) {
                         <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
@@ -104,22 +109,18 @@ if (!$select) {
             </div>
         </div>
     </nav>
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <span class="material-symbols-outlined">arrow_back</span>
-        VOLTAR
-    </button>
 
     <div class="container">
         <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="mx-auto">Alguma dúvida?</h2>
+                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
-                    <div class="modal-body mx-auto">
+                    <div class="modal-body ml-auto mr-auto">
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
@@ -128,57 +129,70 @@ if (!$select) {
             </div>
         </div>
 
-        <div class="container-pesquisa">
-            <?php
-            $row_count = mysqli_num_rows($select);
+        <h2 class="py-4 text-center">Anúncio Dry Telecom</h2>
 
-            if ($row_count == 0) {
-            ?>
-                <h5 class="mb-5 text-center">Nenhum resultado foi encontrado para a sua pesquisa "<?= $pesquisa ?>"</h5>
-            <?php } else if ($row_count >= 1) { ?>
-                <h4 class="mb-5">Resultados da sua pesquisa "<?= $pesquisa ?>"</h4>
-                <?php while ($result = mysqli_fetch_array($select)) { ?>
-                    <div class="card-resultado mx-auto my-4">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
-                                    <div class="post-img" style="background-image: url('./upload/arquivos/<?= $result['foto'] ?>'); padding: 32%;"></div>
-                                </a>
-                            </div>
-                            <div class="col-md-8">
-                                <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
-                                    <h5 style="color: #FE5000;" class="titulo-pesquisa font-weight-bold mb-4"><?= $result['titulo'] ?></h5>
-                                </a>
+        <div class="d-flex flex-row">
+            <div class="foto-anuncio my-auto">
+                <img src="./img/anuncio-pic.png" alt="Anúncio">
+            </div>
 
-                                <div class="resultado-text">
-                                    <?= $result['conteudo'] ?>
-                                </div>
-
-                                <div class="d-flex justify-content-center my-4">
-                                    <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
-                                        <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
-                                    </a>
-                                </div>
-                            </div>
+            <div class="caixa-form-anuncio mt-5">
+                <form action="#" method="POST" name="cadastroAnuncio" id="cadastroAnuncio">
+                    <div class="my-3">
+                        <small>*Campos Obrigatórios</small>
+                        <div class="col-sm-12">
+                            <input type="text" class="input-sunk-white" id="txtNomeCadastro" name="txtNomeCadastro" placeholder="Nome e Sobrenome*" required onkeypress="return validarEntrada(event, 'caracter');">
                         </div>
                     </div>
-            <?php }
-            }
-            ?>
+                    <div class="mb-3">
+                        <div class="col-sm-12">
+                            <input type="email" class="input-sunk-white" id="txtEmailCadastro" name="txtEmailCadastro" placeholder="Email*" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="col-sm-12">
+                            <input type="text" class="input-sunk-white" id="txtTelefoneCadastro" name="txtTelefoneCadastro" placeholder="Telefone*" required onkeypress="return validarEntrada(event, 'number');">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="col-sm-12">
+                            <input type="text" class="input-sunk-white" id="txtProfissaoCadastro" name="txtProfissaoCadastro" placeholder="Profissão*" required onkeypress="return validarEntrada(event, 'caracter');">
+                        </div>
+                    </div>
+                    <div class="caixa-checkbox mb-4">
+                        <div>
+                            <label class="label-radio">
+                                Eu concordo em receber outras comunicações da Dry Telecom.
+                                <input type="checkbox" checked="checked" name="radio" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="label-radio">
+                                Eu concordo em permitir que a Dry Telecom armazene e processe meus dados pessoais.*
+                                <input type="checkbox" name="radio" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" class="btn-padrao mx-auto" id="btnCadastro" name="btnCadastro" value="Cadastrar-se">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
             <div class="row">
-
                 <div class="col-md-4 align-center-vertical mx-auto" style="margin-top: 70px;">
                     <div class="footer-logo">
                         <img src="./svg/logo-drytelecom.svg" alt="Logo">
                     </div>
                     <button class="btn-padrao borda-botao" style="width: 140px;" data-toggle="modal" data-target="#modalContato">CONTATO</button>
                 </div>
-
             </div>
             <div class="row mb-5">
                 <div class="col-md-4">
@@ -224,18 +238,12 @@ if (!$select) {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
+    <script src="./script.js"></script>
 
     <script>
-        $('#staticBackdrop').on('shown.bs.modal', function() {
+        $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
-        });
-
-        $('#exampleModal').on('shown.bs.modal', function() {
-            $('#myInput').trigger('focus')
-        });
+        })
     </script>
 </body>
 

@@ -606,10 +606,10 @@ if (isset($_GET['modo'])) {
                             <h5 class="text-center mb-4">Baixe agora:</h5>
                             <div class="img-app d-flex justify-content-center">
                                 <a href="https://apps.apple.com/br/app/dry-conecta-whitelabel/id1562358701" target="_blank" rel="noopener noreferrer">
-                                    <img src="./svg/apple-store.svg" alt="Apple Store">
+                                    <img src="./svg/apple-store-icon.svg" alt="Apple Store">
                                 </a>
                                 <a href="https://play.google.com/store/apps/details?id=br.com.drycompanybrasil.whitelabel" target="_blank" rel="noopener noreferrer">
-                                    <img src="./svg/google-play.svg" alt="Google Play">
+                                    <img src="./svg/play-store-icon.svg" alt="Play Store">
                                 </a>
                             </div>
                         </div>

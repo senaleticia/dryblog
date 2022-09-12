@@ -65,6 +65,7 @@ if (isset($_GET['modo'])) {
             $replace = "<br>";
             $quarto_conteudo_final = str_replace($order, $replace, $str);
         } else {
+            //Encaminhando o usuário para uma página de erro caso o post não exista ou foi excluído
             header('location: pagina-inexistente.php');
         }
 
@@ -163,7 +164,7 @@ if (isset($_POST['btnComentar'])) {
 
             <li class="nav-item" style="list-style: none;">
                 <a class="navbar-brand" href="./index.php">
-                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
+                    <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
             <div class="login-box">

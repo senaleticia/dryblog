@@ -86,4 +86,38 @@ function copyToClipBoard2() {
     document.execCommand("copy");
 }
 
-copyToClipBoard2()
+//copyToClipBoard2()
+
+const nomeCadastro = document.getElementById("txtNomeCadastro");
+const emailCadastro = document.getElementById("txtEmailCadastro");
+const telefoneCadastro = document.getElementById("txtTelefoneCadastro");
+
+console.log(nomeCadastro);
+
+function validarEntrada(caracter, typeBlock) {
+    var tipo = typeBlock;
+
+    if (window.event) {
+        var asc = caracter.charCode;
+    } else {
+        var asc = caracter.which;
+    }
+
+    if (tipo == "caracter") {
+        if (asc >= 33 && asc <= 64) {
+            return false;
+        }
+    } else if (tipo == "number") {
+        if (asc < 48 || asc > 57) {
+            return false;
+        }
+    }
+}
+
+function limitarCaracteres() {
+    nomeCadastro.maxLength = 100;
+    emailCadastro.maxLength = 50;
+    telefoneCadastro.maxLength = 11;
+}
+
+limitarCaracteres();
