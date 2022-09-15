@@ -7,8 +7,6 @@ $login_usuario = (string) "";
 $senha_usuario = (string) "";
 $botao = "Cadastrar-se";
 
-echo ($senha_usuario);
-
 if (isset($_GET['modo'])) {
     if ($_GET['modo'] == 'editar') {
         $id_usuario = $_GET['id_usuario'];
@@ -60,10 +58,13 @@ if (isset($_FILES['fileFoto']) != "") {
             $senha_usuario = sha1(md5($_POST['txtSenhaUsuario']));
             $foto_usuario = $novo_nome_arquivo . "." . $extensao;
 
-            $verificar_email = "SELECT * FROM usuario WHERE login_usuario = " . $login_usuario;
+            $verificar_email = "SELECT * FROM usuario WHERE login_usuario = '" . $login_usuario . "'";
             $select_email = mysqli_query($conexao, $verificar_email);
             $count_email = mysqli_num_rows($select_email);
 
+
+
+            //Verificando se já existe um email igual
             if ($count_email >= 1) {
                 echo ("<script>alert('Esse e-mail já está cadastrado em nosso sistema, favor inserir outro')</script>");
             } else if ($nome_usuario == "" || $login_usuario == "" || $senha_usuario == "") {
@@ -95,11 +96,9 @@ if (isset($_FILES['fileFoto']) != "") {
 
             if ($count_email >= 1) {
                 echo ("<script>alert('Esse e-mail já está cadastrado em nosso sistema, favor inserir outro')</script>");
-            } else if ($nome_usuario == "" || $login_usuario == "" || $senha_usuario == "") {
-                echo ("<script>alert('Os campos nome, email e senha são obrigatórios')</script>");
             } else {
                 //Script SQL para inserir um post no banco de dados
-                $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario, foto_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', '" . $senha_usuario . "', '" . $foto_usuario . "')";
+                $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', '" . $senha_usuario . "')";
 
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
@@ -133,16 +132,13 @@ if (isset($_FILES['fileFoto']) != "") {
 
 <body>
     <div class="container">
-        <h2 class="my-4">Criar conta</h2>
+        <h2 class="mt-4">Criar conta</h2>
 
         <form action="#" method="POST" name="cadastroUsuario" id="cadastroUsuario" enctype="multipart/form-data">
             <div class="mb-3 row">
                 <label for="txtNomeUsuario" class="col-sm-2 col-form-label">Nome:</label>
                 <div class="col-sm-10">
                     <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario" value="<?= $nome_usuario ?>" required>
-                </div>
-                <div class="error-input" style='color: red; display: none;'>
-                    O preenchimento desse campo é obrigatório
                 </div>
             </div>
             <div class="mb-3 align-2">
@@ -172,6 +168,7 @@ if (isset($_FILES['fileFoto']) != "") {
         </form>
 
     </div>
+    <!--<script src="./script.js"></script>-->
 </body>
 
 </html>

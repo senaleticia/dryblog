@@ -121,7 +121,7 @@ if (isset($_POST['btnCadastro'])) {
                         </button>
                     </div>
                     <div class="modal-body ml-auto mr-auto">
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
                     </div>
@@ -163,7 +163,7 @@ if (isset($_POST['btnCadastro'])) {
                         <div>
                             <label class="label-radio">
                                 Eu concordo em receber outras comunicações da Dry Telecom.
-                                <input type="checkbox" checked="checked" name="radio" />
+                                <input type="checkbox" name="radio" />
                                 <span class="checkmark"></span>
                             </label>
                         </div>

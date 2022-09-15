@@ -131,7 +131,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         </button>
                     </div>
                     <div class="modal-body ml-auto mr-auto">
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
                     </div>
@@ -140,7 +140,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </div>
 
         <div id="row-posts" class="row">
-            <div id="posts-principais" class="col-md-8">
+            <div id="posts-principais" class="col-md-7">
                 <?php
                 $sql = "SELECT post.*, autor.* FROM post INNER JOIN autor ON post.id_autor = autor.id_autor ORDER BY id_post DESC";
                 $select = mysqli_query($conexao, $sql);
@@ -152,7 +152,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
                 while ($result = mysqli_fetch_array($select)) {
                 ?>
-                    <div class="container-chip">
+                    <div class="container-chip mx-auto">
                         <div class="post-header">
                             <div class="post-profile">
                                 <?php if ($result['foto_autor'] != "") { ?>
@@ -170,11 +170,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                                 </div>
                             </div>
                         </div>
-                        <div class="titulo-padrao text-uppercase">
-                            <h1><?= $result['titulo'] ?></h1>
+                        <div>
+                            <h1 class="titulo-padrao text-uppercase"><?= $result['titulo'] ?></h1>
                         </div>
                         <div class="post-text">
-                            <p><?= $result['conteudo'] ?></p>
+                            <?= $result['conteudo'] . " ", $result['segundo_conteudo'], $result['terceiro_conteudo'] ?>
                         </div>
                         <?php
                         if ($result['foto'] != "") {

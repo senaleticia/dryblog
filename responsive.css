@@ -49,7 +49,6 @@
         font-weight: 600;
     }
 
-
     .menu-desk {
         display: none;
     }
@@ -87,13 +86,6 @@
 
     .materia-title {
         font-size: 16px;
-    }
-
-    .container-chip {
-        width: 100%;
-        height: auto;
-        margin: 0;
-        margin-bottom: 45px;
     }
 
     .margem-btn {
@@ -220,7 +212,6 @@
     .caixa-4,
     .caixa-6 {
         height: auto !important;
-
     }
 
     .btn-actions {

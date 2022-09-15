@@ -8,9 +8,12 @@
     color: #777;
 }
 
-.post-full-text li,
-.post-text li {
+.post-full-text li {
     margin-left: 36px;
+}
+
+.post-text ul {
+    display: none;
 }
 
 .post-full-text ol,

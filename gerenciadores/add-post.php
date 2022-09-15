@@ -114,8 +114,6 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
         $nome_quarto_arquivo = uniqid();
         $extensao4 = strtolower(pathinfo($nome_arquivo4, PATHINFO_EXTENSION));
         $foto4 = $nome_quarto_arquivo . "." . $extensao4;
-
-        echo ($foto4);
     }
 
     // Validando o tipo de arquivo enviado para upload
@@ -144,8 +142,8 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     echo ("<script>alert('Não é possível publicar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else if (substr($video, 0, 24) == "https://www.youtube.com/") {
-                    echo ("<script>Não é possível colar o link todo! Cole somente a parte em destaque:
-                    www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b></script>");
+                    echo ("Não é possível colar o link todo! Cole somente a parte em destaque:
+                    www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
                     $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "')";
@@ -248,7 +246,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <input type="text" class="form-control" id="txtTitulo" name="txtTitulo" value="<?= $titulo ?>" required>
             </div>
             <div class="mb-3 align-2">
-                <label class="input-group-text" for="fileFoto">
+                <label class="input-group-text btn-padrao" for="fileFoto">
                     Foto 1 (Foto do Banner):
                     <span class="material-symbols-outlined">file_upload</span>
                 </label>
@@ -260,7 +258,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <textarea style="height: 120px;" class="form-control" id="txtConteudo" name="txtConteudo" cols="30" rows="10" required><?= $conteudo ?></textarea>
             </div>
             <div class="mb-3 align-2">
-                <label class="input-group-text" for="fileFoto2">
+                <label class="input-group-text btn-padrao" for="fileFoto2">
                     Foto 2:
                     <span class="material-symbols-outlined">file_upload</span>
                 </label>
@@ -272,7 +270,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <textarea style="height: 120px;" class="form-control" id="txtSegundoConteudo" name="txtSegundoConteudo" cols="30" rows="10"><?= $conteudo2 ?></textarea>
             </div>
             <div class="mb-3 align-2">
-                <label class="input-group-text" for="fileFoto3">
+                <label class="input-group-text btn-padrao" for="fileFoto3">
                     Foto 3:
                     <span class="material-symbols-outlined">file_upload</span>
                 </label>
@@ -284,7 +282,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <textarea style="height: 120px;" class="form-control" id="txtTerceiroConteudo" name="txtTerceiroConteudo" cols="30" rows="10"><?= $conteudo3 ?></textarea>
             </div>
             <div class="mb-3 align-2">
-                <label class="input-group-text" for="fileFoto4">
+                <label class="input-group-text btn-padrao" for="fileFoto4">
                     Foto 4:
                     <span class="material-symbols-outlined">file_upload</span>
                 </label>
@@ -296,8 +294,8 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <textarea style="height: 120px;" class="form-control" id="txtQuartoConteudo" name="txtQuartoConteudo" cols="30" rows="10"><?= $conteudo4 ?></textarea>
             </div>
             <div class="mb-3">
-                <label for="txtTempoLeitura" class="form-label mr-3" style="background: transparent !important;">Tempo de Leitura (em minutos):</label>
-                <input type="number" class="form-control" id="txtTempoLeitura" name="txtTempoLeitura" value="<?= $tempo_leitura ?>">
+                <label for="txtTempoLeitura" class="form-label mr-3">Tempo de Leitura (em minutos):</label>
+                <input type="number" class="form-control" id="txtTempoLeitura" name="txtTempoLeitura" value="<?= $tempo_leitura ?>" style="background: transparent !important;">
             </div>
             <div class="mb-3">
                 <label for="txtTags" class="form-label mr-3" style="background: transparent !important;">Tag:</label>

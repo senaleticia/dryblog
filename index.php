@@ -170,8 +170,8 @@ if (isset($_GET['modo'])) {
 
             <div class="top-beneficio">
                 <div class="container-experiencia">
-                    <h4 class="materia-title">EXPERIÊNCIAS EXCLUSIVAS</h4>
-                    <p class="materia-desc pt-4">Pensar fora da caixa e fazer tudo diferente está no nosso DNA. Aqui, você encontra um universo de possibilidades para se conectar e desfrutar de experiências exclusivas!</p>
+                    <h4 class="materia-title pt-2">EXPERIÊNCIAS EXCLUSIVAS</h4>
+                    <p class="materia-desc pt-2 px-3">Pensar fora da caixa e fazer tudo diferente está no nosso DNA. Aqui, você encontra um universo de possibilidades para se conectar e desfrutar de experiências exclusivas!</p>
                     <div class="materia-index-img" style="background-image: url('./img/experiencia.jpg');"></div>
                 </div>
             </div>
@@ -409,7 +409,7 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/male-avatar.png" alt="Imagem">
+                            <img src="./img/male-avatar.jpeg" alt="Imagem">
                         </div>
                         <h4 class="nome-usuario" style="margin-top: 30px;">Bruno Carrara</h4>
                         <p class="px-4 py-4">
@@ -425,7 +425,7 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/male-avatar.png" alt="Imagem">
+                            <img src="./img/male-avatar.jpeg" alt="Imagem">
                         </div>
                         <h4 class="nome-usuario" style="margin-top: 30px;">Calebe Lima</h4>
                         <p class="px-4 py-4">
@@ -441,7 +441,7 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/female-avatar.png" alt="Imagem">
+                            <img src="./img/female-avatar.jpeg" alt="Imagem">
                         </div>
                         <h4 class="nome-usuario" style="margin-top: 30px;">Nicole</h4>
                         <p class="px-4 py-4">
@@ -457,7 +457,7 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/male-avatar.png" alt="Imagem">
+                            <img src="./img/male-avatar.jpeg" alt="Imagem">
                         </div>
                         <h4 class="nome-usuario" style="margin-top: 30px;">Lucas Ribeiro</h4>
                         <p class="px-4 py-4">

@@ -41,6 +41,7 @@ if (isset($_GET['modo'])) {
             $data_post = $result['data_post'];
             $hora_post = $result['hora_post'];
 
+            //Adicionando quebra de linhas a cada "Enter" que o usuário der nos campos de texto
             $conteudo = $result['conteudo'];
             $str = $conteudo;
             $order = array("\r\n", "\n", "\r");
@@ -255,7 +256,7 @@ if (isset($_POST['btnComentar'])) {
                         </button>
                     </div>
                     <div class="modal-body ml-auto mr-auto">
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511920000909&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
                     </div>
@@ -387,13 +388,14 @@ if (isset($_POST['btnComentar'])) {
 
     <div id="relacionados">
         <?php
-        $sql_relacionados = "SELECT * FROM post WHERE tags = '" . $tags . "' AND id_post <> " . $id . " LIMIT 4";
+        $sql_relacionados = "SELECT * FROM post WHERE tags LIKE '%" . $tags . "%' AND id_post <> " . $id . " LIMIT 4";
         $select_relacionados = mysqli_query($conexao, $sql_relacionados);
         $relacionados_count = mysqli_num_rows($select_relacionados);
 
-        if ($relacionados_count >= 1) {
+        echo ($sql_relacionados);
+        //if ($relacionados_count >= 1) {
         ?>
-            <div class="titulo-padrao">
+        <!-- <div class="titulo-padrao">
                 <h3 class="titulo-secundario">Relacionados</h3>
             </div>
             <div class="scroll-container">
@@ -407,9 +409,9 @@ if (isset($_POST['btnComentar'])) {
                         </div>
                     <?php } ?>
                 </div>
-            </div>
+            </div> -->
         <?php
-        }
+        //}
         ?>
     </div>
 
