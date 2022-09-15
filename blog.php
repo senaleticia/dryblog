@@ -275,9 +275,18 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="anuncios">
-                        <img src="./img/anuncio-pic.png" alt="Anúncio">
-                    </div>
+                    <?php
+                    $sql_anuncios = "SELECT * FROM anuncios";
+                    $select_anuncios = mysqli_query($conexao, $sql_anuncios);
+
+                    while ($rs_anuncios = mysqli_fetch_array($select_anuncios)) {
+                    ?>
+                        <div class="d-flex justify-content-center">
+                            <a href="./cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
+                                <img class="w-100" src="./upload/arquivos/<?= $rs_anuncios['foto_anuncio'] ?>" alt="Anúncio">
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

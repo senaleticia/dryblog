@@ -30,6 +30,8 @@
     }
 }
 
+@media (min-width: 768px) {}
+
 @media only screen and (max-width: 768px) {
     * {
         font-size: 14px;
@@ -142,15 +144,6 @@
         max-width: 100% !important;
     }
 
-    .container-relacionados {
-        justify-content: flex-start;
-        overflow-x: scroll !important;
-        overflow-y: hidden !important;
-        gap: 32px;
-        box-sizing: border-box;
-        width: max-content !important;
-    }
-
     .card-materia-lateral {
         width: 300px;
     }
@@ -195,7 +188,6 @@
         padding: 15px;
     }
 
-    .container-relacionados::-webkit-scrollbar,
     #section-futebol::-webkit-scrollbar,
     #section-empresas::-webkit-scrollbar,
     #section-entretenimento::-webkit-scrollbar {
@@ -238,22 +230,17 @@
         margin-top: 15px;
     }
 
-    .container-acessados {
-        flex-direction: row;
+    .container-relacionados {
         justify-content: flex-start;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        gap: 20px;
-        width: max-content;
-        padding: 12px 0;
+        overflow-x: scroll !important;
+        overflow-y: hidden !important;
+        gap: 32px;
+        box-sizing: border-box;
+        width: max-content !important;
     }
 
     .tags {
         gap: 22px;
-    }
-
-    #row-posts {
-        gap: 64px;
     }
 
     .banner,
@@ -265,21 +252,9 @@
         font-size: 1.6rem !important;
     }
 
-    #coluna-mais-acessados {
-        order: 1;
-    }
-
-    #posts-principais {
-        order: 2;
-    }
-
     .caixa-tags {
         flex-wrap: wrap !important;
         padding: 12px 48px;
-    }
-
-    .d-flex {
-        justify-content: center !important;
     }
 
     .container-experiencia {
@@ -306,6 +281,10 @@
 
     .btn-padrao span {
         font-size: 18px;
+    }
+
+    .cadastro-anuncio {
+        flex-direction: column;
     }
 }
 
@@ -368,6 +347,43 @@
     }
 
     .text-cobertura {
+        max-width: none;
+    }
+
+    #coluna-mais-acessados {
+        order: 1;
+        max-width: none;
+    }
+
+    #posts-principais {
+        order: 2;
+    }
+
+    .container-relacionados::-webkit-scrollbar,
+    .container-acessados::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scroll-container {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .container-acessados {
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        gap: 20px;
+        width: max-content;
+        padding: 12px 0;
+    }
+
+    #posts-principais {
+        flex: auto;
         max-width: none;
     }
 }

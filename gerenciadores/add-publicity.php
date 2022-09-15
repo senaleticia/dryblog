@@ -7,8 +7,6 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header("location:../login-gerenciador.php");
 };
 
-//$id_autor = $_SESSION['id_autor'];
-
 //Conexão com o banco de dados
 require_once("../bd/conexao.php");
 $conexao = conexaoMySql();
@@ -47,16 +45,14 @@ if (isset($_FILES['fotoAnuncio'])) {
                 exit();
             }
 
-            /*if ($select = mysqli_query($conexao, $sql)) {
+            if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Anúncio cadastrado com sucesso!')</script>");
                 echo ($sql);
             } else {
                 echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
                 echo ($sql);
-            }*/
+            }
         }
-    } else {
-        printf(mysqli_error($conexao));
     }
 }
 ?>

@@ -103,6 +103,8 @@ if (isset($_GET['modo'])) {
                 $comentarios_count = $comentarios_count . " comentários";
             }
         }
+    } else {
+        header('location: blog.php');
     }
 } else {
     header('location: blog.php');

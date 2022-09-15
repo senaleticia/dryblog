@@ -1,22 +1,25 @@
 <?php
-    if(isset($_GET['modo'])){
-        session_start();
+if ($_SESSION['gerenciadorAutenticado'] != true) {
+    header('location: ../login-gerenciador');
+}
 
-        require_once("../bd/conexao.php");
-        $conexao = conexaoMySql();
+if (isset($_GET['modo'])) {
+    session_start();
 
-        if($_GET['modo'] == 'excluir'){
-            $id = $_GET['id'];
+    require_once("../bd/conexao.php");
+    $conexao = conexaoMySql();
 
-            $sql = "DELETE FROM post WHERE id_post = ".$id;
+    if ($_GET['modo'] == 'excluir') {
+        $id = $_GET['id'];
 
-            if(mysqli_query($conexao, $sql)){
-                //echo("<script>alert('Post excluído com sucesso')</script>");
-                echo("<script>history.back()</script>");
-            }else{
-                echo("<script>alert('Erro ao excluir o post')</script>");
-                echo("<script>history.back()</script>");
-            }
+        $sql = "DELETE FROM post WHERE id_post = " . $id;
+
+        if (mysqli_query($conexao, $sql)) {
+            //echo("<script>alert('Post excluído com sucesso')</script>");
+            echo ("<script>history.back()</script>");
+        } else {
+            echo ("<script>alert('Erro ao excluir o post')</script>");
+            echo ("<script>history.back()</script>");
         }
     }
-?>
+}

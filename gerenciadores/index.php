@@ -43,9 +43,12 @@ $conexao = conexaoMySql();
     <div class="container my-5">
         <h1 class="mb-4 text-center">Lista de Postagens</h1>
 
-        <div class="my-5">
+        <div class="my-5 d-flex justify-content-between">
             <a href="./add-post.php">
                 <button type="button" class="btn-secundario">CRIAR POST NOVO</button>
+            </a>
+            <a href="./add-publicity.php">
+                <button type="button" class="btn-secundario">ADICIONAR ANÚNCIO</button>
             </a>
         </div>
 

@@ -6,20 +6,38 @@ $conexao = conexaoMySql();
 
 $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
-if (isset($_POST['btnCadastro'])) {
-    $nome_cadastro = $_POST['txtNomeCadastro'];
-    $email_cadastro = $_POST['txtEmailCadastro'];
-    $telefone_cadastro = $_POST['txtTelefoneCadastro'];
-    $profissao_cadastro = $_POST['txtProfissaoCadastro'];
+if (isset($_GET['modo'])) {
+    if ($_GET['modo'] == 'cadastrar') {
+        $anuncio = $_GET['anuncio'];
 
-    $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "')";
+        $anuncio_detalhes = "SELECT * FROM anuncios WHERE id_anuncio = " . $anuncio;
+        $select_detalhes = mysqli_query($conexao, $anuncio_detalhes);
 
-    if ($select = mysqli_query($conexao, $sql)) {
-        echo ("<script>alert('Cadastro feito com sucesso')</script>");
+        if ($rs_detalhes = mysqli_fetch_array($select_detalhes)) {
+            $foto_anuncio = $rs_detalhes['foto_anuncio'];
+        }
+
+        if (isset($_POST['btnCadastro'])) {
+            $nome_cadastro = $_POST['txtNomeCadastro'];
+            $email_cadastro = $_POST['txtEmailCadastro'];
+            $telefone_cadastro = $_POST['txtTelefoneCadastro'];
+            $profissao_cadastro = $_POST['txtProfissaoCadastro'];
+            $receber_informacoes = isset($_POST['rdoReceberInformacoes']) ? 1 : 0;
+
+            $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao, receber_informacoes) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "', " . $receber_informacoes . ")";
+
+            if ($select = mysqli_query($conexao, $sql)) {
+                echo ("<script>alert('Cadastro feito com sucesso')</script>");
+            } else {
+                echo ("<script>alert('Erro ao fazer o cadastro')</script>");
+                echo ($sql);
+            }
+        }
     } else {
-        echo ("<script>alert('Erro ao fazer o cadastro')</script>");
-        echo ($sql);
+        header('location: blog.php');
     }
+} else {
+    header('location: blog.php');
 }
 ?>
 <!DOCTYPE html>
@@ -131,9 +149,9 @@ if (isset($_POST['btnCadastro'])) {
 
         <h2 class="py-4 text-center">Anúncio Dry Telecom</h2>
 
-        <div class="d-flex flex-row">
-            <div class="foto-anuncio my-auto">
-                <img src="./img/anuncio-pic.png" alt="Anúncio">
+        <div class="cadastro-anuncio">
+            <div class="foto-anuncio my-auto mx-auto">
+                <img class="w-75" src="./upload/arquivos/<?= $foto_anuncio ?>" alt="Anúncio">
             </div>
 
             <div class="caixa-form-anuncio mt-5">
@@ -159,18 +177,18 @@ if (isset($_POST['btnCadastro'])) {
                             <input type="text" class="input-sunk-white" id="txtProfissaoCadastro" name="txtProfissaoCadastro" placeholder="Profissão*" required onkeypress="return validarEntrada(event, 'caracter');">
                         </div>
                     </div>
-                    <div class="caixa-checkbox mb-4">
+                    <div class="caixa-checkbox mb-4 mx-auto">
                         <div>
                             <label class="label-radio">
                                 Eu concordo em receber outras comunicações da Dry Telecom.
-                                <input type="checkbox" name="radio" />
+                                <input type="checkbox" name="radio" value="true">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
                         <div>
                             <label class="label-radio">
                                 Eu concordo em permitir que a Dry Telecom armazene e processe meus dados pessoais.*
-                                <input type="checkbox" name="radio" />
+                                <input type="checkbox" name="rdoReceberInformacoes" required>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
