@@ -15,6 +15,8 @@ if (isset($_GET['modo'])) {
 
         if ($rs_detalhes = mysqli_fetch_array($select_detalhes)) {
             $foto_anuncio = $rs_detalhes['foto_anuncio'];
+        } else {
+            header('location: pagina-inexistente.php');
         }
 
         if (isset($_POST['btnCadastro'])) {
@@ -24,7 +26,7 @@ if (isset($_GET['modo'])) {
             $profissao_cadastro = $_POST['txtProfissaoCadastro'];
             $receber_informacoes = isset($_POST['rdoReceberInformacoes']) ? 1 : 0;
 
-            $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao, receber_informacoes) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "', " . $receber_informacoes . ")";
+            $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao, receber_informacoes, id_anuncio) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "', " . $receber_informacoes . ", " . $anuncio . ")";
 
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Cadastro feito com sucesso')</script>");
@@ -150,7 +152,7 @@ if (isset($_GET['modo'])) {
         <h2 class="py-4 text-center">Anúncio Dry Telecom</h2>
 
         <div class="cadastro-anuncio">
-            <div class="foto-anuncio my-auto mx-auto">
+            <div class="foto-anuncio">
                 <img class="w-75" src="./upload/arquivos/<?= $foto_anuncio ?>" alt="Anúncio">
             </div>
 

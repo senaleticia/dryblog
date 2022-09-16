@@ -100,22 +100,18 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h2>Ação Inválida</h2>
+                    <div class="modal-header pt-4">
+                        <h2 class="pl-4">Ação Inválida</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Você precisa estar autenticado para realizar essa ação</p>
+                        <p class="text-center">Você precisa estar autenticado para realizar essa ação</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="./login.php">
-                            <button type="button" class="btn-padrao">Entrar</button>
-                        </a>
-                        <a href="./cadastrar-usuario.php">
-                            <button type="button" class="btn-padrao">Cadastrar-se</button>
-                        </a>
+                        <a href="./login.php" class="btn-secundario btn-modal">Entrar</a>
+                        <a href="./cadastrar-usuario.php" class="btn-padrao btn-modal">Cadastrar-se</a>
                     </div>
                 </div>
             </div>
@@ -251,7 +247,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <div class="position-relative d-flex">
                             <input type="text" id="caixaPesquisa" name="caixaPesquisa" placeholder="Pesquisar">
                             <button class="icon-search">
-                                <img src="./img/icon-search.png" alt="Pesquisar">
+                                <span class="material-symbols-outlined">search</span>
                             </button>
                         </div>
                     </form>

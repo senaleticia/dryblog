@@ -20,7 +20,6 @@ if (isset($_FILES['fotoAnuncio'])) {
 
     if ($arquivo['error']) {
         echo ('<script>alert("Falha ao enviar foto")</script>');
-        echo ($arquivo);
     }
 
     $diretorio = '../upload/arquivos/';
@@ -32,22 +31,16 @@ if (isset($_FILES['fotoAnuncio'])) {
         die('Esse tipo de arquivo não é aceito');
     }
 
-    if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo)) {
+    if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao)) {
         if (isset($_POST['btnCadastrarPubli'])) {
             $foto_anuncio = $novo_nome_arquivo . "." . $extensao;
             $descricao_anuncio = $_POST['txtDescricaoAnuncio'];
 
             $sql = "INSERT INTO anuncios (foto_anuncio, descricao_anuncio) VALUES ('" . $foto_anuncio . "', '" . $descricao_anuncio . "')";
-            $select = mysqli_query($conexao, $sql);
-
-            if (!$select) {
-                printf("Error: %s\n", mysqli_error($conexao));
-                exit();
-            }
 
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Anúncio cadastrado com sucesso!')</script>");
-                echo ($sql);
+                //echo ("<script>history.back()</script>");
             } else {
                 echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
                 echo ($sql);

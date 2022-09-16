@@ -82,6 +82,11 @@
         font-size: 10px;
     }
 
+    .btn-modal {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
     .btn-center {
         margin-top: 50px !important;
     }

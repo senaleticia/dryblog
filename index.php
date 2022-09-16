@@ -409,14 +409,14 @@ if (isset($_GET['modo'])) {
                 <div class="card-materia-lateral mx-auto px-3 py-3">
                     <div class="border-slide">
                         <div class="slide-img">
-                            <img src="./img/male-avatar.jpeg" alt="Imagem">
+                            <img src="./img/cliente-chip-do-vascao.jpeg" alt="Cliente Chip do Vascão">
                         </div>
-                        <h4 class="nome-usuario" style="margin-top: 30px;">Bruno Carrara</h4>
+                        <h4 class="nome-usuario" style="margin-top: 30px;">Diego Silva</h4>
                         <p class="px-4 py-4">
-                            Moro no interior e trabalho em São Paulo. O chip funciona PERFEITAMENTE, internet rápida e sempre com sinal. Vale muito a pena!
+                            Usar o chip do Vasco sempre foi uma experiência bacana, moro no interior de Sergipe, internet rápida, ligação excelente, acesso ao Instagram para ver notícias do meu time do coração. Chip do Vascão, sempre do teu lado até o fim.
                         </p>
                         <div class="logo-operadora">
-                            <img src="./img/fala-timao.png" alt="Fala Timão">
+                            <img src="./img/chip-do-vascao.png" alt="Chip do Vascão">
                         </div>
                     </div>
                 </div>
