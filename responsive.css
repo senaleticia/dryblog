@@ -30,8 +30,6 @@
     }
 }
 
-@media (min-width: 768px) {}
-
 @media only screen and (max-width: 768px) {
     * {
         font-size: 14px;
@@ -150,7 +148,7 @@
     }
 
     .card-materia-lateral {
-        width: 300px;
+        width: 300px !important;
     }
 
     #section-futebol,

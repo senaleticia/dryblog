@@ -18,10 +18,7 @@ textarea {
     resize: none !important;
 }
 
-a {
-    color: #181818;
-}
-
+a,
 a:link,
 .card-materia-lateral>a:hover,
 .footer-menu>a:hover {
@@ -73,7 +70,7 @@ button:focus {
 .btn-secundario {
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
     border-radius: 40px;
-    color: white;
+    color: white !important;
     background-color: #FE5000;
     border: none;
     padding: 12px 24px;
@@ -87,7 +84,7 @@ button:focus {
 
 .btn-secundario:hover {
     transition: .3s;
-    color: #FE5000;
+    color: #FE5000 !important;
     background-color: white;
     outline: 1px solid #FE5000;
 }
@@ -192,6 +189,11 @@ li {
 
 .borda-botao {
     border: solid 1px #FE5000;
+}
+
+.inativo {
+    cursor: no-drop;
+    opacity: 0.4;
 }
 
 .logout,
@@ -393,6 +395,16 @@ li {
     -webkit-box-orient: vertical;
 }
 
+.limite-anuncio {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    /* fallback */
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
 .post-img,
 .post-img>img {
     width: auto;
@@ -515,7 +527,6 @@ li {
 .titulo-secundario {
     color: #F25E0C;
     margin-top: 36px;
-    margin-bottom: 36px;
     font-size: 1.6rem;
     font-weight: 500;
     text-align: center;
@@ -524,7 +535,7 @@ li {
 .card-materia-lateral {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 10px 0;
     padding: 10px;
     flex-direction: column;
     background-color: #E4E6E6;
@@ -535,6 +546,7 @@ li {
 }
 
 .container-lado-direito .card-materia-lateral {
+    width: 95%;
     max-width: none;
 }
 
@@ -653,6 +665,7 @@ li {
 .container-acessados {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #comentarios {
@@ -899,17 +912,12 @@ li {
     margin-top: 40px;
 }
 
-#section-slide .slick-track div {
-    height: auto;
-}
-
 .slide-img,
 .slide-img>img {
-    position: absolute !important;
+    position: absolute;
     width: 62px;
-    height: 62px;
+    height: 62px !important;
     top: -25px;
-    margin-left: calc(50% - 31px);
     border-radius: 50px;
 }
 
@@ -921,6 +929,10 @@ li {
     border: 1px solid #FE5000;
     border-radius: 20px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .logo-operadora {

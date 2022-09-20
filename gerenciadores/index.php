@@ -44,11 +44,11 @@ $conexao = conexaoMySql();
         <h1 class="mb-4 text-center">Lista de Postagens</h1>
 
         <div class="my-5 d-flex justify-content-between">
-            <a href="./add-post.php">
-                <button type="button" class="btn-secundario">CRIAR POST NOVO</button>
+            <a href="./add-post.php" class="btn-secundario">
+                CRIAR POST NOVO
             </a>
-            <a href="./add-publicity.php">
-                <button type="button" class="btn-secundario">ADICIONAR ANÚNCIO</button>
+            <a href="./publicity-list.php" class="btn-secundario disabled">
+                VER ANÚNCIOS
             </a>
         </div>
 

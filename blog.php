@@ -255,7 +255,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <h3 class="titulo-secundario">MAIS ACESSADOS</h3>
                     </div>
                     <div class="scroll-container">
-                        <div class="container-acessados">
+                        <div class="container-acessados pt-3">
                             <?php
                             $sql_popular = "SELECT post.*, autor.nome_autor FROM post INNER JOIN autor ON post.id_autor = autor.id_autor LIMIT 3";
                             $select_popular = mysqli_query($conexao, $sql_popular);
@@ -277,7 +277,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
                     while ($rs_anuncios = mysqli_fetch_array($select_anuncios)) {
                     ?>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center py-3">
                             <a href="./cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
                                 <img class="w-100" src="./upload/arquivos/<?= $rs_anuncios['foto_anuncio'] ?>" alt="Anúncio">
                             </a>
