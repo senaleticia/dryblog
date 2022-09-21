@@ -11,6 +11,22 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
 require_once("../bd/conexao.php");
 $conexao = conexaoMySql();
 
+$descricao_anuncio = (string) "";
+$foto_anuncio = (string) "";
+$botao = "Cadastrar";
+
+if (isset($_GET['modo']) == 'editar') {
+    $sql = "SELECT * FROM anuncios WHERE id_anuncio = " . $_GET['id'];
+    $select = mysqli_query($conexao, $sql);
+
+    if ($result = mysqli_fetch_array($select)) {
+        $descricao_anuncio = $result['descricao_anuncio'];
+        $foto_anuncio = $result['foto_anuncio'];
+
+        $botao = "Atualizar";
+    }
+}
+
 if (isset($_FILES['fotoAnuncio'])) {
     $arquivo = $_FILES['fotoAnuncio'];
 
@@ -20,28 +36,53 @@ if (isset($_FILES['fotoAnuncio'])) {
 
     if ($arquivo['error']) {
         echo ('<script>alert("Falha ao enviar foto")</script>');
-        echo ($arquivo);
     }
 
     $diretorio = '../upload/arquivos/';
-    $nome_arquivo = $arquivo['name'];
-    $novo_nome_arquivo = uniqid();
-    $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
 
-    if ($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png') {
-        die('Esse tipo de arquivo não é aceito');
+    if ($arquivo['name'] != "") {
+        $nome_arquivo = $arquivo['name'];
+        $novo_nome_arquivo = uniqid();
+        $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
+        $foto_anuncio = $novo_nome_arquivo . "." . $extensao;
     }
 
-    if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao)) {
+    if ($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != '') {
+        die('Esse tipo de arquivo não é aceito');
+    } else if ($extensao == '') {
         if (isset($_POST['btnCadastrarPubli'])) {
-            $foto_anuncio = $novo_nome_arquivo . "." . $extensao;
-            $descricao_anuncio = $_POST['txtDescricaoAnuncio'];
+            $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
 
-            $sql = "INSERT INTO anuncios (foto_anuncio, descricao_anuncio) VALUES ('" . $foto_anuncio . "', '" . $descricao_anuncio . "')";
+            if ($botao == "Cadastrar") {
+                $sql = "INSERT INTO anuncios (descricao_anuncio) VALUES ('" . $descricao_anuncio . "')";
+            } else if ($botao == "Atualizar") {
+                $sql = "UPDATE anuncios SET descricao_anuncio = '" . $descricao_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
+            }
 
             if ($select = mysqli_query($conexao, $sql)) {
-                echo ("<script>alert('Anúncio cadastrado com sucesso!')</script>");
-                header('location: index.php');
+                echo ("<script>alert('Anúncio cadastrado com sucesso')</script>");
+                echo ($sql);
+            } else {
+                echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
+                echo ($sql);
+            }
+        }
+    } else {
+        move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao);
+
+        if (isset($_POST['btnCadastrarPubli'])) {
+            $foto_anuncio;
+            $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
+
+            if ($botao == "Cadastrar") {
+                $sql = "INSERT INTO anuncios (foto_anuncio, descricao_anuncio) VALUES ('" . $foto_anuncio . "', '" . $descricao_anuncio . "')";
+            } else if ($botao == "Atualizar") {
+                $sql = "UPDATE anuncios SET foto_anuncio = '" . $foto_anuncio . "', descricao_anuncio = '" . $descricao_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
+            }
+
+            if ($select = mysqli_query($conexao, $sql)) {
+                echo ("<script>alert('Anúncio cadastrado com sucesso')</script>");
+                echo ($sql);
             } else {
                 echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
                 echo ($sql);
@@ -71,28 +112,18 @@ if (isset($_FILES['fotoAnuncio'])) {
         <form action="#" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleFormControlFile1">Foto do Anúncio</label>
-                <input type="file" class="form-control-file" id="fotoAnuncio" name="fotoAnuncio" value="" selected>
+                <input type="file" class="form-control-file" id="fotoAnuncio" name="fotoAnuncio">
             </div>
-            <!-- <div class="mb-3 align-2">
-                <label class="input-group-text btn-padrao" for="fotoAnuncio">
-                    Foto do Anúncio:
-                    <span class="material-symbols-outlined">file_upload</span>
-                </label>
-                <p class="desc-foto-anuncio"></p>
-                <input type="file" class="form-control-file" id="fotoAnuncio" name="fotoAnuncio" value="">
-
-                <div class="preview-0"></div>
-            </div> -->
             <div class="py-3">
                 <label for="txtDescricaoAnuncio" class="form-label">Descrição do Anúncio:</label>
-                <textarea style="height: 120px;" class="textarea-sunk-white" id="txtDescricaoAnuncio" name="txtDescricaoAnuncio" required></textarea>
+                <textarea style="height: 120px;" class="textarea-sunk-white" id="txtDescricaoAnuncio" name="txtDescricaoAnuncio" required><?= $descricao_anuncio ?></textarea>
             </div>
             <div class="my-4 d-flex justify-content-between">
                 <button type="submit" class="btn-secundario align-items-center" id="btnCadastrarPubli" name="btnCadastrarPubli">
                     <span class="material-symbols-outlined">done</span>
-                    Cadastrar
+                    <?= $botao ?>
                 </button>
-                <a href="./index.php" class="btn-padrao">
+                <a href="./publicity-list.php" class="btn-padrao">
                     <span class="material-symbols-outlined">arrow_back</span>
                     Voltar
                 </a>
