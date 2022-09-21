@@ -37,10 +37,11 @@ if (isset($_POST['btnLogin'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
@@ -48,26 +49,27 @@ if (isset($_POST['btnLogin'])) {
 </head>
 
 <body>
-    <div class="materia-title">
-        <h2 class="py-4">Login - Dry Telecom</h2>
-    </div>
-    <div class="container-login">
-        <span id="msg-error"></span>
-        <form action="#" method="POST" id="loginUsuario" name="loginUsuario">
-            <div class="mb-3">
-                <label for="txtEmailUsuario" class="form-label">Email:&nbsp;&nbsp;</label>
-                <input class="input-sunk-white" type="email" id="txtEmailUsuario" name="txtEmailUsuario" aria-describedby="emailHelp" placeholder="Email" required>
-            </div>
-            <div class="mb-3">
-                <label for="txtSenhaUsuario" class="form-label">Senha:&nbsp;</label>
-                <input class="input-sunk-white" type="password" id="txtSenhaUsuario" name="txtSenhaUsuario" placeholder="Senha" required>
-            </div>
-            <div class="d-flex justify-content-around">
-                <button type="submit" class="btn-padrao" name="btnLogin">Login</button>
-            </div>
-        </form>
-    </div>
     <div class="container">
+        <div class="materia-title">
+            <h2 class="py-4">Login - Dry Telecom</h2>
+        </div>
+        <div class="container-login">
+            <span id="msg-error"></span>
+            <form action="#" method="POST" id="loginUsuario" name="loginUsuario" style="width: 75%;">
+                <div class="mb-3">
+                    <label for="txtEmailUsuario" class="form-label">Email:&nbsp;&nbsp;</label>
+                    <input class="input-sunk-white" type="email" id="txtEmailUsuario" name="txtEmailUsuario" aria-describedby="emailHelp" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="txtSenhaUsuario" class="form-label">Senha:&nbsp;</label>
+                    <input class="input-sunk-white" type="password" id="txtSenhaUsuario" name="txtSenhaUsuario" placeholder="Senha" required>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <button type="submit" class="btn-padrao" name="btnLogin">Login</button>
+                </div>
+            </form>
+        </div>
+
         <h5 class="text-center" style="margin-top: 90px;">Não possui conta? Crie uma agora mesmo!</h5>
 
         <div class="d-flex justify-content-center my-4">

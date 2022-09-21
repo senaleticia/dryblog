@@ -155,7 +155,8 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             //Rodando a conexão com o banco de dados e o script SQL
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Post inserido com sucesso')</script>");
-                header("location: index.php");
+                //header("location: index.php");
+                echo ($sql);
             } else {
                 echo ("<script>alert('Erro ao inserir post')</script>");
                 echo ($sql);
@@ -211,7 +212,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             //Rodando a conexão com o banco de dados e o script SQL
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Post inserido com sucesso')</script>");
-                header("location: index.php");
+                echo ($sql);
             } else {
                 echo ("<script>alert('Erro ao inserir post')</script>");
                 echo ($sql);

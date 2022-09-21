@@ -20,6 +20,7 @@ if (isset($_FILES['fotoAnuncio'])) {
 
     if ($arquivo['error']) {
         echo ('<script>alert("Falha ao enviar foto")</script>');
+        echo ($arquivo);
     }
 
     $diretorio = '../upload/arquivos/';
@@ -40,7 +41,7 @@ if (isset($_FILES['fotoAnuncio'])) {
 
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Anúncio cadastrado com sucesso!')</script>");
-                //echo ("<script>history.back()</script>");
+                header('location: index.php');
             } else {
                 echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
                 echo ($sql);

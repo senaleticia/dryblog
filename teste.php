@@ -3,6 +3,14 @@ session_start();
 
 require './bd/conexao.php';
 $conexao = conexaoMySql();
+
+// Variáveis para o upload de foto
+$diretorio = "./upload/arquivos";
+$tamanho_permitido = (int) 2097152;
+$arquivos_permitidos = array("image/jpeg", "image/jpg", "image.png");
+
+if (isset($_POST['btnEnviar'])) {
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -56,11 +64,12 @@ $conexao = conexaoMySql();
     </nav>
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-center">
-            <a href="./cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
-                <img src="./img/anuncio-pic.png" alt="Anúncio">
-            </a>
-        </div>
+        <h1>Upload de foto teste</h1>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <input type="file" name="fotoAnuncio" id="fotoAnuncio">
+
+            <button type="submit" class="btn-padrao" name="btnEnviar">Enviar</button>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -70,23 +79,6 @@ $conexao = conexaoMySql();
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
     <script src="./script.js"></script>
-
-    <script>
-        let url = window.location.href;
-        //let urlSplit = url.split('/')[0];
-
-        function copiarLink() {
-            alert(urlSplit);
-            Clipboard
-        }
-
-        copiarLink();
-
-        /*document.getElementById('compartilhar').addEventListener('click', copiarLink);
-        function copiarLink(){
-            let url = window.location.href;
-        }*/
-    </script>
 
 </body>
 

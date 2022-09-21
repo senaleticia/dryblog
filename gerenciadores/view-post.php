@@ -168,7 +168,7 @@ if (isset($_GET['modo'])) {
                         </span>
                     </button>
                 </a>
-                <a onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete-post.php?modo=excluir&id=<?= $result['id_post'] ?>">
+                <a onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>">
                     <button class="btn-padrao">
                         <span class="material-symbols-outlined">
                             delete

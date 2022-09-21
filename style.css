@@ -56,6 +56,10 @@ button:focus {
     text-decoration: none;
 }
 
+.btn-outline-danger:focus-visible {
+    border-color: #DC3545;
+}
+
 .post-list {
     background-color: #EBEBEB;
     margin: 10px;
@@ -65,28 +69,6 @@ button:focus {
     display: block;
     padding: 0.75rem 1.25rem;
     color: #505050;
-}
-
-.btn-secundario {
-    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
-    border-radius: 40px;
-    color: white !important;
-    background-color: #FE5000;
-    border: none;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: .3s;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;
-}
-
-.btn-secundario:hover {
-    transition: .3s;
-    color: #FE5000 !important;
-    background-color: white;
-    outline: 1px solid #FE5000;
 }
 
 .post-video {
@@ -163,7 +145,7 @@ li {
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
     border-radius: 40px;
     transition: 0.3s;
-    color: #FE5000;
+    color: #FE5000 !important;
     border: none;
     min-width: 140px;
     box-sizing: border-box;
@@ -176,6 +158,28 @@ li {
 .btn-menor {
     margin-top: 5%;
     padding: 8px 16px;
+}
+
+.btn-secundario {
+    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
+    border-radius: 40px;
+    color: white !important;
+    background-color: #FE5000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .3s;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-secundario:hover {
+    transition: .3s;
+    color: #FE5000 !important;
+    background-color: white;
+    outline: 1px solid #FE5000;
 }
 
 .btn-padrao:hover {
@@ -1385,5 +1389,10 @@ text {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 75%;
+    max-width: 50%;
+}
+
+.img-anuncio,
+.img-anuncio>img {
+    max-height: 50vh;
 }
