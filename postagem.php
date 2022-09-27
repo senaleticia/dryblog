@@ -377,7 +377,8 @@ if (isset($_POST['btnComentar'])) {
                                 arrow_back_ios_new
                             </span>
                         </button>
-                        <button class="btn-padrao font-weight-bold" onclick="copyToClipBoard()">
+                        <input type="text" id="copy-link" value="http://localhost/dryblog/postagem.php?modo=visualizar&id=<?= $_GET['id'] ?>">
+                        <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
                             <span class="material-symbols-outlined">
                                 share
                             </span>
@@ -394,7 +395,6 @@ if (isset($_POST['btnComentar'])) {
         $select_relacionados = mysqli_query($conexao, $sql_relacionados);
         $relacionados_count = mysqli_num_rows($select_relacionados);
 
-        echo ($sql_relacionados);
         //if ($relacionados_count >= 1) {
         ?>
         <!-- <div class="titulo-padrao">

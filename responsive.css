@@ -1,12 +1,4 @@
 @media only screen and (max-width: 460px) {
-
-    .caixa-2,
-    .caixa-3,
-    .caixa-5,
-    .caixa-background {
-        height: 50vh !important;
-    }
-
     #cobertura {
         padding-top: 128px;
         padding-bottom: 128px;
@@ -22,13 +14,17 @@
     }
 
     section {
-        padding: 72px 0;
+        padding: 46px 0;
     }
 
     .bg-mobile {
         height: 350px !important;
     }
 }
+
+/* _::-webkit-full-page-media, _:future, :root .safari_only {
+    
+} */
 
 @media only screen and (max-width: 768px) {
     * {
@@ -39,6 +35,10 @@
     .titulo-padrao>h1,
     .conexao {
         font-size: 28px !important;
+    }
+
+    #clientes .titulo-padrao>h1 {
+        font-size: 1.7rem !important;
     }
 
     h2 {
@@ -69,7 +69,7 @@
         left: 0;
         width: 100%;
         z-index: 5;
-        background-color: #EBEBEB;
+        background-color: #FE5000;
         text-align: center;
         box-sizing: border-box;
         padding: 20px 0;
@@ -169,7 +169,7 @@
         padding: 15px;
     }
 
-    .caixa-1 {
+    .bg-laricel {
         background-image: url('./img/bg-laricel-mobile.png');
     }
 
@@ -195,18 +195,6 @@
     #section-empresas::-webkit-scrollbar,
     #section-entretenimento::-webkit-scrollbar {
         display: none;
-    }
-
-    .caixa-2,
-    .caixa-3,
-    .caixa-5,
-    .caixa-background {
-        height: 60vh !important;
-    }
-
-    .caixa-4,
-    .caixa-6 {
-        height: auto !important;
     }
 
     .btn-actions {
@@ -288,6 +276,18 @@
 
     .cadastro-anuncio {
         flex-direction: column;
+    }
+
+    .post-buttons {
+        gap: 6px;
+    }
+
+    #row-posts {
+        gap: 0;
+    }
+
+    .img-app {
+        flex-wrap: wrap;
     }
 }
 

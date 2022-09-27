@@ -91,10 +91,6 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             </div>
         </div>
     </nav>
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <span class="material-symbols-outlined">arrow_back</span>
-        VOLTAR
-    </button>
 
     <div class="container">
         <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -134,6 +130,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 </div>
             </div>
         </div>
+
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
 
         <div id="row-posts" class="row">
             <div id="posts-principais" class="col-md-7">
@@ -226,11 +227,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                                     <span class="number-actions"><?= $comentarios_count ?></span>
                                 </button>
                             </a>
-                            <button class="btn-actions pt-2 btn-share" style="display: flex; justify-content: center; gap: 5px;" onclick="copyToClipBoard2()">
+                            <textarea class="copy-link">http://localhost/dryblog/postagem.php?modo=visualizar&id=<?= $result['id_post'] ?></textarea>
+                            <button class="btn-actions pt-2 copy-button" style="display: flex; justify-content: center; gap: 5px;">
                                 <span class="material-symbols-outlined" style="color: #FE5000;">
                                     share
                                 </span>
-                                <textarea style="font-size: 0; z-index: -1; position: absolute;" id="textArea2">localhost/dryblog/postagem.php?modo=visualizar&id=<?= $result['id_post'] ?></textarea>
                             </button>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -243,7 +244,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             </div>
             <div id="coluna-mais-acessados" class="col-md-4">
                 <div class="container-lado-direito">
-                    <form action="pesquisa.php" method="GET">
+                    <form id="form-pesquisa" action="pesquisa.php" method="GET">
                         <div class="position-relative d-flex">
                             <input type="text" id="caixaPesquisa" name="caixaPesquisa" placeholder="Pesquisar">
                             <button class="icon-search">
@@ -352,6 +353,13 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
+
+        $('form-pesquisa').submit(function() {
+            $(this)[0].reset();
+        })
+
+        const pesquisaInput = document.querySelector('#caixaPesquisa');
+        console.log(pesquisaInput);
     </script>
 
 </body>

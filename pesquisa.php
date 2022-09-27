@@ -104,10 +104,6 @@ if (!$select) {
             </div>
         </div>
     </nav>
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <span class="material-symbols-outlined">arrow_back</span>
-        VOLTAR
-    </button>
 
     <div class="container">
         <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
@@ -127,6 +123,11 @@ if (!$select) {
                 </div>
             </div>
         </div>
+
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
 
         <div class="container-pesquisa">
             <?php

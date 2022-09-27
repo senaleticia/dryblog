@@ -3,14 +3,6 @@ session_start();
 
 require './bd/conexao.php';
 $conexao = conexaoMySql();
-
-// Variáveis para o upload de foto
-$diretorio = "./upload/arquivos";
-$tamanho_permitido = (int) 2097152;
-$arquivos_permitidos = array("image/jpeg", "image/jpg", "image.png");
-
-if (isset($_POST['btnEnviar'])) {
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -64,13 +56,13 @@ if (isset($_POST['btnEnviar'])) {
     </nav>
 
     <div class="container mt-5">
-        <h1>Upload de foto teste</h1>
-        <form action="#" method="post" enctype="multipart/form-data">
-            <input type="file" name="fotoAnuncio" id="fotoAnuncio">
-
-            <button type="submit" class="btn-padrao" name="btnEnviar">Enviar</button>
-        </form>
+        <input type="text" id="textToCopy" value="https://drytelecom.com.br/dryblog/postagem.php?modo=visualizar&id=33">
+        <button id="copiar" onclick="copiarLink()">Copiar</button>
     </div>
+
+    <script>
+
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

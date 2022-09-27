@@ -91,10 +91,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             </div>
         </div>
     </nav>
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <span class="material-symbols-outlined">arrow_back</span>
-        VOLTAR
-    </button>
+
     <div class="container">
         <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -113,6 +110,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 </div>
             </div>
         </div>
+
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
 
         <h1 class="titulo-padrao mt-5">Página não encontrada!</h1>
         <p class="text-center">Desculpe, essa página foi removida</p>

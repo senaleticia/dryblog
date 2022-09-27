@@ -207,8 +207,7 @@ li {
 }
 
 .margem-btn {
-    margin-top: 54px;
-    margin-left: 242px;
+    margin-top: 5%;
 }
 
 .container-chip {
@@ -271,19 +270,15 @@ li {
     margin-right: auto;
 }
 
-.caixa-1,
-.caixa-2,
-.caixa-3,
-.caixa-4,
 .caixa-background {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     position: relative;
 }
 
-.caixa-1 {
+.bg-laricel {
     background-image: url('./img/bg-laricel.png');
     height: 50vh !important;
 }
@@ -909,7 +904,6 @@ li {
     align-items: center;
     background-size: cover;
     background-position: center;
-    padding: 0 !important;
 }
 
 #section-slide .slick-track {
@@ -1024,7 +1018,6 @@ li {
 
 .slider-midia .slick-list {
     width: 100% !important;
-    margin-left: 8px;
     padding-top: 30px;
 }
 
@@ -1069,6 +1062,11 @@ li {
 
 .text-aplicativo {
     max-width: 80%;
+}
+
+.img-app {
+    display: flex;
+    justify-content: center;
 }
 
 .img-app img:hover {
@@ -1395,4 +1393,9 @@ text {
 .img-anuncio,
 .img-anuncio>img {
     max-height: 50vh;
+}
+
+#copy-link,
+.copy-link {
+    display: none;
 }

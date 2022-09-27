@@ -112,3 +112,18 @@ function limitarCaracteres() {
 }
 
 limitarCaracteres();
+
+function copiarLink() {
+    let copyText = document.getElementById('copy-link');
+
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(copyText.value);
+
+    if (copyText.value) {
+        alert("Texto copiado: " + copyText.value);
+    } else {
+        alert("Erro ao copiar o link!");
+    }
+}

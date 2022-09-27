@@ -130,7 +130,7 @@ if (isset($_GET['modo'])) {
             <div class="titulo-padrao text-center">
                 <h1 class="font-weight-bold">Uma operadora como você nunca viu</h1>
             </div>
-            <div class="subtitulo">
+            <div class="subtitulo text-center mt-3">
                 Saia do passado! Moderna, prática e sem burocracia, a Dry é uma operadora digital criada para conectar você com o futuro da telefonia!
             </div>
         </div>
@@ -180,10 +180,10 @@ if (isset($_GET['modo'])) {
 
     <section id="clientes">
         <div class="text-center titulo-padrao">
-            <h1 class="font-weight-bold my-5">Conheça nossos clientes</h1>
+            <h1 class="font-weight-bold my-5 titulo-clientes">Conheça nossas operadoras</h1>
         </div>
 
-        <div class="caixa-1"></div>
+        <div class="caixa-background bg-laricel"></div>
 
         <div class="caixa-2">
             <a href="https://laricel.com.br/" target="_blank" rel="noopener noreferrer">
@@ -197,205 +197,199 @@ if (isset($_GET['modo'])) {
 
         <div class="caixa-background bg-futebol"></div>
 
-        <div class="caixa-4">
-            <section id="section-futebol">
-                <div class="card-chip">
-                    <a href="https://falatimao.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/falatimaochip.jpg" alt="Fala Timão Chip" />
-                            </div>
+        <section id="section-futebol">
+            <div class="card-chip">
+                <a href="https://falatimao.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/falatimaochip.jpg" alt="Fala Timão Chip" />
                         </div>
-                    </a>
-                    <a href="https://tricolorchip.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/spfcchip.jpg" alt="Tricolor Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://tricolorchip.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/spfcchip.jpg" alt="Tricolor Chip" />
                         </div>
-                    </a>
-                    <a href="https://aloverdao.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/aloverdaochip.jpg" alt="Alô Verdão Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://aloverdao.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/aloverdaochip.jpg" alt="Alô Verdão Chip" />
                         </div>
-                    </a>
-                    <a href="https://chipeixao.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/santoschip.jpg" alt="Santos Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://chipeixao.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/santoschip.jpg" alt="Santos Chip" />
                         </div>
-                    </a>
-                    <a href="https://lusafone.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/lusafonechip.jpg" alt="Lusa Fone Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://lusafone.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/lusafonechip.jpg" alt="Lusa Fone Chip" />
                         </div>
-                    </a>
-                    <a href="https://botafogocelular.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/botafogochip.jpg" alt="Botafogo Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://botafogocelular.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/botafogochip.jpg" alt="Botafogo Chip" />
                         </div>
-                    </a>
-                    <a href="https://chipdovascao.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/vascochip.jpg" alt="Vasco Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://chipdovascao.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/vascochip.jpg" alt="Vasco Chip" />
                         </div>
-                    </a>
-                    <a href="https://cruzeirocelular.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/cruzeirochip.jpg" alt="Cruzeiro Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://cruzeirocelular.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/cruzeirochip.jpg" alt="Cruzeiro Chip" />
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/galochip.jpg" alt="Atlético Mineiro Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/galochip.jpg" alt="Atlético Mineiro Chip" />
                         </div>
-                    </a>
-                    <a href="https://aloleao.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/aloleaochip.jpg" alt="Alô Leão Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://aloleao.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/aloleaochip.jpg" alt="Alô Leão Chip" />
                         </div>
-                    </a>
-                    <a href="https://vozaophone.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/vozaochip.jpg" alt="Ceará Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://vozaophone.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/vozaochip.jpg" alt="Ceará Chip" />
                         </div>
-                    </a>
-                    <a href="https://home.chipgigante.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/gigantechip.jpg" alt="Internacional Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://home.chipgigante.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/gigantechip.jpg" alt="Internacional Chip" />
                         </div>
-                    </a>
-                    <a href="https://esquadraocelular.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/esquadraochip.jpg" alt="Bahia Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://esquadraocelular.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/esquadraochip.jpg" alt="Bahia Chip" />
                         </div>
-                    </a>
-                    <a href="https://gremiocell.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/gremiochip.jpg" alt="Grêmio Cell" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://gremiocell.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/gremiochip.jpg" alt="Grêmio Cell" />
                         </div>
-                    </a>
-                    <a href="https://flumobile.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/flumobilechip.jpg" alt="Flu Mobile Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://flumobile.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/flumobilechip.jpg" alt="Flu Mobile Chip" />
                         </div>
-                    </a>
-                </div>
-            </section>
-        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
         <div class="caixa-background bg-entretenimento"></div>
 
-        <div class="caixa-6">
-            <section id="section-entretenimento">
-                <div class="card-chip">
-                    <a href="#">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/chipalobeijaflor.jpg" alt="Chip Alô Beija-Flor" />
-                            </div>
+        <section id="section-entretenimento">
+            <div class="card-chip">
+                <a href="#">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/chipalobeijaflor.jpg" alt="Chip Alô Beija-Flor" />
                         </div>
-                    </a>
-                    <a href="https://falamangueira.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/falamangueira.jpg" alt="Fala Mangueira Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://falamangueira.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/falamangueira.jpg" alt="Fala Mangueira Chip" />
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/chipportela.png" alt="Portela Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/chipportela.png" alt="Portela Chip" />
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/chipimperio.png" alt="Chip Império" />
-                            </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/chipimperio.png" alt="Chip Império" />
                         </div>
-                    </a>
-                </div>
-            </section>
-        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
 
         <div class="caixa-background bg-empresa"></div>
 
-        <div class="caixa-6">
-            <section id="section-empresas">
-                <div class="card-chip">
-                    <a href="https://barbosachip.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/barbosachip.jpg" alt="Barbosa Chip" />
-                            </div>
+        <section id="section-empresas">
+            <div class="card-chip">
+                <a href="https://barbosachip.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/barbosachip.jpg" alt="Barbosa Chip" />
                         </div>
-                    </a>
-                    <a href="https://citymaiscelular.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/citychip.jpg" alt="City Mais Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://citymaiscelular.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/citychip.jpg" alt="City Mais Chip" />
                         </div>
-                    </a>
-                    <a href="https://enterpmobile.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/enterpchip.jpg" alt="Enterp Mobile Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://enterpmobile.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/enterpchip.jpg" alt="Enterp Mobile Chip" />
                         </div>
-                    </a>
-                    <a href="https://gaconecta.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/gaconectachip.png" alt="G.A. Conecta Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://gaconecta.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/gaconectachip.png" alt="G.A. Conecta Chip" />
                         </div>
-                    </a>
-                    <a href="https://alosocialcelular.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/alosocialchip.jpg" alt="Alô Social Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://alosocialcelular.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/alosocialchip.jpg" alt="Alô Social Chip" />
                         </div>
-                    </a>
-                    <a href="https://paraisopoliscelular.com.br/" target="_blank" rel="noopener noreferrer">
-                        <div class="btn-sunk-chip">
-                            <div class="img-chip">
-                                <img src="./img/paraisopolischip.jpg" alt="Paraisópolis Celular Chip" />
-                            </div>
+                    </div>
+                </a>
+                <a href="https://paraisopoliscelular.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/paraisopolischip.jpg" alt="Paraisópolis Celular Chip" />
                         </div>
-                    </a>
-                </div>
-            </section>
-        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
     </section>
 
     <section id="section-slide">
@@ -582,7 +576,7 @@ if (isset($_GET['modo'])) {
                 <div class="bg-mobile"></div>
             </div>
 
-            <div class="text-cobertura mx-auto">Ficou sem sinal? Aqui na Dry isso não existe! Por meio de nossas antenas parceiras, entregamos sinal de alta qualidade em todo o território nacional</div>
+            <div class="text-cobertura mx-auto text-center">Ficou sem sinal? Aqui na Dry isso não existe! Por meio de nossas antenas parceiras, entregamos sinal de alta qualidade em todo o território nacional</div>
 
             <div class="btn-center">
                 <a href="https://tim.img.com.br/mapa-cobertura/" target="_blank" rel="noopener noreferrer">
@@ -600,11 +594,11 @@ if (isset($_GET['modo'])) {
                         <div class="titulo-padrao">
                             <h1 class="font-weight-bold">Transforme sua paixão em <span class="conexao">conexão</span></h1>
                         </div>
-                        <p>Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
+                        <p class="text-center">Chegou a hora de abraçar essa experiência! Baixe o APP da Dry em seu smartphone e conecte-se agora com o futuro da telefonia móvel</p>
 
                         <div class="caixa-aplicativo mx-auto">
                             <h5 class="text-center mb-4">Baixe agora:</h5>
-                            <div class="img-app d-flex justify-content-center">
+                            <div class="img-app">
                                 <a href="https://apps.apple.com/br/app/dry-conecta-whitelabel/id1562358701" target="_blank" rel="noopener noreferrer">
                                     <img src="./svg/apple-store-icon.svg" alt="Apple Store">
                                 </a>
