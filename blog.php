@@ -356,10 +356,23 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
         $('form-pesquisa').submit(function() {
             $(this)[0].reset();
-        })
+        });
 
-        const pesquisaInput = document.querySelector('#caixaPesquisa');
-        console.log(pesquisaInput);
+        const compartilharBtn = document.querySelectorAll('.copy-button');
+        const linkCompartilhar = document.querySelectorAll('.copy-link');
+
+        function compartilhar() {
+            this.previousElementSibling.select();
+            this.previousElementSibling.setSelectionRange(0, 99999);
+
+            navigator.clipboard.writeText(this.previousElementSibling.value);
+
+            alert('Pronto! Link copiado e pronto para compartilhar com os amigos.');
+        }
+
+        compartilharBtn.forEach((botao) => {
+            botao.addEventListener('click', compartilhar);
+        });
     </script>
 
 </body>

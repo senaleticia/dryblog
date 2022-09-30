@@ -92,11 +92,6 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </div>
     </nav>
 
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-        <span class="material-symbols-outlined">arrow_back</span>
-        VOLTAR
-    </button>
-
     <div class="container">
         <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -115,6 +110,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 </div>
             </div>
         </div>
+
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
     </div>
 
     <section class="politica-privacidade py-5">

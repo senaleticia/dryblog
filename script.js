@@ -70,15 +70,6 @@ function openModal() {
 
 openModal();
 
-function copyToClipBoard() {
-    const url = window.location.href;
-    const content = document.getElementById("textArea");
-    console.log(content);
-    content.innerHTML = url;
-    content.select();
-    document.execCommand("copy");
-}
-
 function validarEntrada(caracter, typeBlock) {
     var tipo = typeBlock;
 

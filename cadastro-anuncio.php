@@ -149,6 +149,11 @@ if (isset($_GET['modo'])) {
             </div>
         </div>
 
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
+
         <h2 class="py-4 text-center">Anúncio Dry Telecom</h2>
 
         <div class="cadastro-anuncio">

@@ -92,11 +92,6 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </div>
     </nav>
 
-    <button class="btn-padrao margem-btn font-weight-bold" onclick="window.history.back()">
-        <span class="material-symbols-outlined">arrow_back</span>
-        VOLTAR
-    </button>
-
     <div class="container">
         <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -116,10 +111,16 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             </div>
         </div>
 
-        <h2 class="text-center mt-5">Termos de adesão</h2>
-        <div class="d-flex justify-content-end">
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="window.history.back()">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
+
+        <div id="titulo-adesao">
+            <h2 class="text-center mt-5">Termos de adesão</h2>
             <span class="font-weight-bold">Atualizado em 04 de abril de 2022</span>
         </div>
+
 
         <div class="privacidade-text mt-5">
             <p>O termo de adesão da DRY COMPANY BRASIL TECNOLOGIA S/A - CNPJ 15.564.295/0001-04, com sede na Avenida Anápolis, 510, Vila Nilva - Barueri/SP, doravante simplesmente denominada DRY COMPANY (empresa MVNO credenciada da SURF TELECOM S/A, em conformidade com a resolução 550/2010 da Anatel) é valido para os planos de Serviço pré-pagos da operação, que são oferecidos para toda pessoa física ou jurídica na qualidade de usuário final, doravante denominada CLIENTE.</p>

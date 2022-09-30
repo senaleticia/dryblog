@@ -93,10 +93,6 @@
         font-size: 16px;
     }
 
-    .margem-btn {
-        margin: 5%;
-    }
-
     .foto-usuario,
     .foto-usuario>img {
         padding-left: 0 !important;
@@ -289,15 +285,13 @@
     .img-app {
         flex-wrap: wrap;
     }
+
+    #titulo-adesao span {
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
-
-    #section-slide,
-    #cobertura {
-        background-image: none !important;
-    }
-
     #img-footer>img {
         display: none;
     }
@@ -388,6 +382,11 @@
     #posts-principais {
         flex: auto;
         max-width: none;
+    }
+
+    #section-slide,
+    #cobertura {
+        background-image: none !important;
     }
 }
 
