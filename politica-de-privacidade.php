@@ -36,7 +36,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
             <li class="nav-item" style="list-style: none;">
                 <a class="navbar-brand" href="./index.php">
-                    <img src="./svg/logo-drytelecom.svg" alt="Logo">
+                    <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
             <div class="login-box">

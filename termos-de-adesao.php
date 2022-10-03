@@ -340,7 +340,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             </ul>
         </div>
         <div class="privacidade-text">
-            <p class="font-weight-bold my-5">7. Descrição das Recargas</p>
+            <p class="font-weight-bold my-5">7.1 - Descrição das Recargas</p>
         </div>
         <div class="privacidade-text">
             <p>

@@ -22,10 +22,6 @@
     }
 }
 
-/* _::-webkit-full-page-media, _:future, :root .safari_only {
-    
-} */
-
 @media only screen and (max-width: 768px) {
     * {
         font-size: 14px;
@@ -165,8 +161,17 @@
         padding: 15px;
     }
 
+    .caixa-2 {
+        height: auto;
+    }
+
+    .caixa-background {
+        height: 50vh;
+    }
+
     .bg-laricel {
         background-image: url('./img/bg-laricel-mobile.png');
+        height: 30vh;
     }
 
     .bg-futebol {

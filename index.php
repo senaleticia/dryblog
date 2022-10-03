@@ -180,7 +180,7 @@ if (isset($_GET['modo'])) {
 
     <section id="clientes">
         <div class="text-center titulo-padrao">
-            <h1 class="font-weight-bold my-5 titulo-clientes">Conheça nossas operadoras</h1>
+            <h1 class="font-weight-bold titulo-clientes">Conheça nossas operadoras</h1>
         </div>
 
         <div class="caixa-background bg-laricel"></div>

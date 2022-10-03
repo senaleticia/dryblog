@@ -56,11 +56,11 @@ if (isset($_POST["btnEntrar"])) {
         <div class="container-login">
             <form action="#" method="POST" name="formAutenticacao" id="formAutenticacao" style="width: 80%;">
                 <div class="mb-3">
-                    <label for="txtEmail" class="form-label">Email:&nbsp;&nbsp;</label>
+                    <label for="txtEmail" class="form-label">Email:</label>
                     <input type="email" class="input-sunk-white" id="txtEmail" name="txtEmail" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mb-3">
-                    <label for="txtSenha" class="form-label">Senha:&nbsp;</label>
+                    <label for="txtSenha" class="form-label">Senha:</label>
                     <input type="password" class="input-sunk-white" id="txtSenha" name="txtSenha" required>
                 </div>
                 <button type="submit" class="btn-padrao mx-auto" name="btnEntrar">Entrar</button>
