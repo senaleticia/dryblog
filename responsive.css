@@ -16,10 +16,6 @@
     section {
         padding: 46px 0;
     }
-
-    .bg-mobile {
-        height: 350px !important;
-    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -150,6 +146,7 @@
         overflow-y: hidden;
         max-width: 100vw !important;
         justify-content: flex-start;
+        padding-top: 0;
     }
 
     #section-futebol>.card-chip,
@@ -158,7 +155,7 @@
         flex-wrap: nowrap !important;
         width: auto !important;
         max-width: none !important;
-        padding: 15px;
+        padding: 0 15px;
     }
 
     .caixa-2 {

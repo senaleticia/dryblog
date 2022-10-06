@@ -256,7 +256,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             </div>
             <div class="mb-3">
                 <label for="txtConteudo" class="form-label" style="background: transparent !important;">Conteúdo:</label>
-                <textarea style="height: 120px;" class="form-control" id="txtConteudo" name="txtConteudo" cols="30" rows="10" required><?= $conteudo ?></textarea>
+                <textarea class="form-control" id="txtConteudo" name="txtConteudo" cols="30" rows="10" required><?= $conteudo ?></textarea>
             </div>
             <div class="mb-3 align-2">
                 <label class="input-group-text btn-padrao" for="fileFoto2">
@@ -268,7 +268,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             </div>
             <div class="mb-3">
                 <label for="txtSegundoConteudo" class="form-label" style="background: transparent !important;">Conteúdo 2:</label>
-                <textarea style="height: 120px;" class="form-control" id="txtSegundoConteudo" name="txtSegundoConteudo" cols="30" rows="10"><?= $conteudo2 ?></textarea>
+                <textarea class="form-control" id="txtSegundoConteudo" name="txtSegundoConteudo" cols="30" rows="10"><?= $conteudo2 ?></textarea>
             </div>
             <div class="mb-3 align-2">
                 <label class="input-group-text btn-padrao" for="fileFoto3">
@@ -280,7 +280,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             </div>
             <div class="mb-3">
                 <label for="txtTerceiroConteudo" class="form-label" style="background: transparent !important;">Conteúdo 3:</label>
-                <textarea style="height: 120px;" class="form-control" id="txtTerceiroConteudo" name="txtTerceiroConteudo" cols="30" rows="10"><?= $conteudo3 ?></textarea>
+                <textarea class="form-control" id="txtTerceiroConteudo" name="txtTerceiroConteudo" cols="30" rows="10"><?= $conteudo3 ?></textarea>
             </div>
             <div class="mb-3 align-2">
                 <label class="input-group-text btn-padrao" for="fileFoto4">
@@ -292,7 +292,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             </div>
             <div class="mb-3">
                 <label for="txtQuartoConteudo" class="form-label" style="background: transparent !important;">Conteúdo 4:</label>
-                <textarea style="height: 120px;" class="form-control" id="txtQuartoConteudo" name="txtQuartoConteudo" cols="30" rows="10"><?= $conteudo4 ?></textarea>
+                <textarea class="form-control" id="txtQuartoConteudo" name="txtQuartoConteudo" cols="30" rows="10"><?= $conteudo4 ?></textarea>
             </div>
             <div class="mb-3">
                 <label for="txtTempoLeitura" class="form-label mr-3">Tempo de Leitura (em minutos):</label>

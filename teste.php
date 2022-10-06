@@ -56,13 +56,9 @@ $conexao = conexaoMySql();
     </nav>
 
     <div class="container mt-5">
-        <input type="text" id="textToCopy" value="https://drytelecom.com.br/dryblog/postagem.php?modo=visualizar&id=33">
-        <button id="copiar" onclick="copiarLink()">Copiar</button>
+        <!-- <p id="textToCopy">Eu não tô prestando pra amar ninguém, e a culpa é sua!</p>
+        <button id="copiar">Copiar</button> -->
     </div>
-
-    <script>
-
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -70,7 +66,7 @@ $conexao = conexaoMySql();
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="./js/clipboard.js"></script>
 
 </body>
 

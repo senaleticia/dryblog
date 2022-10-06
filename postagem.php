@@ -377,7 +377,7 @@ if (isset($_POST['btnComentar'])) {
                                 arrow_back_ios_new
                             </span>
                         </button>
-                        <input type="text" id="copy-link" value="http://localhost/dryblog/postagem.php?modo=visualizar&id=<?= $_GET['id'] ?>">
+                        <input type="text" id="copy-link" value="http://drytelecom.com.br/dryblog/postagem.php?modo=visualizar&id=<?= $_GET['id'] ?>">
                         <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
                             <span class="material-symbols-outlined">
                                 share
@@ -544,7 +544,6 @@ if (isset($_POST['btnComentar'])) {
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
-    <script src="./script.js"></script>
 
     <script>
         $('#staticBackdrop').on('shown.bs.modal', function() {
@@ -554,6 +553,14 @@ if (isset($_POST['btnComentar'])) {
         $('#exampleModal').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         })
+
+        function copiarLink() {
+            let textoCopiado = document.querySelector('#copy-link');
+            textoCopiado.select();
+            textoCopiado.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            alert('Texto copiado: ' + textoCopiado.value);
+        }
     </script>
 </body>
 
