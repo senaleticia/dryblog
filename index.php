@@ -172,7 +172,7 @@ if (isset($_GET['modo'])) {
                 <div class="container-experiencia">
                     <h4 class="materia-title pt-2">EXPERIÊNCIAS EXCLUSIVAS</h4>
                     <p class="materia-desc pt-2 px-3">Pensar fora da caixa e fazer tudo diferente está no nosso DNA. Aqui, você encontra um universo de possibilidades para se conectar e desfrutar de experiências exclusivas!</p>
-                    <div class="materia-index-img" style="background-image: url('./img/experiencia.jpg');"></div>
+                    <div class="materia-index-img" style="background-image: url('./img/football-scene-with-cheering-audience-at-the-stadium.png');"></div>
                 </div>
             </div>
         </div>
@@ -213,10 +213,10 @@ if (isset($_GET['modo'])) {
                         </div>
                     </div>
                 </a>
-                <a href="https://aloverdao.com.br/" target="_blank" rel="noopener noreferrer">
+                <a href="https://flumobile.com.br/" target="_blank" rel="noopener noreferrer">
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
-                            <img src="./img/aloverdaochip.jpg" alt="Alô Verdão Chip" />
+                            <img src="./img/flumobilechip.jpg" alt="Flu Mobile Chip" />
                         </div>
                     </div>
                 </a>
@@ -255,13 +255,13 @@ if (isset($_GET['modo'])) {
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <!-- <a href="#">
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
                             <img src="./img/galochip.jpg" alt="Atlético Mineiro Chip" />
                         </div>
                     </div>
-                </a>
+                </a> -->
                 <a href="https://aloleao.com.br/" target="_blank" rel="noopener noreferrer">
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
@@ -294,13 +294,6 @@ if (isset($_GET['modo'])) {
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
                             <img src="./img/gremiochip.jpg" alt="Grêmio Cell" />
-                        </div>
-                    </div>
-                </a>
-                <a href="https://flumobile.com.br/" target="_blank" rel="noopener noreferrer">
-                    <div class="btn-sunk-chip">
-                        <div class="img-chip">
-                            <img src="./img/flumobilechip.jpg" alt="Flu Mobile Chip" />
                         </div>
                     </div>
                 </a>
@@ -385,6 +378,13 @@ if (isset($_GET['modo'])) {
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
                             <img src="./img/paraisopolischip.jpg" alt="Paraisópolis Celular Chip" />
+                        </div>
+                    </div>
+                </a>
+                <a href="https://site.dryconecta.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/dryconectachip.png" alt="Dry Conecta Chip" />
                         </div>
                     </div>
                 </a>

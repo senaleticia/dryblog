@@ -348,7 +348,7 @@ li {
 }
 
 #section-empresas .card-chip {
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .card-chip {
@@ -1386,19 +1386,59 @@ li {
     max-height: 50vh;
 }
 
-#copy-link,
-.copy-link {
-    display: none;
-}
-
 #titulo-adesao span {
     display: flex;
     justify-content: flex-end;
 }
 
-.text-share {
-    width: 35%;
-    height: auto;
-    border: solid 1px black;
-    word-wrap: break-word;
+.copy-link {
+    position: absolute;
+    z-index: -1;
+}
+
+#div-copy-link {
+    position: relative;
+    overflow: hidden;
+}
+
+#copy-link {
+    border: none;
+    color: transparent;
+    background-color: transparent;
+    position: absolute;
+    z-index: -1;
+    width: 200px;
+    height: 50px;
+    left: 200%;
+}
+
+#div-copy-link::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background-color: #EBEBEB;
+}
+
+#div-copy-link:focus-visible {
+    outline: none !important;
+    display: none !important;
+    border: none !important;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: #FE5000 !important;
+}
+
+.swal2-styled.swal2-confirm:focus {
+    box-shadow: 0 0 0 3px rgb(254 80 0 / 50%) !important;
+}
+
+.instrucao-url {
+    border: solid 1.5px #FE5000;
+    border-radius: 10px;
+    padding: 10px;
+    color: #FE5000;
 }

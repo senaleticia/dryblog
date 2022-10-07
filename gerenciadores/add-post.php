@@ -27,6 +27,7 @@ $foto3 = (string) "";
 $foto4 = (string) "";
 $tempo_leitura = (string) "";
 $tags = (string) "";
+$url_final = (string) "";
 
 //Verificando se a variável da URL 'modo' existe
 if (isset($_GET['modo'])) {
@@ -57,6 +58,7 @@ if (isset($_GET['modo'])) {
             $foto = $result['foto'];
             $tempo_leitura = $result['tempo_leitura'];
             $tags = $result['tags'];
+            $url_final = $result['url_post'];
 
             $botao = "Atualizar";
         }
@@ -132,6 +134,12 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             $tempo_leitura = $_POST['txtTempoLeitura'];
             $tags = $_POST['txtTags'];
 
+            $url_post = $_POST['txtUrl'];
+            $order = array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/");
+            $replace = explode(" ", "a A e E i I o O u U n N");
+            $space_replace = preg_replace($order, $replace, $url_post);
+            $url_final = strtolower(str_replace(" ", "-", $space_replace));
+
             //Capturando data atual e colocando em uma variável
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
@@ -146,10 +154,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "' WHERE id_post = " . $id;
+                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post '" . $url_final . "' WHERE id_post = " . $id;
             }
 
             //Rodando a conexão com o banco de dados e o script SQL
@@ -183,40 +191,52 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             $foto3;
             $foto4;
 
+            $url_post = $_POST['txtUrl'];
+            $order = array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/");
+            $replace = explode(" ", "a A e E i I o O u U n N");
+            $space_replace = preg_replace($order, $replace, $url_post);
+            $url_final = strtolower(str_replace(" ", "-", $space_replace));
+
             //Capturando data atual e colocando em uma variável
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
             $hora_post = date('H:i');
 
             if ($botao == "Salvar") {
-                if ($titulo == "" || $conteudo == "") {
+                $sql_url = "SELECT * FROM post WHERE url_post = '" . $url_final . "'";
+                $select_url = mysqli_query($conexao, $sql_url);
+                $count_url = mysqli_num_rows($select_url);
+
+                if ($count_url >= 1) {
+                    echo ("<script>alert('Essa URL já existe, favor, inserir outra')</script>");
+                    echo ("<script>history.back()</script>");
+                } else if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível publicar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else if (substr($video, 0, 24) == "https://www.youtube.com/") {
                     echo ("<script>Não é possível colar o link todo! Cole somente a parte em destaque:
                     www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b></script>");
-                    //echo ("<script>history.back()</script>");
+                    echo ("<script>history.back()</script>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags, url_post) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "')";
                 }
             } else if ($botao == "Atualizar") {
                 if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível atualizar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
-                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "' WHERE id_post = " . $id;
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "' WHERE id_post = " . $id;
                 }
             }
 
             //Rodando a conexão com o banco de dados e o script SQL
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Post inserido com sucesso')</script>");
-                echo ($sql);
+                header("location: index.php");
             } else {
                 echo ("<script>alert('Erro ao inserir post')</script>");
                 echo ($sql);
-                echo (mysqli_error($conexao));
             }
         }
     }
@@ -243,7 +263,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
 
         <form action="#" method="POST" enctype="multipart/form-data" name="formAddPost">
             <div class="mb-3">
-                <label for="txtTitulo" class="form-label" style="background-color: #EBEBEB;">Título:</label>
+                <label for="txtTitulo" class="form-label">Título:</label>
                 <input type="text" class="form-control" id="txtTitulo" name="txtTitulo" value="<?= $titulo ?>" required>
             </div>
             <div class="mb-3 align-2">
@@ -255,7 +275,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <input type="file" class="form-control-file" id="fileFoto" name="fileFoto" value="<?= $result['foto'] ?>" selected>
             </div>
             <div class="mb-3">
-                <label for="txtConteudo" class="form-label" style="background: transparent !important;">Conteúdo:</label>
+                <label for="txtConteudo" class="form-label">Conteúdo:</label>
                 <textarea class="form-control" id="txtConteudo" name="txtConteudo" cols="30" rows="10" required><?= $conteudo ?></textarea>
             </div>
             <div class="mb-3 align-2">
@@ -267,7 +287,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <input type="file" class="form-control-file" id="fileFoto2" name="fileFoto2" value="<?= $result['segunda_foto'] ?>" selected>
             </div>
             <div class="mb-3">
-                <label for="txtSegundoConteudo" class="form-label" style="background: transparent !important;">Conteúdo 2:</label>
+                <label for="txtSegundoConteudo" class="form-label">Conteúdo 2:</label>
                 <textarea class="form-control" id="txtSegundoConteudo" name="txtSegundoConteudo" cols="30" rows="10"><?= $conteudo2 ?></textarea>
             </div>
             <div class="mb-3 align-2">
@@ -279,7 +299,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <input type="file" class="form-control-file" id="fileFoto3" name="fileFoto3" value="<?= $result['terceira_foto'] ?>" selected>
             </div>
             <div class="mb-3">
-                <label for="txtTerceiroConteudo" class="form-label" style="background: transparent !important;">Conteúdo 3:</label>
+                <label for="txtTerceiroConteudo" class="form-label">Conteúdo 3:</label>
                 <textarea class="form-control" id="txtTerceiroConteudo" name="txtTerceiroConteudo" cols="30" rows="10"><?= $conteudo3 ?></textarea>
             </div>
             <div class="mb-3 align-2">
@@ -291,24 +311,36 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 <input type="file" class="form-control-file" id="fileFoto4" name="fileFoto4" value="<?= $result['quarta_foto'] ?>" selected>
             </div>
             <div class="mb-3">
-                <label for="txtQuartoConteudo" class="form-label" style="background: transparent !important;">Conteúdo 4:</label>
+                <label for="txtQuartoConteudo" class="form-label">Conteúdo 4:</label>
                 <textarea class="form-control" id="txtQuartoConteudo" name="txtQuartoConteudo" cols="30" rows="10"><?= $conteudo4 ?></textarea>
             </div>
             <div class="mb-3">
-                <label for="txtTempoLeitura" class="form-label mr-3">Tempo de Leitura (em minutos):</label>
-                <input type="number" class="form-control" id="txtTempoLeitura" name="txtTempoLeitura" value="<?= $tempo_leitura ?>" style="background: transparent !important;">
+                <label for="txtTempoLeitura" class="form-label">Tempo de Leitura (em minutos):</label>
+                <input type="number" class="form-control" id="txtTempoLeitura" name="txtTempoLeitura" value="<?= $tempo_leitura ?>">
             </div>
             <div class="mb-3">
-                <label for="txtTags" class="form-label mr-3" style="background: transparent !important;">Tag:</label>
+                <label for="txtTags" class="form-label">Tag:</label>
                 <input type="text" class="form-control" id="txtTags" name="txtTags" value="<?= $tags ?>">
             </div>
             <div class="mb-3">
-                <label for="txtVideo" class="form-label mr-5" style="background: transparent !important;">Link do vídeo:</label>
+                <label for="txtVideo" class="form-label">Link do vídeo:</label>
                 <input type="text" class="form-control" id="txtVideo" name="txtVideo" value="<?= $video ?>">
-                <div class="instrucao mt-3" style="color: #FE5000">
+                <div class="instrucao mt-2" style="color: #FE5000">
                     <u>
                         Obs: cole somente a parte em destaque do link: www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>
                     </u>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="instrucao-url mt-3">
+                    <label for="txtUrl" class="form-label" style="color: black;">URL da página:</label>
+                    <input type="text" class="form-control" id="txtUrl" name="txtUrl" value="<?= $url_final ?>" required>
+                    <span class="mb-2">Atenção: Para preencher esse campo, segue as instruções:</span> <br><br>
+                    <ul class="ml-3">
+                        <li>Não pode ter sinais de pontuação nas palavras, c cedilha (ç) ou sinais de pontuação;</li>
+                        <li>Substitua espaços pelo traço (-);</li>
+                        <li>Como é um campo de identificação da página, muito cuidado para não repetir, pois ele deve ser único.</li>
+                    </ul>
                 </div>
             </div>
             <div class="mb-5">
@@ -324,7 +356,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

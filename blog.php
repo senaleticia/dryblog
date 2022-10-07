@@ -221,13 +221,13 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                                     <span class="number-actions"><?= $curtidas_count ?></span>
                                 </button>
                             <?php } ?>
-                            <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>#comentarios">
+                            <a href="./postagem.php?p=<?= $result['url_post'] ?>#comentarios">
                                 <button class="btn-actions pt-2" style="display: flex; justify-content: center; gap: 5px;">
                                     <span class="material-symbols-outlined" style="color: #FE5000;">comment</span>
                                     <span class="number-actions"><?= $comentarios_count ?></span>
                                 </button>
                             </a>
-                            <textarea class="copy-link">http://localhost/dryblog/postagem.php?modo=visualizar&id=<?= $result['id_post'] ?></textarea>
+                            <textarea class="copy-link">http://localhost/dryblog/postagem.php?p=<?= $result['url_post'] ?></textarea>
                             <button class="btn-actions pt-2 copy-button" style="display: flex; justify-content: center; gap: 5px;">
                                 <span class="material-symbols-outlined" style="color: #FE5000;">
                                     share
@@ -235,7 +235,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             </button>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a class="link-materia" href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
+                            <a class="link-materia" href="./postagem.php?p=<?= $result['url_post'] ?>">
                                 <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
                             </a>
                         </div>
@@ -343,6 +343,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/script.js"></script>
 
     <script>
@@ -366,7 +367,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             this.previousElementSibling.setSelectionRange(0, 99999);
 
             document.execCommand('copy');
-            alert('Texto copiado: ' + this.previousElementSibling.value);
+            Swal.fire(
+                'Link copiado!',
+                'Agora você pode compartilhar essa publicação com seus amigos',
+                'success'
+            );
         }
 
         compartilharBtn.forEach((botao) => {

@@ -5,106 +5,62 @@ session_start();
 $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 //Colocando o ID do usuário ativo na sessão em uma variável
 $id_user = $_SESSION['id_usuario'];
-//$foto_user = $_SESSION['foto_usuario'];
 
 //Conexão com o banco de dados
 require_once("./bd/conexao.php");
 $conexao = conexaoMySql();
 
-//Verificando se a variável 'modo' existe na URL
-if (isset($_GET['modo'])) {
-    //Verificando se o resultado da variável 'modo' é 'visualizar'
-    if ($_GET['modo'] == 'visualizar') {
-        //Pegando o resultado da variável 'id' que está na URL
-        $id = $_GET['id'];
+//Verificando se a variável 'p' existe na URL
+if (isset($_GET['p'])) {
+    $url = $_GET['p'];
 
-        //Script para rodar no banco e trazer os dados do post
-        $sql = "SELECT post.*, autor.nome_autor FROM post INNER JOIN autor ON post.id_autor = autor.id_autor WHERE post.id_post = " . $id;
-        $select = mysqli_query($conexao, $sql);
+    //Script para rodar no banco e trazer os dados do post
+    $sql = "SELECT post.*, autor.nome_autor FROM post INNER JOIN autor ON post.id_autor = autor.id_autor WHERE post.url_post = '" . $url . "'";
+    $select = mysqli_query($conexao, $sql);
 
-        //Verificando se o script funcionou
-        if (!$select) {
-            printf("Error: %s\n", mysqli_error($conexao));
-            exit();
-        }
+    //Verificando se o script funcionou
+    if (!$select) {
+        printf("Error: %s\n", mysqli_error($conexao));
+        exit();
+    }
 
-        if ($result = mysqli_fetch_array($select)) {
-            $titulo = $result['titulo'];
-            $tags = $result['tags'];
-            $tempo_leitura = $result['tempo_leitura'];
-            $nome_autor = $result['nome_autor'];
-            $foto = $result['foto'];
-            $foto2 = $result['segunda_foto'];
-            $foto3 = $result['terceira_foto'];
-            $foto4 = $result['quarta_foto'];
-            $video = $result['video'];
-            $data_post = $result['data_post'];
-            $hora_post = $result['hora_post'];
+    if ($result = mysqli_fetch_array($select)) {
+        $id = $result['id_post'];
+        $titulo = $result['titulo'];
+        $tags = $result['tags'];
+        $tempo_leitura = $result['tempo_leitura'];
+        $nome_autor = $result['nome_autor'];
+        $foto = $result['foto'];
+        $foto2 = $result['segunda_foto'];
+        $foto3 = $result['terceira_foto'];
+        $foto4 = $result['quarta_foto'];
+        $video = $result['video'];
+        $data_post = $result['data_post'];
+        $hora_post = $result['hora_post'];
 
-            //Adicionando quebra de linhas a cada "Enter" que o usuário der nos campos de texto
-            $conteudo = $result['conteudo'];
-            $str = $conteudo;
-            $order = array("\r\n", "\n", "\r");
-            $replace = "<br>";
-            $conteudo_final = str_replace($order, $replace, $str);
+        //Adicionando quebra de linhas a cada "Enter" que o usuário der nos campos de texto
+        $conteudo = $result['conteudo'];
+        $order = array("\r\n", "\n", "\r");
+        $replace = "<br>";
+        $conteudo_final = str_replace($order, $replace, $conteudo);
 
-            $conteudo2 = $result['segundo_conteudo'];
-            $str = $conteudo2;
-            $order = array("\r\n", "\n", "\r");
-            $replace = "<br>";
-            $segundo_conteudo_final = str_replace($order, $replace, $str);
+        $conteudo2 = $result['segundo_conteudo'];
+        $order = array("\r\n", "\n", "\r");
+        $replace = "<br>";
+        $segundo_conteudo_final = str_replace($order, $replace, $conteudo2);
 
-            $conteudo3 = $result['terceiro_conteudo'];
-            $str = $conteudo3;
-            $order = array("\r\n", "\n", "\r");
-            $replace = "<br>";
-            $terceiro_conteudo_final = str_replace($order, $replace, $str);
+        $conteudo3 = $result['terceiro_conteudo'];
+        $order = array("\r\n", "\n", "\r");
+        $replace = "<br>";
+        $terceiro_conteudo_final = str_replace($order, $replace, $conteudo3);
 
-            $conteudo4 = $result['quarto_conteudo'];
-            $str = $conteudo4;
-            $order = array("\r\n", "\n", "\r");
-            $replace = "<br>";
-            $quarto_conteudo_final = str_replace($order, $replace, $str);
-        } else {
-            //Encaminhando o usuário para uma página de erro caso o post não exista ou foi excluído
-            header('location: pagina-inexistente.php');
-        }
-
-        //Script para trazer as curtidas do post
-        $sql_curtidas = "SELECT * FROM curtidas WHERE id_post = " . $id;
-
-        //Criando o contador de curtidas através do número de linhas que o script retorna
-        if ($select_curtidas = mysqli_query($conexao, $sql_curtidas)) {
-            $rs_curtidas = mysqli_fetch_array($select_curtidas);
-            $curtidas_count = mysqli_num_rows($select_curtidas);
-
-            //Definindo como a variável $curtidas_count vai aparecer na tela, 
-            //dependendo da quantidade de linhas retornadas
-            if ($curtidas_count == 1) {
-                $curtidas_count = $curtidas_count . " curtida";
-            } else if ($curtidas_count > 1 || $curtidas_count == 0) {
-                $curtidas_count = $curtidas_count . " curtidas";
-            }
-        }
-
-        //Script para trazer os comentários do post
-        $sql_comentarios = "SELECT * FROM comentario WHERE id_post = " . $id;
-
-        //Criando o contador de comentários através do número de linhas que o script retorna
-        if ($select_comentarios = mysqli_query($conexao, $sql_comentarios)) {
-            $rs_comentarios = mysqli_fetch_array($select_comentarios);
-            $comentarios_count = mysqli_num_rows($select_comentarios);
-
-            //Definindo como a variável $comentarios_count vai aparecer na tela, 
-            //dependendo da quantidade de linhas retornadas
-            if ($comentarios_count == 1) {
-                $comentarios_count = $comentarios_count . " comentário";
-            } else if ($comentarios_count > 1 || $comentarios_count == 0) {
-                $comentarios_count = $comentarios_count . " comentários";
-            }
-        }
+        $conteudo4 = $result['quarto_conteudo'];
+        $order = array("\r\n", "\n", "\r");
+        $replace = "<br>";
+        $quarto_conteudo_final = str_replace($order, $replace, $conteudo4);
     } else {
-        header('location: blog.php');
+        //Encaminhando o usuário para uma página de erro caso o post não exista ou foi excluído
+        header('location: pagina-inexistente.php');
     }
 } else {
     header('location: blog.php');
@@ -112,7 +68,7 @@ if (isset($_GET['modo'])) {
 
 //Verificando se o botão "Comentar" foi acionado
 if (isset($_POST['btnComentar'])) {
-    $id_post = $_GET['id'];
+    $id;
     $id_usuario = $_SESSION['id_usuario'];
     $comentario = $_POST['txtComentario'];
 
@@ -121,10 +77,10 @@ if (isset($_POST['btnComentar'])) {
     $data = date('d/m/Y');
 
     if ($comentario == "") {
-        echo ("<script>alert('Esse campo é obrigatório')</script>");
+        echo ("<script>alert('Esse campo é obrigatório!');</script>");
     } else {
         //Script para inserir um comentário no banco de dados
-        $sql_comment = "INSERT INTO comentario (id_post, id_usuario, conteudo_comentario, data_comentario) VALUES (" . $id_post . ", " . $id_usuario . ", '" . $comentario . "', '" . $data . "')";
+        $sql_comment = "INSERT INTO comentario (id_post, id_usuario, conteudo_comentario, data_comentario) VALUES (" . $id . ", " . $id_usuario . ", '" . $comentario . "', '" . $data . "')";
 
         //Rodando a conexão com o banco de dados e o script SQL
         if ($select_comment = mysqli_query($conexao, $sql_comment)) {
@@ -148,8 +104,6 @@ if (isset($_POST['btnComentar'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <link rel="stylesheet" href="./guideline-social.css">
@@ -377,7 +331,9 @@ if (isset($_POST['btnComentar'])) {
                                 arrow_back_ios_new
                             </span>
                         </button>
-                        <input type="text" id="copy-link" value="http://drytelecom.com.br/dryblog/postagem.php?modo=visualizar&id=<?= $_GET['id'] ?>">
+                        <div id="div-copy-link">
+                            <input type="text" id="copy-link" value="http://drytelecom.com.br/dryblog/postagem.php?p=<?= $url ?>">
+                        </div>
                         <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
                             <span class="material-symbols-outlined">
                                 share
@@ -450,7 +406,7 @@ if (isset($_POST['btnComentar'])) {
                 </form>
             <?php }
             // Script SQL para exibir os comentários da publicação
-            $sql = "SELECT comentario.*, usuario.* FROM comentario INNER JOIN usuario ON comentario.id_usuario = usuario.id_usuario WHERE comentario.id_post = " . $_GET['id'];
+            $sql = "SELECT comentario.*, usuario.* FROM comentario INNER JOIN usuario ON comentario.id_usuario = usuario.id_usuario WHERE comentario.id_post = " . $id;
             $select = mysqli_query($conexao, $sql);
 
             while ($result = mysqli_fetch_array($select)) {
@@ -541,9 +497,8 @@ if (isset($_POST['btnComentar'])) {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://drytelecom.com.br/slick/slick.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/script.js"></script>
 
     <script>
         $('#staticBackdrop').on('shown.bs.modal', function() {
@@ -559,7 +514,11 @@ if (isset($_POST['btnComentar'])) {
             textoCopiado.select();
             textoCopiado.setSelectionRange(0, 99999);
             document.execCommand('copy');
-            alert('Texto copiado: ' + textoCopiado.value);
+            Swal.fire(
+                'Link copiado!',
+                'Agora você pode compartilhar essa publicação com seus amigos',
+                'success'
+            )
         }
     </script>
 </body>
