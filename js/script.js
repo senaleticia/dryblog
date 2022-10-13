@@ -118,16 +118,3 @@ function copiarLink() {
         alert("Erro ao copiar o link!");
     }
 }
-
-/*let larguraTela = window.screen.width;
-const btnCompartilhar = document.querySelector('#copy-button');
-
-if (larguraTela <= 768) {
-    copiarLinkMobile();
-}
-
-
-export default function copiarLinkMobile() {
-    alert('Sou mobile');
-    btnCompartilhar.removeAttribute('onclick');
-}*/

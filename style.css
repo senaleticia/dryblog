@@ -1442,3 +1442,25 @@ li {
     padding: 10px;
     color: #FE5000;
 }
+
+.btn-gerenciar {
+    color: #777 !important;
+}
+
+.btn-gerenciar:hover {
+    text-shadow: 0px 0px 4px rgb(119 119 119 / 30%);
+}
+
+.ativo {
+    color: #FE5000 !important;
+    border: solid 1px #FE5000;
+}
+
+small.float-right {
+    color: #FE5000;
+    font-weight: bold;
+}
+
+small.float-right:hover {
+    text-decoration: underline;
+}

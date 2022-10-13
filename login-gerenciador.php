@@ -23,9 +23,10 @@ if (isset($_POST["btnEntrar"])) {
     if ($result = mysqli_fetch_array($select)) {
         $_SESSION['nome_autor'] = $result['nome_autor'];
         $_SESSION['id_autor'] = $result['id_autor'];
+        $_SESSION['tipo_usuario'] = $result['tipo_usuario'];
         $_SESSION['gerenciadorAutenticado'] = true;
 
-        header("location: gerenciadores/index.php");
+        header("location: gerenciadores/");
     } else {
         echo ("<script>alert('Usuário e/ou senha inválido')</script>");
     }
