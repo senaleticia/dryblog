@@ -57,7 +57,7 @@ if (isset($_POST['btnCadastrarUsuario'])) {
     } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
         echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
     } else if ($button == "Cadastrar") {
-        $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_usuario) VALUES('" . $nome_autor . "', '" . $login_autor . "', '" . $senha_autor . "', " . $nivel_autor . ")";
+        $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_usuario, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', '" . $senha_autor . "', " . $nivel_autor . ", true)";
 
         if ($select = mysqli_query($conexao, $sql)) {
             echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");

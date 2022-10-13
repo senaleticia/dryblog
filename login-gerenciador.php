@@ -17,7 +17,7 @@ if (isset($_POST["btnEntrar"])) {
     $senha = sha1(md5($_POST['txtSenha']));
 
     //Script SQL para buscar usuário e senha digitados no banco de dados
-    $sql = "SELECT * FROM autor WHERE login_autor = '" . $email . "' AND senha_autor = '" . $senha . "'";
+    $sql = "SELECT * FROM autor WHERE login_autor = '" . $email . "' AND senha_autor = '" . $senha . "' AND autor_status = true";
     $select = mysqli_query($conexao, $sql);
 
     if ($result = mysqli_fetch_array($select)) {

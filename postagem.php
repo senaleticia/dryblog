@@ -58,6 +58,8 @@ if (isset($_GET['p'])) {
         $order = array("\r\n", "\n", "\r");
         $replace = "<br>";
         $quarto_conteudo_final = str_replace($order, $replace, $conteudo4);
+
+        $tags = explode(';', $tags);
     } else {
         //Encaminhando o usuário para uma página de erro caso o post não exista ou foi excluído
         header('location: pagina-inexistente.php');
@@ -232,7 +234,7 @@ if (isset($_POST['btnComentar'])) {
                                         folder_copy
                                     </span>
                                     <p class="btn-tag">
-                                        <?= $tags ?>
+                                        <?= implode(";", $tags) ?>
                                     </p>
                                 </div>
                             </div>
@@ -332,7 +334,7 @@ if (isset($_POST['btnComentar'])) {
                             </span>
                         </button>
                         <div id="div-copy-link">
-                            <input type="text" id="copy-link" value="http://drytelecom.com.br/dryblog/postagem.php?p=<?= $url ?>">
+                            <input type="text" id="copy-link" value="localhost/dryblog/postagem.php?p=<?= $url ?>">
                         </div>
                         <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
                             <span class="material-symbols-outlined">
@@ -347,13 +349,13 @@ if (isset($_POST['btnComentar'])) {
 
     <div id="relacionados">
         <?php
-        $sql_relacionados = "SELECT * FROM post WHERE tags LIKE '%" . $tags . "%' AND id_post <> " . $id . " LIMIT 4";
+        $sql_relacionados = "SELECT * FROM post WHERE tags LIKE '%" . $tags[0] . "%' AND id_post <> " . $id . " LIMIT 4";
         $select_relacionados = mysqli_query($conexao, $sql_relacionados);
         $relacionados_count = mysqli_num_rows($select_relacionados);
 
-        //if ($relacionados_count >= 1) {
+        if ($relacionados_count >= 1) {
         ?>
-        <!-- <div class="titulo-padrao">
+            <div class="titulo-padrao">
                 <h3 class="titulo-secundario">Relacionados</h3>
             </div>
             <div class="scroll-container">
@@ -367,9 +369,9 @@ if (isset($_POST['btnComentar'])) {
                         </div>
                     <?php } ?>
                 </div>
-            </div> -->
+            </div>
         <?php
-        //}
+        }
         ?>
     </div>
 
@@ -446,7 +448,7 @@ if (isset($_POST['btnComentar'])) {
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 align-center-vertical ml-auto mr-auto" style="margin-top: 70px;">
+                <div class="col-md-4 align-center-vertical mx-auto" style="margin-top: 70px;">
                     <div class="footer-logo">
                         <img src="./svg/logo-drytelecom.svg" alt="Logo">
                     </div>

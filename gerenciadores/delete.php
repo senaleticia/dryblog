@@ -33,18 +33,6 @@ if (isset($_GET['modo'])) {
             echo ("<script>alert('Erro ao excluir o anúncio')</script>");
             echo ("<script>history.back()</script>");
         }
-    } else if ($_GET['modo'] == 'excluir-autor') {
-        $id = $_GET['id'];
-
-        $sql = "DELETE FROM autor WHERE id_autor = " . $id;
-
-        if (mysqli_query($conexao, $sql)) {
-            echo ("<script>alert('Usuário excluído com sucesso')</script>");
-            header("location: users-manager.php");
-        } else {
-            echo ("<script>'Erro ao excluir o usuário'</script>");
-            echo ($sql);
-        }
     }
 } else {
     header('location: index.php');

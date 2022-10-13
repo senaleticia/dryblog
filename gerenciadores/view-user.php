@@ -12,26 +12,64 @@ if ($_SESSION['tipo_usuario'] != 2) {
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
 
-if (isset($_GET['modo']) && $_GET['modo'] == 'visualizar') {
-    $id = $_GET['id'];
+if (isset($_GET['modo'])) {
+    if ($_GET['modo'] == 'visualizar') {
+        $id = $_GET['id'];
 
-    $sql = "SELECT * FROM autor WHERE id_autor = " . $id;
-    $select = mysqli_query($conexao, $sql);
+        $sql = "SELECT * FROM autor WHERE id_autor = " . $id;
+        $select = mysqli_query($conexao, $sql);
 
-    if (!$select) {
-        printf("Error: %s\n", mysqli_error($conexao));
-        exit();
-    }
-
-    if ($result = mysqli_fetch_array($select)) {
-        $nome_autor = $result['nome_autor'];
-        $login_autor = $result['login_autor'];
-
-        if ($result['tipo_usuario'] == 1) {
-            $nivel_autor = 'Administrador de Posts';
-        } else if ($result['tipo_usuario'] == 2) {
-            $nivel_autor = 'Administrador Geral';
+        if (!$select) {
+            printf("Error: %s\n", mysqli_error($conexao));
+            exit();
         }
+
+        if ($result = mysqli_fetch_array($select)) {
+            $nome_autor = $result['nome_autor'];
+            $login_autor = $result['login_autor'];
+
+            if ($result['tipo_usuario'] == 1) {
+                $nivel_autor = 'Administrador de Posts';
+            } else if ($result['tipo_usuario'] == 2) {
+                $nivel_autor = 'Administrador Geral';
+            }
+
+            if ($result['autor_status'] == true) {
+                $status_autor = 'Ativo';
+            } else if ($result['autor_status'] == false) {
+                $status_autor = 'Inativo';
+            }
+        }
+    } else if ($_GET['modo'] == 'status') {
+        $id = $_GET['id'];
+
+        $verificar_usuario = "SELECT * FROM autor WHERE id_autor = " . $id;
+        $select_verificar = mysqli_query($conexao, $verificar_usuario);
+        $rs_verificacao = mysqli_fetch_array($select_verificar);
+
+        if ($rs_verificacao['autor_status'] == true) {
+            $sql = "UPDATE autor SET autor_status = false WHERE id_autor = " . $id;
+
+            if (mysqli_query($conexao, $sql)) {
+                echo ("<script>alert('Usuário desativado com sucesso')</script>");
+                echo ("<script>history.back()</script>");
+            } else {
+                echo ("<script>alert('Erro ao desativar o usuário')</script>");
+                echo ($sql);
+            }
+        } else if ($rs_verificacao['autor_status'] == false) {
+            $sql = "UPDATE autor SET autor_status = true WHERE id_autor = " . $id;
+
+            if (mysqli_query($conexao, $sql)) {
+                echo ("<script>alert('Usuário ativado com sucesso')</script>");
+                echo ("<script>history.back()</script>");
+            } else {
+                echo ("<script>alert('Erro ao ativar o usuário')</script>");
+                echo ($sql);
+            }
+        }
+    } else {
+        header('location: users-manager.php');
     }
 } else {
     header('location: users-manager.php');
@@ -67,6 +105,9 @@ if (isset($_GET['modo']) && $_GET['modo'] == 'visualizar') {
             <div class="flex-row">
                 <strong>Nível de Acesso: </strong> <?= $nivel_autor ?> <br>
             </div>
+            <div class="flex-row">
+                <strong>Status: </strong> <?= $status_autor ?> <br>
+            </div>
         </div>
 
         <div class="d-flex justify-content-around my-5">
@@ -82,11 +123,13 @@ if (isset($_GET['modo']) && $_GET['modo'] == 'visualizar') {
                     </span>
                 </button>
             </a>
-            <a onclick="return confirm('Atenção: Ao excluir esse usuário, tudo referente à ele, inclusive posts, também serão excluídos. Deseja realmente excluir esse usuário?');" href="./delete.php?modo=excluir-autor&id=<?= $result['id_autor'] ?>">
+            <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
                 <button class="btn-padrao">
-                    <span class="material-symbols-outlined">
-                        delete
-                    </span>
+                    <?php if ($status_autor == 'Ativo') { ?>
+                        <span class="material-symbols-outlined" style="font-size: 28px;">toggle_on</span>
+                    <?php } else if ($status_autor == 'Inativo') { ?>
+                        <span class="material-symbols-outlined" style="color: #777; font-size: 28px">toggle_off</span>
+                    <?php } ?>
                 </button>
             </a>
         </div>

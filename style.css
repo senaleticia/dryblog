@@ -1184,7 +1184,7 @@ li {
 
 .caixa-tags {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 12px 24px;
 }
 

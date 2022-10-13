@@ -157,7 +157,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post '" . $url_final . "' WHERE id_post = " . $id;
+                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "' WHERE id_post = " . $id;
             }
 
             //Rodando a conexão com o banco de dados e o script SQL

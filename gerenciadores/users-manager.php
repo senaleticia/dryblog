@@ -83,8 +83,12 @@ $conexao = conexaoMySql();
                         <a href="./add-user.php?modo=editar&id=<?= $result['id_autor'] ?>">
                             <span class="material-symbols-outlined">border_color</span>
                         </a>
-                        <a onclick="return confirm('Atenção: Ao excluir esse usuário, tudo referente à ele, inclusive posts, também serão excluídos. Deseja realmente excluir esse usuário?')" href="./delete.php?modo=excluir-autor&id=<?= $result['id_autor'] ?>">
-                            <span class="material-symbols-outlined">delete</span>
+                        <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
+                            <?php if ($result['autor_status'] == true) { ?>
+                                <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
+                            <?php } else if ($result['autor_status'] == false) { ?>
+                                <span class="material-symbols-outlined" style="color: #777; font-size: 28px;">toggle_off</span>
+                            <?php } ?>
                         </a>
                     </div>
                 </li>
