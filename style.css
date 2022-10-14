@@ -471,6 +471,12 @@ li {
         'opsz' 48
 }
 
+.icons-box {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
 .icons-box a {
     display: inline-block;
     width: 40px;
@@ -500,12 +506,14 @@ li {
     background-color: transparent;
 }
 
-#caixaPesquisa::placeholder {
+#caixaPesquisa::placeholder,
+#search::placeholder {
     color: #F25E0C;
     padding-top: 5px;
 }
 
-#caixaPesquisa:focus {
+#caixaPesquisa:focus,
+#search:focus {
     outline-color: #F25E0C;
 }
 
@@ -516,6 +524,18 @@ li {
     border: none;
     background: transparent;
     color: #FE5000;
+}
+
+#search {
+    padding: 6px 40px 6px 6px;
+    border-radius: 4px;
+    border: solid 1px #F25E0C;
+    background-color: transparent;
+}
+
+.top-reduce {
+    top: 20%;
+    right: 3%;
 }
 
 .titulo-secundario {

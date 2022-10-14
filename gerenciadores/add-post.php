@@ -226,7 +226,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     echo ("<script>alert('Não é possível atualizar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
-                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "' WHERE id_post = " . $id;
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_post = '" . $data_post . "', hora_post = '" . $hora_post . "' WHERE id_post = " . $id;
                 }
             }
 

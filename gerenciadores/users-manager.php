@@ -5,12 +5,32 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] != 2) {
+if ($_SESSION['tipo_usuario'] == 1) {
     header('location: index.php');
 }
 
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
+
+if (isset($_POST['filtroOpcao'])) {
+    $opcao = $_POST['filtroOpcao'];
+}
+
+$selectedAtivo = "";
+$selectedInativo = "";
+$selectedAll = "selected";
+
+if (isset($_POST['sltFiltro'])) {
+    $filtro = $_POST['sltFiltro'];
+
+    if ($filtro == "ativo") {
+        $selectedAtivo = "selected";
+        $selectedAll = "";
+    } else if ($filtro == "inativo") {
+        $selectedInativo = "selected";
+        $selectedAll = "";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -61,9 +81,29 @@ $conexao = conexaoMySql();
             </a>
         </div>
 
+        <form action="#" method="POST" name="frmConsulta">
+            <div class="mb-3">
+                <label for="sltFiltro">Filtrar Usuários:</label>
+                <select name="sltFiltro" id="sltFiltro" class="form-control" onchange="this.form.submit()">
+                    <option name="filtroOpcao" value="todos" <?= $selectedAll ?>>Todos</option>
+                    <option name="filtroOpcao" value="ativo" <?= $selectedAtivo ?>>Ativos</option>
+                    <option name="filtroOpcao" value="inativo" <?= $selectedInativo ?>>Inativos</option>
+                </select>
+            </div>
+        </form>
+
         <ul class="list-group">
             <?php
-            $sql = "SELECT * FROM autor ORDER BY id_autor DESC";
+            $sql = "SELECT * FROM autor";
+
+            if ($filtro == "ativo") {
+                $sql = $sql . " WHERE autor_status = true ORDER BY id_autor DESC";
+            } else if ($filtro == "inativo") {
+                $sql = $sql . " WHERE autor_status = false ORDER BY id_autor DESC";
+            } else {
+                $sql = $sql . " ORDER BY id_autor DESC";
+            }
+
             $select = mysqli_query($conexao, $sql);
 
             if (!$select) {

@@ -265,7 +265,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             ?>
                                 <div class="card-materia-lateral">
                                     <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_popular['foto'] ?>');"></div>
-                                    <a href="./postagem.php?modo=visualizar&id=<?= $rs_popular['id_post'] ?>">
+                                    <a href="./postagem.php?p=<?= $rs_popular['url_post'] ?>">
                                         <h4 class="materia-title"><?= $rs_popular['titulo'] ?></h4>
                                     </a>
                                 </div>

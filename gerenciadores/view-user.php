@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] != 2) {
+if ($_SESSION['tipo_usuario'] == 1) {
     header('location: index.php');
 }
 

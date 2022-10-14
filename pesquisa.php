@@ -142,12 +142,12 @@ if (!$select) {
                     <div class="card-resultado mx-auto my-4">
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
+                                <a href="./postagem.php?p=<?= $result['url_post'] ?>">
                                     <div class="post-img" style="background-image: url('./upload/arquivos/<?= $result['foto'] ?>'); padding: 32%;"></div>
                                 </a>
                             </div>
                             <div class="col-md-8">
-                                <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
+                                <a href="./postagem.php?p=<?= $result['url_post'] ?>">
                                     <h5 style="color: #FE5000;" class="titulo-pesquisa font-weight-bold mb-4"><?= $result['titulo'] ?></h5>
                                 </a>
 
@@ -156,7 +156,7 @@ if (!$select) {
                                 </div>
 
                                 <div class="d-flex justify-content-center my-4">
-                                    <a href="./postagem.php?modo=visualizar&id=<?= $result['id_post'] ?>">
+                                    <a href="./postagem.php?p=<?= $result['url_post'] ?>">
                                         <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
                                     </a>
                                 </div>

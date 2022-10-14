@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] != 2) {
+if ($_SESSION['tipo_usuario'] == 1) {
     header('location: index.php');
 }
 
@@ -19,6 +19,8 @@ $nivel_autor = (int) 0;
 $button = "Cadastrar";
 $selectedAdminPost = "";
 $selectedAdminGeral = "";
+$selectedMaster = "";
+$disabledSenha = "";
 
 if (isset($_GET['modo']) && $_GET['modo'] == 'editar') {
     $id = $_GET['id'];
@@ -40,6 +42,10 @@ if (isset($_GET['modo']) && $_GET['modo'] == 'editar') {
             $selectedAdminPost = "selected";
         } else if ($nivel_autor == 2) {
             $selectedAdminGeral = "selected";
+        }
+
+        if ($_SESSION['id_autor'] != $id) {
+            $disabledSenha = "disabled";
         }
 
         $button = "Atualizar";
@@ -108,20 +114,26 @@ if (isset($_POST['btnCadastrarUsuario'])) {
                 <label for="txtLoginUsuario" class="form-label">Email:</label>
                 <input type="email" class="form-control" id="txtLoginUsuario" name="txtLoginUsuario" value="<?= $login_autor ?>">
             </div>
-            <div class="mb-3">
-                <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="txtSenhaUsuario" name="txtSenhaUsuario" value="<?= $senha_autor ?>">
-            </div>
+            <?php if ($_SESSION['tipo_usuario'] != 3) { ?>
+                <div class="mb-3">
+                    <label for="txtSenhaUsuario" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" id="txtSenhaUsuario" name="txtSenhaUsuario" value="<?= $senha_autor ?>" <?= $disabledSenha ?>>
+                </div>
+            <?php } ?>
             <div class="mb-3">
                 <label for="sltNivel">Nível do Usuário:</label>
                 <select name="sltNivel" id="sltNivel" class="form-control">
                     <option value="0">Escolha um nível</option>
                     <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
                     <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>
+                    <option value="3" <?= $selectedMaster ?>>Administrador Master</option>
                 </select>
             </div>
-            <div class="mt-5">
-                <button type="submit" class="btn-padrao mx-auto" name="btnCadastrarUsuario" id="btnCadastrarUsuario"><?= $button ?></button>
+            <div class="d-flex justify-content-around mt-5">
+                <a href="./users-manager.php" class="btn-padrao font-weight-bold">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </a>
+                <button type="submit" class="btn-padrao" name="btnCadastrarUsuario" id="btnCadastrarUsuario"><?= $button ?></button>
             </div>
         </form>
     </div>

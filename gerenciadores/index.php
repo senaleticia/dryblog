@@ -60,6 +60,14 @@ $conexao = conexaoMySql();
             <a href="./publicity-list.php" class="btn-secundario disabled">
                 VER ANÚNCIOS
             </a>
+            <form id="pesquisar-post" action="search.php" method="GET">
+                <div class="position-relative">
+                    <input type="text" id="search" name="search" placeholder="Pesquisar">
+                    <button class="icon-search top-reduce">
+                        <span class="material-symbols-outlined">search</span>
+                    </button>
+                </div>
+            </form>
         </div>
 
         <?php
@@ -78,7 +86,7 @@ $conexao = conexaoMySql();
                 <li class="post-list">
                     <?= $result['titulo'] ?>
                     <div class="icons-box float-right">
-                        <a href="./view-post.php?modo=visualizar&id=<?= $result['id_post'] ?>" style="display: inline-block;">
+                        <a href="./view-post.php?modo=visualizar&id=<?= $result['id_post'] ?>">
                             <span class="material-symbols-outlined">visibility</span>
                         </a>
                         <a href="./add-post.php?modo=editar&id=<?= $result['id_post'] ?>">
