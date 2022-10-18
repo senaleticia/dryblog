@@ -730,6 +730,10 @@ li {
     font-weight: 500;
 }
 
+.footer-menu a {
+    color: #181818;
+}
+
 .footer-title {
     color: #181818;
     font-weight: 600;
