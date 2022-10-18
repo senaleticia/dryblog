@@ -33,10 +33,15 @@ $conexao = conexaoMySql();
                 <div class="mt-5">
                     <h2>Bem-vindo(a), <?= $_SESSION['nome_autor'] ?>!</h2>
                 </div>
-                <div class="logout mt-5">
-                    <a href="../logout.php">
-                        <button type="button" class="btn btn-outline-danger">Sair</button>
-                    </a>
+                <div class="dropdown mt-5">
+                    <button class="btn-padrao dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./edit-profile.php?user=<?= $_SESSION['id_autor'] ?>">Editar Perfil</a>
+                        <a class="dropdown-item" href="./change-password.php?user=<?= $_SESSION['id_autor'] ?>">Alterar Senha</a>
+                        <a class="dropdown-item" href="../logout.php">Sair</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,7 +51,7 @@ $conexao = conexaoMySql();
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR POSTAGENS
             </button>
-            <?php if ($_SESSION['tipo_usuario'] == 2) { ?>
+            <?php if ($_SESSION['tipo_usuario'] != 1) { ?>
                 <a href="./users-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR USUÁRIOS
                 </a>
@@ -57,9 +62,9 @@ $conexao = conexaoMySql();
             <a href="./add-post.php" class="btn-secundario">
                 CRIAR POST NOVO
             </a>
-            <a href="./publicity-list.php" class="btn-secundario disabled">
+            <!-- <a href="./publicity-list.php" class="btn-secundario disabled">
                 VER ANÚNCIOS
-            </a>
+            </a> -->
             <form id="pesquisar-post" action="search.php" method="GET">
                 <div class="position-relative">
                     <input type="text" id="search" name="search" placeholder="Pesquisar">

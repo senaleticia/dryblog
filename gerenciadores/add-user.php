@@ -16,68 +16,29 @@ $nome_autor = (string) "";
 $login_autor = (string) "";
 $senha_autor = (string) "";
 $nivel_autor = (int) 0;
-$button = "Cadastrar";
-$selectedAdminPost = "";
-$selectedAdminGeral = "";
-$selectedMaster = "";
-$disabledSenha = "";
-
-if (isset($_GET['modo']) && $_GET['modo'] == 'editar') {
-    $id = $_GET['id'];
-
-    $sql = "SELECT * FROM autor WHERE id_autor = " . $id;
-    $select = mysqli_query($conexao, $sql);
-
-    if (!$select) {
-        printf("Error: %s\n", mysqli_error($conexao));
-        exit();
-    }
-
-    if ($result = mysqli_fetch_array($select)) {
-        $nome_autor = $result['nome_autor'];
-        $login_autor = $result['login_autor'];
-        $nivel_autor = $result['tipo_usuario'];
-
-        if ($nivel_autor == 1) {
-            $selectedAdminPost = "selected";
-        } else if ($nivel_autor == 2) {
-            $selectedAdminGeral = "selected";
-        }
-
-        if ($_SESSION['id_autor'] != $id) {
-            $disabledSenha = "disabled";
-        }
-
-        $button = "Atualizar";
-    }
-}
 
 if (isset($_POST['btnCadastrarUsuario'])) {
     $nome_autor = $_POST['txtNomeUsuario'];
     $login_autor = $_POST['txtLoginUsuario'];
-    $senha_autor = sha1(md5($_POST['txtSenhaUsuario']));
+    $senha_autor = $_POST['txtSenhaUsuario'];
     $nivel_autor = $_POST['sltNivel'];
+
+    $verificar_email = "SELECT * FROM autor WHERE login_autor = '" . $login_autor . "'";
+    $select_verificar = mysqli_query($conexao, $verificar_email);
+    $row_count = mysqli_num_rows($select_verificar);
 
     if ($nivel_autor == 0) {
         echo ("<script>alert('Selecione um nível do usuário para continuar!')</script>");
     } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
         echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
-    } else if ($button == "Cadastrar") {
-        $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_usuario, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', '" . $senha_autor . "', " . $nivel_autor . ", true)";
+    } else if ($row_count >= 1) {
+        echo ("<script>alert('Esse email já está cadastrado em nosso sistema. Favor, inserir outro')</script>");
+    } else {
+        $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_usuario, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), " . $nivel_autor . ", true)";
 
         if ($select = mysqli_query($conexao, $sql)) {
             echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
-            header('location: users-manager.php');
-        } else {
-            echo ("<script>alert('Erro ao cadastrar o usuário!')</script>");
-            echo ($sql);
-        }
-    } else if ($button == "Atualizar") {
-        $sql = "UPDATE autor SET nome_autor = '" . $nome_autor . "', login_autor = '" . $login_autor . "', senha_autor = '" . $senha_autor . "', tipo_usuario = '" . $nivel_autor . "' WHERE id_autor = " . $_GET['id'];
-
-        if ($select = mysqli_query($conexao, $sql)) {
-            echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
-            header('location: users-manager.php');
+            echo ("<script>window.location='users-manager.php'</script>");
         } else {
             echo ("<script>alert('Erro ao cadastrar o usuário!')</script>");
             echo ($sql);
@@ -114,26 +75,24 @@ if (isset($_POST['btnCadastrarUsuario'])) {
                 <label for="txtLoginUsuario" class="form-label">Email:</label>
                 <input type="email" class="form-control" id="txtLoginUsuario" name="txtLoginUsuario" value="<?= $login_autor ?>">
             </div>
-            <?php if ($_SESSION['tipo_usuario'] != 3) { ?>
-                <div class="mb-3">
-                    <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                    <input type="password" class="form-control" id="txtSenhaUsuario" name="txtSenhaUsuario" value="<?= $senha_autor ?>" <?= $disabledSenha ?>>
-                </div>
-            <?php } ?>
+            <div class="mb-3">
+                <label for="txtSenhaUsuario" class="form-label">Senha:</label>
+                <input type="password" class="form-control" id="txtSenhaUsuario" name="txtSenhaUsuario">
+            </div>
             <div class="mb-3">
                 <label for="sltNivel">Nível do Usuário:</label>
                 <select name="sltNivel" id="sltNivel" class="form-control">
                     <option value="0">Escolha um nível</option>
-                    <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
-                    <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>
-                    <option value="3" <?= $selectedMaster ?>>Administrador Master</option>
+                    <option value="1">Administrador de Posts</option>
+                    <option value="2">Administrador Geral</option>
+                    <option value="3">Administrador Master</option>
                 </select>
             </div>
             <div class="d-flex justify-content-around mt-5">
                 <a href="./users-manager.php" class="btn-padrao font-weight-bold">
                     <span class="material-symbols-outlined">arrow_back_ios_new</span>
                 </a>
-                <button type="submit" class="btn-padrao" name="btnCadastrarUsuario" id="btnCadastrarUsuario"><?= $button ?></button>
+                <button type="submit" class="btn-padrao" name="btnCadastrarUsuario" id="btnCadastrarUsuario">Cadastrar</button>
             </div>
         </form>
     </div>

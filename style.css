@@ -17,7 +17,6 @@ textarea {
     resize: none !important;
 }
 
-a,
 a:link,
 .card-materia-lateral>a:hover,
 .footer-menu>a:hover {
@@ -53,10 +52,6 @@ button:focus {
 .botoes>a,
 .list-group>a {
     text-decoration: none;
-}
-
-.btn-outline-danger:focus-visible {
-    border-color: #DC3545;
 }
 
 .post-list {
@@ -1483,4 +1478,46 @@ small.float-right {
 
 small.float-right:hover {
     text-decoration: underline;
+}
+
+.dropdown-menu {
+    border-radius: 20px;
+    border: none;
+    background-color: #F0F0F0;
+    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
+}
+
+.dropdown-item,
+.dropdown-item:link {
+    color: #FE5000;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    color: #313131;
+    text-decoration: underline;
+}
+
+#sltFiltro {
+    border-radius: 40px;
+    border: solid 1px #FE5000;
+    background-color: transparent;
+    color: #FE5000;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('./img/select-after.PNG');
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 0 18px;
+    width: 235px;
+}
+
+#sltFiltro:focus {
+    box-shadow: 0 0 0 0.2rem rgb(254 80 1 / 25%);
+}
+
+#sltFiltro option {
+    background-color: #EBEBEB;
+    border-radius: 50px;
 }

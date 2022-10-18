@@ -24,11 +24,14 @@ if (isset($_POST["btnEntrar"])) {
         $_SESSION['nome_autor'] = $result['nome_autor'];
         $_SESSION['id_autor'] = $result['id_autor'];
         $_SESSION['tipo_usuario'] = $result['tipo_usuario'];
+        $_SESSION['login_autor'] = $result['login_autor'];
+        $_SESSION['senha_autor'] = $result['senha_autor'];
         $_SESSION['gerenciadorAutenticado'] = true;
 
         header("location: gerenciadores/");
     } else {
         echo ("<script>alert('Usuário e/ou senha inválido')</script>");
+        echo ($sql);
     }
 }
 ?>

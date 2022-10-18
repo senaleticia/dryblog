@@ -55,10 +55,15 @@ if (isset($_POST['sltFiltro'])) {
                 <div class="mt-5">
                     <h2>Bem-vindo(a), <?= $_SESSION['nome_autor'] ?>!</h2>
                 </div>
-                <div class="logout mt-5">
-                    <a href="../logout.php">
-                        <button type="button" class="btn btn-outline-danger">Sair</button>
-                    </a>
+                <div class="dropdown mt-5">
+                    <button class="btn-padrao dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="./edit-profile.php?user=<?= $_SESSION['id_autor'] ?>">Editar Perfil</a>
+                        <a class="dropdown-item" href="./change-password.php?user=<?= $_SESSION['id_autor'] ?>">Alterar Senha</a>
+                        <a class="dropdown-item" href="../logout.php">Sair</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,24 +78,24 @@ if (isset($_POST['sltFiltro'])) {
             </button>
         </div>
 
-        <div class="my-5">
+        <div class="d-flex justify-content-between align-items-center my-4">
             <a href="./add-user.php">
                 <button class="btn-secundario">
                     ADICIONAR NOVO USUÁRIO
                 </button>
             </a>
-        </div>
 
-        <form action="#" method="POST" name="frmConsulta">
-            <div class="mb-3">
-                <label for="sltFiltro">Filtrar Usuários:</label>
-                <select name="sltFiltro" id="sltFiltro" class="form-control" onchange="this.form.submit()">
-                    <option name="filtroOpcao" value="todos" <?= $selectedAll ?>>Todos</option>
-                    <option name="filtroOpcao" value="ativo" <?= $selectedAtivo ?>>Ativos</option>
-                    <option name="filtroOpcao" value="inativo" <?= $selectedInativo ?>>Inativos</option>
-                </select>
-            </div>
-        </form>
+            <form action="#" method="POST" name="frmConsulta">
+                <div class="mb-3">
+                    <label for="sltFiltro" style="padding-left: 18px;">Filtrar Usuários:</label>
+                    <select name="sltFiltro" id="sltFiltro" class="form-control" onchange="this.form.submit()">
+                        <option name="filtroOpcao" value="todos" <?= $selectedAll ?>>Todos</option>
+                        <option name="filtroOpcao" value="ativo" <?= $selectedAtivo ?>>Ativos</option>
+                        <option name="filtroOpcao" value="inativo" <?= $selectedInativo ?>>Inativos</option>
+                    </select>
+                </div>
+            </form>
+        </div>
 
         <ul class="list-group">
             <?php
@@ -120,21 +125,39 @@ if (isset($_POST['sltFiltro'])) {
                         <a href="./view-user.php?modo=visualizar&id=<?= $result['id_autor'] ?>">
                             <span class="material-symbols-outlined">visibility</span>
                         </a>
-                        <a href="./add-user.php?modo=editar&id=<?= $result['id_autor'] ?>">
-                            <span class="material-symbols-outlined">border_color</span>
-                        </a>
-                        <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
-                            <?php if ($result['autor_status'] == true) { ?>
-                                <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
-                            <?php } else if ($result['autor_status'] == false) { ?>
-                                <span class="material-symbols-outlined" style="color: #777; font-size: 28px;">toggle_off</span>
-                            <?php } ?>
-                        </a>
+
+                        <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                            <a href="./edit-user.php?editar=<?= $result['id_autor'] ?>">
+                                <span class="material-symbols-outlined">border_color</span>
+                            </a>
+                        <?php } ?>
+
+                        <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                            <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
+                                <?php if ($result['autor_status'] == true) { ?>
+                                    <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
+                                <?php } else if ($result['autor_status'] == false) { ?>
+                                    <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
+                                <?php } ?>
+                            </a>
+                        <?php } else if ($_SESSION['tipo_usuario'] == 2) { ?>
+                            <a href="#" class="inativo">
+                                <?php if ($result['autor_status'] == true) { ?>
+                                    <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
+                                <?php } else if ($result['autor_status'] == false) { ?>
+                                    <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
+                                <?php } ?>
+                            </a>
+                        <?php } ?>
                     </div>
                 </li>
             <?php } ?>
         </ul>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>

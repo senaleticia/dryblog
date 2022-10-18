@@ -37,6 +37,17 @@ if (isset($_GET['modo'])) {
 </head>
 
 <body>
+    <!-- Script Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X59XCNSWHK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-X59XCNSWHK');
+    </script>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner">
         <div class="container">
             <div id="navbar-mobile">

@@ -41,31 +41,36 @@ if (isset($_GET['modo'])) {
             }
         }
     } else if ($_GET['modo'] == 'status') {
-        $id = $_GET['id'];
+        if ($_SESSION['tipo_usuario'] != 3) {
+            echo ("<script>alert('Você não tem permissão para ativar/desativar usuários!')</script>");
+            echo ("<script>history.back()</script>");
+        } else {
+            $id = $_GET['id'];
 
-        $verificar_usuario = "SELECT * FROM autor WHERE id_autor = " . $id;
-        $select_verificar = mysqli_query($conexao, $verificar_usuario);
-        $rs_verificacao = mysqli_fetch_array($select_verificar);
+            $verificar_usuario = "SELECT * FROM autor WHERE id_autor = " . $id;
+            $select_verificar = mysqli_query($conexao, $verificar_usuario);
+            $rs_verificacao = mysqli_fetch_array($select_verificar);
 
-        if ($rs_verificacao['autor_status'] == true) {
-            $sql = "UPDATE autor SET autor_status = false WHERE id_autor = " . $id;
+            if ($rs_verificacao['autor_status'] == true) {
+                $sql = "UPDATE autor SET autor_status = false WHERE id_autor = " . $id;
 
-            if (mysqli_query($conexao, $sql)) {
-                echo ("<script>alert('Usuário desativado com sucesso')</script>");
-                echo ("<script>history.back()</script>");
-            } else {
-                echo ("<script>alert('Erro ao desativar o usuário')</script>");
-                echo ($sql);
-            }
-        } else if ($rs_verificacao['autor_status'] == false) {
-            $sql = "UPDATE autor SET autor_status = true WHERE id_autor = " . $id;
+                if (mysqli_query($conexao, $sql)) {
+                    echo ("<script>alert('Usuário desativado com sucesso')</script>");
+                    echo ("<script>history.back()</script>");
+                } else {
+                    echo ("<script>alert('Erro ao desativar o usuário')</script>");
+                    echo ($sql);
+                }
+            } else if ($rs_verificacao['autor_status'] == false) {
+                $sql = "UPDATE autor SET autor_status = true WHERE id_autor = " . $id;
 
-            if (mysqli_query($conexao, $sql)) {
-                echo ("<script>alert('Usuário ativado com sucesso')</script>");
-                echo ("<script>history.back()</script>");
-            } else {
-                echo ("<script>alert('Erro ao ativar o usuário')</script>");
-                echo ($sql);
+                if (mysqli_query($conexao, $sql)) {
+                    echo ("<script>alert('Usuário ativado com sucesso')</script>");
+                    echo ("<script>history.back()</script>");
+                } else {
+                    echo ("<script>alert('Erro ao ativar o usuário')</script>");
+                    echo ($sql);
+                }
             }
         }
     } else {
@@ -116,22 +121,28 @@ if (isset($_GET['modo'])) {
                     arrow_back_ios_new
                 </span>
             </button>
-            <a href="./add-user.php?modo=editar&id=<?= $result['id_autor'] ?>">
-                <button class="btn-padrao">
-                    <span class="material-symbols-outlined">
-                        edit
-                    </span>
-                </button>
-            </a>
-            <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
-                <button class="btn-padrao">
-                    <?php if ($status_autor == 'Ativo') { ?>
-                        <span class="material-symbols-outlined" style="font-size: 28px;">toggle_on</span>
-                    <?php } else if ($status_autor == 'Inativo') { ?>
-                        <span class="material-symbols-outlined" style="color: #777; font-size: 28px">toggle_off</span>
-                    <?php } ?>
-                </button>
-            </a>
+
+            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                <a href="./add-user.php?modo=editar&id=<?= $result['id_autor'] ?>">
+                    <button class="btn-padrao">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </button>
+                </a>
+            <?php } ?>
+
+            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
+                    <button class="btn-padrao">
+                        <?php if ($status_autor == 'Ativo') { ?>
+                            <span class="material-symbols-outlined" style="font-size: 28px;">toggle_on</span>
+                        <?php } else if ($status_autor == 'Inativo') { ?>
+                            <span class="material-symbols-outlined" style="color: #777; font-size: 28px">toggle_off</span>
+                        <?php } ?>
+                    </button>
+                </a>
+            <?php } ?>
         </div>
     </div>
 </body>
