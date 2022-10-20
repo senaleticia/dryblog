@@ -12,7 +12,13 @@
     margin-left: 36px;
 }
 
-.post-text ul {
+.post-text ul,
+.post-text h1,
+.post-text h2,
+.post-text h3,
+.post-text h4,
+.post-text h5,
+.post-text h6 {
     display: none;
 }
 

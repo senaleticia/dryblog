@@ -29,8 +29,8 @@ if (isset($_GET['modo'])) {
     }
 }
 
-if (isset($_FILES['fileFoto']) != "") {
-    $arquivo = $_FILES['fileFoto'];
+if (isset($_FILES['fileFotoUsuario']) != "") {
+    $arquivo = $_FILES['fileFotoUsuario'];
 
     // if($arquivo['error']){
     //     echo('<script>alert("Falha ao enviar foto")</script>');
@@ -76,7 +76,7 @@ if (isset($_FILES['fileFoto']) != "") {
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
                     echo ("<script>alert('Cadastro inserido')</script>");
-                    header("location: login.php");
+                    echo ("<script>window.location='login.php'</script>");
                 } else {
                     echo ("<script>alert('Erro ao inserir cadastro')</script>");
                 }
@@ -103,7 +103,7 @@ if (isset($_FILES['fileFoto']) != "") {
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
                     echo ("<script>alert('Cadastro inserido')</script>");
-                    header("location: login.php");
+                    echo ("<script>window.location='login.php'</script>");
                 } else {
                     echo ("<script>alert('Erro ao inserir cadastro')</script>");
                 }
@@ -142,12 +142,12 @@ if (isset($_FILES['fileFoto']) != "") {
                 </div>
             </div>
             <div class="mb-3 align-2">
-                <label class="input-group-text" for="fileFoto">
+                <label class="input-group-text" for="fileFotoUsuario">
                     Foto:
                     <span class="material-symbols-outlined">file_upload</span>
                 </label>
                 <p class="desc-file-foto"></p>
-                <input type="file" class="form-control-file" id="fileFoto" name="fileFoto" value="<?= $result['foto'] ?>" selected>
+                <input type="file" class="form-control-file" id="fileFotoUsuario" name="fileFotoUsuario" value="<?= $result['foto'] ?>" selected>
             </div>
             <div class="mb-3 row">
                 <label for="txtEmailUsuario" class="col-sm-2 col-form-label">Email:</label>
@@ -168,7 +168,26 @@ if (isset($_FILES['fileFoto']) != "") {
         </form>
 
     </div>
-    <!--<script src="./script.js"></script>-->
+    <script>
+        function nameFileFoto() {
+            let div = document.querySelector('.desc-file-foto');
+            let input = document.getElementById('fileFotoUsuario');
+
+            if ((div != null) && (input != null)) {
+                div.addEventListener("click", function() {
+                    input.click();
+                });
+
+                input.addEventListener("change", function() {
+                    let nome = "Não há arquivo selecionado. Selecionar arquivo...";
+                    if (input.files.length > 0) nome = input.files[0].name;
+                    div.innerHTML = nome;
+                });
+            }
+        }
+
+        nameFileFoto();
+    </script>
 </body>
 
 </html>

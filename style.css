@@ -795,12 +795,9 @@ li {
 #fileFoto,
 #fileFoto2,
 #fileFoto3,
-#fileFoto4 {
+#fileFoto4,
+#fileFotoUsuario {
     display: none !important;
-}
-
-#cadastroUsuario #fileFoto {
-    display: block !important;
 }
 
 .desc-file-foto {

@@ -3,16 +3,6 @@ session_start();
 
 require './bd/conexao.php';
 $conexao = conexaoMySql();
-
-if (isset($_POST['btnEnviar'])) {
-    $url_post = $_POST['urlPost'];
-    $order = array("/(á|à|ã|â|ä)/", "/(Á|À|Ã|Â|Ä)/", "/(é|è|ê|ë)/", "/(É|È|Ê|Ë)/", "/(í|ì|î|ï)/", "/(Í|Ì|Î|Ï)/", "/(ó|ò|õ|ô|ö)/", "/(Ó|Ò|Õ|Ô|Ö)/", "/(ú|ù|û|ü)/", "/(Ú|Ù|Û|Ü)/", "/(ñ)/", "/(Ñ)/");
-    $replace = explode(" ", "a A e E i I o O u U n N");
-    $space_replace = preg_replace($order, $replace, $url_post);
-    $url_final = strtolower(str_replace(" ", "-", $space_replace));
-
-    echo ($url_final);
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -63,17 +53,46 @@ if (isset($_POST['btnEnviar'])) {
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <form action="#" method="POST">
-            <input type="text" name="urlPost" id="urlPost" class="input-sunk-white">
-            <button type="submit" name="btnEnviar" id="btnEnviar" class="btn-padrao">Enviar</button>
-        </form>
+    <div class="content-parallax">
+        <section>
+            <div id="layer-1" class="text-white">Aliquam faucibus, elit ut dapibus iaculis, erat erat molestie augue, ut consequat urna purus vel urna. Vestibulum euismod elit arcu, vitae fermentum nulla finibus ac. Sed ultricies congue urna, non volutpat sapien pharetra sed. Praesent aliquet risus risus, non malesuada neque viverra quis. Donec viverra, justo eu porttitor cursus, massa dolor vulputate ipsum, a feugiat diam turpis in massa. Morbi dignissim, nunc in vestibulum blandit, sem nibh rhoncus tellus, nec dapibus velit massa id nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec non augue lorem. Cras in nulla risus. Nunc faucibus tellus quis arcu varius tempus. Mauris velit tellus, molestie vel libero ac, lobortis mollis elit.</div>
+            <div class="img-parallax"></div>
+            <div class="img-parallax"></div>
+        </section>
+
+        <article id="content">
+            <script>
+                for (var i = 0; i < 50; i++) {
+                    document.write('<h1>Testando parallax ' + i + ' </h1>');
+                }
+            </script>
+        </article>
     </div>
+
+    <style>
+        #content {
+            position: absolute;
+        }
+
+        .content-parallax {
+            background: url(./img/foto-parallax-teste.jpg) fixed no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            color: transparent;
+        }
+
+        .img-parallax {
+            position: fixed;
+            width: 100%;
+            height: 1000px;
+        }
+    </style>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
 
 </body>

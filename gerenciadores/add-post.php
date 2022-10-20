@@ -16,6 +16,7 @@ $conexao = conexaoMySql();
 //Variáveis
 $botao = (string) "Salvar";
 $titulo = (string) "";
+$previa_conteudo = (string) "";
 $conteudo = (string) "";
 $conteudo2 = (string) "";
 $conteudo3 = (string) "";
@@ -50,6 +51,7 @@ if (isset($_GET['modo'])) {
         //Pegando os dados do banco e colocando em variáveis
         if ($result = mysqli_fetch_array($select)) {
             $titulo = $result['titulo'];
+            $previa_conteudo = $result['previa_conteudo'];
             $conteudo = $result['conteudo'];
             $conteudo2 = $result['segundo_conteudo'];
             $conteudo3 = $result['terceiro_conteudo'];
@@ -126,6 +128,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
         if (isset($_POST['btnSalvar'])) {
             //Pegando valores do input e dando a sua variável especifica
             $titulo = addslashes($_POST['txtTitulo']);
+            $previa_conteudo = addslashes($_POST['txtPreviaConteudo']);
             $conteudo = addslashes($_POST['txtConteudo']);
             $conteudo2 = addslashes($_POST['txtSegundoConteudo']);
             $conteudo3 = addslashes($_POST['txtTerceiroConteudo']);
@@ -154,17 +157,16 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "' WHERE id_post = " . $id;
+                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
             }
 
             //Rodando a conexão com o banco de dados e o script SQL
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Post inserido com sucesso')</script>");
-                //header("location: index.php");
-                echo ($sql);
+                echo ("<script>window.location='index.php'</script>");
             } else {
                 echo ("<script>alert('Erro ao inserir post')</script>");
                 echo ($sql);
@@ -179,6 +181,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
         if (isset($_POST['btnSalvar'])) {
             //Pegando valores do input e dando a sua variável especifica
             $titulo = addslashes($_POST['txtTitulo']);
+            $previa_conteudo = addslashes($_POST['txtPreviaConteudo']);
             $conteudo = addslashes($_POST['txtConteudo']);
             $conteudo2 = addslashes($_POST['txtSegundoConteudo']);
             $conteudo3 = addslashes($_POST['txtTerceiroConteudo']);
@@ -219,14 +222,14 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     echo ("<script>history.back()</script>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags, url_post) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
                 if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível atualizar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
-                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_post = '" . $data_post . "', hora_post = '" . $hora_post . "' WHERE id_post = " . $id;
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_post = '" . $data_post . "', hora_post = '" . $hora_post . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
                 }
             }
 
@@ -273,6 +276,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                 </label>
                 <p class="desc-file-foto"></p>
                 <input type="file" class="form-control-file" id="fileFoto" name="fileFoto" value="<?= $result['foto'] ?>" selected>
+            </div>
+            <div class="mb-3">
+                <label for="txtPreviaConteudo" class="form-label">Prévia do Conteúdo:</label>
+                <textarea class="form-control" id="txtPreviaConteudo" name="txtPreviaConteudo" cols="30" rows="3" maxlength="200" required><?= $previa_conteudo ?></textarea>
             </div>
             <div class="mb-3">
                 <label for="txtConteudo" class="form-label">Conteúdo:</label>
