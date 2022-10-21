@@ -18,8 +18,7 @@ textarea {
 }
 
 a:link,
-.card-materia-lateral>a:hover,
-.footer-menu>a:hover {
+.card-materia-lateral>a:hover {
     color: #181818;
     text-decoration: none;
 }
@@ -267,10 +266,10 @@ li {
 .caixa-background {
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center bottom;
-    /* background-attachment: fixed; */
+    background-position: center center;
+    background-attachment: fixed;
     position: relative;
-    height: 65vh;
+    height: 50vh;
 }
 
 .bg-laricel {
@@ -344,6 +343,11 @@ li {
 
 #section-empresas .card-chip {
     max-width: 1000px;
+}
+
+#section-entretenimento .card-chip {
+    height: calc(50vh - 168px);
+    align-items: center;
 }
 
 .card-chip {
@@ -557,6 +561,7 @@ li {
 .container-lado-direito .card-materia-lateral {
     width: 95%;
     max-width: none;
+    min-width: 330px;
 }
 
 .caixa-slide .card-materia-lateral {
@@ -566,6 +571,11 @@ li {
     flex-wrap: wrap;
     gap: 32px;
     flex-direction: column;
+}
+
+.card-materia-lateral .materia-title:hover {
+    color: #FE5000;
+    text-decoration: underline;
 }
 
 .materia-img {
@@ -725,13 +735,23 @@ li {
 }
 
 .footer-menu {
-    font-size: 15px;
-    text-align: center;
+    font-size: 16px;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .footer-menu a {
     color: #181818;
+}
+
+.footer-menu>a:hover {
+    color: #FE5000;
+    transition: .2s;
+    transform: scale(1.05);
+    font-weight: bold;
 }
 
 .footer-title {
@@ -755,7 +775,7 @@ li {
 
 .footer-credits {
     font-size: 12px;
-    margin-top: 80px;
+    margin-top: 45px;
     padding: 30px;
 }
 

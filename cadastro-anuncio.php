@@ -223,17 +223,17 @@ if (isset($_GET['modo'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./index.php#clientes">Clientes</a> <br>
-                        <a href="./index.php#cobertura">Cobertura</a> <br>
-                        <a href="./blog.php">Blog</a> <br>
+                        <a href="./index.php#clientes">Clientes</a>
+                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./blog.php">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a> <br>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a> <br>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a> <br>
+                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">

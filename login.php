@@ -50,6 +50,10 @@ if (isset($_POST['btnLogin'])) {
 
 <body>
     <div class="container">
+        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
         <div class="materia-title">
             <h2 class="py-4">Login - Dry Telecom</h2>
         </div>

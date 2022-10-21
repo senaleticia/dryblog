@@ -184,13 +184,13 @@ if (isset($_POST['btnComentar'])) {
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2>Ação Inválida</h2>
+                        <h2 class="pl-1">Curtiu?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Você precisa estar autenticado para realizar essa ação</p>
+                        <p class="text-center">Faça seu login para nos dizer o que achou agora mesmo!</p>
                     </div>
                     <div class="modal-footer">
                         <a href="./login.php">
@@ -459,17 +459,17 @@ if (isset($_POST['btnComentar'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./index.php#clientes">Clientes</a> <br>
-                        <a href="./index.php#cobertura">Cobertura</a> <br>
-                        <a href="./blog.php">Blog</a> <br>
+                        <a href="./index.php#clientes">Clientes</a>
+                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./blog.php">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a> <br>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a> <br>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a> <br>
+                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">

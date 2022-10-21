@@ -97,13 +97,13 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header pt-4">
-                        <h2 class="pl-4">Ação Inválida</h2>
+                        <h2 class="pl-1">Curtiu?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p class="text-center">Você precisa estar autenticado para realizar essa ação</p>
+                        <p class="text-center">Faça seu login para nos dizer o que achou agora mesmo!</p>
                     </div>
                     <div class="modal-footer">
                         <a href="./login.php" class="btn-secundario btn-modal">Entrar</a>
@@ -117,12 +117,12 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
+                        <h2 class="mx-auto">Alguma dúvida?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
-                    <div class="modal-body ml-auto mr-auto">
+                    <div class="modal-body mx-auto">
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
@@ -263,12 +263,12 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
                             while ($rs_popular = mysqli_fetch_array($select_popular)) {
                             ?>
-                                <div class="card-materia-lateral">
-                                    <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_popular['foto'] ?>');"></div>
-                                    <a href="./postagem.php?p=<?= $rs_popular['url_post'] ?>">
+                                <a href="./postagem.php?p=<?= $rs_popular['url_post'] ?>">
+                                    <div class="card-materia-lateral">
+                                        <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_popular['foto'] ?>');"></div>
                                         <h4 class="materia-title"><?= $rs_popular['titulo'] ?></h4>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             <?php } ?>
                         </div>
                     </div>
@@ -291,7 +291,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 align-center-vertical ml-auto mr-auto">
+                <div class="col-md-4 align-center-vertical mx-auto">
                     <div class="footer-logo">
                         <img src="./svg/logo-drytelecom.svg" alt="Logo">
                     </div>
@@ -304,17 +304,17 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./index.php#clientes">Clientes<br></a>
-                        <a href="./index.php#cobertura">Cobertura<br></a>
-                        <a href="./blog.php">Blog<br></a>
+                        <a href="./index.php#clientes">Clientes</a>
+                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./blog.php">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade<br></a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies<br></a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD<br></a>
+                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -334,7 +334,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 </div>
             </div>
             <div class="row">
-                <div class="footer-credits mb-5">
+                <div class="footer-credits">
                     2022. Dry Telecom. Todos os direitos reservados. CNPJ: 15.564.295/0001-04 RAZÃO SOCIAL: DRY COMPANY DO BRASIL TECNOLOGIA LTDA AV ANÁPOLIS, N° 510 - VILA NILVA - BARUERI/SP - CEP 06404-250
                 </div>
             </div>

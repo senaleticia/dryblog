@@ -164,6 +164,7 @@
 
     .caixa-background {
         height: 50vh;
+        background-attachment: scroll;
     }
 
     .bg-laricel {
@@ -389,6 +390,10 @@
     #section-slide,
     #cobertura {
         background-image: none !important;
+    }
+
+    .img-title-slide>img {
+        width: 100%;
     }
 }
 
