@@ -50,22 +50,24 @@ if (isset($_POST['btnLogin'])) {
 
 <body>
     <div class="container">
-        <button class="btn-padrao margem-btn font-weight-bold" onclick="history.go(-1)">
-            <span class="material-symbols-outlined">arrow_back</span>
-            VOLTAR
-        </button>
-        <div class="materia-title">
-            <h2 class="py-4">Login - Dry Telecom</h2>
+        <div class="row justify-content-center position-relative pt-4">
+            <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
+                <span class="material-symbols-outlined">arrow_back</span>
+                VOLTAR
+            </button>
+
+            <h2 class="login-title">Login - Dry Telecom</h2>
         </div>
-        <div class="container-login">
+
+        <div class="container-login mt-5">
             <span id="msg-error"></span>
             <form action="#" method="POST" id="loginUsuario" name="loginUsuario" style="width: 75%;">
                 <div class="mb-3">
-                    <label for="txtEmailUsuario" class="form-label">Email:&nbsp;&nbsp;</label>
+                    <label for="txtEmailUsuario" class="form-label">Email:</label>
                     <input class="input-sunk-white" type="email" id="txtEmailUsuario" name="txtEmailUsuario" aria-describedby="emailHelp" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
-                    <label for="txtSenhaUsuario" class="form-label">Senha:&nbsp;</label>
+                    <label for="txtSenhaUsuario" class="form-label">Senha:</label>
                     <input class="input-sunk-white" type="password" id="txtSenhaUsuario" name="txtSenhaUsuario" placeholder="Senha" required>
                 </div>
                 <div class="d-flex justify-content-around">

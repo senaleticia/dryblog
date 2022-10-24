@@ -164,7 +164,6 @@
 
     .caixa-background {
         height: 50vh;
-        background-attachment: scroll;
     }
 
     .bg-laricel {
@@ -277,6 +276,10 @@
         flex-direction: column;
     }
 
+    .foto-anuncio {
+        max-width: none;
+    }
+
     .post-buttons {
         gap: 6px;
     }
@@ -291,6 +294,19 @@
 
     #titulo-adesao span {
         justify-content: center;
+    }
+
+    .btn-voltar {
+        left: 7px;
+        min-width: 100px;
+    }
+
+    .card-cadastro {
+        width: 100%;
+    }
+
+    .login-title {
+        margin-top: 45px;
     }
 }
 

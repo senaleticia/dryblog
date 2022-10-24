@@ -272,6 +272,10 @@ li {
     height: 50vh;
 }
 
+.background-scroll {
+    background-attachment: scroll !important;
+}
+
 .bg-laricel {
     background-image: url('./img/bg-laricel.png');
     height: 50vh;
@@ -693,17 +697,20 @@ li {
 }
 
 .input-group-text {
-    background-color: #ffffff;
-    width: auto;
+    display: flex;
+    justify-content: center;
+    color: #FE5000;
+    width: 68px;
+    height: 68px;
     gap: 10px;
     border: none !important;
+    border-radius: 60px;
+    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
 }
 
-.align-2 {
-    display: flex;
-    align-items: center;
-    border: 1px solid #fff;
-    border-radius: 0.25rem;
+.input-group-text:hover {
+    cursor: pointer;
+    box-shadow: inset -2px -2px 4px rgb(255 255 255 / 75%), inset 4px 4px 8px rgb(0 0 0 / 25%);
 }
 
 .comentario-usuario {
@@ -1541,4 +1548,39 @@ small.float-right:hover {
 #sltFiltro option {
     background-color: #EBEBEB;
     border-radius: 50px;
+}
+
+.card-cadastro {
+    width: 50%;
+    padding: 18px 35px 35px 35px;
+    background-color: #E4E6E6;
+    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+}
+
+.card-cadastro .input-sunk-white {
+    width: 100%;
+}
+
+.foto-input {
+    width: 300px;
+}
+
+.input-group-text span {
+    font-size: 30px;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    box-shadow: none;
+    border: solid 1px #FE5000;
+    position: absolute;
+    left: 0;
+    padding: 4px 12px;
+    min-width: 0;
+    color: #FE5000;
+    border-radius: 40px;
 }

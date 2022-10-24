@@ -90,31 +90,10 @@ function validarEntrada(caracter, typeBlock) {
     }
 }
 
-const nomeCadastro = document.getElementById("txtNomeCadastro");
-const emailCadastro = document.getElementById("txtEmailCadastro");
-const telefoneCadastro = document.getElementById("txtTelefoneCadastro");
-const profissaoCadastro = document.getElementById("txtProfissaoCadastro");
+const caixaBackground = document.querySelectorAll('.caixa-background');
 
-function limitarCaracteres() {
-    nomeCadastro.maxLength = 100;
-    emailCadastro.maxLength = 50;
-    telefoneCadastro.maxLength = 11;
-    profissaoCadastro.maxLength = 50;
-}
-
-limitarCaracteres();
-
-function copiarLink() {
-    let copyText = document.getElementById('copy-link');
-
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(copyText.value);
-
-    if (copyText.value) {
-        alert("Texto copiado: " + copyText.value);
-    } else {
-        alert("Erro ao copiar o link!");
+caixaBackground.forEach((background) => {
+    if (navigator.userAgent.match(/iPad|iPod|iPhone/)) {
+        background.classList.add('background-scroll');
     }
-}
+})

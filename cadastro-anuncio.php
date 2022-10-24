@@ -166,22 +166,22 @@ if (isset($_GET['modo'])) {
                     <div class="my-3">
                         <small>*Campos Obrigatórios</small>
                         <div class="col-sm-12">
-                            <input type="text" class="input-sunk-white" id="txtNomeCadastro" name="txtNomeCadastro" placeholder="Nome e Sobrenome*" required onkeypress="return validarEntrada(event, 'caracter');">
+                            <input type="text" class="input-sunk-white" id="txtNomeCadastro" name="txtNomeCadastro" placeholder="Nome e Sobrenome*" required onkeypress="return validarEntrada(event, 'caracter');" maxlength="100">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-sm-12">
-                            <input type="email" class="input-sunk-white" id="txtEmailCadastro" name="txtEmailCadastro" placeholder="Email*" required>
+                            <input type="email" class="input-sunk-white" id="txtEmailCadastro" name="txtEmailCadastro" placeholder="Email*" required maxlength="50">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-sm-12">
-                            <input type="text" class="input-sunk-white" id="txtTelefoneCadastro" name="txtTelefoneCadastro" placeholder="Telefone*" required onkeypress="return validarEntrada(event, 'number');">
+                            <input type="text" class="input-sunk-white" id="txtTelefoneCadastro" name="txtTelefoneCadastro" placeholder="Telefone*" required onkeypress="return validarEntrada(event, 'number');" maxlength="11">
                         </div>
                     </div>
                     <div class="mb-3">
                         <div class="col-sm-12">
-                            <input type="text" class="input-sunk-white" id="txtProfissaoCadastro" name="txtProfissaoCadastro" placeholder="Profissão*" required onkeypress="return validarEntrada(event, 'caracter');">
+                            <input type="text" class="input-sunk-white" id="txtProfissaoCadastro" name="txtProfissaoCadastro" placeholder="Profissão*" required onkeypress="return validarEntrada(event, 'caracter');" maxlength="50">
                         </div>
                     </div>
                     <div class="caixa-checkbox mb-4 mx-auto">
