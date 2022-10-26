@@ -91,6 +91,9 @@ function validarEntrada(caracter, typeBlock) {
 }
 
 const caixaBackground = document.querySelectorAll('.caixa-background');
+// caixaBackground.forEach(background => {
+//     background.classList.add('background-scroll');
+// });
 
 caixaBackground.forEach((background) => {
     if (navigator.userAgent.match(/iPad|iPod|iPhone/)) {

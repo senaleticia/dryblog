@@ -9,6 +9,7 @@ session_start();
 //Definindo variáveis
 $email = (string) "";
 $senha = (string) "";
+$erro = "";
 
 if (isset($_POST['btnLogin'])) {
     $email = $_POST['txtEmailUsuario'];
@@ -25,7 +26,10 @@ if (isset($_POST['btnLogin'])) {
 
         header("location: index.php");
     } else {
-        echo ("<script>alert('Usuário e/ou senha inválido')</script>");
+        $erro = "<div class='alert alerta-erro mt-5 mx-auto' role='alert'>
+                    <h4 class='alert-heading text-center'>Ops, algo deu errado!</h4>
+                    <p class='text-center m-0'>Usuário e/ou senha inválidos.</p>
+                </div>";
     }
 }
 ?>
@@ -58,9 +62,8 @@ if (isset($_POST['btnLogin'])) {
 
             <h2 class="login-title">Login - Dry Telecom</h2>
         </div>
-
+        <?= $erro ?>
         <div class="container-login mt-5">
-            <span id="msg-error"></span>
             <form action="#" method="POST" id="loginUsuario" name="loginUsuario" style="width: 75%;">
                 <div class="mb-3">
                     <label for="txtEmailUsuario" class="form-label">Email:</label>

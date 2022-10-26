@@ -171,7 +171,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             <h1 class="titulo-padrao text-uppercase"><?= $result['titulo'] ?></h1>
                         </div>
                         <div class="post-text">
-                            <?= $result['previa_conteudo'] ?>...
+                            <?= $result['previa_conteudo'] ?>
                         </div>
                         <?php
                         if ($result['foto'] != "") {

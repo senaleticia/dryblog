@@ -7,6 +7,8 @@ $conexao = conexaoMySql();
 $nome_usuario = (string) "";
 $login_usuario = (string) "";
 $senha_usuario = (string) "";
+$erro = "";
+$script_modal = "";
 
 if (isset($_FILES['fileFotoUsuario']) != "") {
     $arquivo = $_FILES['fileFotoUsuario'];
@@ -43,11 +45,20 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             $count_email = mysqli_num_rows($select_email);
 
             if ($senha_usuario != $confirmar_senha_usuario) {
-                echo ("<script>alert('As senhas digitadas não coincidem, por favor, tente novamente!')</script>");
+                $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <p class='m-0'>As senhas digitadas estão diferentes, verifique-as e tente novamente.</p>
+                        </div>";
             } else if ($count_email >= 1) {
-                echo ("<script>alert('Esse e-mail já está cadastrado em nosso sistema, favor inserir outro')</script>");
+                $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <p class='m-0'>Este email já está cadastrado em nosso sistema, favor, inserir outro.</p>
+                        </div>";
             } else if ($nome_usuario == "" || $login_usuario == "" || $senha_usuario == "" || $confirmar_senha_usuario == "") {
-                echo ("<script>alert('Os campos nome, email e senha são obrigatórios')</script>");
+                $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente.</p>
+                        </div>";
             } else {
                 //Script SQL para inserir um post no banco de dados
                 $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario, foto_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', '" . $confirmar_senha_usuario . "', '" . $foto_usuario . "')";
@@ -75,17 +86,24 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             $count_email = mysqli_num_rows($select_email);
 
             if ($senha_usuario != $confirmar_senha_usuario) {
-                echo ("<script>alert('As senhas digitadas não coincidem, por favor, tente novamente!')</script>");
+                $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <p class='m-0'>As senhas digitadas estão diferentes, verifique-as e tente novamente.</p>
+                        </div>";
             } else if ($count_email >= 1) {
-                echo ("<script>alert('Esse e-mail já está cadastrado em nosso sistema, favor inserir outro')</script>");
+                $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <p class='m-0'>Este email já está cadastrado em nosso sistema, favor, inserir outro.</p>
+                        </div>";
             } else {
                 //Script SQL para inserir um post no banco de dados
                 $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', '" . $confirmar_senha_usuario . "')";
 
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
-                    echo ("<script>alert('Cadastro inserido')</script>");
-                    echo ("<script>window.location='login.php'</script>");
+                    $script_modal = "$('#myModal').modal('show');";
+                    /*echo ("<script>alert('Cadastro inserido')</script>");
+                    echo ("<script>window.location='login.php'</script>");*/
                 } else {
                     echo ("<script>alert('Erro ao inserir cadastro')</script>");
                 }
@@ -192,6 +210,25 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             </div>
         </div>
 
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cadastro Feito!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Seu cadastro foi feito com sucesso! Agora <a href="./login.php">clique aqui</a> e você será redirecionado à página de login.
+                    </div>
+                    <div class="modal-footer">
+                        <a href="./login.php" class="btn-padrao">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row justify-content-center position-relative pt-4">
             <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
                 <span class="material-symbols-outlined">arrow_back</span>
@@ -201,14 +238,16 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             <h2>Criar conta</h2>
         </div>
 
+        <?= $erro ?>
+
         <form action="#" method="POST" name="cadastroUsuario" id="cadastroUsuario" enctype="multipart/form-data">
-            <div class="card-cadastro mx-auto mt-3">
+            <div class="card-cadastro mx-auto my-3">
                 <div class="foto-input mx-auto">
                     <p class="text-center">Foto:</p>
                     <label class="input-group-text mx-auto" for="fileFotoUsuario">
                         <span class="material-symbols-outlined">file_upload</span>
                     </label>
-                    <p class="desc-file-foto pt-3"></p>
+                    <p class="desc-file-foto pt-3 text-center"></p>
                     <input type="file" class="form-control-file" id="fileFotoUsuario" name="fileFotoUsuario">
                 </div>
                 <div class="mb-3 row">
@@ -241,6 +280,8 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
     <script>
+        <?= $script_modal ?>
+
         $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });

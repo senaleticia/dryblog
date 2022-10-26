@@ -8,6 +8,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
 if (!isset($_GET['caixaPesquisa'])) {
     header('location: ./blog.php');
+} else if ($_GET['caixaPesquisa'] == "") {
+    header('location: ./blog.php');
 }
 
 $pesquisa = ($_GET['caixaPesquisa']);

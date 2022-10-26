@@ -116,8 +116,8 @@
         padding-top: 20px;
     }
 
-    #caixa-comentarios {
-        display: flex;
+    small.float-right {
+        padding-right: 15px;
     }
 
     #section-slide,
@@ -301,12 +301,17 @@
         min-width: 100px;
     }
 
+    .alerta-erro,
     .card-cadastro {
         width: 100%;
     }
 
     .login-title {
-        margin-top: 45px;
+        margin-top: 50px;
+    }
+
+    .youtube-video {
+        height: 260px;
     }
 }
 
@@ -410,6 +415,10 @@
 
     .img-title-slide>img {
         width: 100%;
+    }
+
+    .youtube-video {
+        height: 400px;
     }
 }
 

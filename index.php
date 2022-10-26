@@ -662,7 +662,7 @@ if (isset($_GET['modo'])) {
                     <h3 class="footer-title text-center">REDES SOCIAIS</h3>
                     <div id="redes-sociais" class="d-flex justify-content-center">
                         <div class="redes-sociais-pic mr-3">
-                            <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
+                            <a href="https://instagram.com/drytelecom" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
                             </a>
                         </div>

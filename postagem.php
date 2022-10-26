@@ -113,6 +113,7 @@ if (isset($_POST['btnComentar'])) {
 </head>
 
 <body>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
         <div class="container">
             <div id="navbar-mobile">
@@ -323,7 +324,7 @@ if (isset($_POST['btnComentar'])) {
 
                     <?php if ($video != "") { ?>
                         <div class="post-video">
-                            <iframe width="100%" height="570" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe class="youtube-video" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     <?php } ?>
 
@@ -361,12 +362,12 @@ if (isset($_POST['btnComentar'])) {
             <div class="scroll-container">
                 <div class="container-relacionados">
                     <?php while ($rs_relacionados = mysqli_fetch_array($select_relacionados)) { ?>
-                        <div class="card-materia-lateral">
-                            <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_relacionados['foto'] ?>');"></div>
-                            <a href="./postagem.php?modo=visualizar&id=<?= $rs_relacionados['id_post'] ?>">
+                        <a href="./postagem.php?p=<?= $rs_relacionados['url_post'] ?>">
+                            <div class="card-materia-lateral">
+                                <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_relacionados['foto'] ?>');"></div>
                                 <h4 class="materia-title"><?= $rs_relacionados['titulo'] ?></h4>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     <?php } ?>
                 </div>
             </div>
@@ -408,7 +409,7 @@ if (isset($_POST['btnComentar'])) {
                 </form>
             <?php }
             // Script SQL para exibir os comentários da publicação
-            $sql = "SELECT comentario.*, usuario.* FROM comentario INNER JOIN usuario ON comentario.id_usuario = usuario.id_usuario WHERE comentario.id_post = " . $id;
+            $sql = "SELECT comentario.*, usuario.* FROM comentario INNER JOIN usuario ON comentario.id_usuario = usuario.id_usuario WHERE comentario.id_post = " . $id . " ORDER BY comentario.id_comentario DESC";
             $select = mysqli_query($conexao, $sql);
 
             while ($result = mysqli_fetch_array($select)) {
@@ -431,7 +432,28 @@ if (isset($_POST['btnComentar'])) {
                             if ($usuario_autenticado == true) {
                                 if ($id_user == $result['id_usuario']) {
                             ?>
-                                    <a onclick="return confirm('Tem certeza que deseja excluir esse comentário?')" href="./bd/excluir-comentario.php?modo=excluir&id_comment=<?= $result['id_comentario'] ?>">
+                                    <div class="modal fade" id="modalExcluirComentario" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="TituloModalCentralizado">Excluir comentário</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                        <span aria-hidden="true" class="material-symbols-outlined">close</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Tem certeza que deseja excluir o comentário? Essa ação não poderá ser desfeita!
+                                                </div>
+                                                <div class="modal-footer p-3">
+                                                    <button type="button" class="btn-padrao" data-dismiss="modal">Cancelar</button>
+                                                    <a href="./bd/excluir-comentario.php?modo=excluir&id_comment=<?= $result['id_comentario'] ?>">
+                                                        <button type="button" class="btn-secundario">Excluir</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a data-toggle="modal" data-target="#modalExcluirComentario">
                                         <small class="float-right">Excluir</small>
                                     </a>
                             <?php
@@ -499,7 +521,7 @@ if (isset($_POST['btnComentar'])) {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="./js/script.js"></script>
 
     <script>
@@ -508,6 +530,10 @@ if (isset($_POST['btnComentar'])) {
         })
 
         $('#exampleModal').on('shown.bs.modal', function() {
+            $('#myInput').trigger('focus')
+        })
+
+        $('#modalExcluirComentario').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         })
 

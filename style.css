@@ -558,8 +558,7 @@ li {
     background-color: #E4E6E6;
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 10%);
     border-radius: 20px;
-    max-width: 330px;
-    width: 100%;
+    width: 330px;
 }
 
 .container-lado-direito .card-materia-lateral {
@@ -1506,6 +1505,7 @@ small.float-right {
 
 small.float-right:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .dropdown-menu {
@@ -1583,4 +1583,15 @@ small.float-right:hover {
     min-width: 0;
     color: #FE5000;
     border-radius: 40px;
+}
+
+.alerta-erro {
+    color: #FE5000;
+    border: solid 1px #F25E0C;
+    width: 50%;
+}
+
+.youtube-video {
+    width: 100%;
+    height: 570px;
 }
