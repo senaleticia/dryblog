@@ -36,8 +36,8 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             //Pegando valores do input e dando a sua variável especifica
             $nome_usuario = $_POST['txtNomeUsuario'];
             $login_usuario = $_POST['txtEmailUsuario'];
-            $senha_usuario = sha1(md5($_POST['txtSenhaUsuario']));
-            $confirmar_senha_usuario = sha1(md5($_POST['txtConfSenhaUsuario']));
+            $senha_usuario = $_POST['txtSenhaUsuario'];
+            $confirmar_senha_usuario = $_POST['txtConfSenhaUsuario'];
             $foto_usuario = $novo_nome_arquivo . "." . $extensao;
 
             $verificar_email = "SELECT * FROM usuario WHERE login_usuario = '" . $login_usuario . "'";
@@ -46,22 +46,22 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
             if ($senha_usuario != $confirmar_senha_usuario) {
                 $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                             <p class='m-0'>As senhas digitadas estão diferentes, verifique-as e tente novamente.</p>
                         </div>";
             } else if ($count_email >= 1) {
                 $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
-                            <p class='m-0'>Este email já está cadastrado em nosso sistema, favor, inserir outro.</p>
+                            <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                            <p class='m-0'>Este email já faz parte da lista dos DryLovers, tente outro!</p>
                         </div>";
             } else if ($nome_usuario == "" || $login_usuario == "" || $senha_usuario == "" || $confirmar_senha_usuario == "") {
                 $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                             <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente.</p>
                         </div>";
             } else {
                 //Script SQL para inserir um post no banco de dados
-                $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario, foto_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', '" . $confirmar_senha_usuario . "', '" . $foto_usuario . "')";
+                $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario, foto_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', sha1(md5('" . $confirmar_senha_usuario . "')), '" . $foto_usuario . "')";
 
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
@@ -78,8 +78,8 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             //Pegando valores do input e dando a sua variável especifica
             $nome_usuario = $_POST['txtNomeUsuario'];
             $login_usuario = $_POST['txtEmailUsuario'];
-            $senha_usuario = sha1(md5($_POST['txtSenhaUsuario']));
-            $confirmar_senha_usuario = sha1(md5($_POST['txtConfSenhaUsuario']));
+            $senha_usuario = $_POST['txtSenhaUsuario'];
+            $confirmar_senha_usuario = $_POST['txtConfSenhaUsuario'];
 
             $verificar_email = "SELECT * FROM usuario WHERE login_usuario = '" . $login_usuario . "'";
             $select_email = mysqli_query($conexao, $verificar_email);
@@ -87,17 +87,22 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
             if ($senha_usuario != $confirmar_senha_usuario) {
                 $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
+                            <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                             <p class='m-0'>As senhas digitadas estão diferentes, verifique-as e tente novamente.</p>
                         </div>";
             } else if ($count_email >= 1) {
                 $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                            <h4 class='alert-heading'>Ops, algo deu errado!</h4>
-                            <p class='m-0'>Este email já está cadastrado em nosso sistema, favor, inserir outro.</p>
+                            <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                            <p class='m-0'>Este email já faz parte da lista dos DryLovers, tente outro!</p>
+                        </div>";
+            } else if ($nome_usuario == "" || $login_usuario == "" || $senha_usuario == "" || $confirmar_senha_usuario == "") {
+                $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                            <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                            <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente.</p>
                         </div>";
             } else {
                 //Script SQL para inserir um post no banco de dados
-                $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', '" . $confirmar_senha_usuario . "')";
+                $sql = "INSERT INTO usuario (nome_usuario, login_usuario, senha_usuario) VALUES ('" . $nome_usuario . "', '" . $login_usuario . "', sha1(md5('" . $confirmar_senha_usuario . "')))";
 
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
@@ -242,6 +247,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
         <form action="#" method="POST" name="cadastroUsuario" id="cadastroUsuario" enctype="multipart/form-data">
             <div class="card-cadastro mx-auto my-3">
+                <small>*Campos obrigatórios</small>
                 <div class="foto-input mx-auto">
                     <p class="text-center">Foto:</p>
                     <label class="input-group-text mx-auto" for="fileFotoUsuario">
@@ -251,20 +257,20 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                     <input type="file" class="form-control-file" id="fileFotoUsuario" name="fileFotoUsuario">
                 </div>
                 <div class="mb-3 row">
-                    <label for="txtNomeUsuario" class="col-sm-2 col-form-label">Nome:</label>
-                    <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario" required>
+                    <label for="txtNomeUsuario" class="col-sm-2 col-form-label">Nome:*</label>
+                    <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario">
                 </div>
                 <div class="mb-3 row">
-                    <label for="txtEmailUsuario" class="col-sm-2 col-form-label">Email:</label>
-                    <input type="email" class="input-sunk-white" id="txtEmailUsuario" name="txtEmailUsuario" required>
+                    <label for="txtEmailUsuario" class="col-sm-2 col-form-label">Email:*</label>
+                    <input type="email" class="input-sunk-white" id="txtEmailUsuario" name="txtEmailUsuario">
                 </div>
                 <div class="mb-3 row">
-                    <label for="txtSenhaUsuario" class="col-sm-2 col-form-label">Senha:</label>
-                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario" required>
+                    <label for="txtSenhaUsuario" class="col-sm-2 col-form-label">Senha:*</label>
+                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
                 </div>
                 <div class="mb-3 row">
-                    <label for="txtConfSenhaUsuario" class="col-sm-4 col-form-label">Confirmar Senha:</label>
-                    <input type="password" class="input-sunk-white" id="txtConfSenhaUsuario" name="txtConfSenhaUsuario" required>
+                    <label for="txtConfSenhaUsuario" class="col-sm-5 col-form-label">Confirmar Senha:*</label>
+                    <input type="password" class="input-sunk-white" id="txtConfSenhaUsuario" name="txtConfSenhaUsuario">
                 </div>
 
                 <div class="d-flex justify-content-center">

@@ -37,6 +37,8 @@ if (isset($_GET['p'])) {
         $video = $result['video'];
         $data_post = $result['data_post'];
         $hora_post = $result['hora_post'];
+        $data_atualizacao = $result['data_atualizacao'];
+        $hora_atualizacao = $result['hora_atualizacao'];
 
         //Adicionando quebra de linhas a cada "Enter" que o usuário der nos campos de texto
         $conteudo = $result['conteudo'];
@@ -226,8 +228,8 @@ if (isset($_POST['btnComentar'])) {
         <div class="row">
             <div class="col-md-12">
                 <div class="view-post-table mt-5">
-                    <div class="titulo-padrao text-uppercase mt-5">
-                        <h1><?= $titulo ?></h1>
+                    <div class="titulo-padrao mt-5">
+                        <h1 class="text-uppercase pb-3"><?= $titulo ?></h1>
                         <div class="caixa-tags">
                             <div class="tags mt-2 d-flex align-items-center">
                                 <div class="d-flex align-items-center">
@@ -274,6 +276,24 @@ if (isset($_POST['btnComentar'])) {
                                 </div>
                             </div>
                         </div>
+                        <?php if ($data_atualizacao != "" && $hora_atualizacao != "") { ?>
+                            <div class="caixa-tags">
+                                <div class="tags mt-2 d-flex align-items-center">
+                                    <p class="btn-tag">Atualizado em:</p>
+                                </div>
+                                <div class="tags mt-2 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined icon-tag">date_range</span>
+                                        <p class="btn-tag"><?= $data_atualizacao ?></p>
+                                    </div>
+
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined icon-tag">schedule</span>
+                                        <p class="btn-tag"><?= $hora_atualizacao ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
 
                     <?php if ($foto != "") { ?>

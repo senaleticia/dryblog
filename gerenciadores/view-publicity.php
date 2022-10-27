@@ -65,7 +65,7 @@ if (isset($_GET['modo'])) {
                 <a href="add-publicity.php?modo=editar&id=<?= $id_anuncio ?>" class="btn-padrao">
                     <span class="material-symbols-outlined">edit</span>
                 </a>
-                <a onclick="return confirm('Tem certeza que deseja excluir esse anúncio?')" href="delete.php?modo=excluir-anuncio&id=<?= $id_anuncio ?>" class="btn-padrao">
+                <a onclick="return confirm('Tem certeza que deseja excluir esse anúncio?')" href="delete.php?modo=excluir-anuncio&id=<?= $id_anuncio ?>&arquivo=<?= $foto_anuncio ?>" class="btn-padrao">
                     <span class="material-symbols-outlined">delete</span>
                 </a>
             </div>

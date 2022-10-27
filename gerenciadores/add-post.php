@@ -147,6 +147,8 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
             $hora_post = date('H:i');
+            $data_atualizacao = date('d/m/Y');
+            $hora_atualizacao = date('H:i');
 
             if ($botao == "Salvar") {
                 if ($titulo == "" || $conteudo == "") {
@@ -160,7 +162,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
+                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "' WHERE id_post = " . $id;
             }
 
             //Rodando a conexão com o banco de dados e o script SQL
@@ -204,6 +206,8 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
             $hora_post = date('H:i');
+            $data_atualizacao = date('d/m/Y');
+            $hora_atualizacao = date('H:i');
 
             if ($botao == "Salvar") {
                 $sql_url = "SELECT * FROM post WHERE url_post = '" . $url_final . "'";
@@ -229,7 +233,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     echo ("<script>alert('Não é possível atualizar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
-                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_post = '" . $data_post . "', hora_post = '" . $hora_post . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
                 }
             }
 
@@ -256,7 +260,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Criar Postagens - DryBlog</title>
+    <title>Criar Postagens - Dry Telecom</title>
 </head>
 
 <body>
@@ -264,7 +268,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
 
         <h1 class="my-4">Criar Postagem</h1>
 
-        <form action="#" method="POST" enctype="multipart/form-data" name="formAddPost">
+        <form action="#" method="POST" enctype="multipart/form-data" name="formAddPost" id="formAddPost">
             <div class="mb-3">
                 <label for="txtTitulo" class="form-label">Título:</label>
                 <input type="text" class="form-control" id="txtTitulo" name="txtTitulo" value="<?= $titulo ?>" required>

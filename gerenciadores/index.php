@@ -97,7 +97,7 @@ $conexao = conexaoMySql();
                         <a href="./add-post.php?modo=editar&id=<?= $result['id_post'] ?>">
                             <span class="material-symbols-outlined">border_color</span>
                         </a>
-                        <a class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>">
+                        <a class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>&arquivo=<?= $result['foto'] ?>">
                             <span class="material-symbols-outlined">delete</span>
                         </a>
                     </div>

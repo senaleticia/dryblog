@@ -11,11 +11,13 @@ if (isset($_GET['modo'])) {
 
     if ($_GET['modo'] == 'excluir-post') {
         $id = $_GET['id'];
+        $arquivo = $_GET['arquivo'];
 
         $sql = "DELETE FROM post WHERE id_post = " . $id;
 
         if (mysqli_query($conexao, $sql)) {
             //echo("<script>alert('Post excluído com sucesso')</script>");
+            unlink("../upload/arquivos/" . $arquivo);
             echo ("<script>history.back()</script>");
         } else {
             echo ("<script>alert('Erro ao excluir o post')</script>");
@@ -23,10 +25,12 @@ if (isset($_GET['modo'])) {
         }
     } else if ($_GET['modo'] == 'excluir-anuncio') {
         $id = $_GET['id'];
+        $arquivo = $_GET['arquivo'];
 
         $sql = "DELETE FROM anuncios WHERE id_anuncio = " . $id;
 
         if (mysqli_query($conexao, $sql)) {
+            unlink("../upload/arquivos/" . $arquivo);
             echo ("<script>alert('Anúncio excluído com sucesso')</script>");
             header("location: publicity-list.php");
         } else {
