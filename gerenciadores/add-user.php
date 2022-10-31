@@ -64,37 +64,39 @@ if (isset($_POST['btnCadastrarUsuario'])) {
 
 <body>
     <div class="container">
-        <h3 class="my-4">Adicionar Usuário</h3>
+        <h3 class="my-4 text-center">Adicionar Usuário</h3>
 
-        <form action="#" method="POST">
-            <div class="mb-3">
-                <label for="txtNomeUsuario" class="form-label">Nome:</label>
-                <input type="text" class="form-control" id="txtNomeUsuario" name="txtNomeUsuario" value="<?= $nome_autor ?>">
-            </div>
-            <div class="mb-3">
-                <label for="txtLoginUsuario" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="txtLoginUsuario" name="txtLoginUsuario" value="<?= $login_autor ?>">
-            </div>
-            <div class="mb-3">
-                <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="txtSenhaUsuario" name="txtSenhaUsuario">
-            </div>
-            <div class="mb-3">
-                <label for="sltNivel">Nível do Usuário:</label>
-                <select name="sltNivel" id="sltNivel" class="form-control">
-                    <option value="0">Escolha um nível</option>
-                    <option value="1">Administrador de Posts</option>
-                    <option value="2">Administrador Geral</option>
-                    <option value="3">Administrador Master</option>
-                </select>
-            </div>
-            <div class="d-flex justify-content-around mt-5">
-                <a href="./users-manager.php" class="btn-padrao font-weight-bold">
-                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
-                </a>
-                <button type="submit" class="btn-padrao" name="btnCadastrarUsuario" id="btnCadastrarUsuario">Cadastrar</button>
-            </div>
-        </form>
+        <div class="card-cadastro mx-auto">
+            <form action="#" method="POST">
+                <div class="mb-3">
+                    <label for="txtNomeUsuario" class="form-label">Nome:</label>
+                    <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario" value="<?= $nome_autor ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="txtLoginUsuario" class="form-label">Email:</label>
+                    <input type="email" class="input-sunk-white" id="txtLoginUsuario" name="txtLoginUsuario" value="<?= $login_autor ?>">
+                </div>
+                <div class="mb-3">
+                    <label for="txtSenhaUsuario" class="form-label">Senha:</label>
+                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                </div>
+                <div class="mb-3">
+                    <label for="sltNivel">Nível do Usuário:</label>
+                    <select name="sltNivel" id="sltNivel" class="form-control">
+                        <option value="0">Escolha um nível</option>
+                        <option value="1">Administrador de Posts</option>
+                        <option value="2">Administrador Geral</option>
+                        <option value="3">Administrador Master</option>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-around mt-5">
+                    <a href="./users-manager.php" class="btn-padrao font-weight-bold">
+                        <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                    </a>
+                    <button type="submit" class="btn-padrao" name="btnCadastrarUsuario" id="btnCadastrarUsuario">Cadastrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

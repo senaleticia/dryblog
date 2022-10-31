@@ -16,19 +16,19 @@ if (isset($_POST['filtroOpcao'])) {
     $opcao = $_POST['filtroOpcao'];
 }
 
-$selectedAtivo = "";
+$selectedAtivo = "selected";
 $selectedInativo = "";
-$selectedAll = "selected";
+$selectedAll = "";
 
 if (isset($_POST['sltFiltro'])) {
     $filtro = $_POST['sltFiltro'];
 
-    if ($filtro == "ativo") {
-        $selectedAtivo = "selected";
-        $selectedAll = "";
+    if ($filtro == "todos") {
+        $selectedAll = "selected";
+        $selectedAtivo = "";
     } else if ($filtro == "inativo") {
         $selectedInativo = "selected";
-        $selectedAll = "";
+        $selectedAtivo = "";
     }
 }
 ?>
@@ -89,9 +89,9 @@ if (isset($_POST['sltFiltro'])) {
                 <div class="mb-3">
                     <label for="sltFiltro" style="padding-left: 18px;">Filtrar Usuários:</label>
                     <select name="sltFiltro" id="sltFiltro" class="form-control" onchange="this.form.submit()">
-                        <option name="filtroOpcao" value="todos" <?= $selectedAll ?>>Todos</option>
                         <option name="filtroOpcao" value="ativo" <?= $selectedAtivo ?>>Ativos</option>
                         <option name="filtroOpcao" value="inativo" <?= $selectedInativo ?>>Inativos</option>
+                        <option name="filtroOpcao" value="todos" <?= $selectedAll ?>>Todos</option>
                     </select>
                 </div>
             </form>
@@ -99,14 +99,14 @@ if (isset($_POST['sltFiltro'])) {
 
         <ul class="list-group">
             <?php
-            $sql = "SELECT * FROM autor";
+            $sql = "SELECT * FROM autor WHERE autor_status = true ORDER BY id_autor DESC";
 
             if ($filtro == "ativo") {
-                $sql = $sql . " WHERE autor_status = true ORDER BY id_autor DESC";
+                $sql = "SELECT * FROM autor WHERE autor_status = true ORDER BY id_autor DESC";
             } else if ($filtro == "inativo") {
-                $sql = $sql . " WHERE autor_status = false ORDER BY id_autor DESC";
-            } else {
-                $sql = $sql . " ORDER BY id_autor DESC";
+                $sql = "SELECT * FROM autor WHERE autor_status = false ORDER BY id_autor DESC";
+            } else if ($filtro == "todos") {
+                $sql = "SELECT * FROM autor ORDER BY id_autor DESC";
             }
 
             $select = mysqli_query($conexao, $sql);
@@ -117,6 +117,7 @@ if (isset($_POST['sltFiltro'])) {
             }
 
             while ($result = mysqli_fetch_array($select)) {
+                //echo ($sql);
             ?>
                 <li class="post-list">
                     <?= $result['nome_autor'] ?>

@@ -48,7 +48,7 @@ if (isset($_GET['modo'])) {
         gtag('js', new Date());
         gtag('config', 'G-X59XCNSWHK');
     </script>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-inner">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
         <div class="container">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">

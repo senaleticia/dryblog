@@ -36,9 +36,7 @@ if (isset($_GET['p'])) {
         $foto4 = $result['quarta_foto'];
         $video = $result['video'];
         $data_post = $result['data_post'];
-        $hora_post = $result['hora_post'];
         $data_atualizacao = $result['data_atualizacao'];
-        $hora_atualizacao = $result['hora_atualizacao'];
 
         //Adicionando quebra de linhas a cada "Enter" que o usuário der nos campos de texto
         $conteudo = $result['conteudo'];
@@ -230,7 +228,7 @@ if (isset($_POST['btnComentar'])) {
                 <div class="view-post-table mt-5">
                     <div class="titulo-padrao mt-5">
                         <h1 class="text-uppercase pb-3"><?= $titulo ?></h1>
-                        <div class="caixa-tags">
+                        <div class="caixa-tags pb-3">
                             <div class="tags mt-2 d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                     <span class="material-symbols-outlined icon-tag">
@@ -257,43 +255,31 @@ if (isset($_POST['btnComentar'])) {
                                         hourglass_empty
                                     </span>
                                     <p class="btn-tag">
-                                        <?= $tempo_leitura ?> min. de leitura
+                                        Leitura <?= $tempo_leitura ?>min
                                     </p>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <span class="material-symbols-outlined icon-tag">
-                                        date_range
-                                    </span>
-                                    <p class="btn-tag">
-                                        <?= $data_post ?>
-                                    </p>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <span class="material-symbols-outlined icon-tag">
-                                        schedule
-                                    </span>
-                                    <p class="btn-tag"><?= $hora_post ?></p>
                                 </div>
                             </div>
                         </div>
-                        <?php if ($data_atualizacao != "" && $hora_atualizacao != "") { ?>
-                            <div class="caixa-tags">
-                                <div class="tags mt-2 d-flex align-items-center">
-                                    <p class="btn-tag">Atualizado em:</p>
-                                </div>
-                                <div class="tags mt-2 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag">date_range</span>
-                                        <p class="btn-tag"><?= $data_atualizacao ?></p>
-                                    </div>
+                        <div class="caixa-tags">
+                            <div class="d-flex flex-column">
+                                <p class="btn-tag pb-0">Postagem:</p>
 
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag">schedule</span>
-                                        <p class="btn-tag"><?= $hora_atualizacao ?></p>
-                                    </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">date_range</span>
+                                    <p class="btn-tag font-weight-bold pb-0"><?= $data_post ?></p>
                                 </div>
                             </div>
-                        <?php } ?>
+                            <?php if ($data_atualizacao != "") { ?>
+                                <div class="d-flex flex-column">
+                                    <p class="btn-tag pb-0">Atualização:</p>
+
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined icon-tag">date_range</span>
+                                        <p class="btn-tag font-weight-bold pb-0"><?= $data_atualizacao ?></p>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
 
                     <?php if ($foto != "") { ?>
@@ -541,7 +527,6 @@ if (isset($_POST['btnComentar'])) {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
     <script src="./js/script.js"></script>
 
     <script>

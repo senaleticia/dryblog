@@ -146,9 +146,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             //Capturando data atual e colocando em uma variável
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
-            $hora_post = date('H:i');
             $data_atualizacao = date('d/m/Y');
-            $hora_atualizacao = date('H:i');
 
             if ($botao == "Salvar") {
                 if ($titulo == "" || $conteudo == "") {
@@ -159,10 +157,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "' WHERE id_post = " . $id;
+                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "' WHERE id_post = " . $id;
             }
 
             //Rodando a conexão com o banco de dados e o script SQL
@@ -205,9 +203,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             //Capturando data atual e colocando em uma variável
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
-            $hora_post = date('H:i');
             $data_atualizacao = date('d/m/Y');
-            $hora_atualizacao = date('H:i');
 
             if ($botao == "Salvar") {
                 $sql_url = "SELECT * FROM post WHERE url_post = '" . $url_final . "'";
@@ -226,14 +222,14 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     echo ("<script>history.back()</script>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
                 if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível atualizar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
-                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_atualizacao = '" . $data_atualizacao . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
                 }
             }
 
@@ -257,6 +253,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../svg/favicon.svg" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -266,86 +263,100 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
 <body>
     <div class="container">
 
-        <h1 class="my-4">Criar Postagem</h1>
+        <h2 class="my-4 text-center">Criar Postagem</h2>
 
         <form action="#" method="POST" enctype="multipart/form-data" name="formAddPost" id="formAddPost">
-            <div class="mb-3">
-                <label for="txtTitulo" class="form-label">Título:</label>
-                <input type="text" class="form-control" id="txtTitulo" name="txtTitulo" value="<?= $titulo ?>" required>
-            </div>
-            <div class="mb-3 align-2">
-                <label class="input-group-text btn-padrao" for="fileFoto">
-                    Foto 1 (Foto do Banner):
-                    <span class="material-symbols-outlined">file_upload</span>
-                </label>
-                <p class="desc-file-foto"></p>
-                <input type="file" class="form-control-file" id="fileFoto" name="fileFoto" value="<?= $result['foto'] ?>" selected>
-            </div>
-            <div class="mb-3">
-                <label for="txtPreviaConteudo" class="form-label">Prévia do Conteúdo:</label>
-                <textarea class="form-control" id="txtPreviaConteudo" name="txtPreviaConteudo" cols="30" rows="3" maxlength="200" required><?= $previa_conteudo ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="txtConteudo" class="form-label">Conteúdo:</label>
-                <textarea class="form-control" id="txtConteudo" name="txtConteudo" cols="30" rows="10" required><?= $conteudo ?></textarea>
-            </div>
-            <div class="mb-3 align-2">
-                <label class="input-group-text btn-padrao" for="fileFoto2">
-                    Foto 2:
-                    <span class="material-symbols-outlined">file_upload</span>
-                </label>
-                <p class="desc-file-foto"></p>
-                <input type="file" class="form-control-file" id="fileFoto2" name="fileFoto2" value="<?= $result['segunda_foto'] ?>" selected>
-            </div>
-            <div class="mb-3">
-                <label for="txtSegundoConteudo" class="form-label">Conteúdo 2:</label>
-                <textarea class="form-control" id="txtSegundoConteudo" name="txtSegundoConteudo" cols="30" rows="10"><?= $conteudo2 ?></textarea>
-            </div>
-            <div class="mb-3 align-2">
-                <label class="input-group-text btn-padrao" for="fileFoto3">
-                    Foto 3:
-                    <span class="material-symbols-outlined">file_upload</span>
-                </label>
-                <p class="desc-file-foto"></p>
-                <input type="file" class="form-control-file" id="fileFoto3" name="fileFoto3" value="<?= $result['terceira_foto'] ?>" selected>
-            </div>
-            <div class="mb-3">
-                <label for="txtTerceiroConteudo" class="form-label">Conteúdo 3:</label>
-                <textarea class="form-control" id="txtTerceiroConteudo" name="txtTerceiroConteudo" cols="30" rows="10"><?= $conteudo3 ?></textarea>
-            </div>
-            <div class="mb-3 align-2">
-                <label class="input-group-text btn-padrao" for="fileFoto4">
-                    Foto 4:
-                    <span class="material-symbols-outlined">file_upload</span>
-                </label>
-                <p class="desc-file-foto"></p>
-                <input type="file" class="form-control-file" id="fileFoto4" name="fileFoto4" value="<?= $result['quarta_foto'] ?>" selected>
-            </div>
-            <div class="mb-3">
-                <label for="txtQuartoConteudo" class="form-label">Conteúdo 4:</label>
-                <textarea class="form-control" id="txtQuartoConteudo" name="txtQuartoConteudo" cols="30" rows="10"><?= $conteudo4 ?></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="txtTempoLeitura" class="form-label">Tempo de Leitura (em minutos):</label>
-                <input type="number" class="form-control" id="txtTempoLeitura" name="txtTempoLeitura" value="<?= $tempo_leitura ?>">
-            </div>
-            <div class="mb-3">
-                <label for="txtTags" class="form-label">Tag:</label>
-                <input type="text" class="form-control" id="txtTags" name="txtTags" value="<?= $tags ?>">
-            </div>
-            <div class="mb-3">
-                <label for="txtVideo" class="form-label">Link do vídeo:</label>
-                <input type="text" class="form-control" id="txtVideo" name="txtVideo" value="<?= $video ?>">
-                <div class="instrucao mt-2" style="color: #FE5000">
-                    <u>
-                        Obs: cole somente a parte em destaque do link: www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>
-                    </u>
+            <div class="card-cadastro mb-5">
+                <div>
+                    <label for="txtTitulo" class="form-label">Título:</label>
+                    <input type="text" class="input-sunk-white" id="txtTitulo" name="txtTitulo" value="<?= $titulo ?>" required>
+                </div>
+                <div class="align-2">
+                    <label class="input-group-text btn-padrao" for="fileFoto">
+                        Foto 1 (Foto do Banner):
+                        <span class="material-symbols-outlined">file_upload</span>
+                    </label>
+                    <p class="desc-file-foto"></p>
+                    <input type="file" class="form-control-file" id="fileFoto" name="fileFoto" value="<?= $result['foto'] ?>" selected>
+                </div>
+                <div>
+                    <label for="txtPreviaConteudo" class="form-label">Prévia do Conteúdo:</label>
+                    <textarea class="textarea-sunk-white" id="txtPreviaConteudo" name="txtPreviaConteudo" style="height: 90px;" maxlength="200" required><?= $previa_conteudo ?></textarea>
+                </div>
+                <div>
+                    <label for="txtConteudo" class="form-label">Conteúdo:</label>
+                    <textarea class="textarea-sunk-white" id="txtConteudo" name="txtConteudo" required><?= $conteudo ?></textarea>
                 </div>
             </div>
-            <div class="mb-3">
-                <div class="instrucao-url mt-3">
+
+            <div class="card-cadastro mb-5">
+                <div class="align-2">
+                    <label class="input-group-text btn-padrao" for="fileFoto2">
+                        Foto 2:
+                        <span class="material-symbols-outlined">file_upload</span>
+                    </label>
+                    <p class="desc-file-foto"></p>
+                    <input type="file" class="form-control-file" id="fileFoto2" name="fileFoto2" value="<?= $result['segunda_foto'] ?>" selected>
+                </div>
+                <div>
+                    <label for="txtSegundoConteudo" class="form-label">Conteúdo 2:</label>
+                    <textarea class="textarea-sunk-white" id="txtSegundoConteudo" name="txtSegundoConteudo"><?= $conteudo2 ?></textarea>
+                </div>
+            </div>
+
+            <div class="card-cadastro mb-5">
+                <div class="align-2">
+                    <label class="input-group-text btn-padrao" for="fileFoto3">
+                        Foto 3:
+                        <span class="material-symbols-outlined">file_upload</span>
+                    </label>
+                    <p class="desc-file-foto"></p>
+                    <input type="file" class="form-control-file" id="fileFoto3" name="fileFoto3" value="<?= $result['terceira_foto'] ?>" selected>
+                </div>
+                <div>
+                    <label for="txtTerceiroConteudo" class="form-label">Conteúdo 3:</label>
+                    <textarea class="textarea-sunk-white" id="txtTerceiroConteudo" name="txtTerceiroConteudo"><?= $conteudo3 ?></textarea>
+                </div>
+            </div>
+
+            <div class="card-cadastro mb-5">
+                <div class="align-2">
+                    <label class="input-group-text btn-padrao" for="fileFoto4">
+                        Foto 4:
+                        <span class="material-symbols-outlined">file_upload</span>
+                    </label>
+                    <p class="desc-file-foto"></p>
+                    <input type="file" class="form-control-file" id="fileFoto4" name="fileFoto4" value="<?= $result['quarta_foto'] ?>" selected>
+                </div>
+                <div>
+                    <label for="txtQuartoConteudo" class="form-label">Conteúdo 4:</label>
+                    <textarea class="textarea-sunk-white" id="txtQuartoConteudo" name="txtQuartoConteudo"><?= $conteudo4 ?></textarea>
+                </div>
+            </div>
+
+            <div class="card-cadastro mb-5">
+                <div>
+                    <label for="txtTempoLeitura" class="form-label">Tempo de Leitura (em minutos):</label>
+                    <input type="number" class="input-sunk-white" id="txtTempoLeitura" name="txtTempoLeitura" value="<?= $tempo_leitura ?>">
+                </div>
+                <div>
+                    <label for="txtTags" class="form-label">Tag:</label>
+                    <input type="text" class="input-sunk-white" id="txtTags" name="txtTags" value="<?= $tags ?>">
+                </div>
+                <div>
+                    <label for="txtVideo" class="form-label">Link do vídeo:</label>
+                    <input type="text" class="input-sunk-white" id="txtVideo" name="txtVideo" value="<?= $video ?>">
+                    <div class="instrucao mt-2" style="color: #FE5000">
+                        <u>
+                            Obs: cole somente a parte em destaque do link: www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>
+                        </u>
+                    </div>
+                </div>
+            </div>
+            <div class="card-cadastro mb-5 p-2">
+                <div class="instrucao-url p-3">
                     <label for="txtUrl" class="form-label" style="color: black;">URL da página:</label>
-                    <input type="text" class="form-control" id="txtUrl" name="txtUrl" value="<?= $url_final ?>" required>
+                    <input type="text" class="input-sunk-white" id="txtUrl" name="txtUrl" value="<?= $url_final ?>" required>
                     <span class="mb-2">Atenção: Para preencher esse campo, segue as instruções:</span> <br><br>
                     <ul class="ml-3">
                         <li>Não pode ter sinais de pontuação nas palavras, c cedilha (ç) ou sinais de pontuação;</li>
@@ -354,9 +365,9 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     </ul>
                 </div>
             </div>
-            <div class="mb-5">
-                <input type="submit" class="btn btn-success" id="btnSalvar" name="btnSalvar" value="<?= $botao ?>">
-                <a href="./index.php" class="btn btn-primary float-right" id="btnVoltar">
+            <div class="d-flex justify-content-between mb-5">
+                <input type="submit" class="btn-secundario" id="btnSalvar" name="btnSalvar" value="<?= $botao ?>">
+                <a href="./index.php" class="btn-padrao float-right" id="btnVoltar">
                     Voltar
                 </a>
             </div>

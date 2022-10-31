@@ -163,12 +163,11 @@
     }
 
     .caixa-background {
-        height: 50vh;
+        height: 30vh;
     }
 
     .bg-laricel {
         background-image: url('./img/bg-laricel-mobile.png');
-        height: 30vh;
     }
 
     .bg-futebol {
@@ -242,8 +241,7 @@
     }
 
     .caixa-tags {
-        flex-wrap: wrap !important;
-        padding: 0 48px;
+        gap: 16px;
     }
 
     .container-experiencia {

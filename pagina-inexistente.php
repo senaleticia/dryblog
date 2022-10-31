@@ -116,9 +116,29 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             VOLTAR
         </button>
 
-        <h1 class="titulo-padrao mt-5">Página não encontrada!</h1>
-        <p class="text-center">Desculpe, essa página foi removida</p>
+        <h1 class="titulo-padrao mt-5">Ops, esta página não está mais disponível!</h1>
+        <p class="text-center">Mas encontrei artigos que podem te interessar, se liga só:</p>
     </div>
+
+    <section class="section-relacionados">
+        <div class="scroll-container">
+            <div class="container-relacionados">
+                <?php
+                $sql = "SELECT * FROM post ORDER BY id_post DESC LIMIT 4";
+                $select = mysqli_query($conexao, $sql);
+
+                while ($result = mysqli_fetch_array($select)) {
+                ?>
+                    <a href="./postagem.php?p=<?= $result['url_post'] ?>">
+                        <div class="card-materia-lateral">
+                            <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $result['foto'] ?>');"></div>
+                            <h4 class="materia-title"><?= $result['titulo'] ?></h4>
+                        </div>
+                    </a>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
@@ -174,6 +194,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
 
     <script>
         $('#modalContato').on('shown.bs.modal', function() {

@@ -66,28 +66,30 @@ if (isset($_GET['user'])) {
 
 <body>
     <div class="container">
-        <h2 class="my-4">Alterar Senha</h2>
+        <h2 class="my-4 text-center">Alterar Senha</h2>
 
-        <form action="#" method="POST">
-            <div class="mb-3">
-                <label for="txtSenhaAtual">Senha Atual:</label>
-                <input type="password" name="txtSenhaAtual" id="txtSenhaAtual" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="txtNovaSenha">Nova Senha:</label>
-                <input type="password" name="txtNovaSenha" id="txtNovaSenha" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="txtConfirmarSenha">Confirme a Senha:</label>
-                <input type="password" name="txtConfirmarSenha" id="txtConfirmarSenha" class="form-control">
-            </div>
-            <div class="d-flex justify-content-around mt-5">
-                <a href="./index.php" class="btn-padrao font-weight-bold">
-                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
-                </a>
-                <button type="submit" class="btn-padrao" name="btnAlterarSenha" id="btnAlterarSenha">Alterar Senha</button>
-            </div>
-        </form>
+        <div class="card-cadastro mx-auto">
+            <form action="#" method="POST">
+                <div class="mb-3">
+                    <label for="txtSenhaAtual">Senha Atual:</label>
+                    <input type="password" name="txtSenhaAtual" id="txtSenhaAtual" class="input-sunk-white">
+                </div>
+                <div class="mb-3">
+                    <label for="txtNovaSenha">Nova Senha:</label>
+                    <input type="password" name="txtNovaSenha" id="txtNovaSenha" class="input-sunk-white">
+                </div>
+                <div class="mb-3">
+                    <label for="txtConfirmarSenha">Confirme a Senha:</label>
+                    <input type="password" name="txtConfirmarSenha" id="txtConfirmarSenha" class="input-sunk-white">
+                </div>
+                <div class="d-flex justify-content-around mt-5">
+                    <a href="./index.php" class="btn-padrao font-weight-bold">
+                        <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                    </a>
+                    <button type="submit" class="btn-padrao" name="btnAlterarSenha" id="btnAlterarSenha">Alterar Senha</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

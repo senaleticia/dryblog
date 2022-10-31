@@ -32,6 +32,8 @@ if (isset($_GET['modo'])) {
                 $nivel_autor = 'Administrador de Posts';
             } else if ($result['tipo_usuario'] == 2) {
                 $nivel_autor = 'Administrador Geral';
+            } else if ($result['tipo_usuario'] == 3) {
+                $nivel_autor = 'Administrador Master';
             }
 
             if ($result['autor_status'] == true) {
@@ -100,7 +102,7 @@ if (isset($_GET['modo'])) {
     <div class="container my-4">
         <h3 class="mb-5 text-center">Visualizar Usuário</h3>
 
-        <div class="card-materia-lateral p-4 mx-auto align-items-stretch" style="max-width: 400px; gap: 10px;">
+        <div class="card-materia-lateral p-4 mx-auto align-items-stretch" style="width: 400px; gap: 10px;">
             <div class="flex-row">
                 <strong>Nome: </strong> <?= $nome_autor ?> <br>
             </div>
@@ -123,7 +125,7 @@ if (isset($_GET['modo'])) {
             </button>
 
             <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
-                <a href="./add-user.php?modo=editar&id=<?= $result['id_autor'] ?>">
+                <a href="./edit-user.php?editar=<?= $id ?>">
                     <button class="btn-padrao">
                         <span class="material-symbols-outlined">
                             edit

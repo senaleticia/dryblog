@@ -79,34 +79,44 @@ if (isset($_GET['editar'])) {
 
 <body>
     <div class="container">
-        <h3 class="my-4">Editar Usuário</h3>
+        <h3 class="my-4 text-center">Editar Usuário</h3>
 
-        <div class="my-4">
-            <span><strong>Usuário: </strong><?= $nome_autor ?></span> <br>
-            <span><strong>Login: </strong><?= $login_autor ?></span> <br>
+        <div class="card-cadastro mx-auto">
+            <div class="my-4 mx-auto" style="width: fit-content;">
+                <div class="row" style="gap: 25px;">
+                    <div class="d-flex flex-column text-right">
+                        <strong>Usuário:</strong>
+                        <strong>Login:</strong>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <span><?= $nome_autor ?></span>
+                        <span><?= $login_autor ?></span>
+                    </div>
+                </div>
+            </div>
+
+            <form action="#" method="POST">
+                <div class="mb-3">
+                    <label for="txtSenhaUsuario" class="form-label">Senha:</label>
+                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                </div>
+                <div class="mb-3">
+                    <label for="sltNivel">Nível do Usuário:</label>
+                    <select name="sltNivel" id="sltNivel" class="form-control">
+                        <option value="0">Escolha um nível</option>
+                        <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
+                        <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>
+                        <option value="3" <?= $selectedMaster ?>>Administrador Master</option>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-around mt-5">
+                    <a href="./users-manager.php" class="btn-padrao font-weight-bold">
+                        <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                    </a>
+                    <button type="submit" class="btn-padrao" name="btnAtualizarUsuario" id="btnAtualizarUsuario">Atualizar</button>
+                </div>
+            </form>
         </div>
-
-        <form action="#" method="POST">
-            <div class="mb-3">
-                <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="txtSenhaUsuario" name="txtSenhaUsuario">
-            </div>
-            <div class="mb-3">
-                <label for="sltNivel">Nível do Usuário:</label>
-                <select name="sltNivel" id="sltNivel" class="form-control">
-                    <option value="0">Escolha um nível</option>
-                    <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
-                    <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>
-                    <option value="3" <?= $selectedMaster ?>>Administrador Master</option>
-                </select>
-            </div>
-            <div class="d-flex justify-content-around mt-5">
-                <a href="./users-manager.php" class="btn-padrao font-weight-bold">
-                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
-                </a>
-                <button type="submit" class="btn-padrao" name="btnAtualizarUsuario" id="btnAtualizarUsuario">Atualizar</button>
-            </div>
-        </form>
     </div>
 </body>
 

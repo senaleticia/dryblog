@@ -166,6 +166,8 @@ li {
     cursor: pointer;
     display: flex;
     gap: 10px;
+    min-width: 140px;
+    justify-content: center;
 }
 
 .btn-secundario:hover {
@@ -267,7 +269,6 @@ li {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    background-attachment: fixed;
     position: relative;
     height: 35vh;
 }
@@ -282,10 +283,10 @@ li {
 
 #clientes {
     position: relative;
+    padding-bottom: 0;
 }
 
 .caixa-2 {
-    height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -297,14 +298,17 @@ li {
 
 .bg-futebol {
     background-image: url('./img/bg-futebol.png') !important;
+    margin-top: 6%;
 }
 
 .bg-entretenimento {
     background-image: url('./img/bg-samba.png') !important;
+    margin-top: 4%;
 }
 
 .bg-empresa {
     background-image: url('./img/bg-empresa.png') !important;
+    margin-top: 4%;
 }
 
 .btn-sunk-chip {
@@ -334,14 +338,14 @@ li {
 
 #section-futebol,
 #section-entretenimento,
-#section-empresas,
-#section-social {
+#section-empresas {
     width: 100%;
     height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: +1;
+    padding-top: 0;
 }
 
 #section-empresas .card-chip {
@@ -349,7 +353,6 @@ li {
 }
 
 #section-entretenimento .card-chip {
-    height: calc(50vh - 168px);
     align-items: center;
 }
 
@@ -421,7 +424,7 @@ li {
 }
 
 .btn-tag {
-    padding: 4px 8px;
+    padding: 4px;
     border-radius: 4px;
     border: none;
     color: #434343;
@@ -1229,8 +1232,8 @@ li {
 
 .caixa-tags {
     display: flex;
-    justify-content: space-evenly;
-    padding: 0 24px;
+    justify-content: center;
+    gap: 86px;
 }
 
 .titulo-mapa {
@@ -1356,6 +1359,7 @@ li {
     background-image: url('./img/banner-index.png');
     width: 100%;
     height: 90vh;
+    margin-top: 60px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1498,7 +1502,7 @@ li {
 
 .ativo {
     color: #FE5000 !important;
-    border: solid 1px #FE5000;
+    box-shadow: inset -2px -2px 4px rgb(255 255 255 / 75%), inset 4px 4px 8px rgb(0 0 0 / 25%);
 }
 
 small.float-right {
@@ -1544,11 +1548,26 @@ small.float-right:hover {
     width: 235px;
 }
 
-#sltFiltro:focus {
+#sltNivel {
+    border-radius: 40px;
+    border: solid 1px #FE5000;
+    color: #FE5000;
+    background-image: url('./img/select-after.PNG');
+    background-repeat: no-repeat;
+    background-position: right;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+}
+
+#sltFiltro:focus,
+#sltNivel:focus {
     box-shadow: 0 0 0 0.2rem rgb(254 80 1 / 25%);
 }
 
-#sltFiltro option {
+#sltFiltro option,
+#sltNivel option {
     background-color: #EBEBEB;
     border-radius: 50px;
 }
@@ -1597,4 +1616,25 @@ small.float-right:hover {
 .youtube-video {
     width: 100%;
     height: 570px;
+}
+
+#formAddPost .card-cadastro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 35px;
+}
+
+#formAddPost .textarea-sunk-white {
+    height: 230px;
+    margin-bottom: 0;
+}
+
+#formAddPost .input-sunk-white {
+    margin-bottom: 0;
+}
+
+#formAddPost .input-group-text {
+    width: 250px;
 }
