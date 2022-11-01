@@ -92,16 +92,16 @@ if (isset($_GET['user'])) {
         <form action="#" method="POST">
             <div class="mb-3">
                 <label for="txtNome">Nome:</label>
-                <input type="text" name="txtNome" id="txtNome" class="form-control" value="<?= $nome_autor ?>">
+                <input type="text" name="txtNome" id="txtNome" class="input-sunk-white" value="<?= $nome_autor ?>">
             </div>
             <div class="mb-3">
                 <label for="txtEmail">Email:</label>
-                <input type="text" name="txtEmail" id="txtEmail" class="form-control" value="<?= $login_autor ?>">
+                <input type="text" name="txtEmail" id="txtEmail" class="input-sunk-white" value="<?= $login_autor ?>">
             </div>
             <div class="mb-3">
                 <div class="instrucao-url mt-5">
                     <span>Para atualizar essas informações, solicitamos sua senha para certificar a identidade</span> <br>
-                    <input type="password" name="txtConfirmarIdentidade" id="txtConfirmarIdentidade" class="form-control">
+                    <input type="password" name="txtConfirmarIdentidade" id="txtConfirmarIdentidade" class="input-sunk-white mt-2">
                 </div>
             </div>
             <div class="d-flex justify-content-around mt-5">

@@ -80,18 +80,6 @@ button:focus {
     height: inherit;
 }
 
-.img-post,
-.view-post-foto {
-    width: 100%;
-    height: auto;
-}
-
-.img-post>img,
-.view-post-foto>img {
-    width: inherit;
-    height: inherit;
-}
-
 /* Aqui começa o CSS do front-end que me passaram */
 ul,
 li {
@@ -202,7 +190,7 @@ li {
 }
 
 .margem-btn {
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .container-chip {
@@ -909,6 +897,7 @@ li {
 .slick-prev::before {
     height: 40px !important;
     color: #181818 !important;
+    margin-left: -25px;
 }
 
 .slick-dots li {

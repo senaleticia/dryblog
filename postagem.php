@@ -114,7 +114,7 @@ if (isset($_POST['btnComentar'])) {
 
 <body>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
         <div class="container">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
