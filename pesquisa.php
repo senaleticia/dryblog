@@ -41,7 +41,7 @@ if (!$select) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg  navbar-light navbar-inner">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
         <div class="container">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">

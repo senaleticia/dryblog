@@ -86,7 +86,9 @@ if (isset($_POST['btnCadastrarUsuario'])) {
                         <option value="0">Escolha um nível</option>
                         <option value="1">Administrador de Posts</option>
                         <option value="2">Administrador Geral</option>
-                        <option value="3">Administrador Master</option>
+                        <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                            <option value="3">Administrador Master</option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="d-flex justify-content-around mt-5">

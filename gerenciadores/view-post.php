@@ -38,6 +38,7 @@ if (isset($_GET['modo'])) {
             $foto4 = $result['quarta_foto'];
             $video = $result['video'];
             $data_post = $result['data_post'];
+            $hora_post = $result['hora_post'];
 
             $conteudo_post = $result['conteudo'];
             $str     = $conteudo_post;
@@ -97,7 +98,7 @@ if (isset($_GET['modo'])) {
             </div>
             <div class="py-4 text-center">
                 <span>
-                    <strong>Publicado em: </strong><?= $data_post ?> |
+                    <strong>Publicado em: </strong><?= $data_post ?> às <?= $hora_post ?>|
                     <strong>Autor(a): </strong><?= $nome_autor ?> |
                     <strong>Tempo de leitura: </strong><?= $tempo_leitura ?> min
                 </span>

@@ -311,6 +311,25 @@
     .youtube-video {
         height: 260px;
     }
+
+    .margem-btn {
+        margin-top: 20%;
+    }
+
+    #caixaPesquisa {
+        margin-top: 50px;
+    }
+
+    .icon-search {
+        top: 67%;
+        right: 7%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .margem-btn {
+        margin-top: 26%;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -413,6 +432,12 @@
 
     .youtube-video {
         height: 400px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .container-lado-direito .card-materia-lateral {
+        width: 285px;
     }
 }
 

@@ -1,45 +1,49 @@
 <?php
 session_start();
 
-require './bd/conexao.php';
+require_once('./bd/conexao.php');
 $conexao = conexaoMySql();
 
 $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
-if (isset($_GET['modo'])) {
-    if ($_GET['modo'] == 'cadastrar') {
-        $anuncio = $_GET['anuncio'];
+$erro = "";
 
-        $anuncio_detalhes = "SELECT * FROM anuncios WHERE id_anuncio = " . $anuncio;
-        $select_detalhes = mysqli_query($conexao, $anuncio_detalhes);
+if (isset($_POST['btnRepresentante'])) {
+    $nome_representante = $_POST['txtNomeRepresentante'];
+    $endereco_representante = $_POST['txtEnderecoRepresentante'];
+    $email_representante = $_POST['txtEmailRepresentante'];
+    $celular_representante = $_POST['txtCelularRepresentante'];
+    $mensagem_representante = $_POST['txtMensagemRepresentante'];
 
-        if ($rs_detalhes = mysqli_fetch_array($select_detalhes)) {
-            $foto_anuncio = $rs_detalhes['foto_anuncio'];
-        } else {
-            header('location: pagina-inexistente.php');
-        }
+    $verificar_email = "SELECT * FROM representantes WHERE email_representante = '" . $email_representante . "'";
+    $select_email = mysqli_query($conexao, $verificar_email);
+    $count_email = mysqli_num_rows($select_email);
 
-        if (isset($_POST['btnCadastro'])) {
-            $nome_cadastro = $_POST['txtNomeCadastro'];
-            $email_cadastro = $_POST['txtEmailCadastro'];
-            $telefone_cadastro = $_POST['txtTelefoneCadastro'];
-            $profissao_cadastro = $_POST['txtProfissaoCadastro'];
-            $receber_informacoes = isset($_POST['rdoReceberInformacoes']) ? 1 : 0;
-
-            $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao, receber_informacoes, id_anuncio) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "', " . $receber_informacoes . ", " . $anuncio . ")";
-
-            if ($select = mysqli_query($conexao, $sql)) {
-                echo ("<script>alert('Cadastro feito com sucesso')</script>");
-            } else {
-                echo ("<script>alert('Erro ao fazer o cadastro')</script>");
-                echo ($sql);
-            }
-        }
+    if ($count_email >= 1) {
+        $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                    <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                    <p class='m-0'>Este email já faz parte da lista dos representantes da Dry, tente outro!</p>
+                </div>";
+    } else if ($nome_representante == "" || $endereco_representante == "" || $email_representante == "" || $celular_representante == "" || $mensagem_representante == "") {
+        $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                    <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                    <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente.</p>
+                </div>";
     } else {
-        header('location: blog.php');
+        $sql = "INSERT INTO representantes (nome_representante, endereco_representante, email_representante, celular_representante, mensagem_representante) VALUES ('" . $nome_representante . "', '" . $endereco_representante . "', '" . $email_representante . "', '" . $celular_representante . "', '" . $mensagem_representante . "')";
+
+        if ($select = mysqli_query($conexao, $sql)) {
+            $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                        <h4 class='alert-heading text-center'>Cadastro feito!</h4>
+                        <p>Seu cadastro foi feito corretamente, agora só aguardar e em breve entraremos em contato. <a class='adesao font-weight-bold' href='./index.php'>Volte à página inicial</a></p>
+                    </div>";
+        } else {
+            $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                        <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                        <p class='m-0'>Houve um erro na hora do seu cadastro, tente novamente mais tarde.</p>
+                    </div>";
+        }
     }
-} else {
-    header('location: blog.php');
 }
 ?>
 <!DOCTYPE html>
@@ -55,12 +59,10 @@ if (isset($_GET['modo'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
+    <link rel="stylesheet" href="./beneficios.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
-    <link rel="stylesheet" href="./guideline-social.css">
-    <title>Cadastro Anúncio - Dry Telecom</title>
+    <title>Cadastro de Representante - Dry Telecom</title>
 </head>
 
 <body>
@@ -135,12 +137,12 @@ if (isset($_GET['modo'])) {
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
+                        <h2 class="mx-auto">Alguma dúvida?</h2>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
-                    <div class="modal-body ml-auto mr-auto">
+                    <div class="modal-body mx-auto">
                         <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
                             <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
                         </a>
@@ -154,59 +156,39 @@ if (isset($_GET['modo'])) {
             VOLTAR
         </button>
 
-        <h2 class="py-4 text-center">Anúncio Dry Telecom</h2>
+        <?= $erro ?>
 
-        <div class="cadastro-anuncio">
-            <div class="foto-anuncio">
-                <img class="w-75" src="./upload/arquivos/<?= $foto_anuncio ?>" alt="Anúncio">
+        <form action="#" method="POST" id="cadastroRepresentante" name="cadastroRepresentante">
+            <div class="card-cadastro mx-auto mt-3">
+                <div class="mb-4">
+                    <small>*Campos Obrigatórios</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="txtNomeRepresentante">Nome Completo:*</label>
+                    <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white">
+                </div>
+                <div class="mb-3">
+                    <label for="txtEnderecoRepresentante">Endereço Completo:*</label>
+                    <input type="text" name="txtEnderecoRepresentante" id="txtEnderecoRepresentante" class="input-sunk-white" required>
+                </div>
+                <div class="mb-3">
+                    <label for="txtEmailRepresentante">Email:*</label>
+                    <input type="email" name="txtEmailRepresentante" id="txtEmailRepresentante" class="input-sunk-white" required>
+                </div>
+                <div class="mb-3">
+                    <label for="txtCelularRepresentante">Celular:*</label>
+                    <input type="text" name="txtCelularRepresentante" id="txtCelularRepresentante" class="input-sunk-white">
+                </div>
+                <div class="mb-3">
+                    <label for="txtMensagemRepresentante">Deixe sua mensagem:*</label>
+                    <textarea name="txtMensagemRepresentante" id="txtMensagemRepresentante" class="textarea-sunk-white" required></textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn-padrao font-weight-bold" id="btnRepresentante" name="btnRepresentante">CADASTRAR-SE</button>
+                </div>
             </div>
-
-            <div class="caixa-form-anuncio mt-5">
-                <form action="#" method="POST" name="cadastroAnuncio" id="cadastroAnuncio">
-                    <div class="my-3">
-                        <small>*Campos Obrigatórios</small>
-                        <div class="col-sm-12">
-                            <input type="text" class="input-sunk-white" id="txtNomeCadastro" name="txtNomeCadastro" placeholder="Nome e Sobrenome*" required onkeypress="return validarEntrada(event, 'caracter');" maxlength="100">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="col-sm-12">
-                            <input type="email" class="input-sunk-white" id="txtEmailCadastro" name="txtEmailCadastro" placeholder="Email*" required maxlength="50">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="col-sm-12">
-                            <input type="text" class="input-sunk-white" id="txtTelefoneCadastro" name="txtTelefoneCadastro" placeholder="Telefone*" required onkeypress="return validarEntrada(event, 'number');" maxlength="11">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="col-sm-12">
-                            <input type="text" class="input-sunk-white" id="txtProfissaoCadastro" name="txtProfissaoCadastro" placeholder="Profissão*" required onkeypress="return validarEntrada(event, 'caracter');" maxlength="50">
-                        </div>
-                    </div>
-                    <div class="caixa-checkbox mb-4 mx-auto">
-                        <div>
-                            <label class="label-radio">
-                                Eu concordo em receber outras comunicações da Dry Telecom.
-                                <input type="checkbox" name="radio" value="true">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="label-radio">
-                                Eu concordo em permitir que a Dry Telecom armazene e processe meus dados pessoais.*
-                                <input type="checkbox" name="rdoReceberInformacoes" required>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-center">
-                        <input type="submit" class="btn-padrao mx-auto" id="btnCadastro" name="btnCadastro" value="Cadastrar-se">
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
 
     <footer>

@@ -30,6 +30,9 @@ $tempo_leitura = (string) "";
 $tags = (string) "";
 $url_final = (string) "";
 
+/*date_default_timezone_set('America/Sao_paulo');
+echo (date('H:i'));*/
+
 //Verificando se a variável da URL 'modo' existe
 if (isset($_GET['modo'])) {
 
@@ -146,7 +149,9 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             //Capturando data atual e colocando em uma variável
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
+            $hora_post = date('H:i');
             $data_atualizacao = date('d/m/Y');
+            $hora_atualizacao = date('H:i');
 
             if ($botao == "Salvar") {
                 if ($titulo == "" || $conteudo == "") {
@@ -157,10 +162,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "' WHERE id_post = " . $id;
+                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "' WHERE id_post = " . $id;
             }
 
             //Rodando a conexão com o banco de dados e o script SQL
@@ -203,7 +208,9 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
             //Capturando data atual e colocando em uma variável
             date_default_timezone_set('America/Sao_paulo');
             $data_post = date('d/m/Y');
+            $hora_post = date('H:i');
             $data_atualizacao = date('d/m/Y');
+            $hora_atualizacao = date('H:i');
 
             if ($botao == "Salvar") {
                 $sql_url = "SELECT * FROM post WHERE url_post = '" . $url_final . "'";
@@ -222,14 +229,14 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     echo ("<script>history.back()</script>");
                 } else {
                     //Script SQL para inserir um post no banco de dados
-                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
+                    $sql = "INSERT INTO post (titulo, conteudo, segundo_conteudo, terceiro_conteudo, quarto_conteudo, video, foto, segunda_foto, terceira_foto, quarta_foto, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $foto . "', '" . $foto2 . "', '" . $foto3 . "', '" . $foto4 . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
                 if ($titulo == "" || $conteudo == "") {
                     echo ("<script>alert('Não é possível atualizar um post sem um título e/ou um conteúdo')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
-                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_atualizacao = '" . $data_atualizacao . "', previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', foto = '" . $foto . "', segunda_foto = '" . $foto2 . "', terceira_foto = '" . $foto3 . "', quarta_foto = '" . $foto4 . "', id_autor = '" . $id_autor . "', tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "' previa_conteudo = '" . $previa_conteudo . "' WHERE id_post = " . $id;
                 }
             }
 

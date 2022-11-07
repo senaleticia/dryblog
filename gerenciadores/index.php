@@ -56,6 +56,11 @@ $conexao = conexaoMySql();
                     GERENCIAR USUÁRIOS
                 </a>
             <?php } ?>
+            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                <a href="#" class="btn-padrao btn-gerenciar inativo">
+                    GERENCIAR REVENDEDORES
+                </a>
+            <?php } ?>
         </div>
 
         <div class="my-5 d-flex justify-content-between">

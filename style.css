@@ -121,7 +121,6 @@ li {
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 600;
-    cursor: pointer;
     position: relative;
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
     border-radius: 40px;
@@ -178,7 +177,8 @@ li {
     border: solid 1px #FE5000;
 }
 
-.inativo {
+.inativo,
+.inativo:hover {
     cursor: no-drop;
     opacity: 0.4;
 }
@@ -190,7 +190,7 @@ li {
 }
 
 .margem-btn {
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 .container-chip {
@@ -556,9 +556,7 @@ li {
 }
 
 .container-lado-direito .card-materia-lateral {
-    width: 95%;
-    max-width: none;
-    min-width: 330px;
+    width: 330px;
 }
 
 .caixa-slide .card-materia-lateral {
@@ -1626,4 +1624,8 @@ small.float-right:hover {
 
 #formAddPost .input-group-text {
     width: 250px;
+}
+
+#cadastroRepresentante .textarea-sunk-white {
+    height: 110px;
 }

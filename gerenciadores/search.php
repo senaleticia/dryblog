@@ -34,18 +34,24 @@ if (!$select) {
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="container-pesquisa">
+    <div class="container mt-4">
+        <button class="btn-padrao font-weight-bold mb-3" onclick="history.go(-1)">
+            <span class="material-symbols-outlined">arrow_back</span>
+            VOLTAR
+        </button>
+
+        <div class="container-pesquisa m-0">
             <?php
             $row_count = mysqli_num_rows($select);
 
             if ($row_count == 0) {
             ?>
-                <span class="mb-5 font-weight-bold">Nenhum resultado foi encontrado para sua pesquisa "<?= $search ?>"</span>
+                <h6 class="font-weight-bold text-center">Nenhum resultado foi encontrado para sua pesquisa "<?= $search ?>"</h6>
             <?php } else if ($row_count >= 1) { ?>
                 <h4 class="text-center">Resultados para sua pesquisa: "<?= $search ?>"</h4>
-                <?php while ($result = mysqli_fetch_array($select)) { ?>
-                    <ul class="list-group mt-5">
+
+                <ul class="list-group mt-5">
+                    <?php while ($result = mysqli_fetch_array($select)) { ?>
                         <li class="post-list">
                             <?= $result['titulo'] ?>
                             <div class="icons-box float-right">
@@ -60,10 +66,9 @@ if (!$select) {
                                 </a>
                             </div>
                         </li>
-                    </ul>
-            <?php }
-            }
-            ?>
+                    <?php } ?>
+                </ul>
+            <?php } ?>
         </div>
     </div>
 </body>

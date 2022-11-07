@@ -53,6 +53,72 @@ if (isset($_POST['btnLogin'])) {
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
+        <div class="container">
+            <div id="navbar-mobile">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+
+            <li class="nav-item" style="list-style: none;">
+                <a class="navbar-brand" href="./index.php">
+                    <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
+                </a>
+            </li>
+            <div class="login-box">
+                <?php if ($usuario_autenticado == true) { ?>
+                    <a class="logout" href="./index.php?modo=logout">
+                        <button class="btn-padrao btn-menu">SAIR</button>
+                    </a>
+                <?php } else if ($usuario_autenticado == false) { ?>
+                    <a class="logout" href="./login.php">
+                        <button class="btn-padrao btn-menu">LOGIN</button>
+                    </a>
+                <?php } ?>
+            </div>
+
+            <div class="menu-desk">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-modal">
+            <div class="colapse-nav-mobile">
+                <span id="close-modal" class="material-symbols-outlined">
+                    close
+                </span>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row justify-content-center position-relative pt-4">
             <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
