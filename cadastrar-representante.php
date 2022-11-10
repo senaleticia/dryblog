@@ -9,13 +9,15 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 $erro = "";
 
 if (isset($_POST['btnRepresentante'])) {
-    $nome_representante = $_POST['txtNomeRepresentante'];
-    $endereco_representante = $_POST['txtEnderecoRepresentante'];
-    $email_representante = $_POST['txtEmailRepresentante'];
-    $celular_representante = $_POST['txtCelularRepresentante'];
-    $mensagem_representante = $_POST['txtMensagemRepresentante'];
+    $nome = $_POST['txtNomeRepresentante'];
+    $email = $_POST['txtEmailRepresentante'];
+    $celular = $_POST['txtCelularRepresentante'];
+    $cep = $_POST['txtCepRepresentante'];
+    $cpf_cnpj = $_POST['txtCpfCnpjRepresentante'];
+    $vendas = $_POST['txtVendasRepresentante'];
+    $mensagem = $_POST['txtMensagemRepresentante'];
 
-    $verificar_email = "SELECT * FROM representantes WHERE email_representante = '" . $email_representante . "'";
+    $verificar_email = "SELECT * FROM representantes WHERE email_representante = '" . $email . "'";
     $select_email = mysqli_query($conexao, $verificar_email);
     $count_email = mysqli_num_rows($select_email);
 
@@ -24,24 +26,22 @@ if (isset($_POST['btnRepresentante'])) {
                     <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                     <p class='m-0'>Este email já faz parte da lista dos representantes da Dry, tente outro!</p>
                 </div>";
-    } else if ($nome_representante == "" || $endereco_representante == "" || $email_representante == "" || $celular_representante == "" || $mensagem_representante == "") {
+    } else if ($nome == "" || $email == "" || $celular == "" || $mensagem == "" || $cpf_cnpj == "" || $cep == "" || $vendas == "") {
         $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
                     <h4 class='alert-heading'>Ops, espere um pouco...</h4>
-                    <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente.</p>
+                    <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente</p>
                 </div>";
     } else {
-        $sql = "INSERT INTO representantes (nome_representante, endereco_representante, email_representante, celular_representante, mensagem_representante) VALUES ('" . $nome_representante . "', '" . $endereco_representante . "', '" . $email_representante . "', '" . $celular_representante . "', '" . $mensagem_representante . "')";
+        $sql = "INSERT INTO representantes (nome_representante, email_representante, celular_representante, cep_representante, cpf_cnpj_representante, expectativa_vendas, mensagem_representante, status_representante) VALUES ('" . $nome . "', '" . $email . "', '" . $celular . "', '" . $cep . "', '" . $cpf_cnpj . "', '" . $vendas . "', '" . $mensagem . "', 'NÃO CONTATADO')";
 
         if ($select = mysqli_query($conexao, $sql)) {
             $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                        <h4 class='alert-heading text-center'>Cadastro feito!</h4>
-                        <p>Seu cadastro foi feito corretamente, agora só aguardar e em breve entraremos em contato. <a class='adesao font-weight-bold' href='./index.php'>Volte à página inicial</a></p>
+                        <h4 class='alert-heading'>Prontinho!</h4>
+                        <p class='m-0'>Seu cadastro foi feito com sucesso, e em breve entraremos em contato com você. <a class='adesao' href='./'>Clique aqui para voltar à página inicial</a></p>
                     </div>";
         } else {
-            $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
-                        <h4 class='alert-heading'>Ops, espere um pouco...</h4>
-                        <p class='m-0'>Houve um erro na hora do seu cadastro, tente novamente mais tarde.</p>
-                    </div>";
+            echo ("<script>alert('Erro ao fazer o cadastro, tente novamente mais tarde')</script>");
+            echo ("<script>history.back()</script>");
         }
     }
 }
@@ -168,22 +168,48 @@ if (isset($_POST['btnRepresentante'])) {
                     <label for="txtNomeRepresentante">Nome Completo:*</label>
                     <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white">
                 </div>
-                <div class="mb-3">
-                    <label for="txtEnderecoRepresentante">Endereço Completo:*</label>
-                    <input type="text" name="txtEnderecoRepresentante" id="txtEnderecoRepresentante" class="input-sunk-white" required>
-                </div>
+
                 <div class="mb-3">
                     <label for="txtEmailRepresentante">Email:*</label>
                     <input type="email" name="txtEmailRepresentante" id="txtEmailRepresentante" class="input-sunk-white" required>
                 </div>
+
                 <div class="mb-3">
                     <label for="txtCelularRepresentante">Celular:*</label>
                     <input type="text" name="txtCelularRepresentante" id="txtCelularRepresentante" class="input-sunk-white">
                 </div>
+
+                <div class="mb-3">
+                    <label for="txtCepRepresentante">CEP:*</label>
+                    <input type="text" name="txtCepRepresentante" id="txtCepRepresentante" class="input-sunk-white" required>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex flex-row" style="gap: 25px;">
+                        <label class="label-radio">
+                            CPF*:
+                            <input type="radio" name="radioDocumento" value="CPF">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            CNPJ*:
+                            <input type="radio" name="radioDocumento" value="CNPJ">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <input type="text" name="txtCpfCnpjRepresentante" id="txtCpfCnpjRepresentante" class="input-sunk-white" disabled>
+                </div>
+
+                <div class="mb-3">
+                    <label for="txtVendasRepresentante">Expectativa de Vendas de Chip:*</label>
+                    <input type="number" name="txtVendasRepresentante" id="txtVendasRepresentante" class="input-sunk-white" required>
+                </div>
+
                 <div class="mb-3">
                     <label for="txtMensagemRepresentante">Deixe sua mensagem:*</label>
                     <textarea name="txtMensagemRepresentante" id="txtMensagemRepresentante" class="textarea-sunk-white" required></textarea>
                 </div>
+
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn-padrao font-weight-bold" id="btnRepresentante" name="btnRepresentante">CADASTRAR-SE</button>
                 </div>
@@ -205,6 +231,7 @@ if (isset($_POST['btnRepresentante'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
+                        <a href="#">Seja Revendedor</a>
                         <a href="./index.php#clientes">Clientes</a>
                         <a href="./index.php#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>
@@ -250,7 +277,62 @@ if (isset($_POST['btnRepresentante'])) {
     <script>
         $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
+        });
+
+        const inputCep = document.querySelector('#txtCepRepresentante');
+        const labelRadio = document.querySelectorAll('.label-radio');
+        const inputDocumento = document.querySelector('#txtCpfCnpjRepresentante');
+
+        function cep() {
+            let inputLength = inputCep.value.length;
+            inputCep.maxLength = 9;
+
+            if (inputLength === 5) {
+                inputCep.value += "-";
+            }
+        }
+
+        function cpf() {
+            let inputLenght = inputDocumento.value.length;
+            inputDocumento.maxLength = 14;
+
+            if (inputLenght === 3 || inputLenght === 7) {
+                inputDocumento.value += ".";
+            } else if (inputLenght === 11) {
+                inputDocumento.value += "-";
+            }
+        }
+
+        function cnpj() {
+            let inputLenght = inputDocumento.value.length;
+            inputDocumento.maxLength = 18;
+
+            if (inputLenght === 2 || inputLenght === 6) {
+                inputDocumento.value += ".";
+            } else if (inputLenght === 10) {
+                inputDocumento.value += "/";
+            } else if (inputLenght === 15) {
+                inputDocumento.value += "-";
+            }
+        }
+
+        labelRadio.forEach((label) => {
+            label.addEventListener('click', function() {
+                let valorRadio = document.querySelector('input[name=radioDocumento]:checked').value;
+
+                if (valorRadio == "CPF") {
+                    inputDocumento.removeAttribute('disabled');
+                    inputDocumento.value = "";
+                    inputDocumento.setAttribute('onkeypress', 'cpf()');
+                } else if (valorRadio == "CNPJ") {
+                    inputDocumento.removeAttribute('disabled');
+                    inputDocumento.value = "";
+                    inputDocumento.setAttribute('onkeypress', 'cnpj()');
+                }
+            });
         })
+
+        inputCep.addEventListener('keypress', cep);
     </script>
 </body>
 

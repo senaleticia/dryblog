@@ -54,7 +54,7 @@ if (isset($_POST['btnLogin'])) {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
-        <div class="container">
+        <div class="container" style="justify-content: flex-start; gap: 25%;">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
                     menu
@@ -66,17 +66,6 @@ if (isset($_POST['btnLogin'])) {
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
-            <div class="login-box">
-                <?php if ($usuario_autenticado == true) { ?>
-                    <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao btn-menu">SAIR</button>
-                    </a>
-                <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
-                        <button class="btn-padrao btn-menu">LOGIN</button>
-                    </a>
-                <?php } ?>
-            </div>
 
             <div class="menu-desk">
                 <ul class="navbar-nav">
@@ -120,7 +109,7 @@ if (isset($_POST['btnLogin'])) {
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center position-relative pt-4">
+        <div class="row justify-content-center position-relative pt-4 margem-btn">
             <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
                 <span class="material-symbols-outlined">arrow_back</span>
                 VOLTAR
@@ -137,7 +126,10 @@ if (isset($_POST['btnLogin'])) {
                 </div>
                 <div class="mb-3">
                     <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                    <input class="input-sunk-white" type="password" id="txtSenhaUsuario" name="txtSenhaUsuario" placeholder="Senha" required>
+                    <div id="pass-cont">
+                        <input id="txtSenhaUsuario" name="txtSenhaUsuario" placeholder="Senha" required type="password" class="input-sunk-white">
+                        <span onclick="view()" id="eye"></span>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-around">
                     <button type="submit" class="btn-padrao" name="btnLogin">Login</button>
@@ -153,6 +145,20 @@ if (isset($_POST['btnLogin'])) {
             </a>
         </div>
     </div>
+
+    <script src="./js/script.js"></script>
+    <script>
+        function view() {
+            let x = document.getElementById("txtSenhaUsuario");
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('./svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('./svg/eye_close.svg')";
+            }
+        }
+    </script>
 </body>
 
 </html>

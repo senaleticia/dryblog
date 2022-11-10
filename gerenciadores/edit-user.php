@@ -102,7 +102,7 @@ if (isset($_GET['editar'])) {
                 </div>
                 <div class="mb-3">
                     <label for="sltNivel">Nível do Usuário:</label>
-                    <select name="sltNivel" id="sltNivel" class="form-control">
+                    <select name="sltNivel" id="sltNivel" class="form-control select w-100">
                         <option value="0">Escolha um nível</option>
                         <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
                         <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>

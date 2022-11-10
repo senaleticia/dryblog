@@ -635,6 +635,11 @@ li {
     box-shadow: inset -2px -2px 4px rgb(255 255 255 / 75%), inset 4px 4px 8px rgb(0 0 0 / 25%);
 }
 
+.input-sunk-white:disabled {
+    cursor: default;
+    box-shadow: inset -6px -2px 8px rgba(255, 255, 255, 0.6), inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .input-sunk-white:focus,
 .textarea-sunk-white:focus {
     outline: none;
@@ -1335,7 +1340,6 @@ li {
 .btn-menu {
     background-color: white;
     box-shadow: -4px -4px 14px rgb(255 255 255 / 20%), 4px 4px 14px rgb(0 0 0 / 10%);
-    border: solid 2px white;
 }
 
 #navbar-mobile span {
@@ -1520,7 +1524,7 @@ small.float-right:hover {
     text-decoration: underline;
 }
 
-#sltFiltro {
+.select {
     border-radius: 40px;
     border: solid 1px #FE5000;
     background-color: transparent;
@@ -1535,26 +1539,14 @@ small.float-right:hover {
     width: 235px;
 }
 
-#sltNivel {
-    border-radius: 40px;
-    border: solid 1px #FE5000;
+.select:focus {
+    box-shadow: 0 0 0 0.2rem rgb(254 80 1 / 25%);
     color: #FE5000;
-    background-image: url('./img/select-after.PNG');
-    background-repeat: no-repeat;
-    background-position: right;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    border-color: #FE5000;
     background-color: transparent;
 }
 
-#sltFiltro:focus,
-#sltNivel:focus {
-    box-shadow: 0 0 0 0.2rem rgb(254 80 1 / 25%);
-}
-
-#sltFiltro option,
-#sltNivel option {
+.select option {
     background-color: #EBEBEB;
     border-radius: 50px;
 }
@@ -1628,4 +1620,63 @@ small.float-right:hover {
 
 #cadastroRepresentante .textarea-sunk-white {
     height: 110px;
+}
+
+a.btn-secundario {
+    width: max-content;
+}
+
+.retailer-list {
+    background-color: #EBEBEB;
+    border-radius: 12px;
+    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
+    margin: 20px 0;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 5fr 4px 1fr;
+    gap: 20px;
+}
+
+.retailer-list .select {
+    width: 180px;
+}
+
+.dados-representante {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dados-representante span {
+    font-size: 18px;
+    color: #FE5000;
+}
+
+.msg-representante {
+    color: #505050;
+}
+
+.div-linha {
+    width: 2px;
+    border-left: solid 2px white;
+}
+
+#pass-cont {
+    position: relative;
+}
+
+#eye {
+    display: flex;
+    position: absolute;
+    right: 24px;
+    top: 10px;
+    height: 24px;
+    width: 24px;
+    background-image: url("./svg/eye_close.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.2s;
 }

@@ -193,6 +193,7 @@ if (!$select) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
+                        <a href="./cadastrar-representante.php">Seja Revendedor</a>
                         <a href="./politica-de-privacidade.php">Política de Privacidade</a>
                         <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
                         <a href="./politica-de-privacidade.php#LGPD">LGPD</a>

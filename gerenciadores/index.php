@@ -57,7 +57,7 @@ $conexao = conexaoMySql();
                 </a>
             <?php } ?>
             <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
-                <a href="#" class="btn-padrao btn-gerenciar inativo">
+                <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>
             <?php } ?>

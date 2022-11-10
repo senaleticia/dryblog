@@ -621,9 +621,7 @@ if (isset($_GET['modo'])) {
                     </div>
                 </div>
             </div>
-            <div id="bg-celular" class="col-md-6">
-
-            </div>
+            <div id="bg-celular" class="col-md-6"></div>
         </div>
     </section>
 
@@ -645,6 +643,7 @@ if (isset($_GET['modo'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
+                        <a href="./cadastrar-representante.php">Seja Revendedor</a>
                         <a href="./index.php#clientes">Clientes</a>
                         <a href="./index.php#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>

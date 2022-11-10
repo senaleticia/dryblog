@@ -76,19 +76,22 @@ if (isset($_POST['sltFiltro'])) {
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR USUÁRIOS
             </button>
+            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
+                    GERENCIAR REVENDEDORES
+                </a>
+            <?php } ?>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center my-4">
-            <a href="./add-user.php">
-                <button class="btn-secundario">
-                    ADICIONAR NOVO USUÁRIO
-                </button>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="./add-user.php" class="btn-secundario">
+                ADICIONAR NOVO USUÁRIO
             </a>
 
             <form action="#" method="POST" name="frmConsulta">
                 <div class="mb-3">
                     <label for="sltFiltro" style="padding-left: 18px;">Filtrar Usuários:</label>
-                    <select name="sltFiltro" id="sltFiltro" class="form-control" onchange="this.form.submit()">
+                    <select name="sltFiltro" id="sltFiltro" class="form-control select" onchange="this.form.submit()">
                         <option name="filtroOpcao" value="ativo" <?= $selectedAtivo ?>>Ativos</option>
                         <option name="filtroOpcao" value="inativo" <?= $selectedInativo ?>>Inativos</option>
                         <option name="filtroOpcao" value="todos" <?= $selectedAll ?>>Todos</option>
@@ -117,7 +120,6 @@ if (isset($_POST['sltFiltro'])) {
             }
 
             while ($result = mysqli_fetch_array($select)) {
-                //echo ($sql);
             ?>
                 <li class="post-list">
                     <?= $result['nome_autor'] ?>
