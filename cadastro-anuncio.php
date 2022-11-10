@@ -59,7 +59,6 @@ if (isset($_GET['modo'])) {
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
-    <link rel="stylesheet" href="./guideline-social.css">
     <title>Cadastro Anúncio - Dry Telecom</title>
 </head>
 
@@ -73,7 +72,7 @@ if (isset($_GET['modo'])) {
             </div>
 
             <li class="nav-item" style="list-style: none;">
-                <a class="navbar-brand" href="./index.php">
+                <a class="navbar-brand" href="./">
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
@@ -95,13 +94,13 @@ if (isset($_GET['modo'])) {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -117,13 +116,13 @@ if (isset($_GET['modo'])) {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>

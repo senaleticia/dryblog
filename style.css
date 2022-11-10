@@ -1662,11 +1662,13 @@ a.btn-secundario {
     border-left: solid 2px white;
 }
 
-#pass-cont {
+.pass-cont {
     position: relative;
 }
 
-#eye {
+.eye,
+.eye-nova-senha,
+.eye-confirma-senha {
     display: flex;
     position: absolute;
     right: 24px;

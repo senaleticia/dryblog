@@ -36,7 +36,6 @@ if (!$select) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
-    <link rel="stylesheet" href="./guideline-social.css">
     <title>Pesquisa - Dry Telecom</title>
 </head>
 
@@ -50,7 +49,7 @@ if (!$select) {
             </div>
 
             <li class="nav-item" style="list-style: none;">
-                <a class="navbar-brand" href="./index.php">
+                <a class="navbar-brand" href="./">
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
@@ -72,13 +71,13 @@ if (!$select) {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -94,13 +93,13 @@ if (!$select) {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>

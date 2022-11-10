@@ -98,7 +98,10 @@ if (isset($_GET['editar'])) {
             <form action="#" method="POST">
                 <div class="mb-3">
                     <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                    <div class="pass-cont">
+                        <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                        <span onclick="view()" class="eye"></span>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="sltNivel">Nível do Usuário:</label>
@@ -118,6 +121,21 @@ if (isset($_GET['editar'])) {
             </form>
         </div>
     </div>
+
+    <script>
+        function view() {
+            let x = document.getElementById("txtSenhaUsuario");
+            let eye = document.querySelector(".eye");
+
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('../svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('../svg/eye_close.svg')";
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -72,15 +72,24 @@ if (isset($_GET['user'])) {
             <form action="#" method="POST">
                 <div class="mb-3">
                     <label for="txtSenhaAtual">Senha Atual:</label>
-                    <input type="password" name="txtSenhaAtual" id="txtSenhaAtual" class="input-sunk-white">
+                    <div class="pass-cont">
+                        <input type="password" name="txtSenhaAtual" id="txtSenhaAtual" class="input-sunk-white">
+                        <span onclick="viewAtual()" class="eye"></span>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="txtNovaSenha">Nova Senha:</label>
-                    <input type="password" name="txtNovaSenha" id="txtNovaSenha" class="input-sunk-white">
+                    <div class="pass-cont">
+                        <input type="password" name="txtNovaSenha" id="txtNovaSenha" class="input-sunk-white">
+                        <span onclick="viewNova()" class="eye-nova-senha"></span>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="txtConfirmarSenha">Confirme a Senha:</label>
-                    <input type="password" name="txtConfirmarSenha" id="txtConfirmarSenha" class="input-sunk-white">
+                    <div class="pass-cont">
+                        <input type="password" name="txtConfirmarSenha" id="txtConfirmarSenha" class="input-sunk-white">
+                        <span onclick="viewConfirma()" class="eye-confirma-senha"></span>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-around mt-5">
                     <a href="./index.php" class="btn-padrao font-weight-bold">
@@ -91,6 +100,47 @@ if (isset($_GET['user'])) {
             </form>
         </div>
     </div>
+
+    <script>
+        function viewAtual() {
+            let x = document.getElementById("txtSenhaAtual");
+            let eye = document.querySelector(".eye");
+
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('../svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('../svg/eye_close.svg')";
+            }
+        }
+
+        function viewNova() {
+            let x = document.getElementById("txtNovaSenha");
+            let eye = document.querySelector(".eye-nova-senha");
+
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('../svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('../svg/eye_close.svg')";
+            }
+        }
+
+        function viewConfirma() {
+            let x = document.getElementById("txtConfirmarSenha");
+            let eye = document.querySelector(".eye-confirma-senha");
+
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('../svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('../svg/eye_close.svg')";
+            }
+        }
+    </script>
 </body>
 
 </html>

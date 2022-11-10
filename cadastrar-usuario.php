@@ -145,7 +145,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             </div>
 
             <li class="nav-item" style="list-style: none;">
-                <a class="navbar-brand" href="./index.php">
+                <a class="navbar-brand" href="./">
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
@@ -161,13 +161,13 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -183,13 +183,13 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -256,21 +256,27 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                     <p class="desc-file-foto pt-3 text-center"></p>
                     <input type="file" class="form-control-file" id="fileFotoUsuario" name="fileFotoUsuario">
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3">
                     <label for="txtNomeUsuario" class="col-sm-2 col-form-label">Nome:*</label>
                     <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario">
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3">
                     <label for="txtEmailUsuario" class="col-sm-2 col-form-label">Email:*</label>
                     <input type="email" class="input-sunk-white" id="txtEmailUsuario" name="txtEmailUsuario">
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3">
                     <label for="txtSenhaUsuario" class="col-sm-2 col-form-label">Senha:*</label>
-                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                    <div class="pass-cont">
+                        <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario" required>
+                        <span onclick="view()" class="eye"></span>
+                    </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3">
                     <label for="txtConfSenhaUsuario" class="col-sm-5 col-form-label">Confirmar Senha:*</label>
-                    <input type="password" class="input-sunk-white" id="txtConfSenhaUsuario" name="txtConfSenhaUsuario">
+                    <div class="pass-cont">
+                        <input type="password" class="input-sunk-white" id="txtConfSenhaUsuario" name="txtConfSenhaUsuario" required>
+                        <span onclick="viewConfirma()" class="eye-confirma-senha"></span>
+                    </div>
                 </div>
 
                 <div class="d-flex justify-content-center">
@@ -310,6 +316,32 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
         }
 
         nameFileFoto();
+
+        function view() {
+            let x = document.getElementById("txtSenhaUsuario");
+            let eye = document.querySelector(".eye");
+
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('./svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('./svg/eye_close.svg')";
+            }
+        }
+
+        function viewConfirma() {
+            let x = document.getElementById("txtConfSenhaUsuario");
+            let eye = document.querySelector(".eye-confirma-senha");
+
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('./svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('./svg/eye_close.svg')";
+            }
+        }
     </script>
 </body>
 

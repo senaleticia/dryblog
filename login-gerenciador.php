@@ -65,12 +65,28 @@ if (isset($_POST["btnEntrar"])) {
                 </div>
                 <div class="mb-3">
                     <label for="txtSenha" class="form-label">Senha:</label>
-                    <input type="password" class="input-sunk-white" id="txtSenha" name="txtSenha" required>
+                    <div id="pass-cont">
+                        <input type="password" class="input-sunk-white" id="txtSenha" name="txtSenha" required>
+                        <span onclick="view()" id="eye"></span>
+                    </div>
                 </div>
                 <button type="submit" class="btn-padrao mx-auto" name="btnEntrar">Entrar</button>
             </form>
         </div>
     </div>
+
+    <script>
+        function view() {
+            let x = document.getElementById("txtSenha");
+            if (x.type === "password") {
+                x.type = "text";
+                eye.style.backgroundImage = "url('./svg/eye_open.svg')";
+            } else {
+                x.type = "password";
+                eye.style.backgroundImage = "url('./svg/eye_close.svg')";
+            }
+        }
+    </script>
 </body>
 
 </html>

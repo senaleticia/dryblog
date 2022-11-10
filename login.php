@@ -24,7 +24,7 @@ if (isset($_POST['btnLogin'])) {
         $_SESSION['foto_usuario'] = $result['foto_usuario'];
         $_SESSION['usuarioAutenticado'] = true;
 
-        header("location: index.php");
+        header("location: ./");
     } else {
         $erro = "<div class='alert alerta-erro mt-5 mx-auto' role='alert'>
                     <h4 class='alert-heading text-center'>Ops, algo deu errado!</h4>
@@ -62,7 +62,7 @@ if (isset($_POST['btnLogin'])) {
             </div>
 
             <li class="nav-item" style="list-style: none;">
-                <a class="navbar-brand" href="./index.php">
+                <a class="navbar-brand" href="./">
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
@@ -73,13 +73,13 @@ if (isset($_POST['btnLogin'])) {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -95,13 +95,13 @@ if (isset($_POST['btnLogin'])) {
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -126,9 +126,9 @@ if (isset($_POST['btnLogin'])) {
                 </div>
                 <div class="mb-3">
                     <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                    <div id="pass-cont">
+                    <div class="pass-cont">
                         <input id="txtSenhaUsuario" name="txtSenhaUsuario" placeholder="Senha" required type="password" class="input-sunk-white">
-                        <span onclick="view()" id="eye"></span>
+                        <span onclick="view()" class="eye"></span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-around">
@@ -150,6 +150,8 @@ if (isset($_POST['btnLogin'])) {
     <script>
         function view() {
             let x = document.getElementById("txtSenhaUsuario");
+            let eye = document.querySelector(".eye");
+
             if (x.type === "password") {
                 x.type = "text";
                 eye.style.backgroundImage = "url('./svg/eye_open.svg')";

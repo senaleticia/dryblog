@@ -35,7 +35,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             </div>
 
             <li class="nav-item" style="list-style: none;">
-                <a class="navbar-brand" href="./index.php">
+                <a class="navbar-brand" href="./">
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
@@ -57,13 +57,13 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
@@ -79,13 +79,13 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#clientes">CLIENTES</a>
+                        <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./index.php#cobertura">COBERTURA</a>
+                        <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                 </ul>
             </div>
