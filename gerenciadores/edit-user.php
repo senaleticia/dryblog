@@ -6,7 +6,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
 }
 
 if ($_SESSION['tipo_usuario'] != 3) {
-    header('location: users-manager.php');
+    header('location: ./');
 }
 
 require_once('../bd/conexao.php');
@@ -103,8 +103,9 @@ if (isset($_GET['editar'])) {
                         <span onclick="view()" class="eye"></span>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="sltNivel">Nível do Usuário:</label>
+                    <span class="material-symbols-outlined seta-select" style="top: 57%; right: 4%;">expand_more</span>
                     <select name="sltNivel" id="sltNivel" class="form-control select w-100">
                         <option value="0">Escolha um nível</option>
                         <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>

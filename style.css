@@ -704,7 +704,8 @@ li {
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
 }
 
-.input-group-text:hover {
+.input-group-text:hover,
+.upload-foto:hover {
     cursor: pointer;
     box-shadow: inset -2px -2px 4px rgb(255 255 255 / 75%), inset 4px 4px 8px rgb(0 0 0 / 25%) !important;
 }
@@ -819,7 +820,8 @@ li {
 #fileFoto2,
 #fileFoto3,
 #fileFoto4,
-#fileFotoUsuario {
+#fileFotoUsuario,
+#fotoRepresentante {
     display: none !important;
 }
 
@@ -1527,14 +1529,11 @@ small.float-right:hover {
 .select {
     border-radius: 40px;
     border: solid 1px #FE5000;
-    background-color: transparent;
+    background-color: #EBEBEB;
     color: #FE5000;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url('./img/select-after.PNG');
-    background-repeat: no-repeat;
-    background-position: right;
     padding: 0 18px;
     width: 235px;
 }
@@ -1626,17 +1625,6 @@ a.btn-secundario {
     width: max-content;
 }
 
-.retailer-list {
-    background-color: #EBEBEB;
-    border-radius: 12px;
-    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
-    margin: 20px 0;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 5fr 4px 1fr;
-    gap: 20px;
-}
-
 .retailer-list .select {
     width: 180px;
 }
@@ -1681,4 +1669,69 @@ a.btn-secundario {
     background-repeat: no-repeat;
     cursor: pointer;
     transition: 0.2s;
+}
+
+.seta-select {
+    color: #FE5000;
+    position: absolute;
+    right: 33%;
+    top: 21%;
+}
+
+.text-grey {
+    color: #606060;
+    font-size: 14px;
+    display: block;
+}
+
+.caixa-representantes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+    justify-items: center;
+}
+
+.caixa-representantes .card-cadastro {
+    padding: 20px 16px;
+}
+
+.foto-representante {
+    width: 75px;
+    border-radius: 50px;
+}
+
+.foto-representante img {
+    width: 72px;
+    height: 69px;
+    border-radius: 50px;
+}
+
+.btn-transparent {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    border: none;
+    background-color: transparent;
+    color: #FE5000 !important;
+}
+
+.bg-representante {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.upload-foto {
+    color: #FE5000;
+    box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 10%);
+    border-radius: 50px;
+    width: 180px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

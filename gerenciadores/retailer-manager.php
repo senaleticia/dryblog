@@ -16,8 +16,6 @@ $selectedNaoContatado = "";
 $naoContatatoAtivo = "";
 $selectedEmContato = "";
 $emContatoAtivo = "";
-$selectedAceito = "";
-$aceitoAtivo = "";
 $selectedRecusado = "";
 $recusadoAtivo = "";
 
@@ -32,9 +30,6 @@ if (isset($_POST['sltFiltroRepresentante'])) {
         $todosAtivo = "";
     } else if ($filtro == "EM CONTATO") {
         $emContatoAtivo = "selected";
-        $todosAtivo = "";
-    } else if ($filtro == "ACEITO") {
-        $aceitoAtivo = "selected";
         $todosAtivo = "";
     } else if ($filtro == "RECUSADO") {
         $recusadoAtivo = "selected";
@@ -80,7 +75,7 @@ if (isset($_POST['sltFiltroRepresentante'])) {
     </header>
 
     <div class="container my-5">
-        <div class="mb-4 d-flex justify-content-center" style="gap: 36px;">
+        <div class="mb-4 d-flex justify-content-center flex-wrap" style="gap: 36px;">
             <a href="./" class="btn-padrao btn-gerenciar">
                 GERENCIAR POSTAGENS
             </a>
@@ -97,40 +92,38 @@ if (isset($_POST['sltFiltroRepresentante'])) {
         </div>
 
         <div class="d-flex justify-content-between align-items-center my-4">
-            <a href="#" class="btn-secundario">
+            <a href="retailer-authorized.php" class="btn-secundario">
                 VER REVENDEDORES AUTORIZADOS
             </a>
 
             <form action="#" method="POST" name="frmRepresentantes">
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="sltFiltroRepresentante" style="padding-left: 18px;">Filtrar Mensagens:</label>
+                    <span class="material-symbols-outlined seta-select" style="top: 55%; right: 5%;">expand_more</span>
                     <select name="sltFiltroRepresentante" id="sltFiltroRepresentante" class="form-control select" onchange="this.form.submit()">
                         <option value="TODOS" <?= $todosAtivo ?>>Todos</option>
                         <option value="NÃO CONTATADO" <?= $naoContatatoAtivo ?>>Não contatado</option>
                         <option value="EM CONTATO" <?= $emContatoAtivo ?>>Em contato</option>
-                        <option value="ACEITO" <?= $aceitoAtivo ?>>Aceito</option>
                         <option value="RECUSADO" <?= $recusadoAtivo ?>>Recusado</option>
                     </select>
                 </div>
             </form>
         </div>
 
-        <h3 class="text-center mb-3">Lista de Interessados</h3>
+        <h3 class="text-center mb-0">Lista de Interessados</h3>
 
-        <ul class="list-group list-unstyled">
+        <div class="retailer-list py-4">
             <?php
-            $sql = "SELECT * FROM representantes ORDER BY id_representante DESC";
+            $sql = "SELECT * FROM representantes WHERE status_representante <> 'ACEITO' ORDER BY id_representante DESC";
 
             if ($filtro == "NÃO CONTATADO") {
                 $sql = "SELECT * FROM representantes WHERE status_representante = 'NÃO CONTATADO' ORDER BY id_representante DESC";
             } else if ($filtro == "EM CONTATO") {
                 $sql = "SELECT * FROM representantes WHERE status_representante = 'EM CONTATO' ORDER BY id_representante DESC";
-            } else if ($filtro == "ACEITO") {
-                $sql = "SELECT * FROM representantes WHERE status_representante = 'ACEITO' ORDER BY id_representante DESC";
             } else if ($filtro == "RECUSADO") {
                 $sql = "SELECT * FROM representantes WHERE status_representante = 'RECUSADO' ORDER BY id_representante DESC";
             } else if ($filtro == "TODOS") {
-                $sql = "SELECT * FROM representantes ORDER BY id_representante DESC";
+                $sql = "SELECT * FROM representantes WHERE status_representante <> 'ACEITO' ORDER BY id_representante DESC";
             }
 
             $select = mysqli_query($conexao, $sql);
@@ -141,62 +134,67 @@ if (isset($_POST['sltFiltroRepresentante'])) {
             }
 
             while ($result = mysqli_fetch_array($select)) {
-                if ($result['status_representante'] == "ACEITO") {
-                    $selectedAceito = "selected";
-                    $selectedEmContato = "";
-                    $selectedNaoContatado = "";
-                    $selectedRecusado = "";
-                } else if ($result['status_representante'] == "EM CONTATO") {
+                if ($result['status_representante'] == "EM CONTATO") {
                     $selectedEmContato = "selected";
                     $selectedNaoContatado = "";
                     $selectedRecusado = "";
-                    $selectedAceito = "";
                 } else if ($result['status_representante'] == "NÃO CONTATADO") {
                     $selectedNaoContatado = "selected";
                     $selectedRecusado = "";
-                    $selectedAceito = "";
                     $selectedEmContato = "";
-                } else if ($result['status_representante'] == "NÃO CONTATADO") {
+                } else if ($result['status_representante'] == "RECUSADO") {
                     $selectedRecusado = "selected";
-                    $selectedAceito = "";
                     $selectedEmContato = "";
                     $selectedNaoContatado = "";
                 }
             ?>
-                <li class="retailer-list">
-                    <div class="d-flex flex-column" style="gap: 30px;">
-                        <div class="d-flex flex-row" style="gap: 30px;">
-                            <div class="dados-representante">
-                                <span class="material-symbols-outlined">person</span> <?= $result['nome_representante'] ?>
-                            </div>
-                            <div class="dados-representante">
-                                <span class="material-symbols-outlined">call</span> <?= $result['celular_representante'] ?>
-                            </div>
-                            <div class="dados-representante">
-                                <span class="material-symbols-outlined">alternate_email</span> <?= $result['email_representante'] ?>
-                            </div>
-                        </div>
-
-                        <div class="msg-representante">
-                            <?= $result['mensagem_representante'] ?>
-                        </div>
+                <div class="card-cadastro mx-auto mt-3 mb-5 pb-3">
+                    <div class="mb-3">
+                        <span class="text-grey">Nome:</span>
+                        <span><?= $result['nome_representante'] ?></span>
                     </div>
 
-                    <div class="div-linha"></div>
+                    <div class="mb-3">
+                        <span class="text-grey">Email:</span>
+                        <span><?= $result['email_representante'] ?></span>
+                    </div>
 
-                    <form action="./retailer-status.php?representante=<?= $result['id_representante'] ?>" method="POST" name="frmStatus" class="d-flex align-items-center">
-                        <div>
-                            <select name="sltStatus" id="sltStatus" class="form-control select" onchange="this.form.submit()">
-                                <option value="NÃO CONTATADO" <?= $selectedNaoContatado ?>>Não contatado</option>
-                                <option value="EM CONTATO" <?= $selectedEmContato ?>>Em contato</option>
-                                <option value="ACEITO" <?= $selectedAceito ?>>Aceito</option>
-                                <option value="RECUSADO" <?= $selectedRecusado ?>>Recusado</option>
-                            </select>
-                        </div>
-                    </form>
-                </li>
+                    <div class="mb-3">
+                        <span class="text-grey">Celular:</span>
+                        <span><?= $result['celular_representante'] ?></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="text-grey">CPF / CNPJ:</span>
+                        <span><?= $result['cpf_cnpj_representante'] ?></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="text-grey">Expectativa de Venda:</span>
+                        <span><?= $result['expectativa_vendas'] ?></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="text-grey">Mensagem:</span>
+                        <p><?= $result['mensagem_representante'] ?></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <form action="retailer-status.php?representante=<?= $result['id_representante'] ?>" method="POST" name="frmStatus" id="frmStatus">
+                            <div class="position-relative">
+                                <span class="material-symbols-outlined seta-select">expand_more</span>
+                                <select name="sltStatus" id="sltStatus" class="form-control select mx-auto" onchange="this.form.submit()">
+                                    <option value="NÃO CONTATADO" <?= $selectedNaoContatado ?>>Não contatado</option>
+                                    <option value="EM CONTATO" <?= $selectedEmContato ?>>Em contato</option>
+                                    <option value="ACEITO">Aceito</option>
+                                    <option value="RECUSADO" <?= $selectedRecusado ?>>Recusado</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             <?php } ?>
-        </ul>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

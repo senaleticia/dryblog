@@ -305,8 +305,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
                         <a href="./cadastrar-representante.php">Seja Revendedor</a>
-                        <a href="./index.php#clientes">Clientes</a>
-                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./#clientes">Clientes</a>
+                        <a href="./#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>
                     </div>
                 </div>
@@ -354,10 +354,6 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
         $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
-        });
-
-        $('form-pesquisa').submit(function() {
-            $(this)[0].reset();
         });
 
         const compartilharBtn = document.querySelectorAll('.copy-button');

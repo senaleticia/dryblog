@@ -89,8 +89,9 @@ if (isset($_POST['sltFiltro'])) {
             </a>
 
             <form action="#" method="POST" name="frmConsulta">
-                <div class="mb-3">
+                <div class="mb-3 position-relative">
                     <label for="sltFiltro" style="padding-left: 18px;">Filtrar Usuários:</label>
+                    <span class="material-symbols-outlined seta-select" style="top: 55%; right: 5%;">expand_more</span>
                     <select name="sltFiltro" id="sltFiltro" class="form-control select" onchange="this.form.submit()">
                         <option name="filtroOpcao" value="ativo" <?= $selectedAtivo ?>>Ativos</option>
                         <option name="filtroOpcao" value="inativo" <?= $selectedInativo ?>>Inativos</option>
