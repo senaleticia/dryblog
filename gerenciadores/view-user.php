@@ -28,11 +28,11 @@ if (isset($_GET['modo'])) {
             $nome_autor = $result['nome_autor'];
             $login_autor = $result['login_autor'];
 
-            if ($result['tipo_usuario'] == 1) {
+            if ($result['tipo_autor'] == 1) {
                 $nivel_autor = 'Administrador de Posts';
-            } else if ($result['tipo_usuario'] == 2) {
+            } else if ($result['tipo_autor'] == 2) {
                 $nivel_autor = 'Administrador Geral';
-            } else if ($result['tipo_usuario'] == 3) {
+            } else if ($result['tipo_autor'] == 3) {
                 $nivel_autor = 'Administrador Master';
             }
 

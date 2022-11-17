@@ -106,7 +106,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($foto != "") { ?>
                 <div class="post-img ml-auto mr-auto">
-                    <img src="../upload/arquivos/<?= $foto ?>" alt="Imagem do post">
+                    <img src="../upload/blog/<?= $foto ?>" alt="Imagem do post">
                 </div>
             <?php } ?>
 
@@ -118,7 +118,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($foto2 != "") { ?>
                 <div class="post-img ml-auto mr-auto">
-                    <img src="../upload/arquivos/<?= $foto2 ?>" alt="Imagem do post">
+                    <img src="../upload/blog/<?= $foto2 ?>" alt="Imagem do post">
                 </div>
             <?php } ?>
 
@@ -130,7 +130,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($foto3 != "") { ?>
                 <div class="post-img ml-auto mr-auto">
-                    <img src="../upload/arquivos/<?= $foto3 ?>" alt="Imagem do post">
+                    <img src="../upload/blog/<?= $foto3 ?>" alt="Imagem do post">
                 </div>
             <?php } ?>
 
@@ -142,7 +142,7 @@ if (isset($_GET['modo'])) {
 
             <?php if ($foto4 != "") { ?>
                 <div class="post-img ml-auto mr-auto">
-                    <img src="../upload/arquivos/<?= $foto4 ?>" alt="Imagem do post">
+                    <img src="../upload/blog/<?= $foto4 ?>" alt="Imagem do post">
                 </div>
             <?php } ?>
 

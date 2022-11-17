@@ -23,7 +23,7 @@ if (isset($_POST["btnEntrar"])) {
     if ($result = mysqli_fetch_array($select)) {
         $_SESSION['nome_autor'] = $result['nome_autor'];
         $_SESSION['id_autor'] = $result['id_autor'];
-        $_SESSION['tipo_usuario'] = $result['tipo_usuario'];
+        $_SESSION['tipo_usuario'] = $result['tipo_autor'];
         $_SESSION['login_autor'] = $result['login_autor'];
         $_SESSION['senha_autor'] = $result['senha_autor'];
         $_SESSION['gerenciadorAutenticado'] = true;

@@ -31,7 +31,7 @@ if (isset($_GET['editar'])) {
         $nome_autor = $result['nome_autor'];
         $login_autor = $result['login_autor'];
         $senha_autor = $result['senha_autor'];
-        $nivel_autor = $result['tipo_usuario'];
+        $nivel_autor = $result['tipo_autor'];
 
         if ($nivel_autor == 1) {
             $selectedAdminPost = "selected";
@@ -47,9 +47,9 @@ if (isset($_GET['editar'])) {
         $nivel_autor = $_POST['sltNivel'];
 
         if ($senha_autor == "") {
-            $sql = "UPDATE autor SET tipo_usuario = " . $nivel_autor . " WHERE id_autor = " . $id;
+            $sql = "UPDATE autor SET tipo_autor = " . $nivel_autor . " WHERE id_autor = " . $id;
         } else {
-            $sql = "UPDATE autor SET senha_autor = sha1(md5('" . $senha_autor . "')), tipo_usuario = " . $nivel_autor . " WHERE id_autor = " . $id;
+            $sql = "UPDATE autor SET senha_autor = sha1(md5('" . $senha_autor . "')), tipo_autor = " . $nivel_autor . " WHERE id_autor = " . $id;
         }
 
         if ($select = mysqli_query($conexao, $sql)) {

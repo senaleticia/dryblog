@@ -350,6 +350,13 @@ if (isset($_GET['modo'])) {
 
         <section id="section-empresas">
             <div class="card-chip">
+                <a href="https://site.dryconecta.com.br/" target="_blank" rel="noopener noreferrer">
+                    <div class="btn-sunk-chip">
+                        <div class="img-chip">
+                            <img src="./img/dryconectachip.png" alt="Dry Conecta Chip" />
+                        </div>
+                    </div>
+                </a>
                 <a href="https://barbosachip.com.br/" target="_blank" rel="noopener noreferrer">
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
@@ -389,13 +396,6 @@ if (isset($_GET['modo'])) {
                     <div class="btn-sunk-chip">
                         <div class="img-chip">
                             <img src="./img/paraisopolischip.jpg" alt="Paraisópolis Celular Chip" />
-                        </div>
-                    </div>
-                </a>
-                <a href="https://site.dryconecta.com.br/" target="_blank" rel="noopener noreferrer">
-                    <div class="btn-sunk-chip">
-                        <div class="img-chip">
-                            <img src="./img/dryconectachip.png" alt="Dry Conecta Chip" />
                         </div>
                     </div>
                 </a>

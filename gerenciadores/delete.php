@@ -17,7 +17,7 @@ if (isset($_GET['modo'])) {
 
         if (mysqli_query($conexao, $sql)) {
             //echo("<script>alert('Post excluído com sucesso')</script>");
-            unlink("../upload/arquivos/" . $arquivo);
+            unlink("../upload/blog/" . $arquivo);
             echo ("<script>history.back()</script>");
         } else {
             echo ("<script>alert('Erro ao excluir o post')</script>");

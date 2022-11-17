@@ -284,7 +284,7 @@ if (isset($_POST['btnComentar'])) {
 
                     <?php if ($foto != "") { ?>
                         <div class="post-img mx-auto">
-                            <img src="./upload/arquivos/<?= $foto ?>" alt="Foto post">
+                            <img src="./upload/blog/<?= $foto ?>" alt="Foto post">
                         </div>
                     <?php } ?>
 
@@ -294,7 +294,7 @@ if (isset($_POST['btnComentar'])) {
 
                     <?php if ($foto2 != "") { ?>
                         <div class="post-img mx-auto">
-                            <img src="./upload/arquivos/<?= $foto2 ?>" alt="Foto post">
+                            <img src="./upload/blog/<?= $foto2 ?>" alt="Foto post">
                         </div>
                     <?php } ?>
 
@@ -306,7 +306,7 @@ if (isset($_POST['btnComentar'])) {
 
                     <?php if ($foto3 != "") { ?>
                         <div class="post-img mx-auto">
-                            <img src="./upload/arquivos/<?= $foto3 ?>" alt="Foto post">
+                            <img src="./upload/blog/<?= $foto3 ?>" alt="Foto post">
                         </div>
                     <?php } ?>
 
@@ -318,7 +318,7 @@ if (isset($_POST['btnComentar'])) {
 
                     <?php if ($foto4 != "") { ?>
                         <div class="post-img mx-auto">
-                            <img src="./upload/arquivos/<?= $foto4 ?>" alt="Foto post">
+                            <img src="./upload/blog/<?= $foto4 ?>" alt="Foto post">
                         </div>
                     <?php } ?>
 
@@ -370,7 +370,7 @@ if (isset($_POST['btnComentar'])) {
                     <?php while ($rs_relacionados = mysqli_fetch_array($select_relacionados)) { ?>
                         <a href="./postagem.php?p=<?= $rs_relacionados['url_post'] ?>">
                             <div class="card-materia-lateral">
-                                <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_relacionados['foto'] ?>');"></div>
+                                <div class="materia-img" style="background-image: url('./upload/blog/<?= $rs_relacionados['foto'] ?>');"></div>
                                 <h4 class="materia-title"><?= $rs_relacionados['titulo'] ?></h4>
                             </div>
                         </a>

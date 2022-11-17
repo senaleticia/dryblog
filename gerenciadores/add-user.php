@@ -17,31 +17,82 @@ $login_autor = (string) "";
 $senha_autor = (string) "";
 $nivel_autor = (int) 0;
 
-if (isset($_POST['btnCadastrarUsuario'])) {
-    $nome_autor = $_POST['txtNomeUsuario'];
-    $login_autor = $_POST['txtLoginUsuario'];
-    $senha_autor = $_POST['txtSenhaUsuario'];
-    $nivel_autor = $_POST['sltNivel'];
+if (isset($_FILES['fotoAdm'])) {
+    $arquivo = $_FILES['fotoAdm'];
 
-    $verificar_email = "SELECT * FROM autor WHERE login_autor = '" . $login_autor . "'";
-    $select_verificar = mysqli_query($conexao, $verificar_email);
-    $row_count = mysqli_num_rows($select_verificar);
+    if ($arquivo > 2097152) {
+        die("Arquivo muito grande! O tamanho máximo é 2MB");
+    }
 
-    if ($nivel_autor == 0) {
-        echo ("<script>alert('Selecione um nível do usuário para continuar!')</script>");
-    } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
-        echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
-    } else if ($row_count >= 1) {
-        echo ("<script>alert('Esse email já está cadastrado em nosso sistema. Favor, inserir outro')</script>");
+    $diretorio = "../upload/arquivos/";
+    $nome_arquivo = $arquivo['name'];
+    $novo_nome_arquivo = uniqid();
+    $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
+
+    if ($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != "") {
+        die("Esse tipo de arquivo não é aceito");
+    }
+
+    if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao)) {
+
+        if (isset($_POST['btnCadastrarUsuario'])) {
+            $nome_autor = $_POST['txtNomeUsuario'];
+            $login_autor = $_POST['txtLoginUsuario'];
+            $senha_autor = $_POST['txtSenhaUsuario'];
+            $nivel_autor = $_POST['sltNivel'];
+            $foto_autor = $novo_nome_arquivo . "." . $extensao;
+
+            $verificar_email = "SELECT * FROM autor WHERE login_autor = '" . $login_autor . "'";
+            $select_verificar = mysqli_query($conexao, $verificar_email);
+            $row_count = mysqli_num_rows($select_verificar);
+
+            if ($nivel_autor == 0) {
+                echo ("<script>alert('Selecione um nível do usuário para continuar!')</script>");
+            } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
+                echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
+            } else if ($row_count >= 1) {
+                echo ("<script>alert('Esse email já está cadastrado em nosso sistema. Favor, inserir outro')</script>");
+            } else {
+                $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, foto_autor, tipo_autor, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), '" . $foto_autor . "', " . $nivel_autor . ", true)";
+
+                if ($select = mysqli_query($conexao, $sql)) {
+                    echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
+                    echo ("<script>window.location='users-manager.php'</script>");
+                } else {
+                    echo ("<script>alert('Erro ao cadastrar o usuário!')</script>");
+                    echo ($sql);
+                }
+            }
+        }
     } else {
-        $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_usuario, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), " . $nivel_autor . ", true)";
 
-        if ($select = mysqli_query($conexao, $sql)) {
-            echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
-            echo ("<script>window.location='users-manager.php'</script>");
-        } else {
-            echo ("<script>alert('Erro ao cadastrar o usuário!')</script>");
-            echo ($sql);
+        if (isset($_POST['btnCadastrarUsuario'])) {
+            $nome_autor = $_POST['txtNomeUsuario'];
+            $login_autor = $_POST['txtLoginUsuario'];
+            $senha_autor = $_POST['txtSenhaUsuario'];
+            $nivel_autor = $_POST['sltNivel'];
+
+            $verificar_email = "SELECT * FROM autor WHERE login_autor = '" . $login_autor . "'";
+            $select_verificar = mysqli_query($conexao, $verificar_email);
+            $row_count = mysqli_num_rows($select_verificar);
+
+            if ($nivel_autor == 0) {
+                echo ("<script>alert('Selecione um nível do usuário para continuar!')</script>");
+            } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
+                echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
+            } else if ($row_count >= 1) {
+                echo ("<script>alert('Esse email já está cadastrado em nosso sistema. Favor, inserir outro')</script>");
+            } else {
+                $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_autor, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), " . $nivel_autor . ", true)";
+
+                if ($select = mysqli_query($conexao, $sql)) {
+                    echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
+                    echo ("<script>window.location='users-manager.php'</script>");
+                } else {
+                    echo ("<script>alert('Erro ao cadastrar o usuário!')</script>");
+                    echo ($sql);
+                }
+            }
         }
     }
 }
@@ -59,12 +110,12 @@ if (isset($_POST['btnCadastrarUsuario'])) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../responsive.css">
-    <title>Adicionar Usuário - Gerenciadores - Dry Telecom</title>
+    <title>Adicionar Administrador - Gerenciadores - Dry Telecom</title>
 </head>
 
 <body>
     <div class="container">
-        <h3 class="my-4 text-center">Adicionar Usuário</h3>
+        <h3 class="my-4 text-center">Adicionar Administrador</h3>
 
         <div class="card-cadastro mx-auto">
             <form action="#" method="POST">
@@ -78,11 +129,22 @@ if (isset($_POST['btnCadastrarUsuario'])) {
                 </div>
                 <div class="mb-3">
                     <label for="txtSenhaUsuario" class="form-label">Senha:</label>
-                    <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                    <div class="pass-cont">
+                        <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                        <span onclick="view()" class="eye"></span>
+                    </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
+                    <label for="fotoAdm" class="input-group-text btn-padrao">
+                        Foto: <span class="material-symbols-outlined">file_upload</span>
+                    </label>
+                    <input type="file" name="fotoAdm" id="fotoAdm">
+                    <p class="desc-file-foto pt-3 text-center"></p>
+                </div>
+                <div class="mb-3 position-relative">
                     <label for="sltNivel">Nível do Usuário:</label>
-                    <select name="sltNivel" id="sltNivel" class="form-control">
+                    <span class="material-symbols-outlined seta-select" style="top: 55%; right: 4%;">expand_more</span>
+                    <select name="sltNivel" id="sltNivel" class="form-control select w-100">
                         <option value="0">Escolha um nível</option>
                         <option value="1">Administrador de Posts</option>
                         <option value="2">Administrador Geral</option>
@@ -100,6 +162,40 @@ if (isset($_POST['btnCadastrarUsuario'])) {
             </form>
         </div>
     </div>
+
+    <script>
+        function nameFileFoto() {
+            let div = document.querySelector('.desc-file-foto');
+            let input = document.getElementById('fotoAdm');
+
+            if ((div != null) && (input != null)) {
+                div.addEventListener("click", function() {
+                    input.click();
+                });
+
+                input.addEventListener("change", function() {
+                    let nome = "Não há arquivo selecionado. Selecionar arquivo...";
+                    if (input.files.length > 0) nome = input.files[0].name;
+                    div.innerHTML = nome;
+                });
+            }
+        }
+
+        nameFileFoto();
+
+        function view() {
+            let x = document.getElementById('txtSenhaUsuario');
+            let eye = document.querySelector('.eye');
+
+            if (x.type === 'password') {
+                x.type = 'text';
+                eye.style.backgroundImage = 'url("../svg/eye_open.svg")';
+            } else {
+                x.type = 'password';
+                eye.style.backgroundImage = 'url("../svg/eye_close.svg")';
+            }
+        }
+    </script>
 </body>
 
 </html>

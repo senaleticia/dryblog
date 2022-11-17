@@ -86,10 +86,10 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
     }
 
     // Pasta para onde vai os arquivos
-    $diretorio = "../upload/arquivos/";
-    $diretorio2 = "../upload/arquivos/";
-    $diretorio3 = "../upload/arquivos/";
-    $diretorio4 = "../upload/arquivos/";
+    $diretorio = "../upload/blog/";
+    $diretorio2 = "../upload/blog/";
+    $diretorio3 = "../upload/blog/";
+    $diretorio4 = "../upload/blog/";
 
     // Mudando o nome e validando o primeiro arquivo
     if ($arquivo['name'] != "") {

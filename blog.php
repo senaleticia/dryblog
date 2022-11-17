@@ -177,7 +177,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         if ($result['foto'] != "") {
                         ?>
                             <div class="post-img mx-auto my-3">
-                                <img src="./upload/arquivos/<?= $result['foto'] ?>" alt="Imagem">
+                                <img src="./upload/blog/<?= $result['foto'] ?>" alt="Imagem">
                             </div>
                         <?php
                         }
@@ -265,7 +265,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             ?>
                                 <a href="./postagem.php?p=<?= $rs_popular['url_post'] ?>">
                                     <div class="card-materia-lateral">
-                                        <div class="materia-img" style="background-image: url('./upload/arquivos/<?= $rs_popular['foto'] ?>');"></div>
+                                        <div class="materia-img" style="background-image: url('./upload/blog/<?= $rs_popular['foto'] ?>');"></div>
                                         <h4 class="materia-title"><?= $rs_popular['titulo'] ?></h4>
                                     </div>
                                 </a>
