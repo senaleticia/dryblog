@@ -53,7 +53,7 @@ $conexao = conexaoMySql();
                     <div class="position-relative">
                         <div class="foto-representante mx-auto">
                             <?php if ($result['foto_representante'] != "") { ?>
-                                <img class="mx-auto" src="../upload/arquivos/<?= $result['foto_representante'] ?>" alt="Foto">
+                                <img class="mx-auto" src="../upload/revendedores/<?= $result['foto_representante'] ?>" alt="Foto">
                             <?php } else { ?>
                                 <img class="mx-auto" src="../img/icon-profile.png" alt="Foto">
                             <?php } ?>

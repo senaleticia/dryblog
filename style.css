@@ -822,7 +822,7 @@ li {
 #fileFoto4,
 #fileFotoUsuario,
 #fotoRepresentante,
-#fotoAdm {
+#fotoAdmin {
     display: none !important;
 }
 
@@ -1704,7 +1704,7 @@ a.btn-secundario {
 .foto-representante img {
     width: 72px;
     height: 69px;
-    border-radius: 50px;
+    border-radius: inherit;
 }
 
 .btn-transparent {

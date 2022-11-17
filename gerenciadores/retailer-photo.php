@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
             die('Arquivo muito grande! O tamanho máximo é 2MB');
         }
 
-        $diretorio = "../upload/arquivos/";
+        $diretorio = "../upload/revendedores/";
         $nome_arquivo = $arquivo['name'];
         $novo_nome_arquivo = uniqid();
         $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));

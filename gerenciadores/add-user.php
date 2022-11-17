@@ -17,14 +17,14 @@ $login_autor = (string) "";
 $senha_autor = (string) "";
 $nivel_autor = (int) 0;
 
-if (isset($_FILES['fotoAdm'])) {
-    $arquivo = $_FILES['fotoAdm'];
+if (isset($_FILES['fotoAdmin'])) {
+    $arquivo = $_FILES['fotoAdmin'];
 
-    if ($arquivo > 2097152) {
+    if ($arquivo['size'] > 2097152) {
         die("Arquivo muito grande! O tamanho máximo é 2MB");
     }
 
-    $diretorio = "../upload/arquivos/";
+    $diretorio = "../upload/perfil-admin/";
     $nome_arquivo = $arquivo['name'];
     $novo_nome_arquivo = uniqid();
     $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
@@ -35,7 +35,7 @@ if (isset($_FILES['fotoAdm'])) {
 
     if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao)) {
 
-        if (isset($_POST['btnCadastrarUsuario'])) {
+        if (isset($_POST['btnCadastrarAdmin'])) {
             $nome_autor = $_POST['txtNomeUsuario'];
             $login_autor = $_POST['txtLoginUsuario'];
             $senha_autor = $_POST['txtSenhaUsuario'];
@@ -66,7 +66,7 @@ if (isset($_FILES['fotoAdm'])) {
         }
     } else {
 
-        if (isset($_POST['btnCadastrarUsuario'])) {
+        if (isset($_POST['btnCadastrarAdmin'])) {
             $nome_autor = $_POST['txtNomeUsuario'];
             $login_autor = $_POST['txtLoginUsuario'];
             $senha_autor = $_POST['txtSenhaUsuario'];
@@ -118,7 +118,7 @@ if (isset($_FILES['fotoAdm'])) {
         <h3 class="my-4 text-center">Adicionar Administrador</h3>
 
         <div class="card-cadastro mx-auto">
-            <form action="#" method="POST">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="txtNomeUsuario" class="form-label">Nome:</label>
                     <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario" value="<?= $nome_autor ?>">
@@ -135,10 +135,10 @@ if (isset($_FILES['fotoAdm'])) {
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label for="fotoAdm" class="input-group-text btn-padrao">
+                    <label for="fotoAdmin" class="input-group-text btn-padrao">
                         Foto: <span class="material-symbols-outlined">file_upload</span>
                     </label>
-                    <input type="file" name="fotoAdm" id="fotoAdm">
+                    <input type="file" name="fotoAdmin" id="fotoAdmin">
                     <p class="desc-file-foto pt-3 text-center"></p>
                 </div>
                 <div class="mb-3 position-relative">
@@ -157,17 +157,17 @@ if (isset($_FILES['fotoAdm'])) {
                     <a href="./users-manager.php" class="btn-padrao font-weight-bold">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
                     </a>
-                    <button type="submit" class="btn-padrao" name="btnCadastrarUsuario" id="btnCadastrarUsuario">Cadastrar</button>
+                    <button type="submit" class="btn-padrao" name="btnCadastrarAdmin" id="btnCadastrarAdmin">Cadastrar</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        function nameFileFoto() {
-            let div = document.querySelector('.desc-file-foto');
-            let input = document.getElementById('fotoAdm');
+        let div = document.querySelector('.desc-file-foto');
+        let input = document.getElementById('fotoAdmin');
 
+        function nameFileFoto() {
             if ((div != null) && (input != null)) {
                 div.addEventListener("click", function() {
                     input.click();
