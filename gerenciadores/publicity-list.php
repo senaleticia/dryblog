@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 
 if ($_SESSION['gerenciadorAutenticado'] != true) {
-    header("location:../login-gerenciador.php");
+    header("location: ../login-gerenciador.php");
 }
 
 require_once("../bd/conexao.php");
@@ -53,7 +53,7 @@ $conexao = conexaoMySql();
             while ($result = mysqli_fetch_array($select)) {
             ?>
                 <div class="card-materia-lateral">
-                    <div class="materia-img" style="background-image: url('../upload/arquivos/<?= $result['foto_anuncio'] ?>');"></div>
+                    <div class="materia-img" style="background-image: url('../upload/anuncios/<?= $result['foto_anuncio'] ?>');"></div>
                     <a href="./view-publicity.php?modo=visualizar&id=<?= $result['id_anuncio'] ?>">
                         <p class="limite-anuncio px-2 pt-2"><?= $result['descricao_anuncio'] ?></p>
                     </a>

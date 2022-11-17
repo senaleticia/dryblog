@@ -54,7 +54,7 @@ if (isset($_POST['btnLogin'])) {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
-        <div class="container" style="justify-content: flex-start; gap: 25%;">
+        <div class="container" style="justify-content: flex-start; gap: 23%;">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
                     menu

@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['gerenciadorAutenticado'] != true) {
-    header("location:../login-gerenciador.php");
+    header("location: ../login-gerenciador.php");
 }
 
 if (isset($_GET['modo'])) {
@@ -53,7 +53,7 @@ if (isset($_GET['modo'])) {
     <div class="container">
         <div class="view-post-table pt-5">
             <div class="post-img img-anuncio mx-auto">
-                <img src="../upload/arquivos/<?= $foto_anuncio ?>" alt="Anúncio">
+                <img src="../upload/anuncios/<?= $foto_anuncio ?>" alt="Anúncio">
             </div>
             <div class="anuncio-text">
                 <p><?= $descricao_anuncio ?></p>

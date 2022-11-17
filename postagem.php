@@ -404,7 +404,7 @@ if (isset($_POST['btnComentar'])) {
                         ?>
                             <div class="foto-usuario" style="background-image: url('./img/icon-profile.png');"></div>
                         <?php } else { ?>
-                            <div class="foto-usuario" style="background-image: url('./upload/arquivos/<?= $rs_user['foto_usuario'] ?>');"></div>
+                            <div class="foto-usuario" style="background-image: url('./upload/perfil-usuarios/<?= $rs_user['foto_usuario'] ?>');"></div>
                         <?php } ?>
 
                         <div class="input-comentario">
@@ -424,7 +424,7 @@ if (isset($_POST['btnComentar'])) {
                     <?php if ($result['foto_usuario'] == 0) { ?>
                         <div class="foto-usuario" style="background-image: url('./img/icon-profile.png');"></div>
                     <?php } else { ?>
-                        <div class="foto-usuario" style="background-image: url('./upload/arquivos/<?= $result['foto_usuario'] ?>');"></div>
+                        <div class="foto-usuario" style="background-image: url('./upload/perfil-usuarios/<?= $result['foto_usuario'] ?>');"></div>
                     <?php } ?>
                     <div class="post-comentarios">
                         <strong class="comentario-usuario"><?= $result['nome_usuario'] ?></strong>

@@ -280,7 +280,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                     ?>
                         <div class="d-flex justify-content-center py-3">
                             <a href="./cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
-                                <img class="w-100" src="./upload/arquivos/<?= $rs_anuncios['foto_anuncio'] ?>" alt="Anúncio">
+                                <img class="w-100" src="./upload/anuncios/<?= $rs_anuncios['foto_anuncio'] ?>" alt="Anúncio">
                             </a>
                         </div>
                     <?php } ?>

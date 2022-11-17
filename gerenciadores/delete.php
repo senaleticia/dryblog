@@ -30,7 +30,7 @@ if (isset($_GET['modo'])) {
         $sql = "DELETE FROM anuncios WHERE id_anuncio = " . $id;
 
         if (mysqli_query($conexao, $sql)) {
-            unlink("../upload/arquivos/" . $arquivo);
+            unlink("../upload/anuncios/" . $arquivo);
             echo ("<script>alert('Anúncio excluído com sucesso')</script>");
             header("location: publicity-list.php");
         } else {

@@ -21,7 +21,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
         die("Arquivo muito grande! O tamanho máximo é 2MB");
     }
 
-    $diretorio = "./upload/arquivos/";
+    $diretorio = "./upload/perfil-usuarios/";
     $nome_arquivo = $arquivo['name'];
     $novo_nome_arquivo = uniqid();
     $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
@@ -65,8 +65,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
-                    echo ("<script>alert('Cadastro inserido')</script>");
-                    echo ("<script>window.location='login.php'</script>");
+                    $script_modal = "$('#myModal').modal('show');";
                 } else {
                     echo ("<script>alert('Erro ao inserir cadastro')</script>");
                 }
@@ -107,8 +106,6 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                 //Rodando a conexão com o banco de dados e o script SQL
                 if ($select = mysqli_query($conexao, $sql)) {
                     $script_modal = "$('#myModal').modal('show');";
-                    /*echo ("<script>alert('Cadastro inserido')</script>");
-                    echo ("<script>window.location='login.php'</script>");*/
                 } else {
                     echo ("<script>alert('Erro ao inserir cadastro')</script>");
                 }
@@ -137,7 +134,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
-        <div class="container">
+        <div class="container" style="justify-content: flex-start; gap: 23%;">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
                     menu
@@ -149,11 +146,6 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                     <img id="logo-index" src="./svg/logo-drytelecom.svg" alt="Logo">
                 </a>
             </li>
-            <div class="login-box">
-                <a class="logout" href="./login.php">
-                    <button class="btn-padrao btn-menu">LOGIN</button>
-                </a>
-            </div>
 
             <div class="menu-desk">
                 <ul class="navbar-nav">
