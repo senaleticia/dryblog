@@ -49,7 +49,7 @@ $conexao = conexaoMySql();
 
             while ($result = mysqli_fetch_array($select)) {
             ?>
-                <div class="card-cadastro" style="width: 100%; gap: 50px;">
+                <div class="card-cadastro" style="width: 100%; gap: 24px;">
                     <div class="position-relative">
                         <div class="foto-representante mx-auto">
                             <?php if ($result['foto_representante'] != "") { ?>
@@ -58,8 +58,8 @@ $conexao = conexaoMySql();
                                 <img class="mx-auto" src="../img/icon-profile.png" alt="Foto">
                             <?php } ?>
 
-                            <a class="btn-transparent" href="retailer-photo.php?id=<?= $result['id_representante'] ?>">
-                                <span class="material-symbols-outlined">edit</span>
+                            <a class="btn-transparent" href="retailer-edit.php?id=<?= $result['id_representante'] ?>">
+                                <span class="material-symbols-outlined">photo_camera</span>
                             </a>
                         </div>
                     </div>
@@ -81,6 +81,11 @@ $conexao = conexaoMySql();
                             <span class="text-grey">CPF / CNPJ:</span>
                             <span><?= $result['cpf_cnpj_representante'] ?></span>
                         </div>
+                    </div>
+                    <div>
+                        <a href="retailer-status.php?modo=desativar&id=<?= $result['id_representante'] ?>" class="btn-padrao mx-auto" style="width: 210px;">
+                            Desativar Revendedor
+                        </a>
                     </div>
                 </div>
             <?php } ?>

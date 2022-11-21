@@ -159,9 +159,9 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                                 <?php } ?>
                             </div>
                             <div class="post-name">
-                                <p>
+                                <span>
                                     <?= $result['nome_autor'] ?>
-                                </p><br>
+                                </span>
                                 <div class="post-data">
                                     <?= $result['data_post'] ?>
                                 </div>
@@ -235,8 +235,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             </button>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a class="link-materia" href="./postagem.php?p=<?= $result['url_post'] ?>">
-                                <button class="btn-padrao font-weight-bold">VER MATÉRIA</button>
+                            <a class="btn-padrao font-weight-bold" href="./postagem.php?p=<?= $result['url_post'] ?>">
+                                VER MATÉRIA
                             </a>
                         </div>
                     </div>

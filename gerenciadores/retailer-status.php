@@ -9,6 +9,24 @@ if ($_SESSION['tipo_usuario'] != 3) {
     header('location: ./');
 }
 
+if (isset($_GET['modo'])) {
+    if ($_GET['modo'] == 'desativar') {
+        require_once("../bd/conexao.php");
+        $conexao = conexaoMySql();
+
+        $id = $_GET['id'];
+
+        $sql = "UPDATE representantes SET status_representante = 'RECUSADO' WHERE id_representante = " . $id;
+
+        if ($select = mysqli_query($conexao, $sql)) {
+            header('location: retailer-authorized.php');
+        } else {
+            echo ("<script>alert('Erro ao atualizar o status')</script>");
+            echo ($sql);
+        }
+    }
+}
+
 if (isset($_POST['sltStatus'])) {
     require_once("../bd/conexao.php");
     $conexao = conexaoMySql();

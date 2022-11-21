@@ -144,7 +144,7 @@ if (!$select) {
                         <div class="row">
                             <div class="col-md-4">
                                 <a href="./postagem.php?p=<?= $result['url_post'] ?>">
-                                    <div class="post-img" style="background-image: url('./upload/arquivos/<?= $result['foto'] ?>'); padding: 32%;"></div>
+                                    <div class="post-img" style="background-image: url('./upload/blog/<?= $result['foto'] ?>'); padding: 32%;"></div>
                                 </a>
                             </div>
                             <div class="col-md-8">

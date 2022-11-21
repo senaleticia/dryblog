@@ -377,9 +377,7 @@ if (isset($_POST['btnComentar'])) {
                     <?php } ?>
                 </div>
             </div>
-        <?php
-        }
-        ?>
+        <?php } ?>
     </div>
 
     <div id="comentarios">

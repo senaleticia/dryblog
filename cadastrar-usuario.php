@@ -4,18 +4,11 @@ session_start();
 require_once("./bd/conexao.php");
 $conexao = conexaoMySql();
 
-$nome_usuario = (string) "";
-$login_usuario = (string) "";
-$senha_usuario = (string) "";
 $erro = "";
 $script_modal = "";
 
 if (isset($_FILES['fileFotoUsuario']) != "") {
     $arquivo = $_FILES['fileFotoUsuario'];
-
-    // if($arquivo['error']){
-    //     echo('<script>alert("Falha ao enviar foto")</script>');
-    // }
 
     if ($arquivo['size'] > 2097152) {
         die("Arquivo muito grande! O tamanho máximo é 2MB");
@@ -40,6 +33,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             $confirmar_senha_usuario = $_POST['txtConfSenhaUsuario'];
             $foto_usuario = $novo_nome_arquivo . "." . $extensao;
 
+            // Script para verificar se o e-mail que o usuário digitou já existe no banco
             $verificar_email = "SELECT * FROM usuario WHERE login_usuario = '" . $login_usuario . "'";
             $select_email = mysqli_query($conexao, $verificar_email);
             $count_email = mysqli_num_rows($select_email);
@@ -80,6 +74,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             $senha_usuario = $_POST['txtSenhaUsuario'];
             $confirmar_senha_usuario = $_POST['txtConfSenhaUsuario'];
 
+            // Script para verificar se o e-mail que o usuário digitou já existe no banco
             $verificar_email = "SELECT * FROM usuario WHERE login_usuario = '" . $login_usuario . "'";
             $select_email = mysqli_query($conexao, $verificar_email);
             $count_email = mysqli_num_rows($select_email);

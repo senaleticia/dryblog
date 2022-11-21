@@ -183,7 +183,7 @@ if (isset($_GET['modo'])) {
                 <div class="container-experiencia">
                     <h4 class="materia-title pt-2">EXPERIÊNCIAS EXCLUSIVAS</h4>
                     <p class="materia-desc pt-2 px-3">Pensar fora da caixa e fazer tudo diferente está no nosso DNA. Aqui, você encontra um universo de possibilidades para se conectar e desfrutar de experiências exclusivas!</p>
-                    <div class="materia-index-img" style="background-image: url('./img/football-scene-with-cheering-audience-at-the-stadium.png');"></div>
+                    <div class="materia-index-img" style="background-image: url('./img/football-scene-with-cheering-audience-at-the-stadium.jpg');"></div>
                 </div>
             </div>
         </div>

@@ -210,6 +210,7 @@ li {
 .post-header {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 
 .post-profile,
@@ -220,19 +221,16 @@ li {
     float: left;
 }
 
-.post-name>p {
-    margin-top: 15px;
+.post-name {
     margin-left: 15px;
+}
+
+.post-name>span {
     font-size: 18px;
     font-weight: bold;
 }
 
 .post-data {
-    float: left;
-    margin-top: -40px;
-    margin-left: 15px;
-    width: 49px;
-    height: 7px;
     font-size: 12px;
 }
 
@@ -1694,6 +1692,9 @@ a.btn-secundario {
 
 .caixa-representantes .card-cadastro {
     padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .foto-representante {
@@ -1708,12 +1709,16 @@ a.btn-secundario {
 }
 
 .btn-transparent {
+    display: flex;
+    align-items: center;
     position: absolute;
-    top: 15px;
-    right: 5px;
     border: none;
-    background-color: transparent;
+    border-radius: 15px;
+    bottom: 2px;
+    right: 105px;
+    background-color: white;
     color: #FE5000 !important;
+    padding: 4px;
 }
 
 .bg-representante {
