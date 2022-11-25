@@ -30,9 +30,6 @@ $tempo_leitura = (string) "";
 $tags = (string) "";
 $url_final = (string) "";
 
-/*date_default_timezone_set('America/Sao_paulo');
-echo (date('H:i'));*/
-
 //Verificando se a variável da URL 'modo' existe
 if (isset($_GET['modo'])) {
 
@@ -75,10 +72,6 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
     $arquivo2 = $_FILES['fileFoto2'];
     $arquivo3 = $_FILES['fileFoto3'];
     $arquivo4 = $_FILES['fileFoto4'];
-
-    // if($arquivo['error']){
-    //     echo('<script>alert("Falha ao enviar foto")</script>');
-    // }
 
     // Verificando se os arquivos enviados são maiores que 2MB
     if ($arquivo['size'] > 2097152 || $arquivo2['size'] > 2097152 || $arquivo3['size'] > 2097152 || $arquivo4['size'] > 2097152) {
@@ -165,7 +158,15 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     $sql = "INSERT INTO post (titulo, conteudo, video, data_post, hora_post, id_autor, tempo_leitura, tags, url_post, previa_conteudo) VALUES ('" . $titulo . "', '" . $conteudo . "', '" . $conteudo2 . "', '" . $conteudo3 . "', '" . $conteudo4 . "', '" . $video . "', '" . $data_post . "', '" . $hora_post . "', '" . $id_autor . "', '" . $tempo_leitura . "', '" . $tags . "', '" . $url_final . "', '" . $previa_conteudo . "')";
                 }
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "' WHERE id_post = " . $id;
+                if ($titulo == "" || $conteudo == "") {
+                    echo ("<script>alert('Não é possível publicar um post sem um título e/ou um conteúdo')</script>");
+                    echo ("<script>history.back()</script>");
+                } else if (substr($video, 0, 24) == "https://www.youtube.com/") {
+                    echo ("Não é possível colar o link todo! Cole somente a parte em destaque:
+                    www.youtube.com/watch?v=<b>jm1A-KZ2Dpo</b>");
+                } else {
+                    $sql = "UPDATE post SET titulo = '" . $titulo . "', conteudo = '" . $conteudo . "', segundo_conteudo = '" . $conteudo2 . "', terceiro_conteudo = '" . $conteudo3 . "', quarto_conteudo = '" . $conteudo4 . "', video = '" . $video . "', id_autor = " . $id_autor . ", tempo_leitura = '" . $tempo_leitura . "', tags = '" . $tags . "', url_post = '" . $url_final . "', previa_conteudo = '" . $previa_conteudo . "', data_atualizacao = '" . $data_atualizacao . "', hora_atualizacao = '" . $hora_atualizacao . "' WHERE id_post = " . $id;
+                }
             }
 
             //Rodando a conexão com o banco de dados e o script SQL

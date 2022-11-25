@@ -117,7 +117,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </button>
 
         <div id="titulo-adesao">
-            <h1 class="text-center mt-5" style="font-size: 2rem;">Termos de Adesão</h1>
+            <h1 class="text-center mt-4" style="font-size: 2rem;">Termos de Adesão</h1>
             <span class="font-weight-bold">Atualizado em 04 de abril de 2022</span>
         </div>
 

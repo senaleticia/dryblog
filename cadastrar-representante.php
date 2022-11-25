@@ -14,8 +14,8 @@ if (isset($_POST['btnRepresentante'])) {
     $celular = $_POST['txtCelularRepresentante'];
     $cep = $_POST['txtCepRepresentante'];
     $cpf_cnpj = $_POST['txtCpfCnpjRepresentante'];
-    $vendas = $_POST['txtVendasRepresentante'];
-    $mensagem = $_POST['txtMensagemRepresentante'];
+    $vendas = $_POST['sltVendasChip'];
+    $mensagem = addslashes($_POST['txtMensagemRepresentante']);
 
     $verificar_email = "SELECT * FROM representantes WHERE email_representante = '" . $email . "'";
     $select_email = mysqli_query($conexao, $verificar_email);
@@ -53,6 +53,12 @@ if (isset($_POST['btnRepresentante'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="drytelecom.com.br" />
+    <meta property="og:title" content="Operadora de telefonia móvel digital" />
+    <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
+    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="geo.placename" content="BARUERI" />
+    <meta name="geo.region" content="BR" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,12 +171,12 @@ if (isset($_POST['btnRepresentante'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label for="txtNomeRepresentante">Nome Completo:*</label>
+                    <label for="txtNomeRepresentante">Nome completo:*</label>
                     <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white">
                 </div>
 
                 <div class="mb-3">
-                    <label for="txtEmailRepresentante">Email:*</label>
+                    <label for="txtEmailRepresentante">E-mail:*</label>
                     <input type="email" name="txtEmailRepresentante" id="txtEmailRepresentante" class="input-sunk-white" required>
                 </div>
 
@@ -201,8 +207,17 @@ if (isset($_POST['btnRepresentante'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label for="txtVendasRepresentante">Expectativa de Vendas de Chip:*</label>
-                    <input type="number" name="txtVendasRepresentante" id="txtVendasRepresentante" class="input-sunk-white" required>
+                    <label for="txtVendasRepresentante">Quantos chips gostaria de vender?*</label>
+                    <div class="position-relative">
+                        <span class="material-symbols-outlined seta-select" style="top: 18%; right: 3%">expand_more</span>
+                        <select name="sltVendasChip" id="sltVendasChip" class="select w-100 form-control" required>
+                            <option value="0" selected>Selecione um valor</option>
+                            <option value="20 a 50">20 a 50</option>
+                            <option value="51 a 100">51 a 100</option>
+                            <option value="101 a 200">101 a 200</option>
+                            <option value="+200">+200</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="mb-3">

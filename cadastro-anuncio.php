@@ -24,15 +24,19 @@ if (isset($_GET['modo'])) {
             $email_cadastro = $_POST['txtEmailCadastro'];
             $telefone_cadastro = $_POST['txtTelefoneCadastro'];
             $profissao_cadastro = $_POST['txtProfissaoCadastro'];
-            $receber_informacoes = isset($_POST['rdoReceberInformacoes']) ? 1 : 0;
+            $receber_informacoes = isset($_POST['rdoReceberInformacoes']) ? true : false;
 
-            $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao, receber_informacoes, id_anuncio) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "', " . $receber_informacoes . ", " . $anuncio . ")";
-
-            if ($select = mysqli_query($conexao, $sql)) {
-                echo ("<script>alert('Cadastro feito com sucesso')</script>");
+            if ($receber_informacoes == false || $nome_cadastro == "" || $email_cadastro == "" || $telefone_cadastro == "" || $profissao_cadastro == "") {
+                echo ("<script>alert('Campos obrigatórios não preenchidos, verifique-os e tente novamente')</script>");
             } else {
-                echo ("<script>alert('Erro ao fazer o cadastro')</script>");
-                echo ($sql);
+                $sql = "INSERT INTO cadastro_anuncios (nome_cadastrado, email_cadastrado, telefone_cadastrado, profissao, receber_informacoes, id_anuncio) VALUES ('" . $nome_cadastro . "', '" . $email_cadastro . "', '" . $telefone_cadastro . "', '" . $profissao_cadastro . "', " . $receber_informacoes . ", " . $anuncio . ")";
+
+                if ($select = mysqli_query($conexao, $sql)) {
+                    echo ("<script>alert('Cadastro feito com sucesso')</script>");
+                } else {
+                    echo ("<script>alert('Erro ao fazer o cadastro')</script>");
+                    echo ($sql);
+                }
             }
         }
     } else {
@@ -49,6 +53,12 @@ if (isset($_GET['modo'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="drytelecom.com.br" />
+    <meta property="og:title" content="Operadora de telefonia móvel digital" />
+    <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
+    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="geo.placename" content="BARUERI" />
+    <meta name="geo.region" content="BR" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +167,7 @@ if (isset($_GET['modo'])) {
 
         <div class="cadastro-anuncio">
             <div class="foto-anuncio">
-                <img class="w-75" src="./upload/arquivos/<?= $foto_anuncio ?>" alt="Anúncio">
+                <img class="w-75" src="./upload/anuncios/<?= $foto_anuncio ?>" alt="Anúncio">
             </div>
 
             <div class="caixa-form-anuncio mt-5">

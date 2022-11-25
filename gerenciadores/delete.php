@@ -16,7 +16,6 @@ if (isset($_GET['modo'])) {
         $sql = "DELETE FROM post WHERE id_post = " . $id;
 
         if (mysqli_query($conexao, $sql)) {
-            //echo("<script>alert('Post excluído com sucesso')</script>");
             unlink("../upload/blog/" . $arquivo);
             echo ("<script>history.back()</script>");
         } else {

@@ -24,7 +24,7 @@ if (isset($_POST['btnLogin'])) {
         $_SESSION['foto_usuario'] = $result['foto_usuario'];
         $_SESSION['usuarioAutenticado'] = true;
 
-        header("location: ./");
+        echo ("<script>history.go(-2)</script>");
     } else {
         $erro = "<div class='alert alerta-erro mt-5 mx-auto' role='alert'>
                     <h4 class='alert-heading text-center'>Ops, algo deu errado!</h4>
@@ -40,6 +40,12 @@ if (isset($_POST['btnLogin'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="drytelecom.com.br" />
+    <meta property="og:title" content="Operadora de telefonia móvel digital" />
+    <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
+    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="geo.placename" content="BARUERI" />
+    <meta name="geo.region" content="BR" />
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">

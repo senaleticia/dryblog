@@ -1,14 +1,7 @@
 <?php
-$titulo = (string) "";
-$conteudo = (string) "";
-$video = (string) "";
-$foto = (string) "";
-
 if ($_SESSION['gerenciadorAutenticado'] = false) {
     header("location:../login.php");
 };
-
-$id_post = $_GET['id'];
 
 if (isset($_GET['modo'])) {
     session_start();
