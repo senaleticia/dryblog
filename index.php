@@ -36,9 +36,9 @@ if (isset($_GET['modo'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
-    <link rel="stylesheet" href="./beneficios.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./responsive.css">
+    <link rel="stylesheet" href="./css/beneficios.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
     <title>Dry Telecom</title>
 </head>
 
@@ -202,7 +202,7 @@ if (isset($_GET['modo'])) {
 
         <div class="caixa-background bg-laricel"></div>
 
-        <div class="caixa-2">
+        <div class="chip-laricel">
             <a href="https://laricel.com.br/" target="_blank" rel="noopener noreferrer">
                 <div class="btn-sunk-chip btn-sunk-chip-m">
                     <div class="img-chip-m">

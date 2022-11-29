@@ -19,9 +19,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./responsive.css">
-    <link rel="stylesheet" href="./guideline-social.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
     <title>Termos de Adesão - Dry Telecom</title>
 </head>
 
@@ -120,7 +119,6 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <h1 class="text-center mt-4" style="font-size: 2rem;">Termos de Adesão</h1>
             <span class="font-weight-bold">Atualizado em 04 de abril de 2022</span>
         </div>
-
 
         <div class="privacidade-text mt-5">
             <p>O termo de adesão da DRY COMPANY BRASIL TECNOLOGIA S/A - CNPJ 15.564.295/0001-04, com sede na Avenida Anápolis, 510, Vila Nilva - Barueri/SP, doravante simplesmente denominada DRY COMPANY (empresa MVNO credenciada da SURF TELECOM S/A, em conformidade com a resolução 550/2010 da Anatel) é valido para os planos de Serviço pré-pagos da operação, que são oferecidos para toda pessoa física ou jurídica na qualidade de usuário final, doravante denominada CLIENTE.</p>

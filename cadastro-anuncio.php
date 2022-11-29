@@ -67,8 +67,8 @@ if (isset($_GET['modo'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="https://drytelecom.com.br/slick/slick-theme.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./responsive.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
     <title>Cadastro Anúncio - Dry Telecom</title>
 </head>
 

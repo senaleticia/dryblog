@@ -83,19 +83,19 @@
 }
 
 #icon-gigas {
-    background-image: url("./svg/gigas_acumulados.svg");
+    background-image: url(../svg/gigas_acumulados.svg);
 }
 
 #icon-suporte {
-    background-image: url("./svg/sup_24h.svg");
+    background-image: url(../svg/sup_24h.svg);
 }
 
 #icon-bonus {
-    background-image: url("./svg/bonus.svg");
+    background-image: url(../svg/bonus.svg);
 }
 
 #icon-apps {
-    background-image: url("./svg/infinitos.svg");
+    background-image: url(../svg/infinitos.svg);
 }
 
 .container-experiencia {

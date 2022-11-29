@@ -25,9 +25,9 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./responsive.css">
-    <link rel="stylesheet" href="./guideline-social.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/guideline-social.css">
     <title>Blog - Dry Telecom</title>
 </head>
 
@@ -363,7 +363,6 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         });
 
         const compartilharBtn = document.querySelectorAll('.copy-button');
-        const linkCompartilhar = document.querySelectorAll('.copy-link');
 
         function compartilhar() {
             this.previousElementSibling.select();
@@ -371,8 +370,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
             document.execCommand('copy');
             Swal.fire(
-                'Link copiado!',
-                'Agora você pode compartilhar essa publicação com seus amigos',
+                'Pronto!',
+                'O link foi copiado, agora aproveite e compartilhe nas suas redes sociais!',
                 'success'
             );
         }
