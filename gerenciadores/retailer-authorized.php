@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador');
 }
 
-if ($_SESSION['tipo_usuario'] != 3) {
+if ($_SESSION['tipo_autor'] != 3) {
     header('location: ./');
 }
 

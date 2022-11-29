@@ -5,18 +5,21 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] != 3) {
-    header('location: index.php');
+if ($_SESSION['tipo_autor'] != 3) {
+    header('location: ./');
 }
 
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
 
+// selected filtro revendedores
 $selectedNaoContatado = "";
-$naoContatatoAtivo = "";
 $selectedEmContato = "";
-$emContatoAtivo = "";
 $selectedRecusado = "";
+
+// selected status revendedores
+$naoContatatoAtivo = "";
+$emContatoAtivo = "";
 $recusadoAtivo = "";
 
 $filtro = "";
@@ -67,7 +70,7 @@ if (isset($_POST['sltFiltroRepresentante'])) {
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./edit-profile.php?user=<?= $_SESSION['id_autor'] ?>">Editar Perfil</a>
                         <a class="dropdown-item" href="./change-password.php?user=<?= $_SESSION['id_autor'] ?>">Alterar Senha</a>
-                        <a class="dropdown-item" href="../logout.php">Sair</a>
+                        <a class="dropdown-item" href="./logout.php">Sair</a>
                     </div>
                 </div>
             </div>
@@ -80,7 +83,7 @@ if (isset($_POST['sltFiltroRepresentante'])) {
                 GERENCIAR POSTAGENS
             </a>
 
-            <?php if ($_SESSION['tipo_usuario'] != 1) { ?>
+            <?php if ($_SESSION['tipo_autor'] != 1) { ?>
                 <a href="./users-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR USUÁRIOS
                 </a>

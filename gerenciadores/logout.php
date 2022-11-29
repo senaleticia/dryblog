@@ -4,5 +4,4 @@
     }
 
     session_destroy();
-    header('location: login-gerenciador.php');
-?>
+    header('location: ../login-gerenciador.php');

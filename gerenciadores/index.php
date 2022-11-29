@@ -40,7 +40,7 @@ $conexao = conexaoMySql();
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./edit-profile.php?user=<?= $_SESSION['id_autor'] ?>">Editar Perfil</a>
                         <a class="dropdown-item" href="./change-password.php?user=<?= $_SESSION['id_autor'] ?>">Alterar Senha</a>
-                        <a class="dropdown-item" href="../logout.php">Sair</a>
+                        <a class="dropdown-item" href="./logout.php">Sair</a>
                     </div>
                 </div>
             </div>
@@ -51,12 +51,12 @@ $conexao = conexaoMySql();
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR POSTAGENS
             </button>
-            <?php if ($_SESSION['tipo_usuario'] != 1) { ?>
+            <?php if ($_SESSION['tipo_autor'] != 1) { ?>
                 <a href="./users-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR USUÁRIOS
                 </a>
             <?php } ?>
-            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                 <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>

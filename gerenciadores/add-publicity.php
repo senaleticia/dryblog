@@ -49,26 +49,9 @@ if (isset($_FILES['fotoAnuncio'])) {
 
     if ($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != '') {
         die('Esse tipo de arquivo não é aceito');
-    } else if ($extensao == '') {
-        if (isset($_POST['btnCadastrarPubli'])) {
-            $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
+    }
 
-            if ($botao == "Cadastrar") {
-                $sql = "INSERT INTO anuncios (descricao_anuncio) VALUES ('" . $descricao_anuncio . "')";
-            } else if ($botao == "Atualizar") {
-                $sql = "UPDATE anuncios SET descricao_anuncio = '" . $descricao_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
-            }
-
-            if ($select = mysqli_query($conexao, $sql)) {
-                echo ("<script>alert('Anúncio cadastrado com sucesso')</script>");
-                echo ($sql);
-            } else {
-                echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
-                echo ($sql);
-            }
-        }
-    } else {
-        move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao);
+    if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . '.' . $extensao)) {
 
         if (isset($_POST['btnCadastrarPubli'])) {
             $foto_anuncio;
@@ -78,6 +61,24 @@ if (isset($_FILES['fotoAnuncio'])) {
                 $sql = "INSERT INTO anuncios (foto_anuncio, descricao_anuncio) VALUES ('" . $foto_anuncio . "', '" . $descricao_anuncio . "')";
             } else if ($botao == "Atualizar") {
                 $sql = "UPDATE anuncios SET foto_anuncio = '" . $foto_anuncio . "', descricao_anuncio = '" . $descricao_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
+            }
+
+            if ($select = mysqli_query($conexao, $sql)) {
+                echo ("<script>alert('Anúncio cadastrado com sucesso')</script>");
+                header('location: publicity-list.php');
+            } else {
+                echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
+                echo ($sql);
+            }
+        }
+    } else {
+        if (isset($_POST['btnCadastrarPubli'])) {
+            $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
+
+            if ($botao == "Cadastrar") {
+                $sql = "INSERT INTO anuncios (descricao_anuncio) VALUES ('" . $descricao_anuncio . "')";
+            } else if ($botao == "Atualizar") {
+                $sql = "UPDATE anuncios SET descricao_anuncio = '" . $descricao_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
             }
 
             if ($select = mysqli_query($conexao, $sql)) {

@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] != 3) {
+if ($_SESSION['tipo_autor'] != 3) {
     header('location: ./');
 }
 
@@ -106,7 +106,7 @@ if (isset($_GET['editar'])) {
                 <div class="mb-3 position-relative">
                     <label for="sltNivel">Nível do Usuário:</label>
                     <span class="material-symbols-outlined seta-select" style="top: 57%; right: 4%;">expand_more</span>
-                    <select name="sltNivel" id="sltNivel" class="form-control select w-100">
+                    <select name="sltNivel" id="sltNivel" class="form-control select w-100" required>
                         <option value="0">Escolha um nível</option>
                         <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
                         <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>

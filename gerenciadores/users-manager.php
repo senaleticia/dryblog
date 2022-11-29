@@ -5,8 +5,8 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] == 1) {
-    header('location: index.php');
+if ($_SESSION['tipo_autor'] == 1) {
+    header('location: ./');
 }
 
 require_once('../bd/conexao.php');
@@ -19,6 +19,7 @@ if (isset($_POST['filtroOpcao'])) {
 $selectedAtivo = "selected";
 $selectedInativo = "";
 $selectedAll = "";
+$filtro = "";
 
 if (isset($_POST['sltFiltro'])) {
     $filtro = $_POST['sltFiltro'];
@@ -62,7 +63,7 @@ if (isset($_POST['sltFiltro'])) {
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="./edit-profile.php?user=<?= $_SESSION['id_autor'] ?>">Editar Perfil</a>
                         <a class="dropdown-item" href="./change-password.php?user=<?= $_SESSION['id_autor'] ?>">Alterar Senha</a>
-                        <a class="dropdown-item" href="../logout.php">Sair</a>
+                        <a class="dropdown-item" href="./logout.php">Sair</a>
                     </div>
                 </div>
             </div>
@@ -70,13 +71,13 @@ if (isset($_POST['sltFiltro'])) {
     </header>
     <div class="container mt-5">
         <div class="mb-4 d-flex justify-content-center" style="gap: 36px;">
-            <a href="./index.php" class="btn-padrao btn-gerenciar">
+            <a href="./" class="btn-padrao btn-gerenciar">
                 GERENCIAR POSTAGENS
             </a>
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR USUÁRIOS
             </button>
-            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                 <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>
@@ -130,13 +131,13 @@ if (isset($_POST['sltFiltro'])) {
                             <span class="material-symbols-outlined">visibility</span>
                         </a>
 
-                        <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                        <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                             <a href="./edit-user.php?editar=<?= $result['id_autor'] ?>">
                                 <span class="material-symbols-outlined">border_color</span>
                             </a>
                         <?php } ?>
 
-                        <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                        <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                             <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
                                 <?php if ($result['autor_status'] == true) { ?>
                                     <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
@@ -144,7 +145,7 @@ if (isset($_POST['sltFiltro'])) {
                                     <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
                                 <?php } ?>
                             </a>
-                        <?php } else if ($_SESSION['tipo_usuario'] == 2) { ?>
+                        <?php } else if ($_SESSION['tipo_autor'] == 2) { ?>
                             <a href="#" class="inativo">
                                 <?php if ($result['autor_status'] == true) { ?>
                                     <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>

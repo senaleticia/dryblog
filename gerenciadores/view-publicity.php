@@ -23,6 +23,8 @@ if (isset($_GET['modo'])) {
         if ($result = mysqli_fetch_array($select)) {
             $foto_anuncio = $result['foto_anuncio'];
             $descricao_anuncio = $result['descricao_anuncio'];
+        } else {
+            header('location: publicity-list.php');
         }
     } else {
         header('location: publicity-list.php');

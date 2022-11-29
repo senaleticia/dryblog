@@ -6,7 +6,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
 }
 
 if ($_SESSION['id_autor'] != $_GET['user']) {
-    header("location: index.php");
+    header("location: ./");
 }
 
 require_once('../bd/conexao.php');
@@ -37,7 +37,7 @@ if (isset($_GET['user'])) {
 
             if ($select = mysqli_query($conexao, $sql)) {
                 echo ("<script>alert('Senha alterada com sucesso')</script>");
-                echo ("<script>window.location='index.php'</script>");
+                echo ("<script>window.location='./'</script>");
             } else {
                 echo ("<script>alert('Erro ao alterar a senha')</script>");
                 echo ($sql);
@@ -45,7 +45,7 @@ if (isset($_GET['user'])) {
         }
     }
 } else {
-    header('location: index.php');
+    header('location: ./');
 }
 ?>
 <!DOCTYPE html>
@@ -92,7 +92,7 @@ if (isset($_GET['user'])) {
                     </div>
                 </div>
                 <div class="d-flex justify-content-around mt-5">
-                    <a href="./index.php" class="btn-padrao font-weight-bold">
+                    <a href="./" class="btn-padrao font-weight-bold">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
                     </a>
                     <button type="submit" class="btn-padrao" name="btnAlterarSenha" id="btnAlterarSenha">Alterar Senha</button>

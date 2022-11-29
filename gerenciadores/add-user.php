@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] == 1) {
+if ($_SESSION['tipo_autor'] == 1) {
     header('location: index.php');
 }
 
@@ -148,7 +148,7 @@ if (isset($_FILES['fotoAdmin'])) {
                         <option value="0">Escolha um nível</option>
                         <option value="1">Administrador de Posts</option>
                         <option value="2">Administrador Geral</option>
-                        <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+                        <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                             <option value="3">Administrador Master</option>
                         <?php } ?>
                     </select>

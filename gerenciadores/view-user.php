@@ -5,8 +5,8 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_usuario'] == 1) {
-    header('location: index.php');
+if ($_SESSION['tipo_autor'] == 1) {
+    header('location: ./');
 }
 
 require_once('../bd/conexao.php');
@@ -43,7 +43,7 @@ if (isset($_GET['modo'])) {
             }
         }
     } else if ($_GET['modo'] == 'status') {
-        if ($_SESSION['tipo_usuario'] != 3) {
+        if ($_SESSION['tipo_autor'] != 3) {
             echo ("<script>alert('Você não tem permissão para ativar/desativar usuários!')</script>");
             echo ("<script>history.back()</script>");
         } else {
@@ -57,7 +57,6 @@ if (isset($_GET['modo'])) {
                 $sql = "UPDATE autor SET autor_status = false WHERE id_autor = " . $id;
 
                 if (mysqli_query($conexao, $sql)) {
-                    echo ("<script>alert('Usuário desativado com sucesso')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
                     echo ("<script>alert('Erro ao desativar o usuário')</script>");
@@ -67,7 +66,6 @@ if (isset($_GET['modo'])) {
                 $sql = "UPDATE autor SET autor_status = true WHERE id_autor = " . $id;
 
                 if (mysqli_query($conexao, $sql)) {
-                    echo ("<script>alert('Usuário ativado com sucesso')</script>");
                     echo ("<script>history.back()</script>");
                 } else {
                     echo ("<script>alert('Erro ao ativar o usuário')</script>");
@@ -124,7 +122,7 @@ if (isset($_GET['modo'])) {
                 </span>
             </button>
 
-            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                 <a href="./edit-user.php?editar=<?= $id ?>">
                     <button class="btn-padrao">
                         <span class="material-symbols-outlined">
@@ -134,7 +132,7 @@ if (isset($_GET['modo'])) {
                 </a>
             <?php } ?>
 
-            <?php if ($_SESSION['tipo_usuario'] == 3) { ?>
+            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
                 <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
                     <button class="btn-padrao">
                         <?php if ($status_autor == 'Ativo') { ?>
