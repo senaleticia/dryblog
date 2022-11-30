@@ -553,8 +553,8 @@ if (isset($_POST['btnComentar'])) {
             textoCopiado.setSelectionRange(0, 99999);
             document.execCommand('copy');
             Swal.fire(
-                'Link copiado!',
-                'Agora você pode compartilhar essa publicação com seus amigos',
+                'Pronto!',
+                'O link foi copiado, agora aproveite e compartilhe nas suas redes sociais!',
                 'success'
             )
         }
