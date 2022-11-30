@@ -1422,6 +1422,11 @@ small.float-right:hover {
     justify-content: center;
 }
 
+.btn-voltar p {
+    color: inherit;
+    margin-bottom: -1px;
+}
+
 /* Cadastrar usuário */
 #cadastroUsuario .input-group-text {
     display: flex;

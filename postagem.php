@@ -539,7 +539,7 @@ if (isset($_POST['btnComentar'])) {
             $('#myInput').trigger('focus')
         })
 
-        $('#exampleModal').on('shown.bs.modal', function() {
+        $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         })
 

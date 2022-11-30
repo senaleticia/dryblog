@@ -117,7 +117,7 @@ if (isset($_POST['btnLogin'])) {
         <div class="row justify-content-center position-relative pt-4 margem-btn">
             <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
                 <span class="material-symbols-outlined">arrow_back</span>
-                VOLTAR
+                <p>VOLTAR</p>
             </button>
 
             <h2 class="login-title">Login - Dry Telecom</h2>
