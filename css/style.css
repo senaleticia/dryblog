@@ -175,8 +175,8 @@ li {
 }
 
 .top-reduce {
-    top: 20%;
-    right: 3%;
+    top: 20% !important;
+    right: 3% !important;
 }
 
 #fileFoto,
@@ -196,8 +196,14 @@ li {
     color: #FE5000;
 }
 
+a.btn-padrao,
 a.btn-secundario {
     width: max-content;
+}
+
+a.btn-padrao:link,
+a.btn-padrao:hover {
+    color: #FE5000;
 }
 
 .btn-gerenciar {
@@ -210,7 +216,7 @@ a.btn-secundario {
 
 .ativo {
     color: #FE5000 !important;
-    box-shadow: inset -2px -2px 4px rgb(255 255 255 / 75%), inset 4px 4px 8px rgb(0 0 0 / 25%);
+    box-shadow: inset -2px -2px 4px rgb(255 255 255 / 75%), inset 4px 4px 8px rgb(0 0 0 / 25%) !important;
 }
 
 .dropdown-menu {
@@ -1200,7 +1206,7 @@ small.float-right:hover {
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 25%);
     border-radius: 40px;
     transition: 0.3s;
-    color: #FE5000 !important;
+    color: #FE5000;
     border: none;
     min-width: 140px;
     box-sizing: border-box;
@@ -1661,6 +1667,10 @@ small.float-right:hover {
     background-color: #E4E6E6;
     box-shadow: -4px -4px 10px rgb(255 255 255 / 75%), 4px 4px 10px rgb(0 0 0 / 10%);
     border-radius: 20px;
+}
+
+#cadastroRepresentante .input-sunk-white {
+    margin-bottom: 16px;
 }
 
 .card-cadastro .input-sunk-white {

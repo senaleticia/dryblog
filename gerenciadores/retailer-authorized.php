@@ -30,10 +30,10 @@ $conexao = conexaoMySql();
 
 <body>
     <div class="container my-5">
-        <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
+        <a class="btn-padrao font-weight-bold" href="retailer-manager.php">
             <span class="material-symbols-outlined">arrow_back</span>
             VOLTAR
-        </button>
+        </a>
 
         <h3 class="text-center pb-5">Revendedores Aceitos</h3>
 

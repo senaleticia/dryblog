@@ -26,7 +26,7 @@ if (isset($_POST['btnRepresentante'])) {
                     <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                     <p class='m-0'>Este email já faz parte da lista dos representantes da Dry, tente outro!</p>
                 </div>";
-    } else if ($nome == "" || $email == "" || $celular == "" || $mensagem == "" || $cpf_cnpj == "" || $cep == "" || $vendas == "") {
+    } else if ($nome == "" || $email == "" || $celular == "" || $cpf_cnpj == "" || $cep == "" || $vendas == "") {
         $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
                     <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                     <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente</p>
@@ -110,15 +110,17 @@ if (isset($_POST['btnRepresentante'])) {
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="bg-modal">
             <div class="colapse-nav-mobile">
-                <span id="close-modal" class="material-symbols-outlined">
-                    close
-                </span>
+                <span id="close-modal" class="material-symbols-outlined">close</span>
+
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
@@ -131,6 +133,9 @@ if (isset($_POST['btnRepresentante'])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -205,7 +210,7 @@ if (isset($_POST['btnRepresentante'])) {
                     <input type="text" name="txtCpfCnpjRepresentante" id="txtCpfCnpjRepresentante" class="input-sunk-white" disabled>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="txtVendasRepresentante">Quantos chips gostaria de vender?*</label>
                     <div class="position-relative">
                         <span class="material-symbols-outlined seta-select" style="top: 18%; right: 3%">expand_more</span>
@@ -220,8 +225,8 @@ if (isset($_POST['btnRepresentante'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label for="txtMensagemRepresentante">Deixe sua mensagem:*</label>
-                    <textarea name="txtMensagemRepresentante" id="txtMensagemRepresentante" class="textarea-sunk-white" required></textarea>
+                    <label for="txtMensagemRepresentante">Deixe sua mensagem:</label>
+                    <textarea name="txtMensagemRepresentante" id="txtMensagemRepresentante" class="textarea-sunk-white"></textarea>
                 </div>
 
                 <div class="d-flex justify-content-center">
@@ -245,7 +250,7 @@ if (isset($_POST['btnRepresentante'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="#">Seja Revendedor</a>
+                        <a href="#">Revenda</a>
                         <a href="./index.php#clientes">Clientes</a>
                         <a href="./index.php#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>

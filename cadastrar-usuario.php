@@ -162,15 +162,17 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="bg-modal">
             <div class="colapse-nav-mobile">
-                <span id="close-modal" class="material-symbols-outlined">
-                    close
-                </span>
+                <span id="close-modal" class="material-symbols-outlined">close</span>
+
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
@@ -183,6 +185,9 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
                     </li>
                 </ul>
             </div>

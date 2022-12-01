@@ -367,7 +367,7 @@ if (isset($_FILES['fileFoto']) != "" || isset($_FILES['fileFoto2']) != "" || iss
                     <input type="text" class="input-sunk-white" id="txtUrl" name="txtUrl" value="<?= $url_final ?>" required>
                     <span class="mb-2">Atenção: Para preencher esse campo, segue as instruções:</span> <br><br>
                     <ul class="ml-3">
-                        <li>Não pode ter sinais de pontuação nas palavras, c cedilha (ç) ou sinais de pontuação;</li>
+                        <li>Não pode ter sinais de acentuação gráfica nas palavras, c cedilha (ç) ou sinais de pontuação;</li>
                         <li>Substitua espaços pelo traço (-);</li>
                         <li>Como é um campo de identificação da página, muito cuidado para não repetir, pois ele deve ser único.</li>
                     </ul>

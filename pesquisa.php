@@ -80,10 +80,13 @@ if (!$select) {
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -91,9 +94,8 @@ if (!$select) {
 
         <div class="bg-modal">
             <div class="colapse-nav-mobile">
-                <span id="close-modal" class="material-symbols-outlined">
-                    close
-                </span>
+                <span id="close-modal" class="material-symbols-outlined">close</span>
+
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
@@ -102,10 +104,13 @@ if (!$select) {
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#staticBackdrop">CONTATO</a>
+                        <a class="nav-link fonte-menu" href="#" data-toggle="modal" data-target="#modalContato">CONTATO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -190,6 +195,7 @@ if (!$select) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
+                        <a href="./cadastrar-representante.php">Revenda</a>
                         <a href="./index.php#clientes">Clientes</a>
                         <a href="./index.php#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>
@@ -198,7 +204,6 @@ if (!$select) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./cadastrar-representante.php">Seja Revendedor</a>
                         <a href="./politica-de-privacidade.php">Política de Privacidade</a>
                         <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
                         <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
@@ -234,11 +239,7 @@ if (!$select) {
     <script src="./js/script.js"></script>
 
     <script>
-        $('#staticBackdrop').on('shown.bs.modal', function() {
-            $('#myInput').trigger('focus')
-        });
-
-        $('#exampleModal').on('shown.bs.modal', function() {
+        $('#modalContato').on('shown.bs.modal', function() {
             $('#myInput').trigger('focus')
         });
     </script>

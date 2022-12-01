@@ -159,15 +159,17 @@ if (isset($_POST['btnComentar'])) {
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="bg-modal">
             <div class="colapse-nav-mobile">
-                <span id="close-modal" class="material-symbols-outlined">
-                    close
-                </span>
+                <span id="close-modal" class="material-symbols-outlined">close</span>
+
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
@@ -180,6 +182,9 @@ if (isset($_POST['btnComentar'])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -491,7 +496,7 @@ if (isset($_POST['btnComentar'])) {
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./cadastrar-representante.php">Seja Revendedor</a>
+                        <a href="./cadastrar-representante.php">Revenda</a>
                         <a href="./index.php#clientes">Clientes</a>
                         <a href="./index.php#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>

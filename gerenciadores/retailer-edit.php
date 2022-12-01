@@ -75,10 +75,10 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="container my-4">
-        <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
+        <a class="btn-padrao font-weight-bold" href="retailer-authorized.php">
             <span class="material-symbols-outlined">arrow_back</span>
             VOLTAR
-        </button>
+        </a>
 
         <h3 class="text-center pb-4">Adicionar Foto</h3>
 
