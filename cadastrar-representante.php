@@ -166,74 +166,100 @@ if (isset($_POST['btnRepresentante'])) {
             VOLTAR
         </button>
 
-        <?= $erro ?>
+        <div class="titulo-padrao text-center margem-form">
+            <h1 class="font-weight-bold">Quer conquistar sua liberdade financeira?</h1>
+        </div>
 
-        <form action="#" method="POST" id="cadastroRepresentante" name="cadastroRepresentante">
-            <div class="card-cadastro mx-auto mt-3">
-                <div class="mb-4">
-                    <small>*Campos Obrigatórios</small>
+        <div class="d-flex flex-column align-items-center">
+            <div class="content-revenda ">
+                <div id="star-revenda" class="icon-revenda">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                </div>
+                <div id="text-star-revenda">
+                    <p>As nossas operadoras aproximam o público de suas paixões e proporcionam experiências diferentes de tudo que já foi visto no ramo de telefonia móvel.</p>
                 </div>
 
-                <div class="mb-3">
-                    <label for="txtNomeRepresentante">Nome completo:*</label>
-                    <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white">
+                <div id="celebration-revenda" class="icon-revenda">
+                    <span class="material-symbols-outlined">celebration</span>
                 </div>
-
-                <div class="mb-3">
-                    <label for="txtEmailRepresentante">E-mail:*</label>
-                    <input type="email" name="txtEmailRepresentante" id="txtEmailRepresentante" class="input-sunk-white" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="txtCelularRepresentante">Celular:*</label>
-                    <input type="text" name="txtCelularRepresentante" id="txtCelularRepresentante" class="input-sunk-white">
-                </div>
-
-                <div class="mb-3">
-                    <label for="txtCepRepresentante">CEP:*</label>
-                    <input type="text" name="txtCepRepresentante" id="txtCepRepresentante" class="input-sunk-white" required>
-                </div>
-
-                <div class="mb-3">
-                    <div class="d-flex flex-row" style="gap: 25px;">
-                        <label class="label-radio">
-                            CPF*:
-                            <input type="radio" name="radioDocumento" value="CPF">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="label-radio">
-                            CNPJ*:
-                            <input type="radio" name="radioDocumento" value="CNPJ">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <input type="text" name="txtCpfCnpjRepresentante" id="txtCpfCnpjRepresentante" class="input-sunk-white" disabled>
-                </div>
-
-                <div class="mb-4">
-                    <label for="txtVendasRepresentante">Quantos chips gostaria de vender?*</label>
-                    <div class="position-relative">
-                        <span class="material-symbols-outlined seta-select" style="top: 18%; right: 3%">expand_more</span>
-                        <select name="sltVendasChip" id="sltVendasChip" class="select w-100 form-control" required>
-                            <option value="0" selected>Selecione um valor</option>
-                            <option value="20 a 50">20 a 50</option>
-                            <option value="51 a 100">51 a 100</option>
-                            <option value="101 a 200">101 a 200</option>
-                            <option value="+200">+200</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="txtMensagemRepresentante">Deixe sua mensagem:</label>
-                    <textarea name="txtMensagemRepresentante" id="txtMensagemRepresentante" class="textarea-sunk-white"></textarea>
-                </div>
-
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn-padrao font-weight-bold" id="btnRepresentante" name="btnRepresentante">CADASTRAR-SE</button>
+                <div id="text-celebration-revenda">
+                    <p>Venha fazer a diferença. Seja um revendedor Dry Telecom e alcance sua autonomia.</p>
                 </div>
             </div>
-        </form>
+        </div>
+
+        <section id="inscricao">
+            <h1 class="font-weight-bold titulo-padrao margem-form">Curtiu? Preencha seus dados:</h1>
+
+            <?= $erro ?>
+
+            <form action="#inscricao" method="POST" id="cadastroRepresentante" name="cadastroRepresentante">
+                <div class="card-cadastro mx-auto mt-5">
+                    <div class="mb-3">
+                        <label for="txtNomeRepresentante">Nome completo:*</label>
+                        <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtEmailRepresentante">E-mail:*</label>
+                        <input type="email" name="txtEmailRepresentante" id="txtEmailRepresentante" class="input-sunk-white" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtCelularRepresentante">Celular:*</label>
+                        <input type="text" name="txtCelularRepresentante" id="txtCelularRepresentante" class="input-sunk-white" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtCepRepresentante">CEP:*</label>
+                        <input type="text" name="txtCepRepresentante" id="txtCepRepresentante" class="input-sunk-white" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex flex-row" style="gap: 25px;">
+                            <label class="label-radio">
+                                CPF*:
+                                <input type="radio" name="radioDocumento" value="CPF">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="label-radio">
+                                CNPJ*:
+                                <input type="radio" name="radioDocumento" value="CNPJ">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <input type="text" name="txtCpfCnpjRepresentante" id="txtCpfCnpjRepresentante" class="input-sunk-white" disabled>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="txtVendasRepresentante">Quantos chips gostaria de vender?*</label>
+                        <div class="position-relative">
+                            <span class="material-symbols-outlined seta-select" style="top: 18%; right: 3%">expand_more</span>
+                            <select name="sltVendasChip" id="sltVendasChip" class="select w-100 form-control" required>
+                                <option value="0" selected>Selecione um valor</option>
+                                <option value="20 a 50">20 a 50</option>
+                                <option value="51 a 100">51 a 100</option>
+                                <option value="101 a 200">101 a 200</option>
+                                <option value="+200">+200</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtMensagemRepresentante">Deixe sua mensagem:</label>
+                        <textarea name="txtMensagemRepresentante" id="txtMensagemRepresentante" class="textarea-sunk-white"></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn-padrao font-weight-bold" id="btnRepresentante" name="btnRepresentante">CADASTRAR-SE</button>
+                    </div>
+
+                    <div class="mt-4">
+                        <small>*Campos Obrigatórios</small>
+                    </div>
+                </div>
+            </form>
+        </section>
     </div>
 
     <footer>
@@ -251,8 +277,8 @@ if (isset($_POST['btnRepresentante'])) {
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
                         <a href="#">Revenda</a>
-                        <a href="./index.php#clientes">Clientes</a>
-                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./#clientes">Clientes</a>
+                        <a href="./#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>
                     </div>
                 </div>

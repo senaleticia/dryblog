@@ -65,7 +65,7 @@ if (isset($_GET['p'])) {
         header('location: pagina-inexistente.php');
     }
 } else {
-    header('location: blog.php');
+    header('location: blog');
 }
 
 //Verificando se o botão "Comentar" foi acionado
@@ -115,7 +115,11 @@ if (isset($_POST['btnComentar'])) {
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="./css/guideline-social.css">
-    <title><?= $titulo ?> - Dry Telecom</title>
+    <?php
+    $tag_html = array('<i>', '</i>');
+    $titulo_html = str_replace($tag_html, '', $titulo);
+    ?>
+    <title><?= $titulo_html ?> - Dry Telecom</title>
 </head>
 
 <body>
@@ -139,7 +143,7 @@ if (isset($_POST['btnComentar'])) {
                         <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
+                    <a class="logout" href="./login">
                         <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
@@ -148,7 +152,7 @@ if (isset($_POST['btnComentar'])) {
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -160,7 +164,7 @@ if (isset($_POST['btnComentar'])) {
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +176,7 @@ if (isset($_POST['btnComentar'])) {
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -184,182 +188,198 @@ if (isset($_POST['btnComentar'])) {
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="pl-1">Curtiu?</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-center">Faça seu login para nos dizer o que achou agora mesmo!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="./login.php">
-                            <button type="button" class="btn-padrao">Entrar</button>
-                        </a>
-                        <a href="./cadastrar-usuario.php">
-                            <button type="button" class="btn-padrao">Cadastrar-se</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
-                        </button>
-                    </div>
-                    <div class="modal-body ml-auto mr-auto">
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
-                            <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="view-post-table mt-5">
-                    <div class="titulo-padrao mt-5">
-                        <h1 class="text-uppercase pb-3"><?= $titulo ?></h1>
-                        <div class="caixa-tags pb-3">
-                            <div class="tags mt-2 d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <span class="material-symbols-outlined icon-tag">
-                                        folder_copy
-                                    </span>
-                                    <p class="btn-tag">
-                                        <?= implode(";", $tags) ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="tags mt-2 d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <span class="material-symbols-outlined icon-tag">
-                                        person
-                                    </span>
-                                    <p class="btn-tag">
-                                        <?= $nome_autor ?>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="tags mt-2 d-flex align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <span class="material-symbols-outlined icon-tag">
-                                        hourglass_empty
-                                    </span>
-                                    <p class="btn-tag">
-                                        Leitura <?= $tempo_leitura ?>min
-                                    </p>
-                                </div>
-                            </div>
+    <div id="grid-propagandas">
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="pl-1">Curtiu?</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="material-symbols-outlined">close</span>
+                            </button>
                         </div>
-                        <div class="caixa-tags">
-                            <div class="d-flex flex-column">
-                                <p class="btn-tag pb-0">Postagem:</p>
+                        <div class="modal-body">
+                            <p class="text-center">Faça seu login para nos dizer o que achou agora mesmo!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="./login.php">
+                                <button type="button" class="btn-padrao">Entrar</button>
+                            </a>
+                            <a href="./cadastrar-usuario.php">
+                                <button type="button" class="btn-padrao">Cadastrar-se</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                <div class="d-flex align-items-center">
-                                    <span class="material-symbols-outlined icon-tag">date_range</span>
-                                    <p class="btn-tag font-weight-bold pb-0"><?= $data_post ?></p>
+            <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body ml-auto mr-auto">
+                            <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
+                                <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mw-100">
+                <div class="col-md-12">
+                    <div class="view-post-table mt-5">
+                        <div class="titulo-padrao mt-5">
+                            <h1 class="pb-3"><?= $titulo ?></h1>
+                            <div class="caixa-tags pb-3">
+                                <div class="tags mt-2 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined icon-tag">
+                                            folder_copy
+                                        </span>
+                                        <p class="btn-tag">
+                                            <?= implode(";", $tags) ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tags mt-2 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined icon-tag">
+                                            person
+                                        </span>
+                                        <p class="btn-tag">
+                                            <?= $nome_autor ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tags mt-2 d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-symbols-outlined icon-tag">
+                                            hourglass_empty
+                                        </span>
+                                        <p class="btn-tag">
+                                            Leitura <?= $tempo_leitura ?>min
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <?php if ($data_atualizacao != "") { ?>
+                            <div class="caixa-tags">
                                 <div class="d-flex flex-column">
-                                    <p class="btn-tag pb-0">Atualização:</p>
+                                    <p class="btn-tag pb-0">Postagem:</p>
 
                                     <div class="d-flex align-items-center">
                                         <span class="material-symbols-outlined icon-tag">date_range</span>
-                                        <p class="btn-tag font-weight-bold pb-0"><?= $data_atualizacao ?></p>
+                                        <p class="btn-tag font-weight-bold pb-0"><?= $data_post ?></p>
                                     </div>
                                 </div>
-                            <?php } ?>
+                                <?php if ($data_atualizacao != "") { ?>
+                                    <div class="d-flex flex-column">
+                                        <p class="btn-tag pb-0">Atualização:</p>
+
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-symbols-outlined icon-tag">date_range</span>
+                                            <p class="btn-tag font-weight-bold pb-0"><?= $data_atualizacao ?></p>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <?php if ($foto != "") { ?>
+                            <div class="post-img mx-auto">
+                                <img src="./upload/blog/<?= $foto ?>" alt="Foto post">
+                            </div>
+                        <?php } ?>
+
+                        <div class="post-full-text">
+                            <p><?= $conteudo_final ?></p>
+                        </div>
+
+                        <?php if ($foto2 != "") { ?>
+                            <div class="post-img mx-auto">
+                                <img src="./upload/blog/<?= $foto2 ?>" alt="Foto post">
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($conteudo2 != "") { ?>
+                            <div class="post-full-text">
+                                <p><?= $segundo_conteudo_final ?></p>
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($foto3 != "") { ?>
+                            <div class="post-img mx-auto">
+                                <img src="./upload/blog/<?= $foto3 ?>" alt="Foto post">
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($conteudo3 != "") { ?>
+                            <div class="post-full-text">
+                                <p><?= $terceiro_conteudo_final ?></p>
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($foto4 != "") { ?>
+                            <div class="post-img mx-auto">
+                                <img src="./upload/blog/<?= $foto4 ?>" alt="Foto post">
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($conteudo4 != "") { ?>
+                            <div class="post-full-text">
+                                <p><?= $quarto_conteudo_final ?></p>
+                            </div>
+                        <?php } ?>
+
+                        <?php if ($video != "") { ?>
+                            <div class="post-video">
+                                <iframe class="youtube-video" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        <?php } ?>
+
+                        <div class="d-flex justify-content-around mt-4">
+                            <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
+                                <span class="material-symbols-outlined">
+                                    arrow_back_ios_new
+                                </span>
+                            </button>
+                            <div id="div-copy-link">
+                                <input type="text" id="copy-link" value="localhost/dryblog/postagem.php?p=<?= $url ?>">
+                            </div>
+                            <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
+                                <span class="material-symbols-outlined">
+                                    share
+                                </span>
+                            </button>
                         </div>
                     </div>
-
-                    <?php if ($foto != "") { ?>
-                        <div class="post-img mx-auto">
-                            <img src="./upload/blog/<?= $foto ?>" alt="Foto post">
-                        </div>
-                    <?php } ?>
-
-                    <div class="post-full-text">
-                        <p><?= $conteudo_final ?></p>
-                    </div>
-
-                    <?php if ($foto2 != "") { ?>
-                        <div class="post-img mx-auto">
-                            <img src="./upload/blog/<?= $foto2 ?>" alt="Foto post">
-                        </div>
-                    <?php } ?>
-
-                    <?php if ($conteudo2 != "") { ?>
-                        <div class="post-full-text">
-                            <p><?= $segundo_conteudo_final ?></p>
-                        </div>
-                    <?php } ?>
-
-                    <?php if ($foto3 != "") { ?>
-                        <div class="post-img mx-auto">
-                            <img src="./upload/blog/<?= $foto3 ?>" alt="Foto post">
-                        </div>
-                    <?php } ?>
-
-                    <?php if ($conteudo3 != "") { ?>
-                        <div class="post-full-text">
-                            <p><?= $terceiro_conteudo_final ?></p>
-                        </div>
-                    <?php } ?>
-
-                    <?php if ($foto4 != "") { ?>
-                        <div class="post-img mx-auto">
-                            <img src="./upload/blog/<?= $foto4 ?>" alt="Foto post">
-                        </div>
-                    <?php } ?>
-
-                    <?php if ($conteudo4 != "") { ?>
-                        <div class="post-full-text">
-                            <p><?= $quarto_conteudo_final ?></p>
-                        </div>
-                    <?php } ?>
-
-                    <?php if ($video != "") { ?>
-                        <div class="post-video">
-                            <iframe class="youtube-video" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    <?php } ?>
-
-                    <div class="d-flex justify-content-around mt-4">
-                        <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
-                            <span class="material-symbols-outlined">
-                                arrow_back_ios_new
-                            </span>
-                        </button>
-                        <div id="div-copy-link">
-                            <input type="text" id="copy-link" value="localhost/dryblog/postagem.php?p=<?= $url ?>">
-                        </div>
-                        <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
-                            <span class="material-symbols-outlined">
-                                share
-                            </span>
-                        </button>
-                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-container">
+            <div class="propagandas">
+                <div>
+                    <img src="https://place.dog/220/280" alt="Place Dog">
+                </div>
+                <div>
+                    <img src="https://place.dog/220/280" alt="Place Dog">
+                </div>
+                <div>
+                    <img src="https://place.dog/220/280" alt="Place Dog">
                 </div>
             </div>
         </div>
@@ -497,17 +517,17 @@ if (isset($_POST['btnComentar'])) {
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
                         <a href="./cadastrar-representante.php">Revenda</a>
-                        <a href="./index.php#clientes">Clientes</a>
-                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./#clientes">Clientes</a>
+                        <a href="./#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
+                        <a href="politica-de-privacidade">Política de Privacidade</a>
+                        <a href="politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">

@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-require_once('./bd/conexao.php');
-$conexao = conexaoMySql();
-
-$usuario_autenticado = $_SESSION['usuarioAutenticado'];
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -51,7 +43,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
+                    <a class="logout" href="./login">
                         <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
@@ -60,7 +52,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -72,7 +64,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +76,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="#">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -96,7 +88,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -179,7 +171,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                             </div>
                         </div>
                         <div>
-                            <h1 class="titulo-padrao text-uppercase"><?= $result['titulo'] ?></h1>
+                            <h1 class="titulo-padrao"><?= $result['titulo'] ?></h1>
                         </div>
                         <div class="post-text">
                             <?= $result['previa_conteudo'] ?>
@@ -315,25 +307,25 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./cadastrar-representante.php">Revenda</a>
+                        <a href="./cadastrar-representante">Revenda</a>
                         <a href="./#clientes">Clientes</a>
                         <a href="./#cobertura">Cobertura</a>
-                        <a href="./blog.php">Blog</a>
+                        <a href="#">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
+                        <a href="./politica-de-privacidade">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">REDES SOCIAIS</h3>
                     <div id="redes-sociais" class="d-flex justify-content-center">
                         <div class="redes-sociais-pic mr-3">
-                            <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
+                            <a href="https://instagram.com/drytelecom?" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
                             </a>
                         </div>

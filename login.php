@@ -1,10 +1,7 @@
 <?php
 // Conexão com o banco de dados
-require "./bd/conexao.php";
+require_once "./bd/conexao.php";
 $conexao = conexaoMySql();
-
-// Inicia sessões
-session_start();
 
 //Definindo variáveis
 $email = (string) "";
@@ -114,11 +111,11 @@ if (isset($_POST['btnLogin'])) {
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center position-relative pt-4 margem-btn">
-            <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
+        <div class="row justify-content-center position-relative margem-btn">
+            <a class="btn-voltar font-weight-bold" href="./">
                 <span class="material-symbols-outlined">arrow_back</span>
                 <p>VOLTAR</p>
-            </button>
+            </a>
 
             <h2 class="login-title">Login - Dry Telecom</h2>
         </div>

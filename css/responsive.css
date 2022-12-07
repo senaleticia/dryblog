@@ -1,3 +1,12 @@
+@media only screen and (max-width: 1540px) {
+    #grid-propagandas .container {
+        max-width: 95%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+}
+
 @media only screen and (max-width: 1387px) {
     #bg-celular {
         max-width: none;
@@ -28,11 +37,24 @@
     #section-slide {
         background-size: contain;
     }
+
+    .container-relacionados {
+        justify-content: flex-start;
+    }
 }
 
 @media only screen and (max-width: 1200px) {
     .container-lado-direito .card-materia-lateral {
         width: 285px;
+    }
+
+    #grid-propagandas .container {
+        grid-column: 1 / 3;
+        max-width: 85%;
+    }
+
+    #grid-propagandas {
+        justify-items: center;
     }
 }
 
@@ -70,7 +92,6 @@
 
     .container-relacionados {
         width: auto;
-        justify-content: flex-start;
     }
 
     .bg-mobile {
@@ -102,7 +123,8 @@
     }
 
     .container-relacionados::-webkit-scrollbar,
-    .container-acessados::-webkit-scrollbar {
+    .container-acessados::-webkit-scrollbar,
+    .propagandas::-webkit-scrollbar {
         display: none;
     }
 
@@ -140,8 +162,35 @@
 }
 
 @media only screen and (max-width: 991px) {
-    .margem-btn {
-        margin-top: 26%;
+    .card-cadastro {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #grid-propagandas {
+        grid-template-columns: 1fr;
+    }
+
+    #grid-propagandas .scroll-container {
+        display: initial;
+        padding: 0 5%;
+    }
+
+    .propagandas {
+        display: flex;
+        padding-top: 128px;
+        justify-content: flex-start;
+        overflow-x: scroll !important;
+        overflow-y: hidden !important;
+        gap: 32px;
+        box-sizing: border-box;
+        width: max-content !important;
+    }
+
+    .propagandas>div {
+        width: 280px;
+        height: 180px;
     }
 }
 
@@ -347,7 +396,6 @@
     }
 
     .container-relacionados {
-        justify-content: flex-start;
         overflow-x: scroll !important;
         overflow-y: hidden !important;
         gap: 32px;
@@ -440,10 +488,6 @@
         height: 260px;
     }
 
-    .margem-btn {
-        margin-top: 20% !important;
-    }
-
     #caixaPesquisa {
         margin-top: 50px;
     }
@@ -452,6 +496,25 @@
         top: 67%;
         right: 7%;
     }
+
+    .icon-revenda {
+        width: 80px;
+        height: 80px;
+    }
+
+    .icon-revenda span {
+        font-size: 40px;
+    }
+
+    .content-revenda {
+        grid-template-columns: 80px 1fr 80px;
+        margin-top: 32px;
+    }
+
+    .margem-form {
+        margin-top: 64px;
+    }
+
 }
 
 @media only screen and (max-width: 460px) {

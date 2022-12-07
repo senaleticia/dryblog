@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-require './bd/conexao.php';
-$conexao = conexaoMySql();
-
-$usuario_autenticado = $_SESSION['usuarioAutenticado'];
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -47,11 +39,11 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <div class="login-box">
                 <?php if ($usuario_autenticado == true) { ?>
                     <a class="logout" href="./index.php?modo=logout">
-                        <button class="btn-padrao">SAIR</button>
+                        <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
                     <a class="logout" href="./login.php">
-                        <button class="btn-padrao">LOGIN</button>
+                        <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
             </div>
@@ -59,7 +51,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -71,7 +63,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -124,7 +116,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </button>
     </div>
 
-    <section class="politica-privacidade py-5">
+    <section class="politica-privacidade">
         <div class="container">
             <h1 class="text-center mb-5 font-weight-bold">POLÍTICA DE PRIVACIDADE</h1>
 
@@ -142,12 +134,12 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </div>
     </section>
 
-    <section id="LGPD" class="py-5">
+    <section id="LGPD">
         <div class="container">
             <h3 class="font-weight-bold">2 - TRATAMENTO DE DADOS</h3>
 
             <div class="privacidade-text">
-                <p>Os dados pessoais de usuário e visitantes serão coletados, classificados, utilizados, processados e arquivados como condição indispensável para a execução de contratos relativos à contratação dos produtos e serviços da MVNO, mediante a consentimento expresso manifestado no Termo de Adesão aos Serviços, disponível em: <a class="adesao font-weight-bold" href="./termos-de-adesao.php">Termos de Adesão</a>, e por intermédio das nossas Políticas de Privacidade.</p>
+                <p>Os dados pessoais de usuário e visitantes serão coletados, classificados, utilizados, processados e arquivados como condição indispensável para a execução de contratos relativos à contratação dos produtos e serviços da MVNO, mediante a consentimento expresso manifestado no Termo de Adesão aos Serviços, disponível em: <a class="adesao font-weight-bold" href="./termos-de-adesao">Termos de Adesão</a>, e por intermédio das nossas Políticas de Privacidade.</p>
             </div>
             <div class="privacidade-text">
                 <p>No âmbito do consentimento para tratamento de dados pessoais, estão incluídos:</p>
@@ -341,7 +333,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         </div>
     </section>
 
-    <section id="cookies" class="py-5">
+    <section id="cookies">
         <div class="container">
             <h3 class="font-weight-bold">3 - COOKIES OU DADOS DE NAVEGAÇÃO</h3>
 
@@ -406,8 +398,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                     <div class="footer-logo">
                         <img src="./svg/logo-drytelecom.svg" alt="Logo">
                     </div>
-                    <div class="botao-contato align-self-center">
-                        <button class="btn-padrao borda-botao contato-btn" style="min-width: 140px;" data-toggle="modal" data-target="#modalContato">CONTATO</button>
+                    <div class="align-self-center">
+                        <button class="btn-padrao borda-botao btn-menor" style="min-width: 140px;" data-toggle="modal" data-target="#modalContato">CONTATO</button>
                     </div>
                 </div>
             </div>
@@ -415,25 +407,25 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./cadastrar-representante.php">Revenda</a>
-                        <a href="./index.php#clientes">Clientes</a>
-                        <a href="./index.php#cobertura">Cobertura</a>
-                        <a href="./blog.php">Blog</a>
+                        <a href="./cadastrar-representante">Revenda</a>
+                        <a href="./#clientes">Clientes</a>
+                        <a href="./#cobertura">Cobertura</a>
+                        <a href="./blog">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
+                        <a href="./politica-de-privacidade">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">REDES SOCIAIS</h3>
                     <div id="redes-sociais" class="d-flex justify-content-center">
                         <div class="redes-sociais-pic mr-3">
-                            <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
+                            <a href="https://instagram.com/drytelecom" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
                             </a>
                         </div>

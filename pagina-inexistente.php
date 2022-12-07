@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require './bd/conexao.php';
+require_once './bd/conexao.php';
 $conexao = conexaoMySql();
 
 $usuario_autenticado = $_SESSION['usuarioAutenticado'];
@@ -165,8 +165,8 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
                         <a href="./cadastrar-representante.php">Revenda</a>
-                        <a href="./index.php#clientes">Clientes</a>
-                        <a href="./index.php#cobertura">Cobertura</a>
+                        <a href="./#clientes">Clientes</a>
+                        <a href="./#cobertura">Cobertura</a>
                         <a href="./blog.php">Blog</a>
                     </div>
                 </div>
