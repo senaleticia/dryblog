@@ -5,6 +5,10 @@
         margin-right: 0;
         padding: 0;
     }
+
+    .container-relacionados {
+        justify-content: flex-start;
+    }
 }
 
 @media only screen and (max-width: 1387px) {
@@ -36,10 +40,6 @@
 
     #section-slide {
         background-size: contain;
-    }
-
-    .container-relacionados {
-        justify-content: flex-start;
     }
 }
 
@@ -173,8 +173,7 @@
     }
 
     #grid-propagandas .scroll-container {
-        display: initial;
-        padding: 0 5%;
+        display: none;
     }
 
     .propagandas {
@@ -188,9 +187,15 @@
         width: max-content !important;
     }
 
-    .propagandas>div {
+    .container-propagandas>div {
         width: 280px;
         height: 180px;
+    }
+
+    .container-propagandas {
+        display: flex;
+        justify-content: flex-start;
+        gap: 32px;
     }
 }
 
@@ -448,6 +453,7 @@
 
     .cadastro-anuncio {
         flex-direction: column;
+        gap: 0;
     }
 
     .foto-anuncio {

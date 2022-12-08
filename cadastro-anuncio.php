@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require './bd/conexao.php';
+require_once './bd/conexao.php';
 $conexao = conexaoMySql();
 
 $usuario_autenticado = $_SESSION['usuarioAutenticado'];
@@ -16,7 +16,7 @@ if (isset($_GET['modo'])) {
         if ($rs_detalhes = mysqli_fetch_array($select_detalhes)) {
             $foto_anuncio = $rs_detalhes['foto_anuncio'];
         } else {
-            header('location: pagina-inexistente.php');
+            header('location: pagina-inexistente');
         }
 
         if (isset($_POST['btnCadastro'])) {
@@ -40,10 +40,10 @@ if (isset($_GET['modo'])) {
             }
         }
     } else {
-        header('location: blog.php');
+        header('location: blog');
     }
 } else {
-    header('location: blog.php');
+    header('location: blog');
 }
 ?>
 <!DOCTYPE html>
@@ -92,7 +92,7 @@ if (isset($_GET['modo'])) {
                         <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
+                    <a class="logout" href="./login">
                         <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
@@ -101,7 +101,7 @@ if (isset($_GET['modo'])) {
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -113,7 +113,7 @@ if (isset($_GET['modo'])) {
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -172,7 +172,7 @@ if (isset($_GET['modo'])) {
 
         <div class="cadastro-anuncio">
             <div class="foto-anuncio">
-                <img class="w-75" src="./upload/anuncios/<?= $foto_anuncio ?>" alt="Anúncio">
+                <img src="./upload/anuncios/<?= $foto_anuncio ?>" alt="Anúncio">
             </div>
 
             <div class="caixa-form-anuncio mt-5">

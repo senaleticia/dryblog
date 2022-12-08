@@ -62,7 +62,7 @@ if (isset($_GET['p'])) {
         $tags = explode(';', $tags);
     } else {
         //Encaminhando o usuário para uma página de erro caso o post não exista ou foi excluído
-        header('location: pagina-inexistente.php');
+        header('location: pagina-inexistente');
     }
 } else {
     header('location: blog');
@@ -258,7 +258,7 @@ if (isset($_POST['btnComentar'])) {
                                 </div>
                                 <div class="tags mt-2 d-flex align-items-center">
                                     <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag">
+                                        <span class="material-symbols-outlined icon-tag" style="font-size: 22px;">
                                             person
                                         </span>
                                         <p class="btn-tag">
@@ -372,16 +372,36 @@ if (isset($_POST['btnComentar'])) {
         </div>
         <div class="scroll-container">
             <div class="propagandas">
-                <div>
-                    <img src="https://place.dog/220/280" alt="Place Dog">
-                </div>
-                <div>
-                    <img src="https://place.dog/220/280" alt="Place Dog">
-                </div>
-                <div>
-                    <img src="https://place.dog/220/280" alt="Place Dog">
-                </div>
+                <?php
+                $sql_anuncios = "SELECT * FROM anuncios LIMIT 3";
+                $select_anuncios = mysqli_query($conexao, $sql_anuncios);
+
+                while ($rs_anuncios = mysqli_fetch_array($select_anuncios)) {
+                ?>
+                    <div>
+                        <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
+                            <img src="upload/anuncios/<?= $rs_anuncios['foto_anuncio'] ?>" alt="Place Anúncio">
+                        </a>
+                    </div>
+                <?php } ?>
             </div>
+        </div>
+    </div>
+
+    <div class="scroll-container">
+        <div class="container-propagandas px-4 pt-5">
+            <?php
+            $sql_anuncios = "SELECT * FROM anuncios LIMIT 3";
+            $select_anuncios = mysqli_query($conexao, $sql_anuncios);
+
+            while ($rs_anuncios = mysqli_fetch_array($select_anuncios)) {
+            ?>
+                <div>
+                    <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
+                        <img src="upload/anuncios/<?= $rs_anuncios['foto_mobile'] ?>" alt="Place Anúncio">
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 

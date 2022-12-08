@@ -56,7 +56,7 @@ if (isset($_POST['btnLogin'])) {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
-        <div class="container" style="justify-content: flex-start; gap: 23%;">
+        <div class="container" style="justify-content: flex-start; gap: 21%;">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
                     menu
@@ -72,7 +72,7 @@ if (isset($_POST['btnLogin'])) {
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -82,6 +82,9 @@ if (isset($_POST['btnLogin'])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -94,7 +97,7 @@ if (isset($_POST['btnLogin'])) {
                 </span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -104,6 +107,9 @@ if (isset($_POST['btnLogin'])) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -142,7 +148,7 @@ if (isset($_POST['btnLogin'])) {
         <h5 class="text-center" style="margin-top: 90px;">Não possui conta? Crie uma agora mesmo!</h5>
 
         <div class="d-flex justify-content-center my-4">
-            <a href="./cadastrar-usuario.php">
+            <a href="./cadastrar-usuario">
                 <button class="btn-padrao ml-auto mr-auto">Criar Conta</button>
             </a>
         </div>

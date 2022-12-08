@@ -11,12 +11,11 @@ if (isset($_GET['modo'])) {
 
     if ($modo == 'logout') {
         session_destroy();
-        header('location: ./login.php');
+        header('location: ./login');
     }
 }
 
 $rota = $_GET['url'] ?? '';
-var_dump($rota);
 
 if ($rota == "") {
     $rota = "home";
@@ -25,5 +24,5 @@ if ($rota == "") {
 if (file_exists("./{$rota}.php")) {
     include "./{$rota}.php";
 } else {
-    $rota = "pagina-inexistente";
+    header('location: ./pagina-inexistente');
 }

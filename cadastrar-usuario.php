@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once("./bd/conexao.php");
 $conexao = conexaoMySql();
 
@@ -135,7 +133,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-inner fixed-top">
-        <div class="container" style="justify-content: flex-start; gap: 23%;">
+        <div class="container" style="justify-content: flex-start; gap: 21%;">
             <div id="navbar-mobile">
                 <span class="material-symbols-outlined">
                     menu
@@ -151,7 +149,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -163,7 +161,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -175,7 +173,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -187,7 +185,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -223,7 +221,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                         </button>
                     </div>
                     <div class="modal-body">
-                        Seu cadastro foi feito com sucesso! Agora <a href="./login.php">clique aqui</a> e você será redirecionado à página de login.
+                        Seu cadastro foi feito com sucesso! Agora <a href="./login">clique aqui</a> e você será redirecionado à página de login.
                     </div>
                     <div class="modal-footer">
                         <a href="./login.php" class="btn-padrao">Ok</a>
