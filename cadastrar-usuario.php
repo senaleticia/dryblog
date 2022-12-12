@@ -230,13 +230,13 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
             </div>
         </div>
 
-        <div class="row justify-content-center position-relative pt-4">
+        <div class="row justify-content-center position-relative pt-4 margem-btn">
             <button class="btn-voltar font-weight-bold" onclick="history.go(-1)">
                 <span class="material-symbols-outlined">arrow_back</span>
                 VOLTAR
             </button>
 
-            <h2>Criar conta</h2>
+            <h1 style="font-size: 2rem;">Criar conta</h1>
         </div>
 
         <?= $erro ?>

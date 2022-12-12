@@ -123,7 +123,7 @@ if (isset($_POST['btnLogin'])) {
                 <p>VOLTAR</p>
             </a>
 
-            <h2 class="login-title">Login - Dry Telecom</h2>
+            <h1 class="login-title">Login - Dry Telecom</h1>
         </div>
         <?= $erro ?>
         <div class="container-login mt-5">

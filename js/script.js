@@ -89,9 +89,3 @@ function validarEntrada(caracter, typeBlock) {
         }
     }
 }
-
-caixaBackground.forEach((background) => {
-    if (navigator.userAgent.match(/iPad|iPod|iPhone/)) {
-        background.classList.add('background-scroll');
-    }
-})

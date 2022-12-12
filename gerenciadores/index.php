@@ -67,9 +67,9 @@ $conexao = conexaoMySql();
             <a href="./add-post.php" class="btn-secundario">
                 CRIAR POST NOVO
             </a>
-            <!-- <a href="./publicity-list.php" class="btn-secundario disabled">
+            <a href="./publicity-list.php" class="btn-secundario">
                 VER ANÚNCIOS
-            </a> -->
+            </a>
             <form id="pesquisar-post" action="search.php" method="GET">
                 <div class="position-relative">
                     <input type="text" id="search" name="search" placeholder="Pesquisar">

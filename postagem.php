@@ -64,6 +64,10 @@ if (isset($_GET['p'])) {
         //Encaminhando o usuário para uma página de erro caso o post não exista ou foi excluído
         header('location: pagina-inexistente');
     }
+
+    $sql_ids = "SELECT id_anuncio FROM anuncios ORDER BY rand() LIMIT 4";
+    $select_ids = mysqli_query($conexao, $sql_ids);
+    $rs_ids = mysqli_fetch_all($select_ids);
 } else {
     header('location: blog');
 }
@@ -195,213 +199,215 @@ if (isset($_POST['btnComentar'])) {
         </div>
     </nav>
 
-    <div id="grid-propagandas">
-        <div class="container">
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="pl-1">Curtiu?</h2>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p class="text-center">Faça seu login para nos dizer o que achou agora mesmo!</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="./login.php">
-                                <button type="button" class="btn-padrao">Entrar</button>
-                            </a>
-                            <a href="./cadastrar-usuario.php">
-                                <button type="button" class="btn-padrao">Cadastrar-se</button>
-                            </a>
-                        </div>
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="pl-1">Curtiu?</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
+                        </button>
                     </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <div class="modal-body ml-auto mr-auto">
-                            <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
-                                <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
-                            </a>
-                        </div>
+                    <div class="modal-body">
+                        <p class="text-center">Faça seu login para nos dizer o que achou agora mesmo!</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="mw-100">
-                <div class="col-md-12">
-                    <div class="view-post-table mt-5">
-                        <div class="titulo-padrao mt-5">
-                            <h1 class="pb-3"><?= $titulo ?></h1>
-                            <div class="caixa-tags pb-3">
-                                <div class="tags mt-2 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag">
-                                            folder_copy
-                                        </span>
-                                        <p class="btn-tag">
-                                            <?= implode(";", $tags) ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="tags mt-2 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag" style="font-size: 22px;">
-                                            person
-                                        </span>
-                                        <p class="btn-tag">
-                                            <?= $nome_autor ?>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="tags mt-2 d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag">
-                                            hourglass_empty
-                                        </span>
-                                        <p class="btn-tag">
-                                            Leitura <?= $tempo_leitura ?>min
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="caixa-tags">
-                                <div class="d-flex flex-column">
-                                    <p class="btn-tag pb-0">Postagem:</p>
-
-                                    <div class="d-flex align-items-center">
-                                        <span class="material-symbols-outlined icon-tag">date_range</span>
-                                        <p class="btn-tag font-weight-bold pb-0"><?= $data_post ?></p>
-                                    </div>
-                                </div>
-                                <?php if ($data_atualizacao != "") { ?>
-                                    <div class="d-flex flex-column">
-                                        <p class="btn-tag pb-0">Atualização:</p>
-
-                                        <div class="d-flex align-items-center">
-                                            <span class="material-symbols-outlined icon-tag">date_range</span>
-                                            <p class="btn-tag font-weight-bold pb-0"><?= $data_atualizacao ?></p>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-
-                        <?php if ($foto != "") { ?>
-                            <div class="post-img mx-auto">
-                                <img src="./upload/blog/<?= $foto ?>" alt="Foto post">
-                            </div>
-                        <?php } ?>
-
-                        <div class="post-full-text">
-                            <p><?= $conteudo_final ?></p>
-                        </div>
-
-                        <?php if ($foto2 != "") { ?>
-                            <div class="post-img mx-auto">
-                                <img src="./upload/blog/<?= $foto2 ?>" alt="Foto post">
-                            </div>
-                        <?php } ?>
-
-                        <?php if ($conteudo2 != "") { ?>
-                            <div class="post-full-text">
-                                <p><?= $segundo_conteudo_final ?></p>
-                            </div>
-                        <?php } ?>
-
-                        <?php if ($foto3 != "") { ?>
-                            <div class="post-img mx-auto">
-                                <img src="./upload/blog/<?= $foto3 ?>" alt="Foto post">
-                            </div>
-                        <?php } ?>
-
-                        <?php if ($conteudo3 != "") { ?>
-                            <div class="post-full-text">
-                                <p><?= $terceiro_conteudo_final ?></p>
-                            </div>
-                        <?php } ?>
-
-                        <?php if ($foto4 != "") { ?>
-                            <div class="post-img mx-auto">
-                                <img src="./upload/blog/<?= $foto4 ?>" alt="Foto post">
-                            </div>
-                        <?php } ?>
-
-                        <?php if ($conteudo4 != "") { ?>
-                            <div class="post-full-text">
-                                <p><?= $quarto_conteudo_final ?></p>
-                            </div>
-                        <?php } ?>
-
-                        <?php if ($video != "") { ?>
-                            <div class="post-video">
-                                <iframe class="youtube-video" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        <?php } ?>
-
-                        <div class="d-flex justify-content-around mt-4">
-                            <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
-                                <span class="material-symbols-outlined">
-                                    arrow_back_ios_new
-                                </span>
-                            </button>
-                            <div id="div-copy-link">
-                                <input type="text" id="copy-link" value="localhost/dryblog/postagem.php?p=<?= $url ?>">
-                            </div>
-                            <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
-                                <span class="material-symbols-outlined">
-                                    share
-                                </span>
-                            </button>
-                        </div>
+                    <div class="modal-footer">
+                        <a href="./login">
+                            <button type="button" class="btn-padrao">Entrar</button>
+                        </a>
+                        <a href="./cadastrar-usuario">
+                            <button type="button" class="btn-padrao">Cadastrar-se</button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-container">
-            <div class="propagandas">
-                <?php
-                $sql_anuncios = "SELECT * FROM anuncios LIMIT 3";
-                $select_anuncios = mysqli_query($conexao, $sql_anuncios);
 
-                while ($rs_anuncios = mysqli_fetch_array($select_anuncios)) {
+        <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="ml-auto mr-auto">Alguma dúvida?</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ml-auto mr-auto">
+                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5511980002870&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Dry%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es!">
+                            <button class="btn-padrao font-weight-bold">CONVERSE COM UM ESPECIALISTA</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="view-post-table mt-5">
+                <div class="titulo-padrao mt-5">
+                    <h1 class="pb-3"><?= $titulo ?></h1>
+                    <div class="caixa-tags pb-3">
+                        <div class="tags mt-2 d-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                <span class="material-symbols-outlined icon-tag">
+                                    folder_copy
+                                </span>
+                                <p class="btn-tag">
+                                    <?= implode(";", $tags) ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tags mt-2 d-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                <span class="material-symbols-outlined icon-tag" style="font-size: 22px;">
+                                    person
+                                </span>
+                                <p class="btn-tag">
+                                    <?= $nome_autor ?>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tags mt-2 d-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                <span class="material-symbols-outlined icon-tag">
+                                    hourglass_empty
+                                </span>
+                                <p class="btn-tag">
+                                    <?= $tempo_leitura ?> min. de leitura
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caixa-tags">
+                        <div class="d-flex flex-column">
+                            <p class="btn-tag pb-0">Postagem:</p>
+
+                            <div class="d-flex align-items-center">
+                                <span class="material-symbols-outlined icon-tag">date_range</span>
+                                <p class="btn-tag font-weight-bold pb-0"><?= $data_post ?></p>
+                            </div>
+                        </div>
+                        <?php if ($data_atualizacao != "") { ?>
+                            <div class="d-flex flex-column">
+                                <p class="btn-tag pb-0">Atualização:</p>
+
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined icon-tag">date_range</span>
+                                    <p class="btn-tag font-weight-bold pb-0"><?= $data_atualizacao ?></p>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+
+                <?php if ($foto != "") { ?>
+                    <div class="post-img mx-auto">
+                        <img src="./upload/blog/<?= $foto ?>" alt="Foto post">
+                    </div>
+                <?php } ?>
+
+                <div class="post-full-text">
+                    <p><?= $conteudo_final ?></p>
+                </div>
+
+                <?php
+                $sql_anuncio = "SELECT * FROM anuncios WHERE id_anuncio = " . (implode('{', $rs_ids[0]));
+                $select_anuncio = mysqli_query($conexao, $sql_anuncio);
+
+                if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
                 ?>
-                    <div>
-                        <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
-                            <img src="upload/anuncios/<?= $rs_anuncios['foto_anuncio'] ?>" alt="Place Anúncio">
+                    <div class="mx-auto">
+                        <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncio['id_anuncio'] ?>">
+                            <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
                         </a>
                     </div>
                 <?php } ?>
-            </div>
-        </div>
-    </div>
 
-    <div class="scroll-container">
-        <div class="container-propagandas px-4 pt-5">
-            <?php
-            $sql_anuncios = "SELECT * FROM anuncios LIMIT 3";
-            $select_anuncios = mysqli_query($conexao, $sql_anuncios);
+                <?php if ($foto2 != "") { ?>
+                    <div class="post-img mx-auto">
+                        <img src="./upload/blog/<?= $foto2 ?>" alt="Foto post">
+                    </div>
+                <?php } ?>
 
-            while ($rs_anuncios = mysqli_fetch_array($select_anuncios)) {
-            ?>
-                <div>
-                    <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncios['id_anuncio'] ?>">
-                        <img src="upload/anuncios/<?= $rs_anuncios['foto_mobile'] ?>" alt="Place Anúncio">
-                    </a>
+                <?php if ($conteudo2 != "") { ?>
+                    <div class="post-full-text">
+                        <p><?= $segundo_conteudo_final ?></p>
+                    </div>
+
+                    <?php
+                    $sql_anuncio = "SELECT * FROM anuncios WHERE id_anuncio = " . (implode('{', $rs_ids[1]));
+                    $select_anuncio = mysqli_query($conexao, $sql_anuncio);
+
+                    if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
+                    ?>
+                        <div class="mx-auto">
+                            <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncio['id_anuncio'] ?>">
+                                <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
+                            </a>
+                        </div>
+                <?php }
+                } ?>
+
+                <?php if ($foto3 != "") { ?>
+                    <div class="post-img mx-auto">
+                        <img src="./upload/blog/<?= $foto3 ?>" alt="Foto post">
+                    </div>
+                <?php } ?>
+
+                <?php if ($conteudo3 != "") { ?>
+                    <div class="post-full-text">
+                        <p><?= $terceiro_conteudo_final ?></p>
+                    </div>
+
+                    <?php
+                    $sql_anuncio = "SELECT * FROM anuncios WHERE id_anuncio = " . (implode('{', $rs_ids[2]));
+                    $select_anuncio = mysqli_query($conexao, $sql_anuncio);
+
+                    if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
+                    ?>
+                        <div class="mx-auto">
+                            <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncio['id_anuncio'] ?>">
+                                <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
+                            </a>
+                        </div>
+                <?php }
+                } ?>
+
+                <?php if ($foto4 != "") { ?>
+                    <div class="post-img mx-auto">
+                        <img src="./upload/blog/<?= $foto4 ?>" alt="Foto post">
+                    </div>
+                <?php } ?>
+
+                <?php if ($conteudo4 != "") { ?>
+                    <div class="post-full-text">
+                        <p><?= $quarto_conteudo_final ?></p>
+                    </div>
+                <?php } ?>
+
+                <?php if ($video != "") { ?>
+                    <div class="post-video">
+                        <iframe class="youtube-video" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                <?php } ?>
+
+                <div class="d-flex justify-content-around mt-4">
+                    <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
+                        <span class="material-symbols-outlined">
+                            arrow_back_ios_new
+                        </span>
+                    </button>
+                    <div id="div-copy-link">
+                        <input type="text" id="copy-link" value="localhost/dryblog/postagem.php?p=<?= $url ?>">
+                    </div>
+                    <button class="btn-padrao font-weight-bold" id="copy-button" onclick="copiarLink()">
+                        <span class="material-symbols-outlined">
+                            share
+                        </span>
+                    </button>
                 </div>
-            <?php } ?>
+            </div>
         </div>
     </div>
 
