@@ -40,7 +40,7 @@ if (isset($_POST['btnLogin'])) {
     <meta property="og:url" content="drytelecom.com.br" />
     <meta property="og:title" content="Operadora de telefonia móvel digital" />
     <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
-    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
     <meta name="geo.placename" content="BARUERI" />
     <meta name="geo.region" content="BR" />
     <link rel="shortcut icon" href="./svg/favicon.svg" type="image/x-icon" />

@@ -29,18 +29,17 @@ $conexao = conexaoMySql();
 </head>
 
 <body>
-    <div class="container my-4">
-        <h1 class="mb-4 text-center">Lista de Anúncios</h1>
-
-        <div class="my-5">
-            <a href="add-publicity.php">
-                <button class="btn-secundario">
-                    ADICIONAR ANÚNCIO
-                </button>
+    <div class="container mt-5">
+        <div class="row justify-content-center position-relative">
+            <a class="btn-voltar font-weight-bold" href="./">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <p>VOLTAR</p>
             </a>
+
+            <h1 class="login-title">Lista de Anúncios</h1>
         </div>
 
-        <div class="d-flex justify-content-around flex-wrap" style="gap: 32px;">
+        <div class="d-flex justify-content-around flex-wrap pt-5" style="gap: 32px;">
             <?php
             $sql = "SELECT * FROM anuncios ORDER BY id_anuncio DESC";
             $select = mysqli_query($conexao, $sql);
@@ -52,12 +51,12 @@ $conexao = conexaoMySql();
 
             while ($result = mysqli_fetch_array($select)) {
             ?>
-                <div class="card-materia-lateral">
-                    <div class="materia-img" style="background-image: url('../upload/anuncios/<?= $result['foto_anuncio'] ?>');"></div>
-                    <a href="./view-publicity.php?modo=visualizar&id=<?= $result['id_anuncio'] ?>">
+                <a href="./view-publicity.php?modo=visualizar&id=<?= $result['id_anuncio'] ?>">
+                    <div class="card-materia-lateral">
+                        <div class="materia-img" style="background-image: url('../upload/anuncios/<?= $result['foto_anuncio'] ?>');"></div>
                         <p class="limite-anuncio px-2 pt-2"><?= $result['descricao_anuncio'] ?></p>
-                    </a>
-                </div>
+                    </div>
+                </a>
             <?php } ?>
         </div>
     </div>

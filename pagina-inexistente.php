@@ -16,7 +16,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
     <meta property="og:url" content="drytelecom.com.br" />
     <meta property="og:title" content="Operadora de telefonia móvel digital" />
     <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
-    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
     <meta name="geo.placename" content="BARUERI" />
     <meta name="geo.region" content="BR" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -50,7 +50,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
+                    <a class="logout" href="./login">
                         <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
@@ -59,7 +59,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
             <div class="menu-desk">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -71,7 +71,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -83,7 +83,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -95,7 +95,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./cadastrar-representante.php">REVENDA</a>
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -134,7 +134,7 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
         <div class="scroll-container">
             <div class="container-relacionados">
                 <?php
-                $sql = "SELECT * FROM post ORDER BY id_post DESC LIMIT 4";
+                $sql = "SELECT * FROM post ORDER BY rand() DESC LIMIT 4";
                 $select = mysqli_query($conexao, $sql);
 
                 while ($result = mysqli_fetch_array($select)) {
@@ -164,18 +164,18 @@ $usuario_autenticado = $_SESSION['usuarioAutenticado'];
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">EXPLORE</h3>
                     <div class="footer-menu">
-                        <a href="./cadastrar-representante.php">Revenda</a>
+                        <a href="./cadastrar-representante">Revenda</a>
                         <a href="./#clientes">Clientes</a>
                         <a href="./#cobertura">Cobertura</a>
-                        <a href="./blog.php">Blog</a>
+                        <a href="./blog">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
+                        <a href="./politica-de-privacidade">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">

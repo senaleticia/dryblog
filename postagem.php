@@ -107,7 +107,7 @@ if (isset($_POST['btnComentar'])) {
     <meta property="og:url" content="drytelecom.com.br" />
     <meta property="og:title" content="Operadora de telefonia móvel digital" />
     <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
-    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
     <meta name="geo.placename" content="BARUERI" />
     <meta name="geo.region" content="BR" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -316,9 +316,11 @@ if (isset($_POST['btnComentar'])) {
                 $select_anuncio = mysqli_query($conexao, $sql_anuncio);
 
                 if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
+                    $foto_anuncio = $rs_anuncio['foto_anuncio'];
+                    $link_anuncio = $rs_anuncio['link_anuncio'] ? $rs_anuncio['link_anuncio'] : "cadastro-anuncio.php?modo=cadastrar&anuncio=" . $rs_anuncio['id_anuncio'];
                 ?>
                     <div class="mx-auto">
-                        <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncio['id_anuncio'] ?>">
+                        <a href="<?= $link_anuncio ?>" target="_blank">
                             <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
                         </a>
                     </div>
@@ -340,9 +342,11 @@ if (isset($_POST['btnComentar'])) {
                     $select_anuncio = mysqli_query($conexao, $sql_anuncio);
 
                     if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
+                        $foto_anuncio = $rs_anuncio['foto_anuncio'];
+                        $link_anuncio = $rs_anuncio['link_anuncio'] ? $rs_anuncio['link_anuncio'] : "cadastro-anuncio.php?modo=cadastrar&anuncio=" . $rs_anuncio['id_anuncio'];
                     ?>
                         <div class="mx-auto">
-                            <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncio['id_anuncio'] ?>">
+                            <a href="<?= $link_anuncio ?>" target="_blank">
                                 <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
                             </a>
                         </div>
@@ -365,10 +369,12 @@ if (isset($_POST['btnComentar'])) {
                     $select_anuncio = mysqli_query($conexao, $sql_anuncio);
 
                     if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
+                        $foto_anuncio = $rs_anuncio['foto_anuncio'];
+                        $link_anuncio = $rs_anuncio['link_anuncio'] ? $rs_anuncio['link_anuncio'] : "cadastro-anuncio.php?modo=cadastrar&anuncio=" . $rs_anuncio['id_anuncio'];
                     ?>
                         <div class="mx-auto">
-                            <a href="cadastro-anuncio.php?modo=cadastrar&anuncio=<?= $rs_anuncio['id_anuncio'] ?>">
-                                <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
+                            <a href="<?= $link_anuncio ?>" target="_blank">
+                                <img src="upload/anuncios/<?= $foto_anuncio ?>" alt="Place Anúncio">
                             </a>
                         </div>
                 <?php }

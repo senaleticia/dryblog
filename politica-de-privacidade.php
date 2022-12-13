@@ -8,7 +8,7 @@
     <meta property="og:url" content="drytelecom.com.br" />
     <meta property="og:title" content="Operadora de telefonia móvel digital" />
     <meta property="og:image" content="https://drytelecom.com.br/img/og-site.png" />
-    <meta property="og:description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
+    <meta name="description" content="Somos uma Mobiletech que oferece serviços de telefonia móvel digital com cobertura em todo país, oferecendo experiências exclusivas com o que você gosta." />
     <meta name="geo.placename" content="BARUERI" />
     <meta name="geo.region" content="BR" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -42,7 +42,7 @@
                         <button class="btn-padrao btn-menu">SAIR</button>
                     </a>
                 <?php } else if ($usuario_autenticado == false) { ?>
-                    <a class="logout" href="./login.php">
+                    <a class="logout" href="./login">
                         <button class="btn-padrao btn-menu">LOGIN</button>
                     </a>
                 <?php } ?>
@@ -75,7 +75,7 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fonte-menu" href="./blog.php">BLOG</a>
+                        <a class="nav-link fonte-menu" href="./blog">BLOG</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#clientes">CLIENTES</a>
@@ -85,6 +85,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fonte-menu" href="./#cobertura">COBERTURA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fonte-menu" href="./cadastrar-representante">REVENDA</a>
                     </li>
                 </ul>
             </div>
@@ -416,9 +419,9 @@
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade">Política de Privacidade</a>
-                        <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
-                        <a href="./politica-de-privacidade#LGPD">LGPD</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#cookies">Política de Cookies</a>
+                        <a href="#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">

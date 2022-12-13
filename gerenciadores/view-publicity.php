@@ -23,6 +23,12 @@ if (isset($_GET['modo'])) {
         if ($result = mysqli_fetch_array($select)) {
             $foto_anuncio = $result['foto_anuncio'];
             $descricao_anuncio = $result['descricao_anuncio'];
+
+            if ($result['link_anuncio'] == "") {
+                $link_anuncio = "Esse anúncio não possui link";
+            } else {
+                $link_anuncio = $result['link_anuncio'];
+            }
         } else {
             header('location: publicity-list.php');
         }
@@ -59,6 +65,10 @@ if (isset($_GET['modo'])) {
             </div>
             <div class="anuncio-text">
                 <p><?= $descricao_anuncio ?></p>
+
+                <p>
+                    <strong>Link:</strong> <?= $link_anuncio ?>
+                </p>
             </div>
             <div class="d-flex justify-content-around">
                 <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">

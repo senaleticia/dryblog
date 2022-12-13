@@ -13,6 +13,7 @@ $conexao = conexaoMySql();
 
 $descricao_anuncio = (string) "";
 $foto_anuncio = (string) "";
+$link_anuncio = (string) "";
 $botao = "Cadastrar";
 
 if (isset($_GET['modo']) == 'editar') {
@@ -59,7 +60,24 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
     if (($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != '') && ($extensao2 != 'jpg' && $extensao2 != 'jpeg' && $extensao2 != 'png' && $extensao2 != '')) {
         die('Esse tipo de arquivo não é aceito');
     } else if ($extensao == '' && $extensao2 == '') {
-        echo ("<script>alert('As fotos para o anúncio são obrigatórias')</script>");
+        if (isset($_POST['btnCadastrarPubli'])) {
+            $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
+            $link_anuncio = addslashes($_POST['txtLinkAnuncio']);
+
+            if ($botao == "Cadastrar") {
+                $sql = "INSERT INTO anuncios (descricao_anuncio, link_anuncio) VALUES ('" . $descricao_anuncio . "', '" . $link_anuncio . "')";
+            } else if ($botao == "Atualizar") {
+                $sql = "UPDATE anuncios SET descricao_anuncio = '" . $descricao_anuncio . "', link_anuncio = '" . $link_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
+            }
+
+            if ($select = mysqli_query($conexao, $sql)) {
+                echo ("<script>alert('Anúncio cadastrado com sucesso')</script>");
+                header('location: publicity-list.php');
+            } else {
+                echo ("<script>alert('Erro ao cadastrar o anúncio')</script>");
+                echo ($sql);
+            }
+        }
     } else {
         move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . '.' . $extensao);
         move_uploaded_file($arquivo2['tmp_name'], $diretorio . $nome_segundo_arquivo . '.' . $extensao2);
@@ -112,7 +130,7 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
             <div class="card-cadastro w-100">
                 <div class="py-3">
                     <label for="txtDescricaoAnuncio" class="form-label">Descrição do Anúncio:</label>
-                    <input type="text" name="txtDescricaoAnuncio" id="txtDescricaoAnuncio" class="input-sunk-white">
+                    <input type="text" name="txtDescricaoAnuncio" id="txtDescricaoAnuncio" class="input-sunk-white" value="<?= $descricao_anuncio ?>">
                 </div>
 
                 <div class="form-group">
@@ -151,7 +169,7 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
 
                 <div class="input-link">
                     <label for="txtLinkAnuncio" class="form-label">Link do Anúncio:</label>
-                    <input type="text" name="txtLinkAnuncio" id="txtLinkAnuncio" class="input-sunk-white">
+                    <input type="text" name="txtLinkAnuncio" id="txtLinkAnuncio" class="input-sunk-white" value="<?= $link_anuncio ?>">
                 </div>
 
                 <div class="mt-4 d-flex justify-content-between">
