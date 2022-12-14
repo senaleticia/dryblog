@@ -3,6 +3,55 @@ session_start();
 
 require './bd/conexao.php';
 $conexao = conexaoMySql();
+
+$cpf_cnpj = "";
+
+function mask($val, $mask)
+{
+    $maskared = '';
+    $k = 0;
+    for ($i = 0; $i <= strlen($mask) - 1; ++$i) {
+        if ($mask[$i] == '#') {
+            if (isset($val[$k])) {
+                $maskared .= $val[$k++];
+            }
+        } else {
+            if (isset($mask[$i])) {
+                $maskared .= $mask[$i];
+            }
+        }
+    }
+
+    return $maskared;
+}
+
+$cnpj = '11222333000199';
+$cpf = '00100200300';
+$cep = '08665110';
+$data = '10102010';
+$hora = '021050';
+
+
+
+
+/*echo mask($cnpj, '##.###.###/####-##') . '<br>';
+echo mask($cpf, '###.###.###-##') . '<br>';*/
+echo mask($cep, '#####-###') . '<br>';
+echo mask($data, '##/##/####') . '<br>';
+echo mask($data, '##/##/####') . '<br>';
+echo mask($data, '[##][##][####]') . '<br>';
+echo mask($data, '(##)(##)(####)') . '<br>';
+echo mask($hora, 'Agora são ## horas ## minutos e ## segundos') . '<br>';
+echo mask($hora, '##:##:##');
+
+if (isset($_POST['btnRepresentante'])) {
+    $cpf_cnpj = $_POST['txtCPFRepresentante'];
+
+    if (strlen($cpf_cnpj) == 14) {
+        echo ('Essa string tem ' . strlen($cpf_cnpj) . " caracteres<br>");
+        echo mask($cpf_cnpj, '##.###.###/####-##') . '<br>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -80,6 +129,23 @@ $conexao = conexaoMySql();
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <form action="#" method="POST">
+            <div class="card-cadastro mx-auto mt-5">
+                <div class="mb-3">
+                    <label for="txtCPFRepresentante">CPF*</label>
+                    <input type="number" name="txtCPFRepresentante" id="txtCPFRepresentante" class="input-sunk-white" required>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn-padrao font-weight-bold" id="btnRepresentante" name="btnRepresentante">CADASTRAR-SE</button>
+                </div>
+            </div>
+        </form>
+
+        <?= strlen($cpf_cnpj) ?>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -25,6 +25,25 @@ $recusadoAtivo = "";
 $filtro = "";
 $todosAtivo = "selected";
 
+function mask($val, $mask)
+{
+    $maskared = '';
+    $k = 0;
+    for ($i = 0; $i <= strlen($mask) - 1; ++$i) {
+        if ($mask[$i] == '#') {
+            if (isset($val[$k])) {
+                $maskared .= $val[$k++];
+            }
+        } else {
+            if (isset($mask[$i])) {
+                $maskared .= $mask[$i];
+            }
+        }
+    }
+
+    return $maskared;
+}
+
 if (isset($_POST['sltFiltroRepresentante'])) {
     $filtro = $_POST['sltFiltroRepresentante'];
 
@@ -164,12 +183,29 @@ if (isset($_POST['sltFiltroRepresentante'])) {
 
                     <div class="mb-3">
                         <span class="text-grey">Celular:</span>
-                        <span><?= $result['celular_representante'] ?></span>
+                        <?php if (strlen($result['celular_representante']) == 11) { ?>
+                            <span><?= mask($result['celular_representante'], '(##) #####-####') ?></span>
+                        <?php } else { ?>
+                            <p class="text-grey m-0 d-flex align-items-center">
+                                <span class="material-symbols-outlined">error</span>
+                                Número inválido ou não é um número brasileiro
+                            </p>
+                            <p><?= $result['celular_representante'] ?></p>
+                        <?php } ?>
                     </div>
 
                     <div class="mb-3">
                         <span class="text-grey">CPF / CNPJ:</span>
-                        <span><?= $result['cpf_cnpj_representante'] ?></span>
+                        <?php if (strlen($result['cpf_cnpj_representante']) == 11) { ?>
+                            <span><?= mask($result['cpf_cnpj_representante'], '###.###.###-##') ?></span>
+                        <?php } else if (strlen($result['cpf_cnpj_representante']) == 14) { ?>
+                            <span><?= mask($result['cpf_cnpj_representante'], '##.###.###/####-##') ?></span>
+                        <?php } else { ?>
+                            <p class="text-grey m-0 d-flex align-items-center">
+                                <span class="material-symbols-outlined">error</span>
+                                O número do documento enviado não é válido
+                            </p>
+                        <?php } ?>
                     </div>
 
                     <div class="mb-3">
@@ -177,10 +213,12 @@ if (isset($_POST['sltFiltroRepresentante'])) {
                         <span><?= $result['expectativa_vendas'] ?></span>
                     </div>
 
-                    <div class="mb-3">
-                        <span class="text-grey">Mensagem:</span>
-                        <p><?= $result['mensagem_representante'] ?></p>
-                    </div>
+                    <?php if ($result['mensagem_representante'] != "") { ?>
+                        <div class="mb-3">
+                            <span class="text-grey">Mensagem:</span>
+                            <p><?= $result['mensagem_representante'] ?></p>
+                        </div>
+                    <?php } ?>
 
                     <div class="mb-3">
                         <form action="retailer-status.php?representante=<?= $result['id_representante'] ?>" method="POST" name="frmStatus" id="frmStatus">

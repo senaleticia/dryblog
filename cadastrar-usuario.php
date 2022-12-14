@@ -221,7 +221,7 @@ if (isset($_FILES['fileFotoUsuario']) != "") {
                         </button>
                     </div>
                     <div class="modal-body">
-                        Seu cadastro foi feito com sucesso! Agora <a href="./login">clique aqui</a> e você será redirecionado à página de login.
+                        Seu cadastro foi feito com sucesso! Agora <a class="adesao" href="./login">clique aqui</a> e você será redirecionado à página de login.
                     </div>
                     <div class="modal-footer">
                         <a href="./login.php" class="btn-padrao">Ok</a>

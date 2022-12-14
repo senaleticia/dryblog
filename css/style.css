@@ -46,7 +46,7 @@ li {
     padding: 0;
 }
 
-span {
+span.material-symbols-outlined {
     user-select: none !important;
 }
 
@@ -363,6 +363,14 @@ a.btn-padrao:hover {
 
 .input-link {
     display: none;
+}
+
+p.text-grey {
+    color: #828282;
+}
+
+p.text-grey .material-symbols-outlined {
+    font-size: 20px;
 }
 
 /* Blog e Postagem */
@@ -1818,7 +1826,7 @@ small.float-right:hover {
 }
 
 .margem-form {
-    margin-top: 126px;
+    margin-top: 70px;
 }
 
 @keyframes modal-animation {

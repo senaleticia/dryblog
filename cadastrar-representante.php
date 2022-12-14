@@ -11,6 +11,7 @@ if (isset($_POST['btnRepresentante'])) {
     $email = $_POST['txtEmailRepresentante'];
     $celular = $_POST['txtCelularRepresentante'];
     $cep = $_POST['txtCepRepresentante'];
+    $tipo_documento = $_POST['radioDocumento'];
     $cpf_cnpj = $_POST['txtCpfCnpjRepresentante'];
     $vendas = $_POST['sltVendasChip'];
     $mensagem = addslashes($_POST['txtMensagemRepresentante']);
@@ -19,7 +20,22 @@ if (isset($_POST['btnRepresentante'])) {
     $select_email = mysqli_query($conexao, $verificar_email);
     $count_email = mysqli_num_rows($select_email);
 
-    if ($count_email >= 1) {
+    if ($tipo_documento == "") {
+        $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                    <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                    <p class='m-0'>Você precisa marcar o tipo do seu documento antes de continuar!</p>
+                </div>";
+    } else if ($tipo_documento == 'CPF' && strlen($cpf_cnpj) != 11) {
+        $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                    <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                    <p class='m-0'>A quantidade de caracteres do CPF está incorreta, tente novamente!</p>
+                </div>";
+    } else if ($tipo_documento == 'CNPJ' && strlen($cpf_cnpj) != 14) {
+        $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
+                    <h4 class='alert-heading'>Ops, espere um pouco...</h4>
+                    <p class='m-0'>A quantidade de caracteres do CNPJ está incorreta, tente novamente!</p>
+                </div>";
+    } else if ($count_email >= 1) {
         $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
                     <h4 class='alert-heading'>Ops, espere um pouco...</h4>
                     <p class='m-0'>Este email já faz parte da lista dos representantes da Dry, tente outro!</p>
@@ -30,7 +46,7 @@ if (isset($_POST['btnRepresentante'])) {
                     <p class='m-0'>Campos obrigatórios não preenchidos, verifique-os e tente novamente</p>
                 </div>";
     } else {
-        $sql = "INSERT INTO representantes (nome_representante, email_representante, celular_representante, cep_representante, cpf_cnpj_representante, expectativa_vendas, mensagem_representante, status_representante) VALUES ('" . $nome . "', '" . $email . "', '" . $celular . "', '" . $cep . "', '" . $cpf_cnpj . "', '" . $vendas . "', '" . $mensagem . "', 'NÃO CONTATADO')";
+        $sql = "INSERT INTO representantes (nome_representante, email_representante, celular_representante, cep_representante, tipo_documento, cpf_cnpj_representante, expectativa_vendas, mensagem_representante, status_representante) VALUES ('" . $nome . "', '" . $email . "', '" . $celular . "', '" . $cep . "', '" . $tipo_documento . "', '" . $cpf_cnpj . "', '" . $vendas . "', '" . $mensagem . "', 'NÃO CONTATADO')";
 
         if ($select = mysqli_query($conexao, $sql)) {
             $erro = "<div class='alert alerta-erro mt-3 mx-auto' role='alert'>
@@ -194,39 +210,44 @@ if (isset($_POST['btnRepresentante'])) {
             <form action="#inscricao" method="POST" id="cadastroRepresentante" name="cadastroRepresentante">
                 <div class="card-cadastro mx-auto mt-5">
                     <div class="mb-3">
-                        <label for="txtNomeRepresentante">Nome completo:*</label>
+                        <label for="txtNomeRepresentante">Nome completo*</label>
                         <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="txtEmailRepresentante">E-mail:*</label>
+                        <label for="txtEmailRepresentante">E-mail*</label>
                         <input type="email" name="txtEmailRepresentante" id="txtEmailRepresentante" class="input-sunk-white" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="txtCelularRepresentante">Celular:*</label>
-                        <input type="text" name="txtCelularRepresentante" id="txtCelularRepresentante" class="input-sunk-white" required>
+                        <label for="txtCelularRepresentante">Celular*</label>
+                        <input type="number" name="txtCelularRepresentante" id="txtCelularRepresentante" class="input-sunk-white" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="txtCepRepresentante">CEP:*</label>
+                        <label for="txtCepRepresentante">CEP*</label>
                         <input type="text" name="txtCepRepresentante" id="txtCepRepresentante" class="input-sunk-white" required>
                     </div>
 
                     <div class="mb-3">
+                        <p>Tipo do Documento*</p>
                         <div class="d-flex flex-row" style="gap: 25px;">
                             <label class="label-radio">
-                                CPF*:
-                                <input type="radio" name="radioDocumento" value="CPF">
+                                CPF
+                                <input type="radio" name="radioDocumento" value="CPF" required>
                                 <span class="checkmark"></span>
                             </label>
                             <label class="label-radio">
-                                CNPJ*:
-                                <input type="radio" name="radioDocumento" value="CNPJ">
+                                CNPJ
+                                <input type="radio" name="radioDocumento" value="CNPJ" required>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <input type="text" name="txtCpfCnpjRepresentante" id="txtCpfCnpjRepresentante" class="input-sunk-white" disabled>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtCpfCnpjRepresentante">Documento (somente números)*</label>
+                        <input type="number" name="txtCpfCnpjRepresentante" id="txtCpfCnpjRepresentante" class="input-sunk-white" disabled>
                     </div>
 
                     <div class="mb-4">
@@ -277,22 +298,22 @@ if (isset($_POST['btnRepresentante'])) {
                         <a href="#">Revenda</a>
                         <a href="./#clientes">Clientes</a>
                         <a href="./#cobertura">Cobertura</a>
-                        <a href="./blog.php">Blog</a>
+                        <a href="./blog">Blog</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">TRANSPARÊNCIA</h3>
                     <div class="footer-menu">
-                        <a href="./politica-de-privacidade.php">Política de Privacidade</a>
-                        <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
-                        <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
+                        <a href="./politica-de-privacidade">Política de Privacidade</a>
+                        <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="./politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h3 class="footer-title text-center">REDES SOCIAIS</h3>
                     <div id="redes-sociais" class="d-flex justify-content-center">
                         <div class="redes-sociais-pic mr-3">
-                            <a href="https://instagram.com/drytelecom?igshid=YmMyMTA2M2Y" target="_blank">
+                            <a href="https://instagram.com/drytelecom" target="_blank">
                                 <img src="./svg/icon-instagram.svg" alt="Instagram">
                             </a>
                         </div>
@@ -322,9 +343,14 @@ if (isset($_POST['btnRepresentante'])) {
             $('#myInput').trigger('focus')
         });
 
+        const inputCelular = document.querySelector('#txtCelularRepresentante');
         const inputCep = document.querySelector('#txtCepRepresentante');
         const labelRadio = document.querySelectorAll('.label-radio');
         const inputDocumento = document.querySelector('#txtCpfCnpjRepresentante');
+
+        inputCelular.addEventListener('focus', function() {
+            this.setAttribute('onkeypress', 'if(this.value.length==11) return false;')
+        });
 
         function cep() {
             let inputLength = inputCep.value.length;
@@ -335,30 +361,6 @@ if (isset($_POST['btnRepresentante'])) {
             }
         }
 
-        function cpf() {
-            let inputLenght = inputDocumento.value.length;
-            inputDocumento.maxLength = 14;
-
-            if (inputLenght === 3 || inputLenght === 7) {
-                inputDocumento.value += ".";
-            } else if (inputLenght === 11) {
-                inputDocumento.value += "-";
-            }
-        }
-
-        function cnpj() {
-            let inputLenght = inputDocumento.value.length;
-            inputDocumento.maxLength = 18;
-
-            if (inputLenght === 2 || inputLenght === 6) {
-                inputDocumento.value += ".";
-            } else if (inputLenght === 10) {
-                inputDocumento.value += "/";
-            } else if (inputLenght === 15) {
-                inputDocumento.value += "-";
-            }
-        }
-
         labelRadio.forEach((label) => {
             label.addEventListener('click', function() {
                 let valorRadio = document.querySelector('input[name=radioDocumento]:checked').value;
@@ -366,11 +368,11 @@ if (isset($_POST['btnRepresentante'])) {
                 if (valorRadio == "CPF") {
                     inputDocumento.removeAttribute('disabled');
                     inputDocumento.value = "";
-                    inputDocumento.setAttribute('onkeypress', 'cpf()');
+                    inputDocumento.setAttribute('onkeypress', 'if(this.value.length==11) return false;');
                 } else if (valorRadio == "CNPJ") {
                     inputDocumento.removeAttribute('disabled');
                     inputDocumento.value = "";
-                    inputDocumento.setAttribute('onkeypress', 'cnpj()');
+                    inputDocumento.setAttribute('onkeypress', 'if(this.value.length==14) return false;');
                 }
             });
         })

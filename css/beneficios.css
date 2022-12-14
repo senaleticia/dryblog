@@ -115,28 +115,6 @@
     align-items: center;
 }
 
-.desciption-experiencia {
-    padding: 22px;
-    height: 40%;
-    background: linear-gradient(0deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.7) 39.25%,
-            rgba(0, 0, 0, 0.5) 69.7%,
-            rgba(0, 0, 0, 0) 100%);
-    width: 100%;
-    color: #fff;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.desciption-experiencia h4 {
-    font-size: 2rem;
-}
-
-.desciption-experiencia p {
-    font-size: 1.2rem;
-}
-
 @media only screen and (max-width: 1200px) {
     #beneficios {
         grid-template-columns: 1fr !important;
@@ -146,54 +124,6 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .full-planos {
-        width: 100%;
-        overflow-x: scroll;
-        box-sizing: border-box;
-    }
-
-    .top-beneficio {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .view-card {
-        flex-direction: row;
-        width: 100%;
-        padding: 0px 5%;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: start;
-        margin: 12px;
-        order: revert;
-        box-sizing: border-box;
-        margin-left: 12px;
-    }
-
-    .full-planos::-webkit-scrollbar {
-        display: none;
-    }
-
-    #plano-25 {
-        order: 5;
-    }
-
-    #plano-30 {
-        order: 4;
-    }
-
-    #plano-40 {
-        order: 3;
-    }
-
-    #plano-50 {
-        order: 2;
-    }
-
-    #plano-75 {
-        order: 1;
-    }
-
     .content-beneficios div {
         grid-auto-columns: 1fr !important;
         grid-auto-flow: row !important;
@@ -207,74 +137,4 @@
     .content-beneficios>div p {
         margin: 0;
     }
-
-    .description-beneficio {
-        align-items: center !important;
-    }
-
-    .desciption-experiencia h4 {
-        font-size: 1.4rem;
-    }
-
-    .desciption-experiencia p {
-        font-size: 00.8rem;
-    }
-
-    .list-times {
-        gap: 6px !important;
-    }
-
-    .time {
-        width: 120px;
-        height: 120px;
-    }
-
-    #planos {
-        min-height: auto;
-        margin-top: 64px;
-    }
 }
-
-@media only screen and (max-width: 400px) {
-    .time {
-        width: 80px;
-        height: 80px;
-    }
-
-    .container-times h1 {
-        font-size: 1.4rem;
-        text-align: center;
-    }
-
-    footer {
-        margin-top: 12px !important;
-        padding: 32px 5%;
-    }
-
-    footer h2 {
-        font-size: 1.2rem;
-    }
-
-    footer img {
-        max-height: 60px;
-    }
-
-    #planos {
-        gap: 22px;
-    }
-
-    #hero {
-        background-image: url("../img/banner_mobile.png");
-        background-position: bottom;
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 80vh;
-    }
-
-    #navbar img {
-        height: 40px;
-        width: auto;
-    }
-}
-
-/* =========================== FIM BENEFÍCIOS ============================ */
