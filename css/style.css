@@ -1344,12 +1344,6 @@ small.float-right:hover {
     opacity: 0.4;
 }
 
-.logout,
-.logout:link,
-.logout:hover {
-    text-decoration: none;
-}
-
 .margem-btn {
     margin-top: 90px;
 }
@@ -1625,7 +1619,6 @@ small.float-right:hover {
 #logo-index {
     filter: brightness(0) invert();
     transition: 0.3s;
-    transform: scale(1.05);
     padding-left: 8px;
 }
 
@@ -1640,7 +1633,6 @@ small.float-right:hover {
 
 .fonte-menu {
     color: white !important;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     display: inline-block;
     padding-bottom: 0 !important;

@@ -10,6 +10,8 @@ $id_user = $_SESSION['id_usuario'];
 require_once("./bd/conexao.php");
 $conexao = conexaoMySql();
 
+$target = "";
+
 //Verificando se a variável 'p' existe na URL
 if (isset($_GET['p'])) {
     $url = $_GET['p'];
@@ -65,7 +67,7 @@ if (isset($_GET['p'])) {
         header('location: pagina-inexistente');
     }
 
-    $sql_ids = "SELECT id_anuncio FROM anuncios ORDER BY rand() LIMIT 4";
+    $sql_ids = "SELECT id_anuncio FROM anuncios WHERE status_anuncio = true ORDER BY rand() LIMIT 4";
     $select_ids = mysqli_query($conexao, $sql_ids);
     $rs_ids = mysqli_fetch_all($select_ids);
 } else {
@@ -317,11 +319,18 @@ if (isset($_POST['btnComentar'])) {
 
                 if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
                     $foto_anuncio = $rs_anuncio['foto_anuncio'];
-                    $link_anuncio = $rs_anuncio['link_anuncio'] ? $rs_anuncio['link_anuncio'] : "cadastro-anuncio.php?modo=cadastrar&anuncio=" . $rs_anuncio['id_anuncio'];
+
+                    if ($rs_anuncio['link_anuncio'] != "") {
+                        $link_anuncio = $rs_anuncio['link_anuncio'];
+                        $target = 'target="_blank"';
+                    } else {
+                        $link_anuncio = 'cadastro-anuncio.php?modo=cadastrar&anuncio=' . $rs_anuncio['id_anuncio'];
+                        $target = '';
+                    }
                 ?>
                     <div class="mx-auto">
-                        <a href="<?= $link_anuncio ?>" target="_blank">
-                            <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
+                        <a href="<?= $link_anuncio ?>" <?= $target ?>>
+                            <img style="max-height: 380px;" src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
                         </a>
                     </div>
                 <?php } ?>
@@ -343,11 +352,18 @@ if (isset($_POST['btnComentar'])) {
 
                     if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
                         $foto_anuncio = $rs_anuncio['foto_anuncio'];
-                        $link_anuncio = $rs_anuncio['link_anuncio'] ? $rs_anuncio['link_anuncio'] : "cadastro-anuncio.php?modo=cadastrar&anuncio=" . $rs_anuncio['id_anuncio'];
+
+                        if ($rs_anuncio['link_anuncio'] != "") {
+                            $link_anuncio = $rs_anuncio['link_anuncio'];
+                            $target = 'target="_blank"';
+                        } else {
+                            $link_anuncio = 'cadastro-anuncio.php?modo=cadastrar&anuncio=' . $rs_anuncio['id_anuncio'];
+                            $target = '';
+                        }
                     ?>
                         <div class="mx-auto">
-                            <a href="<?= $link_anuncio ?>" target="_blank">
-                                <img src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
+                            <a href="<?= $link_anuncio ?>" <?= $target ?>>
+                                <img style="max-height: 380px;" src="upload/anuncios/<?= $rs_anuncio['foto_anuncio'] ?>" alt="Place Anúncio">
                             </a>
                         </div>
                 <?php }
@@ -370,11 +386,18 @@ if (isset($_POST['btnComentar'])) {
 
                     if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
                         $foto_anuncio = $rs_anuncio['foto_anuncio'];
-                        $link_anuncio = $rs_anuncio['link_anuncio'] ? $rs_anuncio['link_anuncio'] : "cadastro-anuncio.php?modo=cadastrar&anuncio=" . $rs_anuncio['id_anuncio'];
+
+                        if ($rs_anuncio['link_anuncio'] != "") {
+                            $link_anuncio = $rs_anuncio['link_anuncio'];
+                            $target = 'target="_blank"';
+                        } else {
+                            $link_anuncio = 'cadastro-anuncio.php?modo=cadastrar&anuncio=' . $rs_anuncio['id_anuncio'];
+                            $target = '';
+                        }
                     ?>
                         <div class="mx-auto">
-                            <a href="<?= $link_anuncio ?>" target="_blank">
-                                <img src="upload/anuncios/<?= $foto_anuncio ?>" alt="Place Anúncio">
+                            <a href="<?= $link_anuncio ?>" <?= $target ?>>
+                                <img style="max-height: 380px;" src="upload/anuncios/<?= $foto_anuncio ?>" alt="Place Anúncio">
                             </a>
                         </div>
                 <?php }
@@ -390,7 +413,29 @@ if (isset($_POST['btnComentar'])) {
                     <div class="post-full-text">
                         <p><?= $quarto_conteudo_final ?></p>
                     </div>
-                <?php } ?>
+
+                    <?php
+                    $sql_anuncio = "SELECT * FROM anuncios WHERE id_anuncio = " . (implode('{', $rs_ids[3]));
+                    $select_anuncio = mysqli_query($conexao, $sql_anuncio);
+
+                    if ($rs_anuncio = mysqli_fetch_array($select_anuncio)) {
+                        $foto_anuncio = $rs_anuncio['foto_anuncio'];
+
+                        if ($rs_anuncio['link_anuncio'] != "") {
+                            $link_anuncio = $rs_anuncio['link_anuncio'];
+                            $target = 'target="_blank"';
+                        } else {
+                            $link_anuncio = 'cadastro-anuncio.php?modo=cadastrar&anuncio=' . $rs_anuncio['id_anuncio'];
+                            $target = '';
+                        }
+                    ?>
+                        <div class="mx-auto">
+                            <a href="<?= $link_anuncio ?>" <?= $target ?>>
+                                <img style="max-height: 380px;" src="upload/anuncios/<?= $foto_anuncio ?>" alt="Place Anúncio">
+                            </a>
+                        </div>
+                <?php }
+                } ?>
 
                 <?php if ($video != "") { ?>
                     <div class="post-video">

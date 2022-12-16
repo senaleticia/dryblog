@@ -23,6 +23,7 @@ if (isset($_GET['modo'])) {
         if ($result = mysqli_fetch_array($select)) {
             $foto_anuncio = $result['foto_anuncio'];
             $descricao_anuncio = $result['descricao_anuncio'];
+            $status_anuncio = $result['status_anuncio'];
 
             if ($result['link_anuncio'] == "") {
                 $link_anuncio = "Esse anúncio não possui link";
@@ -31,6 +32,32 @@ if (isset($_GET['modo'])) {
             }
         } else {
             header('location: publicity-list.php');
+        }
+    } else if ($_GET['modo'] == 'status') {
+        $id_anuncio = $_GET['id'];
+
+        $verificar_anuncio = "SELECT * FROM anuncios WHERE id_anuncio = " . $id_anuncio;
+        $select_verificar = mysqli_query($conexao, $verificar_anuncio);
+        $rs_verificacao = mysqli_fetch_array($select_verificar);
+
+        if ($rs_verificacao['status_anuncio'] == true) {
+            $sql = "UPDATE anuncios SET status_anuncio = false WHERE id_anuncio = " . $id_anuncio;
+
+            if (mysqli_query($conexao, $sql)) {
+                echo ("<script>history.back()</script>");
+            } else {
+                echo ("<script>alert('Erro ao desativar o anúncio')</script>");
+                echo ($sql);
+            }
+        } else if ($rs_verificacao['status_anuncio'] == false) {
+            $sql = "UPDATE anuncios SET status_anuncio = true WHERE id_anuncio = " . $id_anuncio;
+
+            if (mysqli_query($conexao, $sql)) {
+                echo ("<script>history.back()</script>");
+            } else {
+                echo ("<script>alert('Erro ao ativar o anúncio')</script>");
+                echo ($sql);
+            }
         }
     } else {
         header('location: publicity-list.php');
@@ -77,8 +104,12 @@ if (isset($_GET['modo'])) {
                 <a href="add-publicity.php?modo=editar&id=<?= $id_anuncio ?>" class="btn-padrao">
                     <span class="material-symbols-outlined">edit</span>
                 </a>
-                <a onclick="return confirm('Tem certeza que deseja excluir esse anúncio?')" href="delete.php?modo=excluir-anuncio&id=<?= $id_anuncio ?>&arquivo=<?= $foto_anuncio ?>" class="btn-padrao">
-                    <span class="material-symbols-outlined">delete</span>
+                <a href="view-publicity.php?modo=status&id=<?= $id_anuncio ?>" class="btn-padrao">
+                    <?php if ($status_anuncio == true) { ?>
+                        <span class="material-symbols-outlined" style="font-size: 28px;">toggle_on</span>
+                    <?php } else if ($status_anuncio == false) { ?>
+                        <span class="material-symbols-outlined" style="color: #777; font-size: 28px">toggle_off</span>
+                    <?php } ?>
                 </a>
             </div>
         </div>

@@ -16,6 +16,9 @@ $foto_anuncio = (string) "";
 $link_anuncio = (string) "";
 $botao = "Cadastrar";
 
+$checkedLink = "";
+$checkedFormulario = "";
+
 if (isset($_GET['modo']) == 'editar') {
     $sql = "SELECT * FROM anuncios WHERE id_anuncio = " . $_GET['id'];
     $select = mysqli_query($conexao, $sql);
@@ -23,51 +26,49 @@ if (isset($_GET['modo']) == 'editar') {
     if ($result = mysqli_fetch_array($select)) {
         $descricao_anuncio = $result['descricao_anuncio'];
         $foto_anuncio = $result['foto_anuncio'];
+        $link_anuncio = $result['link_anuncio'];
+
+        if ($link_anuncio != "") {
+            $checkedLink = "checked";
+        } else {
+            $checkedFormulario = "checked";
+        }
 
         $botao = "Atualizar";
     }
 }
 
-if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) != "") {
+if (isset($_FILES['fotoAnuncio'])) {
     $arquivo = $_FILES['fotoAnuncio'];
-    $arquivo2 = $_FILES['fotoAnuncioMobile'];
 
-    if ($arquivo['size'] > 2097152 || $arquivo2['size'] > 2097152) {
+    if ($arquivo['size'] > 2097152) {
         die('Arquivo muito grande! O tamanho máximo é 2MB');
     }
 
-    if ($arquivo['error'] || $arquivo2['error']) {
+    if ($arquivo['error']) {
         echo ('<script>alert("Falha ao enviar as fotos")</script>');
     }
 
     $diretorio = '../upload/anuncios/';
-    $diretorio2 = '../upload/anuncios/';
+    $nome_arquivo = $arquivo['name'];
+    $novo_nome_arquivo = uniqid();
+    $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
 
-    if ($arquivo['name'] != "") {
-        $nome_arquivo = $arquivo['name'];
-        $novo_nome_arquivo = uniqid();
-        $extensao = strtolower(pathinfo($nome_arquivo, PATHINFO_EXTENSION));
-        $foto_anuncio = $novo_nome_arquivo . "." . $extensao;
-    }
-
-    if ($arquivo2['name'] != "") {
-        $nome_arquivo2 = $arquivo2['name'];
-        $nome_segundo_arquivo = uniqid();
-        $extensao2 = strtolower(pathinfo($nome_arquivo2, PATHINFO_EXTENSION));
-        $foto_mobile = $nome_segundo_arquivo . "." . $extensao2;
-    }
-
-    if (($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != '') && ($extensao2 != 'jpg' && $extensao2 != 'jpeg' && $extensao2 != 'png' && $extensao2 != '')) {
+    if ($extensao != 'jpg' && $extensao != 'jpeg' && $extensao != 'png' && $extensao != '') {
         die('Esse tipo de arquivo não é aceito');
-    } else if ($extensao == '' && $extensao2 == '') {
+    }
+
+    if (move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . "." . $extensao)) {
+
         if (isset($_POST['btnCadastrarPubli'])) {
+            $foto_anuncio = $novo_nome_arquivo . "." . $extensao;
             $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
             $link_anuncio = addslashes($_POST['txtLinkAnuncio']);
 
             if ($botao == "Cadastrar") {
-                $sql = "INSERT INTO anuncios (descricao_anuncio, link_anuncio) VALUES ('" . $descricao_anuncio . "', '" . $link_anuncio . "')";
+                $sql = "INSERT INTO anuncios (foto_anuncio, descricao_anuncio, link_anuncio, status_anuncio) VALUES ('" . $foto_anuncio . "', '" . $descricao_anuncio . "', '" . $link_anuncio . "', true)";
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE anuncios SET descricao_anuncio = '" . $descricao_anuncio . "', link_anuncio = '" . $link_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
+                $sql = "UPDATE anuncios SET foto_anuncio = '" . $foto_anuncio . "', descricao_anuncio = '" . $descricao_anuncio . "', link_anuncio = '" . $link_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
             }
 
             if ($select = mysqli_query($conexao, $sql)) {
@@ -79,19 +80,14 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
             }
         }
     } else {
-        move_uploaded_file($arquivo['tmp_name'], $diretorio . $novo_nome_arquivo . '.' . $extensao);
-        move_uploaded_file($arquivo2['tmp_name'], $diretorio . $nome_segundo_arquivo . '.' . $extensao2);
-
         if (isset($_POST['btnCadastrarPubli'])) {
-            $foto_anuncio;
-            $foto_mobile;
             $descricao_anuncio = addslashes($_POST['txtDescricaoAnuncio']);
             $link_anuncio = addslashes($_POST['txtLinkAnuncio']);
 
             if ($botao == "Cadastrar") {
-                $sql = "INSERT INTO anuncios (foto_anuncio, foto_mobile, descricao_anuncio, link_anuncio) VALUES ('" . $foto_anuncio . "', '" . $foto_mobile . "', '" . $descricao_anuncio . "', '" . $link_anuncio . "')";
+                $sql = "INSERT INTO anuncios (descricao_anuncio, link_anuncio, status_anuncio) VALUES ('" . $descricao_anuncio . "', '" . $link_anuncio . "', true)";
             } else if ($botao == "Atualizar") {
-                $sql = "UPDATE anuncios SET foto_anuncio = '" . $foto_anuncio . "', foto_mobile = '" . $foto_mobile . "', descricao_anuncio = '" . $descricao_anuncio . "', link_anuncio = '" . $link_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
+                $sql = "UPDATE anuncios SET descricao_anuncio = '" . $descricao_anuncio . "', link_anuncio = '" . $link_anuncio . "' WHERE id_anuncio = " . $_GET['id'];
             }
 
             if ($select = mysqli_query($conexao, $sql)) {
@@ -136,33 +132,24 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
                 <div class="form-group">
                     <div>
                         <label for="fotoAnuncio" class="input-group-text btn-padrao" style="width: fit-content; height: max-content;">
-                            Foto Desktop do Anúncio:
+                            Foto do Anúncio:
                             <span class="material-symbols-outlined">file_upload</span>
                         </label>
                         <p class="desc-file-foto text-center pt-2"></p>
                         <input type="file" class="form-control-file" id="fotoAnuncio" name="fotoAnuncio">
-                    </div>
-
-                    <div>
-                        <label for="fotoAnuncioMobile" class="input-group-text btn-padrao" style="width: fit-content; height: max-content;">
-                            Foto Mobile do Anúncio:
-                            <span class="material-symbols-outlined">file_upload</span>
-                        </label>
-                        <p class="desc-file-foto text-center pt-2"></p>
-                        <input type="file" class="form-control-file" id="fotoAnuncioMobile" name="fotoAnuncioMobile">
                     </div>
                 </div>
 
                 <div class="pt-3 d-flex justify-content-center" style="gap: 15%;">
                     <label class="label-radio">
                         Formulário
-                        <input type="radio" name="radioLink" value="formulario">
+                        <input type="radio" name="radioLink" value="formulario" <?= $checkedFormulario ?>>
                         <span class="checkmark"></span>
                     </label>
 
                     <label class="label-radio">
                         Link
-                        <input type="radio" name="radioLink" value="link">
+                        <input type="radio" name="radioLink" value="link" <?= $checkedLink ?>>
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -184,8 +171,8 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
                 </div>
             </div>
         </form>
-
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -193,10 +180,8 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
 
     <script>
         function nameFileFoto() {
-            let div = document.querySelectorAll('.desc-file-foto')[0];
-            let div2 = document.querySelectorAll('.desc-file-foto')[1];
+            let div = document.querySelector('.desc-file-foto');
             let input = document.getElementById('fotoAnuncio');
-            let input2 = document.getElementById('fotoAnuncioMobile');
 
             if ((div != null) && (input != null)) {
                 div.addEventListener("click", function() {
@@ -209,24 +194,20 @@ if (isset($_FILES['fotoAnuncio']) != "" || isset($_FILES['fotoAnuncioMobile']) !
                     div.innerHTML = nome;
                 });
             }
-
-            if ((div2 != null) && (input2 != null)) {
-                div2.addEventListener("click", function() {
-                    input2.click();
-                });
-
-                input2.addEventListener("change", function() {
-                    let nome = "Não há arquivo selecionado. Selecionar arquivo...";
-                    if (input2.files.length > 0) nome = input2.files[0].name;
-                    div2.innerHTML = nome;
-                });
-            }
         }
 
         nameFileFoto();
 
         const labelRadio = document.querySelectorAll('.label-radio');
         const inputLink = document.querySelector('.input-link');
+
+        let valorRadio = document.querySelector('input[name=radioLink]:checked').value;
+
+        if (valorRadio == 'link') {
+            inputLink.style.display = 'block';
+        } else if (valorRadio == 'formulario') {
+            inputLink.style.display = 'none';
+        }
 
         labelRadio.forEach((label) => {
             label.addEventListener('click', function() {
