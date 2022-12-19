@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 1) {
+if ($_SESSION['tipo_autor'] == 1 || $_SESSION['tipo_autor'] == 4 || $_SESSION['tipo_autor'] == 5) {
     header('location: ./');
 }
 
@@ -29,11 +29,15 @@ if (isset($_GET['modo'])) {
             $login_autor = $result['login_autor'];
 
             if ($result['tipo_autor'] == 1) {
-                $nivel_autor = 'Administrador de Posts';
+                $nivel_autor = 'Gerenciar Posts';
             } else if ($result['tipo_autor'] == 2) {
-                $nivel_autor = 'Administrador Geral';
+                $nivel_autor = 'Gerenciar Post e Adicionar Usuários';
             } else if ($result['tipo_autor'] == 3) {
-                $nivel_autor = 'Administrador Master';
+                $nivel_autor = 'Acesso Total';
+            } else if ($result['tipo_autor'] == 4) {
+                $nivel_autor = 'Gerenciar Posts e Revendedores';
+            } else if ($result['tipo_autor']) {
+                $nivel_autor = 'Gerenciar Revendedores';
             }
 
             if ($result['autor_status'] == true) {

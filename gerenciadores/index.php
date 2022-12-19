@@ -7,6 +7,10 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header("location:../login-gerenciador.php");
 }
 
+if ($_SESSION['tipo_autor'] == 5) {
+    header('location: ./retailer-manager.php');
+}
+
 require_once("../bd/conexao.php");
 $conexao = conexaoMySql();
 ?>
@@ -51,12 +55,12 @@ $conexao = conexaoMySql();
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR POSTAGENS
             </button>
-            <?php if ($_SESSION['tipo_autor'] != 1) { ?>
+            <?php if ($_SESSION['tipo_autor'] == 2 || $_SESSION['tipo_autor'] == 3) { ?>
                 <a href="./users-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR USUÁRIOS
                 </a>
             <?php } ?>
-            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+            <?php if ($_SESSION['tipo_autor'] == 3 || $_SESSION['tipo_autor'] == 4 || $_SESSION['tipo_autor'] == 5) { ?>
                 <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>

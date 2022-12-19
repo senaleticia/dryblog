@@ -28,7 +28,11 @@ if (isset($_POST["btnEntrar"])) {
         $_SESSION['senha_autor'] = $result['senha_autor'];
         $_SESSION['gerenciadorAutenticado'] = true;
 
-        header("location: gerenciadores/");
+        if ($_SESSION['tipo_autor'] == 5) {
+            header("location: gerenciadores/retailer-manager.php");
+        } else {
+            header("location: gerenciadores/");
+        }
     } else {
         echo ("<script>alert('Usuário e/ou senha inválido')</script>");
         echo ($sql);

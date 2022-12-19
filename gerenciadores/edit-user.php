@@ -12,9 +12,11 @@ if ($_SESSION['tipo_autor'] != 3) {
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
 
-$selectedAdminPost = "";
-$selectedAdminGeral = "";
-$selectedMaster = "";
+$selectedPost = "";
+$selectedPostUser = "";
+$selectedTotal = "";
+$selectedPostRevendedor = "";
+$selectedRevendedor = "";
 
 if (isset($_GET['editar'])) {
     $id = $_GET['editar'];
@@ -34,11 +36,15 @@ if (isset($_GET['editar'])) {
         $nivel_autor = $result['tipo_autor'];
 
         if ($nivel_autor == 1) {
-            $selectedAdminPost = "selected";
+            $selectedPost = "selected";
         } else if ($nivel_autor == 2) {
-            $selectedAdminGeral = "selected";
+            $selectedPostUser = "selected";
         } else if ($nivel_autor == 3) {
-            $selectedMaster = "selected";
+            $selectedTotal = "selected";
+        } else if ($nivel_autor == 4) {
+            $selectedPostRevendedor = "selected";
+        } else if ($nivel_autor == 5) {
+            $selectedRevendedor = "selected";
         }
     }
 
@@ -108,9 +114,11 @@ if (isset($_GET['editar'])) {
                     <span class="material-symbols-outlined seta-select" style="top: 57%; right: 4%;">expand_more</span>
                     <select name="sltNivel" id="sltNivel" class="form-control select w-100" required>
                         <option value="0">Escolha um nível</option>
-                        <option value="1" <?= $selectedAdminPost ?>>Administrador de Posts</option>
-                        <option value="2" <?= $selectedAdminGeral ?>>Administrador Geral</option>
-                        <option value="3" <?= $selectedMaster ?>>Administrador Master</option>
+                        <option value="1" <?= $selectedPost ?>>Gerenciar Posts</option>
+                        <option value="2" <?= $selectedPostUser ?>>Gerenciar Post e Adicionar Usuários</option>
+                        <option value="3" <?= $selectedTotal ?>>Acesso Total</option>
+                        <option value="4" <?= $selectedPostRevendedor ?>>Gerenciar Posts e Revendedores</option>
+                        <option value="5" <?= $selectedRevendedor ?>>Gerenciar Revendedores</option>
                     </select>
                 </div>
                 <div class="d-flex justify-content-around mt-5">

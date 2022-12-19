@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 1) {
+if ($_SESSION['tipo_autor'] == 1 || $_SESSION['tipo_autor'] == 5 || $_SESSION['tipo_autor'] == 4) {
     header('location: index.php');
 }
 
@@ -146,10 +146,12 @@ if (isset($_FILES['fotoAdmin'])) {
                     <span class="material-symbols-outlined seta-select" style="top: 55%; right: 4%;">expand_more</span>
                     <select name="sltNivel" id="sltNivel" class="form-control select w-100">
                         <option value="0">Escolha um nível</option>
-                        <option value="1">Administrador de Posts</option>
-                        <option value="2">Administrador Geral</option>
+                        <option value="1">Gerenciar Posts</option>
+                        <option value="2">Gerenciar Post e Adicionar Usuários</option>
                         <?php if ($_SESSION['tipo_autor'] == 3) { ?>
-                            <option value="3">Administrador Master</option>
+                            <option value="3">Acesso Total</option>
+                            <option value="4">Gerenciar Posts e Revendedores</option>
+                            <option value="5">Gerenciar Revendedores</option>
                         <?php } ?>
                     </select>
                 </div>
@@ -160,6 +162,7 @@ if (isset($_FILES['fotoAdmin'])) {
                     <button type="submit" class="btn-padrao" name="btnCadastrarAdmin" id="btnCadastrarAdmin">Cadastrar</button>
                 </div>
             </form>
+
         </div>
     </div>
 
