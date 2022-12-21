@@ -5,17 +5,12 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 1 || $_SESSION['tipo_autor'] == 5 || $_SESSION['tipo_autor'] == 4) {
-    header('location: index.php');
+if ($_SESSION['adm_usuarios'] == 0) {
+    header('location: ./');
 }
 
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
-
-$nome_autor = (string) "";
-$login_autor = (string) "";
-$senha_autor = (string) "";
-$nivel_autor = (int) 0;
 
 if (isset($_FILES['fotoAdmin'])) {
     $arquivo = $_FILES['fotoAdmin'];
@@ -39,21 +34,23 @@ if (isset($_FILES['fotoAdmin'])) {
             $nome_autor = $_POST['txtNomeUsuario'];
             $login_autor = $_POST['txtLoginUsuario'];
             $senha_autor = $_POST['txtSenhaUsuario'];
-            $nivel_autor = $_POST['sltNivel'];
+            $adm_posts = $_POST['rdoAdmPosts'];
+            $adm_usuarios = $_POST['rdoAdmUsuarios'];
+            $adm_revendedores = $_POST['rdoAdmRevendedores'];
             $foto_autor = $novo_nome_arquivo . "." . $extensao;
 
             $verificar_email = "SELECT * FROM autor WHERE login_autor = '" . $login_autor . "'";
             $select_verificar = mysqli_query($conexao, $verificar_email);
             $row_count = mysqli_num_rows($select_verificar);
 
-            if ($nivel_autor == 0) {
-                echo ("<script>alert('Selecione um nível do usuário para continuar!')</script>");
+            if ($adm_posts == "" || $adm_usuarios == "" || $adm_revendedores == "") {
+                echo ("<script>alert('Selecione as permissões do usuário para continuar!')</script>");
             } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
                 echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
             } else if ($row_count >= 1) {
                 echo ("<script>alert('Esse email já está cadastrado em nosso sistema. Favor, inserir outro')</script>");
             } else {
-                $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, foto_autor, tipo_autor, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), '" . $foto_autor . "', " . $nivel_autor . ", true)";
+                $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, foto_autor, adm_posts, adm_usuarios, adm_revendedores, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), '" . $foto_autor . "', " . $adm_posts . ", " . $adm_usuarios . ", " . $adm_revendedores . " true)";
 
                 if ($select = mysqli_query($conexao, $sql)) {
                     echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
@@ -70,20 +67,22 @@ if (isset($_FILES['fotoAdmin'])) {
             $nome_autor = $_POST['txtNomeUsuario'];
             $login_autor = $_POST['txtLoginUsuario'];
             $senha_autor = $_POST['txtSenhaUsuario'];
-            $nivel_autor = $_POST['sltNivel'];
+            $adm_posts = $_POST['rdoAdmPosts'];
+            $adm_usuarios = $_POST['rdoAdmUsuarios'];
+            $adm_revendedores = $_POST['rdoAdmRevendedores'];
 
             $verificar_email = "SELECT * FROM autor WHERE login_autor = '" . $login_autor . "'";
             $select_verificar = mysqli_query($conexao, $verificar_email);
             $row_count = mysqli_num_rows($select_verificar);
 
-            if ($nivel_autor == 0) {
-                echo ("<script>alert('Selecione um nível do usuário para continuar!')</script>");
+            if ($adm_posts == "" || $adm_usuarios == "" || $adm_revendedores == "") {
+                echo ("<script>alert('Selecione as permissões do usuário para continuar!')</script>");
             } else if ($nome_autor == "" || $login_autor == "" || $senha_autor == "") {
                 echo ("<script>alert('Alguns dos campos obrigatórios não foram preenchidos. Por favor, verifique-os e tente novamente.')</script>");
             } else if ($row_count >= 1) {
                 echo ("<script>alert('Esse email já está cadastrado em nosso sistema. Favor, inserir outro')</script>");
             } else {
-                $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, tipo_autor, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), " . $nivel_autor . ", true)";
+                $sql = "INSERT INTO autor (nome_autor, login_autor, senha_autor, adm_posts, adm_usuarios, adm_revendedores, autor_status) VALUES('" . $nome_autor . "', '" . $login_autor . "', sha1(md5('" . $senha_autor . "')), " . $adm_posts . ", " . $adm_usuarios . ", " . $adm_revendedores . ", true)";
 
                 if ($select = mysqli_query($conexao, $sql)) {
                     echo ("<script>alert('Usuário cadastrado com sucesso!')</script>");
@@ -117,53 +116,112 @@ if (isset($_FILES['fotoAdmin'])) {
     <div class="container">
         <h3 class="my-4 text-center">Adicionar Administrador</h3>
 
-        <div class="card-cadastro mx-auto">
-            <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="#" method="POST" enctype="multipart/form-data" id="cadastroAdmin">
+            <div class="card-cadastro mx-auto mb-5 w-75">
+                <div class="foto-input mx-auto">
+                    <p class="text-center">Foto:</p>
+                    <label class="input-group-text mx-auto" for="fotoAdmin">
+                        <span class="material-symbols-outlined">file_upload</span>
+                    </label>
+                    <p class="desc-file-foto pt-3 text-center"></p>
+                    <input type="file" class="form-control-file" id="fotoAdmin" name="fotoAdmin">
+                </div>
+
                 <div class="mb-3">
                     <label for="txtNomeUsuario" class="form-label">Nome:</label>
-                    <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario" value="<?= $nome_autor ?>">
+                    <input type="text" class="input-sunk-white" id="txtNomeUsuario" name="txtNomeUsuario" required>
                 </div>
+
                 <div class="mb-3">
                     <label for="txtLoginUsuario" class="form-label">Email:</label>
-                    <input type="email" class="input-sunk-white" id="txtLoginUsuario" name="txtLoginUsuario" value="<?= $login_autor ?>">
+                    <input type="email" class="input-sunk-white" id="txtLoginUsuario" name="txtLoginUsuario" required>
                 </div>
+
                 <div class="mb-3">
                     <label for="txtSenhaUsuario" class="form-label">Senha:</label>
                     <div class="pass-cont">
-                        <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario">
+                        <input type="password" class="input-sunk-white" id="txtSenhaUsuario" name="txtSenhaUsuario" required>
                         <span onclick="view()" class="eye"></span>
                     </div>
                 </div>
+
                 <div class="mb-4">
-                    <label for="fotoAdmin" class="input-group-text btn-padrao">
-                        Foto: <span class="material-symbols-outlined">file_upload</span>
-                    </label>
-                    <input type="file" name="fotoAdmin" id="fotoAdmin">
-                    <p class="desc-file-foto pt-3 text-center"></p>
-                </div>
-                <div class="mb-3 position-relative">
-                    <label for="sltNivel">Nível do Usuário:</label>
-                    <span class="material-symbols-outlined seta-select" style="top: 55%; right: 4%;">expand_more</span>
-                    <select name="sltNivel" id="sltNivel" class="form-control select w-100">
-                        <option value="0">Escolha um nível</option>
-                        <option value="1">Gerenciar Posts</option>
-                        <option value="2">Gerenciar Post e Adicionar Usuários</option>
-                        <?php if ($_SESSION['tipo_autor'] == 3) { ?>
-                            <option value="3">Acesso Total</option>
-                            <option value="4">Gerenciar Posts e Revendedores</option>
-                            <option value="5">Gerenciar Revendedores</option>
+                    <label for="rdoAdmPosts" class="form-label">Administração de Posts:</label>
+                    <div class="d-flex justify-content-around">
+                        <label class="label-radio">
+                            Nenhum Acesso
+                            <input type="radio" name="rdoAdmPosts" value="0" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Somente Visualização
+                            <input type="radio" name="rdoAdmPosts" value="1" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
+                            <label class="label-radio">
+                                Acesso Total
+                                <input type="radio" name="rdoAdmPosts" value="2" required>
+                                <span class="checkmark"></span>
+                            </label>
                         <?php } ?>
-                    </select>
+                    </div>
                 </div>
+
+                <div class="mb-4">
+                    <label for="rdoAdmUsuarios" class="form-label">Administração de Usuários:</label>
+                    <div class="d-flex justify-content-around">
+                        <label class="label-radio">
+                            Nenhum Acesso
+                            <input type="radio" name="rdoAdmUsuarios" value="0" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Somente Visualização
+                            <input type="radio" name="rdoAdmUsuarios" value="1" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
+                            <label class="label-radio">
+                                Acesso Total
+                                <input type="radio" name="rdoAdmUsuarios" value="2" required>
+                                <span class="checkmark"></span>
+                            </label>
+                        <?php } ?>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="rdoAdmRevendedores" class="form-label text-center">Administração de Revendedores:</label>
+                    <div class="d-flex justify-content-around">
+                        <label class="label-radio">
+                            Nenhum Acesso
+                            <input type="radio" name="rdoAdmRevendedores" value="0" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Somente Visualização
+                            <input type="radio" name="rdoAdmRevendedores" value="1" required>
+                            <span class="checkmark"></span>
+                        </label>
+                        <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
+                            <label class="label-radio">
+                                Acesso Total
+                                <input type="radio" name="rdoAdmRevendedores" value="2" required>
+                                <span class="checkmark"></span>
+                            </label>
+                        <?php } ?>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-around mt-5">
                     <a href="./users-manager.php" class="btn-padrao font-weight-bold">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
                     </a>
                     <button type="submit" class="btn-padrao" name="btnCadastrarAdmin" id="btnCadastrarAdmin">Cadastrar</button>
                 </div>
-            </form>
-
-        </div>
+            </div>
+        </form>
     </div>
 
     <script>

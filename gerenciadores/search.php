@@ -5,10 +5,6 @@ if ($_SESSION['gerenciadorAutenticado'] != true && $_SESSION['autor_status'] == 
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 5) {
-    header('location: ./retailer-manager.php');
-}
-
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
 

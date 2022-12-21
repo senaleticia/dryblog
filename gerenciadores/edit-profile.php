@@ -39,8 +39,10 @@ if (isset($_GET['user'])) {
 
         if ($senha_confirmacao == "") {
             echo ("<script>alert('É necessário confirmar sua senha para prosseguir com as atualizações')</script>");
+            echo ("<script>history.back()</script>");
         } else if (sha1(md5($senha_confirmacao)) != $_SESSION['senha_autor']) {
             echo ("<script>alert('A senha está incorreta, os dados não serão atualizados')</script>");
+            echo ("<script>history.back()</script>");
         } else if ($login_autor == $_SESSION['login_autor']) {
             $sql = "UPDATE autor SET nome_autor = '" . $nome_autor . "' WHERE id_autor = " . $id;
 
@@ -52,7 +54,8 @@ if (isset($_GET['user'])) {
                 echo ($sql);
             }
         } else if ($login_autor == $rs_email['login_autor']) {
-            echo ("Esse email já está sendo usado por outro usuário");
+            echo ("<script>alert('Esse email já está sendo usado por outro usuário')</script>");
+            echo ("<script>history.back()</script>");
         } else {
             $sql = "UPDATE autor SET nome_autor = '" . $nome_autor . "', login_autor = '" . $login_autor . "' WHERE id_autor = " . $id;
 

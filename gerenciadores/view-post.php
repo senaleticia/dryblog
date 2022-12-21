@@ -1,15 +1,15 @@
 <?php
-if ($_SESSION['gerenciadorAutenticado'] = false) {
-    header("location:../login.php");
-};
+session_start();
+
+if ($_SESSION['gerenciadorAutenticado'] != true) {
+    header("location: ../login-gerenciador.php");
+}
+
+if ($_SESSION['adm_posts'] == 0) {
+    header('location: retailer-manager.php');
+}
 
 if (isset($_GET['modo'])) {
-    session_start();
-
-    if ($_SESSION['tipo_autor'] == 5) {
-        header('location: ./retailer-manager.php');
-    }
-
     require_once("../bd/conexao.php");
     $conexao = conexaoMySql();
 
@@ -167,13 +167,13 @@ if (isset($_GET['modo'])) {
                         </span>
                     </button>
                 </a>
-                <a onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>">
-                    <button class="btn-padrao">
-                        <span class="material-symbols-outlined">
-                            delete
-                        </span>
-                    </button>
-                </a>
+                <?php if ($_SESSION['adm_posts'] == 2) { ?>
+                    <a onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>">
+                        <button class="btn-padrao">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </a>
+                <?php } ?>
             </div>
         </div>
     </div>

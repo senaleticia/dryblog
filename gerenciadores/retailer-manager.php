@@ -5,8 +5,8 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 1 || $_SESSION['tipo_autor'] == 2) {
-    header('location: ./');
+if ($_SESSION['adm_revendedores'] == 0) {
+    header('location: users-manager.php');
 }
 
 require_once('../bd/conexao.php');
@@ -98,13 +98,13 @@ if (isset($_POST['sltFiltroRepresentante'])) {
 
     <div class="container my-5">
         <div class="mb-4 d-flex justify-content-center flex-wrap" style="gap: 36px;">
-            <?php if ($_SESSION['tipo_autor'] != 5) { ?>
+            <?php if ($_SESSION['adm_posts'] != 0) { ?>
                 <a href="./" class="btn-padrao btn-gerenciar">
                     GERENCIAR POSTAGENS
                 </a>
             <?php } ?>
 
-            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+            <?php if ($_SESSION['adm_usuarios'] != 0) { ?>
                 <a href="./users-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR USUÁRIOS
                 </a>

@@ -5,18 +5,24 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] != 3) {
+if ($_SESSION['adm_usuarios'] == 0) {
     header('location: ./');
+} else if ($_SESSION['adm_usuarios'] == 1) {
+    header('location: users-manager.php');
 }
 
 require_once('../bd/conexao.php');
 $conexao = conexaoMySql();
 
-$selectedPost = "";
-$selectedPostUser = "";
-$selectedTotal = "";
-$selectedPostRevendedor = "";
-$selectedRevendedor = "";
+$checkedBlockPost = "";
+$checkedBlockUsuarios = "";
+$checkedBlockRevendedores = "";
+$checkedParcialPost = "";
+$checkedParcialUsuarios = "";
+$checkedParcialRevendedores = "";
+$checkedTotalPost = "";
+$checkedTotalUsuarios = "";
+$checkedTotalRevendedores = "";
 
 if (isset($_GET['editar'])) {
     $id = $_GET['editar'];
@@ -33,29 +39,42 @@ if (isset($_GET['editar'])) {
         $nome_autor = $result['nome_autor'];
         $login_autor = $result['login_autor'];
         $senha_autor = $result['senha_autor'];
-        $nivel_autor = $result['tipo_autor'];
 
-        if ($nivel_autor == 1) {
-            $selectedPost = "selected";
-        } else if ($nivel_autor == 2) {
-            $selectedPostUser = "selected";
-        } else if ($nivel_autor == 3) {
-            $selectedTotal = "selected";
-        } else if ($nivel_autor == 4) {
-            $selectedPostRevendedor = "selected";
-        } else if ($nivel_autor == 5) {
-            $selectedRevendedor = "selected";
+        if ($result['adm_posts'] == 0) {
+            $checkedBlockPost = "checked";
+        } else if ($result['adm_posts'] == 1) {
+            $checkedParcialPost = "checked";
+        } else if ($result['adm_posts'] == 2) {
+            $checkedTotalPost = "checked";
+        }
+
+        if ($result['adm_usuarios'] == 0) {
+            $checkedBlockUsuarios = "checked";
+        } else if ($result['adm_usuarios'] == 1) {
+            $checkedParcialUsuarios = "checked";
+        } else if ($result['adm_posts'] == 2) {
+            $checkedTotalUsuarios = "checked";
+        }
+
+        if ($result['adm_revendedores'] == 0) {
+            $checkedBlockRevendedores = "checked";
+        } else if ($result['adm_revendedores'] == 1) {
+            $checkedParcialRevendedores = "checked";
+        } else if ($result['adm_revendedores'] == 2) {
+            $checkedTotalRevendedores = "checked";
         }
     }
 
     if (isset($_POST['btnAtualizarUsuario'])) {
         $senha_autor = $_POST['txtSenhaUsuario'];
-        $nivel_autor = $_POST['sltNivel'];
+        $adm_posts = $_POST['rdoAdmPosts'];
+        $adm_usuarios = $_POST['rdoAdmUsuarios'];
+        $adm_revendedores = $_POST['rdoAdmRevendedores'];
 
         if ($senha_autor == "") {
-            $sql = "UPDATE autor SET tipo_autor = " . $nivel_autor . " WHERE id_autor = " . $id;
+            $sql = "UPDATE autor SET adm_posts = " . $adm_posts . ", adm_usuarios = " . $adm_usuarios . ", adm_revendedores = " . $adm_revendedores . " WHERE id_autor = " . $id;
         } else {
-            $sql = "UPDATE autor SET senha_autor = sha1(md5('" . $senha_autor . "')), tipo_autor = " . $nivel_autor . " WHERE id_autor = " . $id;
+            $sql = "UPDATE autor SET senha_autor = sha1(md5('" . $senha_autor . "')), adm_posts = " . $adm_posts . ", adm_usuarios = " . $adm_usuarios . ", adm_revendedores = " . $adm_revendedores . " WHERE id_autor = " . $id;
         }
 
         if ($select = mysqli_query($conexao, $sql)) {
@@ -65,6 +84,8 @@ if (isset($_GET['editar'])) {
             echo ("<script>alert('Erro ao atualizar o usuário')</script>");
         }
     }
+} else {
+    header('location: users-manager.php');
 }
 ?>
 <!DOCTYPE html>
@@ -87,7 +108,7 @@ if (isset($_GET['editar'])) {
     <div class="container">
         <h3 class="my-4 text-center">Editar Usuário</h3>
 
-        <div class="card-cadastro mx-auto">
+        <div class="card-cadastro mx-auto w-75">
             <div class="my-4 mx-auto" style="width: fit-content;">
                 <div class="row" style="gap: 25px;">
                     <div class="d-flex flex-column text-right">
@@ -109,17 +130,65 @@ if (isset($_GET['editar'])) {
                         <span onclick="view()" class="eye"></span>
                     </div>
                 </div>
-                <div class="mb-3 position-relative">
-                    <label for="sltNivel">Nível do Usuário:</label>
-                    <span class="material-symbols-outlined seta-select" style="top: 57%; right: 4%;">expand_more</span>
-                    <select name="sltNivel" id="sltNivel" class="form-control select w-100" required>
-                        <option value="0">Escolha um nível</option>
-                        <option value="1" <?= $selectedPost ?>>Gerenciar Posts</option>
-                        <option value="2" <?= $selectedPostUser ?>>Gerenciar Post e Adicionar Usuários</option>
-                        <option value="3" <?= $selectedTotal ?>>Acesso Total</option>
-                        <option value="4" <?= $selectedPostRevendedor ?>>Gerenciar Posts e Revendedores</option>
-                        <option value="5" <?= $selectedRevendedor ?>>Gerenciar Revendedores</option>
-                    </select>
+                <div class="mb-4">
+                    <label for="rdoAdmPosts" class="form-label">Administração de Posts:</label>
+                    <div class="d-flex justify-content-around">
+                        <label class="label-radio">
+                            Nenhum Acesso
+                            <input type="radio" name="rdoAdmPosts" value="0" <?= $checkedBlockPost ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Somente Visualização
+                            <input type="radio" name="rdoAdmPosts" value="1" <?= $checkedParcialPost ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Acesso Total
+                            <input type="radio" name="rdoAdmPosts" value="2" <?= $checkedTotalPost ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="rdoAdmUsuarios" class="form-label">Administração de Usuários:</label>
+                    <div class="d-flex justify-content-around">
+                        <label class="label-radio">
+                            Nenhum Acesso
+                            <input type="radio" name="rdoAdmUsuarios" value="0" <?= $checkedBlockUsuarios ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Somente Visualização
+                            <input type="radio" name="rdoAdmUsuarios" value="1" <?= $checkedParcialUsuarios ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Acesso Total
+                            <input type="radio" name="rdoAdmUsuarios" value="2" <?= $checkedTotalUsuarios ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="rdoAdmRevendedores" class="form-label text-center">Administração de Revendedores:</label>
+                    <div class="d-flex justify-content-around">
+                        <label class="label-radio">
+                            Nenhum Acesso
+                            <input type="radio" name="rdoAdmRevendedores" value="0" <?= $checkedBlockRevendedores ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Somente Visualização
+                            <input type="radio" name="rdoAdmRevendedores" value="1" <?= $checkedParcialRevendedores ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="label-radio">
+                            Acesso Total
+                            <input type="radio" name="rdoAdmRevendedores" value="2" <?= $checkedTotalRevendedores ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-around mt-5">
                     <a href="./users-manager.php" class="btn-padrao font-weight-bold">

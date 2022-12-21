@@ -7,8 +7,8 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header("location:../login-gerenciador.php");
 }
 
-if ($_SESSION['tipo_autor'] == 5) {
-    header('location: ./retailer-manager.php');
+if ($_SESSION['adm_posts'] == 0) {
+    header('location: retailer-manager.php');
 }
 
 require_once("../bd/conexao.php");
@@ -55,12 +55,12 @@ $conexao = conexaoMySql();
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR POSTAGENS
             </button>
-            <?php if ($_SESSION['tipo_autor'] == 2 || $_SESSION['tipo_autor'] == 3) { ?>
+            <?php if ($_SESSION['adm_usuarios'] != 0) { ?>
                 <a href="./users-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR USUÁRIOS
                 </a>
             <?php } ?>
-            <?php if ($_SESSION['tipo_autor'] == 3 || $_SESSION['tipo_autor'] == 4 || $_SESSION['tipo_autor'] == 5) { ?>
+            <?php if ($_SESSION['adm_revendedores'] != 0) { ?>
                 <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>
@@ -84,50 +84,42 @@ $conexao = conexaoMySql();
             </form>
         </div>
 
-        <?php
-        $sql = "SELECT * FROM post ORDER BY id_post DESC";
+        <ul class="list-group">
+            <?php
+            $sql = "SELECT * FROM post ORDER BY id_post DESC";
+            $select = mysqli_query($conexao, $sql);
 
-        $select = mysqli_query($conexao, $sql);
+            if (!$select) {
+                printf("Error: %s\n", mysqli_error($conexao));
+                exit();
+            }
 
-        if (!$select) {
-            printf("Error: %s\n", mysqli_error($conexao));
-            exit();
-        }
-
-        while ($result = mysqli_fetch_array($select)) {
-        ?>
-            <ul class="list-group">
+            while ($result = mysqli_fetch_array($select)) {
+            ?>
                 <li class="post-list">
                     <?= $result['titulo'] ?>
-                    <div class="icons-box float-right">
+                    <div class="icons-box">
                         <a href="./view-post.php?modo=visualizar&id=<?= $result['id_post'] ?>">
                             <span class="material-symbols-outlined">visibility</span>
                         </a>
                         <a href="./add-post.php?modo=editar&id=<?= $result['id_post'] ?>">
                             <span class="material-symbols-outlined">border_color</span>
                         </a>
-                        <a class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>&arquivo=<?= $result['foto'] ?>">
-                            <span class="material-symbols-outlined">delete</span>
-                        </a>
+                        <?php if ($_SESSION['adm_posts'] == 2) { ?>
+                            <a class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir o post?');" href="./delete.php?modo=excluir-post&id=<?= $result['id_post'] ?>&arquivo=<?= $result['foto'] ?>">
+                                <span class="material-symbols-outlined">delete</span>
+                            </a>
+                        <?php } ?>
                     </div>
                 </li>
-            </ul>
-        <?php
-        }
-        ?>
+            <?php } ?>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        const btnExcluir = document.querySelectorAll('.btn-excluir');
-
-        btnExcluir.forEach(btn => {
-            console.log(btn);
-        })
-    </script>
 </body>
 
 </html>

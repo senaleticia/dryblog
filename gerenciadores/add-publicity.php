@@ -5,10 +5,10 @@ session_start();
 //Verificando se tem um gerenciador autenticado
 if ($_SESSION['gerenciadorAutenticado'] != true) {
     header("location: ../login-gerenciador.php");
-};
+}
 
-if ($_SESSION['tipo_autor'] == 5) {
-    header('location: ./retailer-manager.php');
+if ($_SESSION['adm_posts'] == 0) {
+    header('location: retailer-manager.php');
 }
 
 //Conexão com o banco de dados

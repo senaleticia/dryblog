@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 1 || $_SESSION['tipo_autor'] == 4 || $_SESSION['tipo_autor'] == 5) {
+if ($_SESSION['adm_usuarios'] == 0) {
     header('location: ./');
 }
 
@@ -77,7 +77,7 @@ if (isset($_POST['sltFiltro'])) {
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR USUÁRIOS
             </button>
-            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+            <?php if ($_SESSION['adm_revendedores'] == 1 || $_SESSION['adm_revendedores'] == 2) { ?>
                 <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>
@@ -126,18 +126,18 @@ if (isset($_POST['sltFiltro'])) {
                 <li class="post-list">
                     <?= $result['nome_autor'] ?>
 
-                    <div class="icons-box float-right">
+                    <div class="icons-box">
                         <a href="./view-user.php?modo=visualizar&id=<?= $result['id_autor'] ?>">
                             <span class="material-symbols-outlined">visibility</span>
                         </a>
 
-                        <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+                        <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
                             <a href="./edit-user.php?editar=<?= $result['id_autor'] ?>">
                                 <span class="material-symbols-outlined">border_color</span>
                             </a>
                         <?php } ?>
 
-                        <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+                        <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
                             <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
                                 <?php if ($result['autor_status'] == true) { ?>
                                     <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
@@ -145,7 +145,8 @@ if (isset($_POST['sltFiltro'])) {
                                     <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
                                 <?php } ?>
                             </a>
-                        <?php } else if ($_SESSION['tipo_autor'] == 2) { ?>
+                        <?php } else if ($_SESSION['adm_usuarios'] == 1) {
+                        ?>
                             <a href="#" class="inativo">
                                 <?php if ($result['autor_status'] == true) { ?>
                                     <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
@@ -153,7 +154,8 @@ if (isset($_POST['sltFiltro'])) {
                                     <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
                                 <?php } ?>
                             </a>
-                        <?php } ?>
+                        <?php }
+                        ?>
                     </div>
                 </li>
             <?php } ?>

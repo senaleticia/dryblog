@@ -23,16 +23,19 @@ if (isset($_POST["btnEntrar"])) {
     if ($result = mysqli_fetch_array($select)) {
         $_SESSION['nome_autor'] = $result['nome_autor'];
         $_SESSION['id_autor'] = $result['id_autor'];
-        $_SESSION['tipo_autor'] = $result['tipo_autor'];
         $_SESSION['login_autor'] = $result['login_autor'];
         $_SESSION['senha_autor'] = $result['senha_autor'];
+        $_SESSION['adm_posts'] = $result['adm_posts'];
+        $_SESSION['adm_usuarios'] = $result['adm_usuarios'];
+        $_SESSION['adm_revendedores'] = $result['adm_revendedores'];
         $_SESSION['gerenciadorAutenticado'] = true;
 
-        if ($_SESSION['tipo_autor'] == 5) {
+        /*if ($_SESSION['tipo_autor'] == 5) {
             header("location: gerenciadores/retailer-manager.php");
         } else {
             header("location: gerenciadores/");
-        }
+        }*/
+        header('location: gerenciadores/');
     } else {
         echo ("<script>alert('Usuário e/ou senha inválido')</script>");
         echo ($sql);

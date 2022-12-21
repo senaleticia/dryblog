@@ -5,7 +5,7 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
-if ($_SESSION['tipo_autor'] == 1 || $_SESSION['tipo_autor'] == 4 || $_SESSION['tipo_autor'] == 5) {
+if ($_SESSION['adm_usuarios'] == 0) {
     header('location: ./');
 }
 
@@ -28,16 +28,28 @@ if (isset($_GET['modo'])) {
             $nome_autor = $result['nome_autor'];
             $login_autor = $result['login_autor'];
 
-            if ($result['tipo_autor'] == 1) {
-                $nivel_autor = 'Gerenciar Posts';
-            } else if ($result['tipo_autor'] == 2) {
-                $nivel_autor = 'Gerenciar Post e Adicionar Usuários';
-            } else if ($result['tipo_autor'] == 3) {
-                $nivel_autor = 'Acesso Total';
-            } else if ($result['tipo_autor'] == 4) {
-                $nivel_autor = 'Gerenciar Posts e Revendedores';
-            } else if ($result['tipo_autor']) {
-                $nivel_autor = 'Gerenciar Revendedores';
+            if ($result['adm_posts'] == 1) {
+                $adm_posts = 'Acesso a somente visualização de posts';
+            } else if ($result['adm_posts'] == 2) {
+                $adm_posts = 'Acesso total a administração de posts';
+            } else if ($result['adm_posts'] == 0) {
+                $adm_posts = 'Acesso não permitido aos posts';
+            }
+
+            if ($result['adm_usuarios'] == 1) {
+                $adm_usuarios = 'Acesso a somente visualização de usuários';
+            } else if ($result['adm_usuarios'] == 2) {
+                $adm_usuarios = 'Acesso total a administração de usuários';
+            } else if ($result['adm_usuarios'] == 0) {
+                $adm_usuarios = 'Acesso não permitido aos usuários';
+            }
+
+            if ($result['adm_revendedores'] == 1) {
+                $adm_revendedores = 'Acesso a somente visualização de revendedores';
+            } else if ($result['adm_revendedores'] == 2) {
+                $adm_revendedores = 'Acesso total a administração de revendedores';
+            } else if ($result['adm_revendedores'] == 0) {
+                $adm_revendedores = 'Acesso não permitido aos revendedores';
             }
 
             if ($result['autor_status'] == true) {
@@ -47,7 +59,7 @@ if (isset($_GET['modo'])) {
             }
         }
     } else if ($_GET['modo'] == 'status') {
-        if ($_SESSION['tipo_autor'] != 3) {
+        if ($_SESSION['adm_usuarios'] != 2) {
             echo ("<script>alert('Você não tem permissão para ativar/desativar usuários!')</script>");
             echo ("<script>history.back()</script>");
         } else {
@@ -104,7 +116,7 @@ if (isset($_GET['modo'])) {
     <div class="container my-4">
         <h3 class="mb-5 text-center">Visualizar Usuário</h3>
 
-        <div class="card-materia-lateral p-4 mx-auto align-items-stretch" style="width: 400px; gap: 10px;">
+        <div class="card-materia-lateral p-4 mx-auto align-items-stretch" style="width: 500px; gap: 15px;">
             <div class="flex-row">
                 <strong>Nome: </strong> <?= $nome_autor ?> <br>
             </div>
@@ -112,7 +124,13 @@ if (isset($_GET['modo'])) {
                 <strong>E-mail: </strong> <?= $login_autor ?> <br>
             </div>
             <div class="flex-row">
-                <strong>Nível de Acesso: </strong> <?= $nivel_autor ?> <br>
+                <strong>Nível de acesso aos posts: </strong> <?= $adm_posts ?> <br>
+            </div>
+            <div class="flex-row">
+                <strong>Nível de acesso aos usuários: </strong> <?= $adm_usuarios ?> <br>
+            </div>
+            <div class="flex-row">
+                <strong>Nível de acesso aos revendedores: </strong> <?= $adm_revendedores ?> <br>
             </div>
             <div class="flex-row">
                 <strong>Status: </strong> <?= $status_autor ?> <br>
@@ -121,22 +139,18 @@ if (isset($_GET['modo'])) {
 
         <div class="d-flex justify-content-around my-5">
             <button class="btn-padrao font-weight-bold" onclick="history.go(-1)">
-                <span class="material-symbols-outlined">
-                    arrow_back_ios_new
-                </span>
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
             </button>
 
-            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+            <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
                 <a href="./edit-user.php?editar=<?= $id ?>">
                     <button class="btn-padrao">
-                        <span class="material-symbols-outlined">
-                            edit
-                        </span>
+                        <span class="material-symbols-outlined">edit</span>
                     </button>
                 </a>
             <?php } ?>
 
-            <?php if ($_SESSION['tipo_autor'] == 3) { ?>
+            <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
                 <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
                     <button class="btn-padrao">
                         <?php if ($status_autor == 'Ativo') { ?>

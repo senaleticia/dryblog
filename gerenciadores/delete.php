@@ -5,6 +5,10 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header('location: ../login-gerenciador.php');
 }
 
+if ($_SESSION['adm_posts'] != 2) {
+    header('location: ./');
+}
+
 if (isset($_GET['modo'])) {
     require_once("../bd/conexao.php");
     $conexao = conexaoMySql();
