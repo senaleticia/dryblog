@@ -30,12 +30,11 @@ if (isset($_POST["btnEntrar"])) {
         $_SESSION['adm_revendedores'] = $result['adm_revendedores'];
         $_SESSION['gerenciadorAutenticado'] = true;
 
-        /*if ($_SESSION['tipo_autor'] == 5) {
+        if ($_SESSION['adm_posts'] == 0) {
             header("location: gerenciadores/retailer-manager.php");
         } else {
             header("location: gerenciadores/");
-        }*/
-        header('location: gerenciadores/');
+        }
     } else {
         echo ("<script>alert('Usuário e/ou senha inválido')</script>");
         echo ($sql);

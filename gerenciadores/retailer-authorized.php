@@ -58,9 +58,11 @@ $conexao = conexaoMySql();
                                 <img class="mx-auto" src="../img/icon-profile.png" alt="Foto">
                             <?php } ?>
 
-                            <a class="btn-transparent" href="retailer-edit.php?id=<?= $result['id_representante'] ?>">
-                                <span class="material-symbols-outlined">photo_camera</span>
-                            </a>
+                            <?php if ($_SESSION['adm_revendedores'] == 2) { ?>
+                                <a class="btn-transparent" href="retailer-edit.php?id=<?= $result['id_representante'] ?>">
+                                    <span class="material-symbols-outlined">photo_camera</span>
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -82,16 +84,17 @@ $conexao = conexaoMySql();
                             <span><?= $result['cpf_cnpj_representante'] ?></span>
                         </div>
                     </div>
-                    <div>
-                        <a href="retailer-status.php?modo=desativar&id=<?= $result['id_representante'] ?>" class="btn-padrao mx-auto" style="width: 210px;">
-                            Desativar Revendedor
-                        </a>
-                    </div>
+                    <?php if ($_SESSION['adm_revendedores'] == 2) { ?>
+                        <div>
+                            <a href="retailer-status.php?modo=desativar&id=<?= $result['id_representante'] ?>" class="btn-padrao mx-auto" style="width: 210px;">
+                                Desativar Revendedor
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             <?php } ?>
         </div>
     </div>
-
 </body>
 
 </html>

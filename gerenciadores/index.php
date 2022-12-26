@@ -7,10 +7,6 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
     header("location:../login-gerenciador.php");
 }
 
-if ($_SESSION['adm_posts'] == 0) {
-    header('location: retailer-manager.php');
-}
-
 require_once("../bd/conexao.php");
 $conexao = conexaoMySql();
 ?>

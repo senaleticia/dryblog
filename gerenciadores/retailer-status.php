@@ -7,6 +7,8 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
 
 if ($_SESSION['adm_revendedores'] == 0) {
     header('location: users-manager.php');
+} else if ($_SESSION['adm_revendedores'] == 1) {
+    header('location: retailer-manager.php');
 }
 
 if (isset($_GET['modo'])) {

@@ -6,7 +6,9 @@ if ($_SESSION['gerenciadorAutenticado'] != true) {
 }
 
 if ($_SESSION['adm_revendedores'] == 0) {
-    header('location: ./');
+    header('location: users-manager.php');
+} else if ($_SESSION['adm_revendedores'] == 1) {
+    header('location: retailer-authorized.php');
 }
 
 if (isset($_GET['id'])) {
@@ -55,6 +57,8 @@ if (isset($_GET['id'])) {
             }
         }
     }
+} else {
+    header('location: retailer-authorized.php');
 }
 ?>
 <!DOCTYPE html>

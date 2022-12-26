@@ -191,8 +191,7 @@ span.material-symbols-outlined {
 #fileFotoUsuario,
 #fotoRepresentante,
 #fotoAdmin,
-#fotoAnuncio,
-#fotoAnuncioMobile {
+#fotoAnuncio {
     display: none !important;
 }
 
@@ -630,10 +629,6 @@ p.text-grey .material-symbols-outlined {
     align-items: center;
 }
 
-.container-propagandas {
-    display: none;
-}
-
 #comentarios {
     width: 100%;
     margin-bottom: 70px;
@@ -762,44 +757,6 @@ small.float-right {
 small.float-right:hover {
     text-decoration: underline;
     cursor: pointer;
-}
-
-#grid-propagandas {
-    display: grid;
-    grid-template-columns: 230px 1fr 230px;
-    grid-column: 3;
-}
-
-#grid-propagandas .scroll-container {
-    padding: 0;
-    max-width: 100vw;
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 100%;
-}
-
-#grid-propagandas .container {
-    max-width: 1000px;
-    grid-column: 2;
-}
-
-.propagandas {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 100%;
-    padding-top: 300px;
-    box-sizing: border-box;
-}
-
-.propagandas>div {
-    width: 220px;
-    height: 280px;
-    border: solid 1px black;
-}
-
-#grid-propagandas .container .col-md-12 {
-    margin: 0 !important;
-    padding: 0 !important;
 }
 
 /* Página Inicial */
@@ -1757,10 +1714,6 @@ small.float-right:hover {
 
 #cadastroRepresentante .input-sunk-white {
     margin-bottom: 16px;
-}
-
-#cadastroRepresentante .card-cadastro {
-    background-color: #EBEBEB;
 }
 
 .card-cadastro .input-sunk-white {

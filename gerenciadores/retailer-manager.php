@@ -223,17 +223,22 @@ if (isset($_POST['sltFiltroRepresentante'])) {
                     <?php } ?>
 
                     <div class="mb-3">
-                        <form action="retailer-status.php?representante=<?= $result['id_representante'] ?>" method="POST" name="frmStatus" id="frmStatus">
-                            <div class="position-relative">
-                                <span class="material-symbols-outlined seta-select">expand_more</span>
-                                <select name="sltStatus" id="sltStatus" class="form-control select mx-auto" onchange="this.form.submit()">
-                                    <option value="NÃO CONTATADO" <?= $selectedNaoContatado ?>>Não contatado</option>
-                                    <option value="EM CONTATO" <?= $selectedEmContato ?>>Em contato</option>
-                                    <option value="ACEITO">Aceito</option>
-                                    <option value="RECUSADO" <?= $selectedRecusado ?>>Recusado</option>
-                                </select>
-                            </div>
-                        </form>
+                        <?php if ($_SESSION['adm_revendedores'] == 2) { ?>
+                            <form action="retailer-status.php?representante=<?= $result['id_representante'] ?>" method="POST" name="frmStatus" id="frmStatus">
+                                <div class="position-relative">
+                                    <span class="material-symbols-outlined seta-select">expand_more</span>
+                                    <select name="sltStatus" id="sltStatus" class="form-control select mx-auto" onchange="this.form.submit()">
+                                        <option value="NÃO CONTATADO" <?= $selectedNaoContatado ?>>Não contatado</option>
+                                        <option value="EM CONTATO" <?= $selectedEmContato ?>>Em contato</option>
+                                        <option value="ACEITO">Aceito</option>
+                                        <option value="RECUSADO" <?= $selectedRecusado ?>>Recusado</option>
+                                    </select>
+                                </div>
+                            </form>
+                        <?php } else if ($_SESSION['adm_revendedores'] == 1) { ?>
+                            <span class="text-grey">Status:</span>
+                            <p><?= $result['status_representante'] ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             <?php } ?>

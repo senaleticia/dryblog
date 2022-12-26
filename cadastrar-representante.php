@@ -208,7 +208,7 @@ if (isset($_POST['btnRepresentante'])) {
             <?= $erro ?>
 
             <form action="#inscricao" method="POST" id="cadastroRepresentante" name="cadastroRepresentante">
-                <div class="card-cadastro mx-auto mt-5">
+                <div class="card-cadastro mx-auto mt-5 bg-transparent">
                     <div class="mb-3">
                         <label for="txtNomeRepresentante">Nome completo*</label>
                         <input type="text" name="txtNomeRepresentante" id="txtNomeRepresentante" class="input-sunk-white" required>
