@@ -71,13 +71,15 @@ if (isset($_POST['sltFiltro'])) {
     </header>
     <div class="container mt-5">
         <div class="mb-4 d-flex justify-content-center" style="gap: 36px;">
-            <a href="./" class="btn-padrao btn-gerenciar">
-                GERENCIAR POSTAGENS
-            </a>
+            <?php if ($_SESSION['adm_posts'] != 0) { ?>
+                <a href="./" class="btn-padrao btn-gerenciar">
+                    GERENCIAR POSTAGENS
+                </a>
+            <?php } ?>
             <button class="btn-padrao btn-gerenciar ativo">
                 GERENCIAR USUÁRIOS
             </button>
-            <?php if ($_SESSION['adm_revendedores'] == 1 || $_SESSION['adm_revendedores'] == 2) { ?>
+            <?php if ($_SESSION['adm_revendedores'] != 0) { ?>
                 <a href="./retailer-manager.php" class="btn-padrao btn-gerenciar">
                     GERENCIAR REVENDEDORES
                 </a>
@@ -145,8 +147,7 @@ if (isset($_POST['sltFiltro'])) {
                                     <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
                                 <?php } ?>
                             </a>
-                        <?php } else if ($_SESSION['adm_usuarios'] == 1) {
-                        ?>
+                        <?php } else if ($_SESSION['adm_usuarios'] == 1) { ?>
                             <a href="#" class="inativo">
                                 <?php if ($result['autor_status'] == true) { ?>
                                     <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
@@ -154,8 +155,7 @@ if (isset($_POST['sltFiltro'])) {
                                     <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
                                 <?php } ?>
                             </a>
-                        <?php }
-                        ?>
+                        <?php } ?>
                     </div>
                 </li>
             <?php } ?>
