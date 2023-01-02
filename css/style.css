@@ -577,10 +577,6 @@ p.text-grey .material-symbols-outlined {
     width: 330px;
 }
 
-.container-lado-direito .card-materia-lateral {
-    width: 330px;
-}
-
 .card-materia-lateral .materia-title:hover {
     color: #FE5000;
     text-decoration: underline;
@@ -803,10 +799,6 @@ small.float-right:hover {
     align-items: center;
 }
 
-.chip-laricel .btn-sunk-chip {
-    z-index: +1;
-}
-
 #section-futebol,
 #section-entretenimento,
 #section-empresas {
@@ -815,7 +807,6 @@ small.float-right:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: +1;
     padding-top: 0;
 }
 

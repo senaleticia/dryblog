@@ -141,21 +141,15 @@ if (isset($_POST['sltFiltro'])) {
 
                         <?php if ($_SESSION['adm_usuarios'] == 2) { ?>
                             <a href="./view-user.php?modo=status&id=<?= $result['id_autor'] ?>">
+                            <?php } else if ($_SESSION['adm_usuarios'] == 1) { ?>
+                                <a href="#" class="inativo">
+                                <?php } ?>
                                 <?php if ($result['autor_status'] == true) { ?>
                                     <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
                                 <?php } else if ($result['autor_status'] == false) { ?>
                                     <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
                                 <?php } ?>
-                            </a>
-                        <?php } else if ($_SESSION['adm_usuarios'] == 1) { ?>
-                            <a href="#" class="inativo">
-                                <?php if ($result['autor_status'] == true) { ?>
-                                    <span class="material-symbols-outlined" style="font-size: 28px; color: #FE5000;">toggle_on</span>
-                                <?php } else if ($result['autor_status'] == false) { ?>
-                                    <span class="material-symbols-outlined" style="color: #313131; font-size: 28px;">toggle_off</span>
-                                <?php } ?>
-                            </a>
-                        <?php } ?>
+                                </a>
                     </div>
                 </li>
             <?php } ?>
