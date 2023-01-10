@@ -89,7 +89,6 @@ span.material-symbols-outlined {
 
 .redes-sociais-pic {
     filter: none;
-    transition: 0.3s;
 }
 
 .redes-sociais-pic:hover {
@@ -886,7 +885,7 @@ small.float-right:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
 }
 
@@ -1568,8 +1567,6 @@ small.float-right:hover {
 
 #logo-index {
     filter: brightness(0) invert();
-    transition: 0.3s;
-    padding-left: 8px;
 }
 
 .navbar {

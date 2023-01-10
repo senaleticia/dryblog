@@ -302,13 +302,6 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://www.chipdopapao.com.br/" target="_blank" rel="noopener noreferrer">
-                    <div class="btn-sunk-chip">
-                        <div class="img-chip">
-                            <img src="./img/papaochip.png" alt="Chip do Papão" />
-                        </div>
-                    </div>
-                </a>
             </div>
         </section>
 
@@ -655,6 +648,7 @@
                     <div class="footer-menu">
                         <a href="./politica-de-privacidade">Política de Privacidade</a>
                         <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="./termos-de-adesao">Termos de Adesão</a>
                         <a href="./politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>

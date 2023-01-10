@@ -248,6 +248,7 @@ if (isset($_GET['modo'])) {
                     <div class="footer-menu">
                         <a href="./politica-de-privacidade.php">Política de Privacidade</a>
                         <a href="./politica-de-privacidade.php#cookies">Política de Cookies</a>
+                        <a href="./termos-de-adesao">Termos de Adesão</a>
                         <a href="./politica-de-privacidade.php#LGPD">LGPD</a>
                     </div>
                 </div>

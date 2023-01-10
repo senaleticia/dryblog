@@ -421,6 +421,7 @@
                     <div class="footer-menu">
                         <a href="#">Política de Privacidade</a>
                         <a href="#cookies">Política de Cookies</a>
+                        <a href="./termos-de-adesao">Termos de Adesão</a>
                         <a href="#LGPD">LGPD</a>
                     </div>
                 </div>

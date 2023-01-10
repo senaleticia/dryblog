@@ -506,6 +506,7 @@
                     <div class="footer-menu">
                         <a href="./politica-de-privacidade">Política de Privacidade</a>
                         <a href="./politica-de-privacidade#cookies">Política de Cookies</a>
+                        <a href="#">Termos de Adesão</a>
                         <a href="./politica-de-privacidade#LGPD">LGPD</a>
                     </div>
                 </div>
